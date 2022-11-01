@@ -1,11 +1,11 @@
-package com.example.aplikasita;
+package com.example.aplikasita.model;
 
 public class Month {
     private String month;
-    private double income;
-    private double outcome;
+    private String income;
+    private String outcome;
 
-    public Month(String month, double income, double outcome) {
+    public Month(String month, String income, String outcome) {
         this.month = month;
         this.income = income;
         this.outcome = outcome;
@@ -19,19 +19,19 @@ public class Month {
         this.month = month;
     }
 
-    public double getIncome() {
+    public String getIncome() {
         return income;
     }
 
-    public void setIncome(double income) {
+    public void setIncome(String income) {
         this.income = income;
     }
 
-    public double getOutcome() {
+    public String getOutcome() {
         return outcome;
     }
 
-    public void setOutcome(double outcome) {
+    public void setOutcome(String outcome) {
         this.outcome = outcome;
     }
 }

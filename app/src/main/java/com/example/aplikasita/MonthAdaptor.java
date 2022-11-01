@@ -1,6 +1,5 @@
 package com.example.aplikasita;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,50 +8,48 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
-
-public class MonthAdaptor extends RecyclerView.Adapter<MonthAdaptor.ViewHolder>{
-
-    private final Context context;
-    private final ArrayList<Month> monthArrayList;
+import com.example.aplikasita.model.Month;
 
 
-    public MonthAdaptor(Context context,ArrayList<Month> monthArrayList){
-        this.context = context;
-        this.monthArrayList = monthArrayList;
+public class MonthAdaptor extends RecyclerView.Adapter<MonthAdaptor.MonthViewHolder>{
+
+    private ArrayList<Month> listMonth;
+
+    public MonthAdaptor(ArrayList<Month> listMonth) {
+        this.listMonth = listMonth;
     }
 
     @NonNull
     @Override
-    public MonthAdaptor.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType){
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_layout, parent, false);
+    public MonthAdaptor.MonthViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
 
-        view.setOnClickListener(MainActivity.myOnClickListener);
-
-        return new ViewHolder(view);
+        View view = layoutInflater.inflate(R.layout.item_month,parent,false);
+        return new MonthViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
+    public void onBindViewHolder(@NonNull MonthAdaptor.MonthViewHolder holder, int position) {
+        holder.tvMonth.setText(listMonth.get(position).getMonth());
+        holder.tvIncome.setText(listMonth.get(position).getIncome());
+        holder.tvOutcome.setText(listMonth.get(position).getOutcome());
     }
 
     @Override
     public int getItemCount() {
-        return monthArrayList.size();
+        return (listMonth!=null) ? listMonth.size():0;
     }
 
+    public class MonthViewHolder extends RecyclerView.ViewHolder{
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        private final TextView monthText;
-        private final TextView incomeText;
-        private final TextView outcomeText;
+        private TextView tvMonth, tvIncome, tvOutcome;
 
-        public ViewHolder(View view) {
+        public MonthViewHolder(View view){
             super(view);
 
-            monthText = view.findViewById(R.id.idMonth);
-            incomeText = view.findViewById(R.id.idIncome);
-            outcomeText = view.findViewById(R.id.idOutcome);
+            tvMonth = view.findViewById(R.id.idMonth);
+            tvIncome = view.findViewById(R.id.idIncome);
+            tvOutcome = view.findViewById(R.id.idOutcome);
         }
     }
 }
