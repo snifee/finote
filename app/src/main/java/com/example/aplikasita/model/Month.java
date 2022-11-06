@@ -1,5 +1,11 @@
 package com.example.aplikasita.model;
 
+
+import lombok.Data;
+
+
+@Data
+
 public class Month {
     private String month;
     private String income;

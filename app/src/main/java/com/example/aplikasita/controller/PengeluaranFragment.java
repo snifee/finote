@@ -44,17 +44,17 @@ public class PengeluaranFragment extends Fragment {
     private ArrayList getData(){
         ArrayList<Month> monthList = new ArrayList<>();
 
-        monthList.add(new Month("Sep","123","123"));
-        monthList.add(new Month("Sep","123","123"));
-        monthList.add(new Month("Sep","123","123"));
-        monthList.add(new Month("Sep","123","123"));
-        monthList.add(new Month("Sep","123","123"));
-        monthList.add(new Month("Sep","123","123"));
-        monthList.add(new Month("Sep","123","123"));
-        monthList.add(new Month("Sep","123","123"));
-        monthList.add(new Month("Sep","123","123"));
-        monthList.add(new Month("Sep","123","123"));
-        monthList.add(new Month("Sep","123","123"));
+        monthList.add(new Month("January","123","123"));
+        monthList.add(new Month("February","123","123"));
+        monthList.add(new Month("March","123","123"));
+        monthList.add(new Month("April","123","123"));
+        monthList.add(new Month("May","123","123"));
+        monthList.add(new Month("June","123","123"));
+        monthList.add(new Month("July","123","123"));
+        monthList.add(new Month("August","123","123"));
+        monthList.add(new Month("September","123","123"));
+        monthList.add(new Month("Oktober","123","123"));
+        monthList.add(new Month("November","123","123"));
 
         return monthList;
     }
