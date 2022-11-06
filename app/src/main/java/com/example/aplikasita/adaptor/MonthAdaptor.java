@@ -1,4 +1,4 @@
-package com.example.aplikasita.controller;
+package com.example.aplikasita.adaptor;
 
 import android.view.LayoutInflater;
 import android.view.View;

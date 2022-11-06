@@ -6,10 +6,10 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 
-import com.example.aplikasita.controller.PagerAdapter;
-import com.example.aplikasita.view.BankFragment;
-import com.example.aplikasita.view.PemasukanFragment;
-import com.example.aplikasita.view.PengeluaranFragment;
+import com.example.aplikasita.adaptor.PagerAdapter;
+import com.example.aplikasita.controller.BankFragment;
+import com.example.aplikasita.controller.PemasukanFragment;
+import com.example.aplikasita.controller.PengeluaranFragment;
 import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity {

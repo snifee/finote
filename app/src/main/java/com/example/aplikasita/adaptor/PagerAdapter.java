@@ -1,4 +1,4 @@
-package com.example.aplikasita.controller;
+package com.example.aplikasita.adaptor;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;

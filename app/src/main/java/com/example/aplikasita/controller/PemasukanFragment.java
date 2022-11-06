@@ -1,4 +1,4 @@
-package com.example.aplikasita.view;
+package com.example.aplikasita.controller;
 
 import android.os.Bundle;
 

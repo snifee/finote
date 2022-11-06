@@ -1,4 +1,4 @@
-package com.example.aplikasita.view;
+package com.example.aplikasita.controller;
 
 import android.os.Bundle;
 
@@ -11,11 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.aplikasita.R;
-import com.example.aplikasita.controller.MonthAdaptor;
+import com.example.aplikasita.adaptor.MonthAdaptor;
 import com.example.aplikasita.model.Month;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class PengeluaranFragment extends Fragment {
