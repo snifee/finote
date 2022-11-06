@@ -1,58 +1,64 @@
 package com.example.aplikasita;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
-import com.example.aplikasita.model.Month;
 
-import java.util.ArrayList;
+import com.example.aplikasita.controller.PagerAdapter;
+import com.example.aplikasita.view.BankFragment;
+import com.example.aplikasita.view.PemasukanFragment;
+import com.example.aplikasita.view.PengeluaranFragment;
+import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity {
-
-
-
-    private ArrayList<Month> monthArrayList;
-
-    private RecyclerView recyclerView;
-    private MonthAdaptor monthAdaptor;
-
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-
-
-
         setContentView(R.layout.activity_main);
 
-        getData();
+        tabLayout = findViewById(R.id.tabLayout);
+        viewPager = findViewById(R.id.viewPager);
 
-        recyclerView = findViewById(R.id.recycleViewId);
+        tabLayout.addTab(tabLayout.newTab().setText("Pengeluaran"));
+        tabLayout.addTab(tabLayout.newTab().setText("Pemasukan"));
+        tabLayout.addTab(tabLayout.newTab().setText("Bank"));
 
-        monthAdaptor = new MonthAdaptor(monthArrayList);
+        PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager(),FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT, tabLayout.getTabCount());
 
-        RecyclerView.LayoutManager layoutManager= new LinearLayoutManager(MainActivity.this);
+        pagerAdapter.addFragment(new PengeluaranFragment());
+        pagerAdapter.addFragment(new PemasukanFragment());
+        pagerAdapter.addFragment(new BankFragment());
 
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(monthAdaptor);
 
 
+        viewPager.setAdapter(pagerAdapter);
+
+
+
+
+
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
 
     }
 
-    public void getData(){
-        monthArrayList = new ArrayList<>();
-        monthArrayList.add(new Month("Jan","12.4","12.9"));
-        monthArrayList.add(new Month("Feb","12.4","12.9"));
-        monthArrayList.add(new Month("March","12.4","12.9"));
-        monthArrayList.add(new Month("March","12.4","12.9"));
-        monthArrayList.add(new Month("March","12.4","12.9"));
-        monthArrayList.add(new Month("March","12.4","12.9"));
-        monthArrayList.add(new Month("March","12.4","12.9"));
-        monthArrayList.add(new Month("March","12.4","12.9"));
-        monthArrayList.add(new Month("March","12.4","12.9"));
-        monthArrayList.add(new Month("March","12.4","12.9"));
-    }
 }

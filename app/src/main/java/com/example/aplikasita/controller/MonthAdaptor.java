@@ -1,4 +1,4 @@
-package com.example.aplikasita;
+package com.example.aplikasita.controller;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
+import com.example.aplikasita.R;
 import com.example.aplikasita.model.Month;
 
 
