@@ -8,8 +8,12 @@ import androidx.annotation.Nullable;
 
 public class DataHelper extends SQLiteOpenHelper {
 
-    public DataHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
+    public static final String DB_NAME = "db_finote.db";
+    public static final Integer DB_VERSION = 1;
+
+
+    public DataHelper(@Nullable Context context) {
+        super(context, DB_NAME, null, DB_VERSION);
     }
 
     @Override

@@ -24,9 +24,9 @@ public class MainActivity extends AppCompatActivity {
         tabLayout = findViewById(R.id.tabLayout);
         viewPager = findViewById(R.id.viewPager);
 
-        tabLayout.addTab(tabLayout.newTab().setText("Pengeluaran"));
-        tabLayout.addTab(tabLayout.newTab().setText("Pemasukan"));
-        tabLayout.addTab(tabLayout.newTab().setText("Bank"));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.spending_tab));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.income_tab));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.bank_tab));
 
         PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager(),FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT, tabLayout.getTabCount());
 
@@ -34,13 +34,7 @@ public class MainActivity extends AppCompatActivity {
         pagerAdapter.addFragment(new PemasukanFragment());
         pagerAdapter.addFragment(new BankFragment());
 
-
-
         viewPager.setAdapter(pagerAdapter);
-
-
-
-
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -50,12 +44,12 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-
+                viewPager.setCurrentItem(tab.getPosition());
             }
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-
+                viewPager.setCurrentItem(tab.getPosition());
             }
         });
 

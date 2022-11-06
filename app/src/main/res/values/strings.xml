@@ -5,4 +5,7 @@
     <string name="login">Login</string>
     <string name="insert_password">Insert PIN</string>
     <string name="welcome">Welcome !</string>
+    <string name="income_tab">INCOME</string>
+    <string name="spending_tab">SPENDING</string>
+    <string name="bank_tab">BANK</string>
 </resources>
