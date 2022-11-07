@@ -85,14 +85,6 @@ public class Spending {
         this.keterangan = keterangan;
     }
 
-    public Date getWaktu() {
-        return waktu;
-    }
-
-    public void setWaktu(Date waktu) {
-        this.waktu = waktu;
-    }
-
     public String getMonth() {
         return month;
     }

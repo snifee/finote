@@ -86,11 +86,5 @@ public class Income {
         this.keterangan = keterangan;
     }
 
-    public Date getWaktu() {
-        return waktu;
-    }
 
-    public void setWaktu(Date waktu) {
-        this.waktu = waktu;
-    }
 }
