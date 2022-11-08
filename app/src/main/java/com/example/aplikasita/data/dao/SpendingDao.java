@@ -1,10 +1,10 @@
-package com.example.aplikasita.dao;
+package com.example.aplikasita.data.dao;
 
 
 import androidx.room.Dao;
 import androidx.room.Query;
 
-import com.example.aplikasita.model.Spending;
+import com.example.aplikasita.data.entity.Spending;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.example.aplikasita.model;
+package com.example.aplikasita.data.entity;
 
 
 import androidx.room.ColumnInfo;
