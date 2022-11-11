@@ -36,8 +36,7 @@ public class Income {
 //    private Date waktu;
 //    @Relation(parentColumn = "month",)
 
-    public Income(Long id, Integer noRekening, Integer jumlah, String month, String keterangan, Date waktu) {
-        this.id = id;
+    public Income(Integer noRekening, Integer jumlah, String month, String keterangan) {
         this.noRekening = noRekening;
         this.jumlah = jumlah;
         this.month = month;

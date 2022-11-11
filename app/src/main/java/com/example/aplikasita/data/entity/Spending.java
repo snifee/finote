@@ -40,8 +40,7 @@ public class Spending {
     @ColumnInfo(name = "jenis_pengeluaran")
     private String jenisPengeluaran;
 
-    public Spending(Long id, Integer sumberPengeluaran, Integer jumlah, String keterangan, Date waktu, String month, String jenisPengeluaran) {
-        this.id = id;
+    public Spending(Integer sumberPengeluaran, Integer jumlah, String keterangan, Date waktu, String month, String jenisPengeluaran) {
         this.sumberPengeluaran = sumberPengeluaran;
         this.jumlah = jumlah;
         this.keterangan = keterangan;

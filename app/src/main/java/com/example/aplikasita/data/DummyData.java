@@ -4,6 +4,7 @@ import com.example.aplikasita.model.Bank;
 import com.example.aplikasita.model.Month;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DummyData {
 
@@ -34,4 +35,5 @@ public class DummyData {
 
         return data;
     }
+
 }

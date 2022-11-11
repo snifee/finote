@@ -22,11 +22,10 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="319dp"
-        android:layout_marginTop="610dp"
-        android:layout_marginEnd="36dp"
-        android:layout_marginBottom="65dp"
-        android:src="@android:drawable/ic_input_add"
-        />
+        android:layout_marginStart="286dp"
+        android:layout_marginTop="571dp"
+        android:layout_marginEnd="69dp"
+        android:layout_marginBottom="104dp"
+        android:src="@android:drawable/ic_input_add" />
 
 </RelativeLayout>
