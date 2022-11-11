@@ -1,6 +1,7 @@
 package com.example.aplikasita.data.dao;
 
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
@@ -15,10 +16,10 @@ import java.util.List;
 public interface IncomeDao {
 
     @Query("SELECT * FROM income_table")
-    List<Spending> getAllIncome();
+    LiveData<List<Income>> getAllIncome();
 
     @Query("SELECT * FROM income_table WHERE month LIKE :rqmonth")
-    List<Spending> getIncomeByMonth(String rqmonth);
+    LiveData<List<Income>> getIncomeByMonth(String rqmonth);
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insertIncome(Income income);

@@ -3,6 +3,7 @@ package com.example.aplikasita.data.entity;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import androidx.room.Relation;
 
 import java.util.Date;
 
@@ -33,6 +34,7 @@ public class Income {
 
 //    @ColumnInfo(name = "waktu")
 //    private Date waktu;
+//    @Relation(parentColumn = "month",)
 
     public Income(Long id, Integer noRekening, Integer jumlah, String month, String keterangan, Date waktu) {
         this.id = id;
