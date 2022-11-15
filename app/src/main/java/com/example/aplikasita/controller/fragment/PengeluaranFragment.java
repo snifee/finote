@@ -1,4 +1,4 @@
-package com.example.aplikasita.controller;
+package com.example.aplikasita.controller.fragment;
 
 import android.os.Bundle;
 
@@ -11,28 +11,30 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.aplikasita.R;
-import com.example.aplikasita.adaptor.BankRecycleViewAdaptor;
-import com.example.aplikasita.adaptor.MonthAdaptor;
+import com.example.aplikasita.controller.adaptor.MonthAdaptor;
 import com.example.aplikasita.data.DummyData;
 
-public class BankFragment extends Fragment {
+
+public class PengeluaranFragment extends Fragment {
 
     private RecyclerView recyclerView;
 
 
-    public BankFragment() {
+    public PengeluaranFragment() {
         // Required empty public constructor
     }
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_bank, container, false);
-        recyclerView = view.findViewById(R.id.recycleViewBank);
+        View view = inflater.inflate(R.layout.fragment_pengeluaran, container, false);
+        recyclerView = view.findViewById(R.id.recycleViewPengeluaran);
         recyclerView.setLayoutManager( new LinearLayoutManager(view.getContext()));
-        recyclerView.setAdapter(new BankRecycleViewAdaptor(DummyData.getDataBank()));
-
+        recyclerView.setAdapter(new MonthAdaptor(DummyData.getData()));
         return view;
     }
+
 }

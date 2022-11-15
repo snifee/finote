@@ -1,4 +1,4 @@
-package com.example.aplikasita.controller;
+package com.example.aplikasita.controller.fragment;
 
 import android.os.Bundle;
 
@@ -12,17 +12,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import com.example.aplikasita.MainActivity;
 import com.example.aplikasita.R;
-import com.example.aplikasita.adaptor.IncomeAdaptor;
-import com.example.aplikasita.adaptor.MonthAdaptor;
-import com.example.aplikasita.data.DummyData;
+import com.example.aplikasita.controller.adaptor.IncomeAdaptor;
 import com.example.aplikasita.data.IncomeViewModel;
 import com.example.aplikasita.data.entity.Income;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class PemasukanFragment extends Fragment {
@@ -48,7 +43,7 @@ public class PemasukanFragment extends Fragment {
 
 
         incomeViewModel = ViewModelProviders.of(this).get(IncomeViewModel.class);
-        incomeViewModel.getAllIncome().observe(getViewLifecycleOwner(), new Observer<List<Income>>() {
+        incomeViewModel.getAllIncome().observe(this, new Observer<List<Income>>() {
             @Override
             public void onChanged(@Nullable List<Income> incomes) {
                 incomeAdaptor.setListIncome(incomes);

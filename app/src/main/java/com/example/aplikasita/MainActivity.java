@@ -4,12 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.service.controls.actions.FloatAction;
+import android.view.View;
 
-import com.example.aplikasita.adaptor.PagerAdapter;
-import com.example.aplikasita.controller.BankFragment;
-import com.example.aplikasita.controller.PemasukanFragment;
-import com.example.aplikasita.controller.PengeluaranFragment;
+import com.example.aplikasita.controller.adaptor.PagerAdapter;
+import com.example.aplikasita.controller.fragment.BankFragment;
+import com.example.aplikasita.controller.fragment.PemasukanFragment;
+import com.example.aplikasita.controller.fragment.PengeluaranFragment;
+import com.example.aplikasita.data.entity.Income;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity {
@@ -20,6 +25,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        FloatingActionButton addItemButton = findViewById(R.id.addItemButton);
+        addItemButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, addItemActivity.class);
+                startActivityForResult(intent,1);
+            }
+        });
 
         tabLayout = findViewById(R.id.tabLayout);
         viewPager = findViewById(R.id.viewPager);

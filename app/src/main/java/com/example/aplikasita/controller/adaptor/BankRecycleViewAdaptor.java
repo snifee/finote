@@ -1,4 +1,4 @@
-package com.example.aplikasita.adaptor;
+package com.example.aplikasita.controller.adaptor;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.aplikasita.R;
 import com.example.aplikasita.model.Bank;
-import com.example.aplikasita.model.Month;
 
 import java.util.ArrayList;
 
