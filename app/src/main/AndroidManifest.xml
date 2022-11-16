@@ -14,7 +14,7 @@
         android:theme="@style/Theme.AplikasiTA"
         tools:targetApi="31">
         <activity
-            android:name=".addItemActivity"
+            android:name=".AddItemActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

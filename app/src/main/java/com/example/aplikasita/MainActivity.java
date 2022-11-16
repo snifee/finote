@@ -1,23 +1,30 @@
 package com.example.aplikasita;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.service.controls.actions.FloatAction;
 import android.view.View;
 
 import com.example.aplikasita.controller.adaptor.PagerAdapter;
 import com.example.aplikasita.controller.fragment.BankFragment;
 import com.example.aplikasita.controller.fragment.PemasukanFragment;
 import com.example.aplikasita.controller.fragment.PengeluaranFragment;
+import com.example.aplikasita.data.IncomeViewModel;
 import com.example.aplikasita.data.entity.Income;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity {
+    public static final int ADD_ITEM_RQ =1;
+
+    IncomeViewModel incomeViewModel;
+
+
     private TabLayout tabLayout;
     private ViewPager viewPager;
 
@@ -30,8 +37,8 @@ public class MainActivity extends AppCompatActivity {
         addItemButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, addItemActivity.class);
-                startActivityForResult(intent,1);
+                Intent intent = new Intent(MainActivity.this, AddItemActivity.class);
+                startActivityForResult(intent,ADD_ITEM_RQ);
             }
         });
 
@@ -71,4 +78,31 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == ADD_ITEM_RQ && resultCode == RESULT_OK){
+            String rekening = data.getStringExtra(AddItemActivity.EXTRA_REK);
+            String jumlah = data.getStringExtra(AddItemActivity.EXTRA_JUMLAH);
+            String ket = data.getStringExtra(AddItemActivity.EXTRA_KET);
+            String date = data.getStringExtra(AddItemActivity.EXTRA_DATE);
+
+            try {
+                int rek = Integer.parseInt(rekening);
+                int jml= Integer.parseInt(jumlah);
+
+                Income income = new Income(rek,jml,date,ket);
+
+                incomeViewModel = ViewModelProviders.of(this).get(IncomeViewModel.class);
+                incomeViewModel.insert(income);
+
+            }catch (Exception e){
+                System.out.println(e);
+            }
+
+
+
+        }
+    }
 }

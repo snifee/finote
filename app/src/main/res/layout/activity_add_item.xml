@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".addItemActivity">
+    tools:context=".AddItemActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -14,7 +14,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingLeft="100sp">
+            android:paddingLeft="100sp"
+            android:paddingRight="100sp">
 
             <TextView
                 android:id="@+id/addTitle"
@@ -49,7 +50,7 @@
                 android:layout_marginTop="32dp"
                 android:ems="10"
                 android:hint="@string/keterangan"
-                android:inputType="number" />
+                android:inputType="text" />
 
             <EditText
                 android:id="@+id/etDate"
@@ -65,7 +66,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30sp"
-                android:text="@string/submit" />
+                android:text="@string/submit"/>
 
         </LinearLayout>
     </ScrollView>
