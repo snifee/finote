@@ -19,6 +19,8 @@ import com.example.aplikasita.data.entity.Income;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
+import java.text.SimpleDateFormat;
+
 public class MainActivity extends AppCompatActivity {
     public static final int ADD_ITEM_RQ =1;
 
@@ -92,7 +94,10 @@ public class MainActivity extends AppCompatActivity {
                 int rek = Integer.parseInt(rekening);
                 int jml= Integer.parseInt(jumlah);
 
-                Income income = new Income(rek,jml,date,ket);
+                SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+
+
+                Income income = new Income(rek,jml,df.parse(date),ket);
 
                 incomeViewModel = ViewModelProviders.of(this).get(IncomeViewModel.class);
                 incomeViewModel.insert(income);

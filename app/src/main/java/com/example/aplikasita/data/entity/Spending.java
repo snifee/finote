@@ -31,20 +31,19 @@ public class Spending {
     @ColumnInfo(name = "keterangan")
     private String keterangan;
 
-//    @ColumnInfo(name = "waktu")
-//    private Date waktu;
 
-    @ColumnInfo(name = "month")
-    private String month;
+    @ColumnInfo(name = "waktu")
+    private Date waktu;
 
     @ColumnInfo(name = "jenis_pengeluaran")
     private String jenisPengeluaran;
 
-    public Spending(Integer sumberPengeluaran, Integer jumlah, String keterangan, Date waktu, String month, String jenisPengeluaran) {
+    public Spending( Integer sumberPengeluaran, Integer jumlah, String keterangan, Date waktu, String jenisPengeluaran) {
+
         this.sumberPengeluaran = sumberPengeluaran;
         this.jumlah = jumlah;
         this.keterangan = keterangan;
-        this.month = month;
+        this.waktu = waktu;
         this.jenisPengeluaran = jenisPengeluaran;
     }
 
@@ -84,12 +83,12 @@ public class Spending {
         this.keterangan = keterangan;
     }
 
-    public String getMonth() {
-        return month;
+    public Date getWaktu() {
+        return waktu;
     }
 
-    public void setMonth(String month) {
-        this.month = month;
+    public void setWaktu(Date waktu) {
+        this.waktu = waktu;
     }
 
     public String getJenisPengeluaran() {

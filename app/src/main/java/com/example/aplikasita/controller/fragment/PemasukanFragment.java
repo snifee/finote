@@ -47,7 +47,7 @@ public class PemasukanFragment extends Fragment {
             @Override
             public void onChanged(@Nullable List<Income> incomes) {
                 incomeAdaptor.setListIncome(incomes);
-                System.out.println(incomes.get(0).getMonth());
+//                System.out.println(incomes.get(0).getMonth());
             }
         });
 

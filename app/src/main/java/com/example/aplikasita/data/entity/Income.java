@@ -26,20 +26,16 @@ public class Income {
     @ColumnInfo(name = "jumlah")
     private Integer jumlah;
 
-    @ColumnInfo(name = "month")
-    private String month;
+    @ColumnInfo(name = "waktu")
+    private Date waktu;
 
     @ColumnInfo(name = "keterangan")
     private String keterangan;
 
-//    @ColumnInfo(name = "waktu")
-//    private Date waktu;
-//    @Relation(parentColumn = "month",)
-
-    public Income(Integer noRekening, Integer jumlah, String month, String keterangan) {
+    public Income(Integer noRekening, Integer jumlah, Date waktu, String keterangan) {
         this.noRekening = noRekening;
         this.jumlah = jumlah;
-        this.month = month;
+        this.waktu = waktu;
         this.keterangan = keterangan;
     }
 
@@ -71,12 +67,12 @@ public class Income {
         this.jumlah = jumlah;
     }
 
-    public String getMonth() {
-        return month;
+    public Date getWaktu() {
+        return waktu;
     }
 
-    public void setMonth(String month) {
-        this.month = month;
+    public void setWaktu(Date waktu) {
+        this.waktu = waktu;
     }
 
     public String getKeterangan() {
@@ -86,6 +82,4 @@ public class Income {
     public void setKeterangan(String keterangan) {
         this.keterangan = keterangan;
     }
-
-
 }

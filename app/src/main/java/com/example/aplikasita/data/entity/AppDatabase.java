@@ -7,13 +7,18 @@ import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+import com.example.aplikasita.data.DateConverter;
 import com.example.aplikasita.data.dao.IncomeDao;
 import com.example.aplikasita.data.dao.SpendingDao;
 
+import java.util.Date;
 
-@Database(entities = {Spending.class, Income.class}, version = 1)
+
+@Database(entities = {Spending.class, Income.class}, version = 3)
+@TypeConverters({DateConverter.class})
 public abstract class AppDatabase extends RoomDatabase {
 
     public abstract SpendingDao spendingDao();
@@ -57,8 +62,8 @@ public abstract class AppDatabase extends RoomDatabase {
         @Override
         protected Void doInBackground(Void... voids) {
 
-            incomeDao.insert(new Income(123, 230000,"Januari","beli rumah"));
-            incomeDao.insert(new Income(123, 10000,"Januari","beli saham"));
+            incomeDao.insert(new Income(123, 230000,new Date(),"beli rumah"));
+            incomeDao.insert(new Income(123, 10000,new Date(),"beli saham"));
             return null;
         }
     }
