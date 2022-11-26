@@ -8,4 +8,9 @@
         android:fontStyle="italic"
         android:fontWeight="400"
         android:font="@font/poppins_medium_italic" />
+
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="200"
+        android:font="@font/poppins_light" />
 </font-family>

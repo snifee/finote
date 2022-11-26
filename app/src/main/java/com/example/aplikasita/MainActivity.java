@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         addItemButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, AddItemActivity.class);
+                Intent intent = new Intent(MainActivity.this, AddIncomeActivity.class);
                 startActivityForResult(intent,ADD_ITEM_RQ);
             }
         });
@@ -85,10 +85,10 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == ADD_ITEM_RQ && resultCode == RESULT_OK){
-            String rekening = data.getStringExtra(AddItemActivity.EXTRA_REK);
-            String jumlah = data.getStringExtra(AddItemActivity.EXTRA_JUMLAH);
-            String ket = data.getStringExtra(AddItemActivity.EXTRA_KET);
-            String date = data.getStringExtra(AddItemActivity.EXTRA_DATE);
+            String rekening = data.getStringExtra(AddIncomeActivity.EXTRA_REK);
+            String jumlah = data.getStringExtra(AddIncomeActivity.EXTRA_JUMLAH);
+            String ket = data.getStringExtra(AddIncomeActivity.EXTRA_KET);
+            String date = data.getStringExtra(AddIncomeActivity.EXTRA_DATE);
 
             try {
                 int rek = Integer.parseInt(rekening);

@@ -20,7 +20,9 @@
     <string name="add_income">Add Income</string>
     <string name="rekening">Rekening</string>
     <string name="jumlah">Jumlah</string>
-    <string name="bulan">Bulan</string>
+    <string name="tanggal">Tanggal</string>
     <string name="keterangan">Keterangan</string>
     <string name="submit">Submit</string>
+
+    <string name="lorem">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text.</string>
 </resources>

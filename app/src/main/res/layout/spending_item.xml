@@ -30,26 +30,42 @@
                 android:layout_marginBottom="5sp">
 
                 <TextView
-                    android:id="@+id/tvIncomeAmount"
+                    android:id="@+id/tvSpendingAmount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Rp.24.000,00" />
 
-                <TextView
-                    android:id="@+id/idTvIncomeDate"
+                <LinearLayout
+                    android:orientation="vertical"
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="right"
-                    android:layout_gravity="center_horizontal"
-                    android:fontFamily="@font/poppins_light"
-                    android:text="27/11/2022"
-                    android:textSize="9sp"/>
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/idTvSpendingDate"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:layout_gravity="center_horizontal"
+                        android:fontFamily="@font/poppins_light"
+                        android:text="27/11/2022"
+                        android:textSize="9sp"/>
+
+                    <TextView
+                        android:id="@+id/idTvSpendingJenisPengeluaran"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:layout_gravity="center_horizontal"
+                        android:text="Primer"
+                        android:textSize="9sp"/>
+                </LinearLayout>
+
+
 
             </LinearLayout>
 
             <TextView
-                android:id="@+id/idTvIncomeRekening"
+                android:id="@+id/idTvSpendingRekening"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_light"
@@ -58,7 +74,7 @@
                 android:layout_marginBottom="10sp"/>
 
             <TextView
-                android:id="@+id/idTvIncomeKet"
+                android:id="@+id/idTvSpendingKet"
                 android:layout_width="336dp"
                 android:layout_height="29dp"
                 android:fontFamily="@font/poppins_light"

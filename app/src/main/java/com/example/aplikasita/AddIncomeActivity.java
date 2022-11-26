@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class AddItemActivity extends AppCompatActivity {
+public class AddIncomeActivity extends AppCompatActivity {
 
     public static final String EXTRA_JUMLAH = "com.example.aplikasita.JUMLAH";
     public static final String EXTRA_REK = "com.example.aplikasita.REK";
@@ -27,7 +27,7 @@ public class AddItemActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_item);
+        setContentView(R.layout.activity_add_income);
 
         editTextRek = findViewById(R.id.etRekening);
         editTextJumlah = findViewById(R.id.etJumlah);

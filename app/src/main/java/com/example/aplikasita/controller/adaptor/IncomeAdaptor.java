@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.aplikasita.R;
 import com.example.aplikasita.data.entity.Income;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,9 +46,13 @@ public class IncomeAdaptor extends RecyclerView.Adapter<IncomeAdaptor.IncomeView
     @Override
     public void onBindViewHolder(@NonNull IncomeAdaptor.IncomeViewHolder holder, int position) {
         Income currentIncome = listIncome.get(position);
+
+        SimpleDateFormat sdf = new SimpleDateFormat();
+
         holder.tvRekening.setText(String.valueOf(currentIncome.getNoRekening()));
-        holder.tvIncome.setText(String.valueOf(currentIncome.getJumlah()));
+        holder.tvIncome.setText("Rp."+ String.valueOf(currentIncome.getJumlah())+",00");
         holder.tvKeterangan.setText(currentIncome.getKeterangan());
+        holder.tvDate.setText(sdf.format(currentIncome.getWaktu()));
     }
 
     @Override
@@ -57,14 +62,15 @@ public class IncomeAdaptor extends RecyclerView.Adapter<IncomeAdaptor.IncomeView
 
     public class IncomeViewHolder extends RecyclerView.ViewHolder{
 
-        private TextView tvRekening, tvIncome, tvKeterangan;
+        private TextView tvDate, tvRekening, tvIncome, tvKeterangan;
 
         public IncomeViewHolder(View view){
             super(view);
 
             tvRekening = view.findViewById(R.id.idTvIncomeRekening);
-            tvIncome = view.findViewById(R.id.idTvIncomeIncome);
-            tvKeterangan = view.findViewById(R.id.idTvKet);
+            tvIncome = view.findViewById(R.id.tvIncomeAmount);
+            tvKeterangan = view.findViewById(R.id.idTvIncomeKet);
+            tvDate = view.findViewById(R.id.idTvIncomeDate);
         }
     }
 
