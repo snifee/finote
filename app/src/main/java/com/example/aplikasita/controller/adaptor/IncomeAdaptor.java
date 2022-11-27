@@ -20,10 +20,6 @@ public class IncomeAdaptor extends RecyclerView.Adapter<IncomeAdaptor.IncomeView
 
     private List<Income> listIncome = new ArrayList<>();
 
-//    public IncomeAdaptor(List<Month> listIncome) {
-//        this.listIncome = listIncome;
-//    }
-
     public IncomeAdaptor() {
     }
 
@@ -36,12 +32,6 @@ public class IncomeAdaptor extends RecyclerView.Adapter<IncomeAdaptor.IncomeView
         return new IncomeViewHolder(view);
     }
 
-//    @Override
-//    public void onBindViewHolder(@NonNull IncomeAdaptor.IncomeViewHolder holder, int position) {
-//        holder.tvRekening.setText(listIncome.get(position).getIncome());
-//        holder.tvIncome.setText(listIncome.get(position).getMonth());
-//        holder.tvKeterangan.setText(listIncome.get(position).getOutcome());
-//    }
 
     @Override
     public void onBindViewHolder(@NonNull IncomeAdaptor.IncomeViewHolder holder, int position) {

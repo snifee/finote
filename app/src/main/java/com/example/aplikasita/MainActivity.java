@@ -80,34 +80,4 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == ADD_ITEM_RQ && resultCode == RESULT_OK){
-            String rekening = data.getStringExtra(AddIncomeActivity.EXTRA_REK);
-            String jumlah = data.getStringExtra(AddIncomeActivity.EXTRA_JUMLAH);
-            String ket = data.getStringExtra(AddIncomeActivity.EXTRA_KET);
-            String date = data.getStringExtra(AddIncomeActivity.EXTRA_DATE);
-
-            try {
-                int rek = Integer.parseInt(rekening);
-                int jml= Integer.parseInt(jumlah);
-
-                SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
-
-
-                Income income = new Income(rek,jml,df.parse(date),ket);
-
-                incomeViewModel = ViewModelProviders.of(this).get(IncomeViewModel.class);
-                incomeViewModel.insert(income);
-
-            }catch (Exception e){
-                System.out.println(e);
-            }
-
-
-
-        }
-    }
 }

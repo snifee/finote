@@ -23,7 +23,7 @@ public class Spending {
     private Long id;
 
     @ColumnInfo(name = "sumber_pengluaran")
-    private Integer sumberPengeluaran;
+    private String sumberPengeluaran;
 
     @ColumnInfo(name = "jumlah")
     private Integer jumlah;
@@ -38,7 +38,7 @@ public class Spending {
     @ColumnInfo(name = "jenis_pengeluaran")
     private String jenisPengeluaran;
 
-    public Spending( Integer sumberPengeluaran, Integer jumlah, String keterangan, Date waktu, String jenisPengeluaran) {
+    public Spending( String sumberPengeluaran, Integer jumlah, String keterangan, Date waktu, String jenisPengeluaran) {
 
         this.sumberPengeluaran = sumberPengeluaran;
         this.jumlah = jumlah;
@@ -59,11 +59,11 @@ public class Spending {
         this.id = id;
     }
 
-    public Integer getSumberPengeluaran() {
+    public String getSumberPengeluaran() {
         return sumberPengeluaran;
     }
 
-    public void setSumberPengeluaran(Integer sumberPengeluaran) {
+    public void setSumberPengeluaran(String sumberPengeluaran) {
         this.sumberPengeluaran = sumberPengeluaran;
     }
 

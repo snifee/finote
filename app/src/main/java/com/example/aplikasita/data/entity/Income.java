@@ -21,7 +21,7 @@ public class Income {
     private Long id;
 
     @ColumnInfo(name = "no_rekening")
-    private Integer noRekening;
+    private String noRekening;
 
     @ColumnInfo(name = "jumlah")
     private Integer jumlah;
@@ -32,7 +32,7 @@ public class Income {
     @ColumnInfo(name = "keterangan")
     private String keterangan;
 
-    public Income(Integer noRekening, Integer jumlah, Date waktu, String keterangan) {
+    public Income(String noRekening, Integer jumlah, Date waktu, String keterangan) {
         this.noRekening = noRekening;
         this.jumlah = jumlah;
         this.waktu = waktu;
@@ -51,11 +51,11 @@ public class Income {
         this.id = id;
     }
 
-    public Integer getNoRekening() {
+    public String getNoRekening() {
         return noRekening;
     }
 
-    public void setNoRekening(Integer noRekening) {
+    public void setNoRekening(String noRekening) {
         this.noRekening = noRekening;
     }
 

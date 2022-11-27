@@ -14,10 +14,13 @@ import com.example.aplikasita.data.DateConverter;
 import com.example.aplikasita.data.dao.IncomeDao;
 import com.example.aplikasita.data.dao.SpendingDao;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 
-@Database(entities = {Spending.class, Income.class}, version = 3)
+@Database(entities = {Spending.class, Income.class}, version = 4)
 @TypeConverters({DateConverter.class})
 public abstract class AppDatabase extends RoomDatabase {
 
@@ -62,10 +65,12 @@ public abstract class AppDatabase extends RoomDatabase {
         @Override
         protected Void doInBackground(Void... voids) {
 
-            incomeDao.insert(new Income(123, 230000,new Date(),"beli rumah"));
-            incomeDao.insert(new Income(123, 10000,new Date(),"beli saham"));
+            incomeDao.insert(new Income("123", 230000,new Date(),"beli rumah"));
+            incomeDao.insert(new Income("123", 10000,new Date(),"beli saham"));
             return null;
         }
     }
+
+
 
 }

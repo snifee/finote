@@ -1,6 +1,7 @@
 package com.example.aplikasita;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,12 +10,23 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.aplikasita.data.IncomeViewModel;
+import com.example.aplikasita.data.entity.Income;
+
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+
 public class AddIncomeActivity extends AppCompatActivity {
 
     public static final String EXTRA_JUMLAH = "com.example.aplikasita.JUMLAH";
     public static final String EXTRA_REK = "com.example.aplikasita.REK";
     public static final String EXTRA_KET = "com.example.aplikasita.KET";
     public static final String EXTRA_DATE = "com.example.aplikasita.DATE";
+
+
+    IncomeViewModel incomeViewModel;
 
 
 
@@ -59,13 +71,27 @@ public class AddIncomeActivity extends AppCompatActivity {
             return;
         }
 
-        Intent data = new Intent();
-        data.putExtra(EXTRA_REK,rekening);
-        data.putExtra(EXTRA_JUMLAH,jumlah);
-        data.putExtra(EXTRA_KET,keterangan);
-        data.putExtra(EXTRA_DATE,date);
+        if(date.isEmpty()){
+            LocalDate d = LocalDate.now();
 
-        setResult(RESULT_OK,data);
-        finish();
+            date = d.format(DateTimeFormatter.ofPattern("dd-MM-yyyy")).toString();
+        }
+
+        try {
+            int jml= Integer.parseInt(jumlah);
+
+            SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+
+
+            Income income = new Income(rekening,jml,df.parse(date),keterangan);
+
+            incomeViewModel = ViewModelProviders.of(this).get(IncomeViewModel.class);
+            incomeViewModel.insert(income);
+
+        }catch (Exception e){
+            System.out.println(e);
+        }finally {
+            finish();
+        }
     }
 }
