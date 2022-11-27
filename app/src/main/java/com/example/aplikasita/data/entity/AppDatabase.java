@@ -14,13 +14,14 @@ import com.example.aplikasita.data.DateConverter;
 import com.example.aplikasita.data.dao.IncomeDao;
 import com.example.aplikasita.data.dao.SpendingDao;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 
-@Database(entities = {Spending.class, Income.class}, version = 4)
+@Database(entities = {Spending.class, Income.class}, version = 5)
 @TypeConverters({DateConverter.class})
 public abstract class AppDatabase extends RoomDatabase {
 
@@ -56,17 +57,42 @@ public abstract class AppDatabase extends RoomDatabase {
 
     private static class PopulateDbAsyncTask extends AsyncTask<Void,Void,Void>{
         private IncomeDao incomeDao;
+        private SpendingDao spendingDao;
 
         private PopulateDbAsyncTask(AppDatabase db){
             incomeDao = db.incomeDao();
+            spendingDao = db.spendingDao();
         }
 
 
         @Override
         protected Void doInBackground(Void... voids) {
 
-            incomeDao.insert(new Income("123", 230000,new Date(),"beli rumah"));
-            incomeDao.insert(new Income("123", 10000,new Date(),"beli saham"));
+            try{
+                LocalDate d = LocalDate.now();
+
+                String date = d.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+
+
+                SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+
+                Date formattedDate = df.parse(date);
+
+
+                incomeDao.insert(new Income("123", 230000,formattedDate,"beli rumah"));
+                incomeDao.insert(new Income("123", 10000,formattedDate,"beli saham"));
+
+//            public Spending( String sumberPengeluaran, Integer jumlah, String keterangan, Date waktu, String jenisPengeluaran) {
+
+                spendingDao.insert(new Spending("03628293", 23000,"beli rumah",formattedDate,"Primer"));
+                spendingDao.insert(new Spending("03628293", 23000,"beli rumah",formattedDate,"Primer"));
+                spendingDao.insert(new Spending("03628293", 23000,"beli rumah",formattedDate,"Primer"));
+                spendingDao.insert(new Spending("03628293", 23000,"beli rumah",formattedDate,"Primer"));
+            }catch (Exception e){
+                System.out.println(e);
+            }
+
+
             return null;
         }
     }

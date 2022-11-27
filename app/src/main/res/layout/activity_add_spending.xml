@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddIncomeActivity">
+    tools:context=".AddSpendingActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -18,24 +18,24 @@
             android:paddingRight="100sp">
 
             <TextView
-                android:id="@+id/addTitle"
+                android:id="@+id/addSpendingTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="80dp"
-                android:text="@string/add_income"
+                android:text="@string/add_spending"
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/etRekening"
+                android:id="@+id/etAddSpendingRekening"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="28dp"
                 android:ems="10"
-                android:hint="@string/sumber_pengeluaran"
+                android:hint="@string/rekening"
                 android:inputType="number" />
 
             <EditText
-                android:id="@+id/etJumlah"
+                android:id="@+id/etAddSpendingJumlah"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
@@ -44,7 +44,7 @@
                 android:inputType="number" />
 
             <EditText
-                android:id="@+id/etKeterangan"
+                android:id="@+id/etAddSpendingKeterangan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
@@ -53,7 +53,16 @@
                 android:inputType="text" />
 
             <EditText
-                android:id="@+id/etDate"
+                android:id="@+id/etAddSpendingJenisPengeluaran"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:ems="10"
+                android:hint="@string/jenis_pengeluaran"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/etAddSpendingDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
@@ -62,7 +71,7 @@
                 android:inputType="date" />
 
             <Button
-                android:id="@+id/submitButton"
+                android:id="@+id/submitAddSpendingButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30sp"

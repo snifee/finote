@@ -14,13 +14,19 @@
         android:theme="@style/Theme.AplikasiTA"
         tools:targetApi="31">
         <activity
-            android:name=".AddIncomeActivity"
+            android:name=".AddSpendingActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <!-- <activity -->
+        <activity
+            android:name=".AddIncomeActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity> <!-- <activity -->
         <!-- android:name=".LoginActivity" -->
         <!-- android:exported="false" /> -->
         <activity

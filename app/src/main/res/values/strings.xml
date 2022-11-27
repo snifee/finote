@@ -25,4 +25,7 @@
     <string name="submit">Submit</string>
 
     <string name="lorem">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text.</string>
+    <string name="add_spending">Add Spending</string>
+    <string name="jenis_pengeluaran">Jenis Pengeluaran</string>
+    <string name="sumber_pengeluaran">Sumber Pengeluaran</string>
 </resources>

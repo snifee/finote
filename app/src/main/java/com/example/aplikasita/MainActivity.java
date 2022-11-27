@@ -22,7 +22,7 @@ import com.google.android.material.tabs.TabLayout;
 import java.text.SimpleDateFormat;
 
 public class MainActivity extends AppCompatActivity {
-    public static final int ADD_ITEM_RQ =1;
+
 
     IncomeViewModel incomeViewModel;
 
@@ -35,14 +35,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        FloatingActionButton addItemButton = findViewById(R.id.addItemButton);
-        addItemButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, AddIncomeActivity.class);
-                startActivityForResult(intent,ADD_ITEM_RQ);
-            }
-        });
+
 
         tabLayout = findViewById(R.id.tabLayout);
         viewPager = findViewById(R.id.viewPager);

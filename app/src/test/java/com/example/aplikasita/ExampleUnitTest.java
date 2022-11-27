@@ -9,6 +9,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -24,20 +25,29 @@ public class ExampleUnitTest {
     @Test
     public void test(){
 
-        LocalDate d = LocalDate.now();
-
-        String date = d.format(DateTimeFormatter.ofPattern("dd-MM-yyyy")).toString();
-
-
-        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
-
         try{
-            System.out.println("hello"+date);
-            System.out.println(df.parse(date));
+            LocalDate d = LocalDate.now();
+
+            String date = d.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+
+
+            SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+
+            Date formattedDate = df.parse(date);
+            System.out.println("hello"+formattedDate);
+
+//            Sun Nov 27 00:00:00 GMT 2022
+
         }catch (ParseException e){
 
         }
 
 
+    }
+
+
+    @Test
+    public void test2(){
+        System.out.println(new Date(2005, 5,6));
     }
 }

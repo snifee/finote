@@ -1,5 +1,6 @@
 package com.example.aplikasita.controller.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -13,14 +14,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.aplikasita.AddIncomeActivity;
+import com.example.aplikasita.MainActivity;
 import com.example.aplikasita.R;
 import com.example.aplikasita.controller.adaptor.IncomeAdaptor;
 import com.example.aplikasita.data.IncomeViewModel;
 import com.example.aplikasita.data.entity.Income;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
 public class PemasukanFragment extends Fragment {
+
+    public static final int ADD_ITEM_RQ =1;
 
     private RecyclerView recyclerView;
     private IncomeViewModel incomeViewModel;
@@ -34,12 +40,23 @@ public class PemasukanFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+
+
         final IncomeAdaptor incomeAdaptor = new IncomeAdaptor();
 
         View view = inflater.inflate(R.layout.fragment_pemasukan, container, false);
         recyclerView = view.findViewById(R.id.recycleViewPemasukan);
         recyclerView.setLayoutManager( new LinearLayoutManager(view.getContext()));
         recyclerView.setAdapter(incomeAdaptor);
+
+        FloatingActionButton addItemButton = view.findViewById(R.id.addIncomeButton);
+        addItemButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), AddIncomeActivity.class);
+                startActivityForResult(intent,ADD_ITEM_RQ);
+            }
+        });
 
 
         incomeViewModel = ViewModelProviders.of(this).get(IncomeViewModel.class);
