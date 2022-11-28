@@ -6,7 +6,7 @@ import android.os.AsyncTask;
 import androidx.lifecycle.LiveData;
 
 import com.example.aplikasita.data.dao.IncomeDao;
-import com.example.aplikasita.data.entity.AppDatabase;
+import com.example.aplikasita.data.AppDatabase;
 import com.example.aplikasita.data.entity.Income;
 
 import java.util.List;

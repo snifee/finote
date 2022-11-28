@@ -1,4 +1,4 @@
-package com.example.aplikasita.data.entity;
+package com.example.aplikasita.data;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -10,11 +10,13 @@ import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-import com.example.aplikasita.data.DateConverter;
+import com.example.aplikasita.data.dao.BudgetDao;
 import com.example.aplikasita.data.dao.IncomeDao;
 import com.example.aplikasita.data.dao.SpendingDao;
+import com.example.aplikasita.data.entity.Budget;
+import com.example.aplikasita.data.entity.Income;
+import com.example.aplikasita.data.entity.Spending;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Month;
@@ -29,6 +31,8 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract SpendingDao spendingDao();
 
     public abstract IncomeDao incomeDao();
+
+    public abstract BudgetDao budgetDao();
 
     private static volatile AppDatabase appDatabase;
 
