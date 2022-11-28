@@ -8,6 +8,7 @@ import static org.junit.Assert.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
@@ -34,7 +35,7 @@ public class ExampleUnitTest {
             SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
 
             Date formattedDate = df.parse(date);
-            System.out.println("hello"+formattedDate);
+            System.out.println("hello "+String.valueOf(1900+formattedDate.getYear()));
 
 //            Sun Nov 27 00:00:00 GMT 2022
 
@@ -49,5 +50,6 @@ public class ExampleUnitTest {
     @Test
     public void test2(){
         System.out.println(new Date(2005, 5,6));
+        System.out.println(Month.of(1).toString());
     }
 }

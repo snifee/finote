@@ -9,13 +9,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.aplikasita.data.IncomeViewModel;
 import com.example.aplikasita.data.SpendingViewModel;
-import com.example.aplikasita.data.entity.Income;
 import com.example.aplikasita.data.entity.Spending;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
@@ -80,15 +79,18 @@ public class AddSpendingActivity extends AppCompatActivity {
         }
 
         try {
-            int jml= Integer.parseInt(jumlah);
+            long jml= Long.parseLong(jumlah);
 
             SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
 
             System.out.println("haiiii"+df.parse(date));
-//    public Spending( String sumberPengeluaran, Integer jumlah, String keterangan, Date waktu, String jenisPengeluaran) {
+
+            Date formattedDate = df.parse(date);
+
+            String monthYear = Month.of(formattedDate.getMonth()).toString() + String.valueOf(1900+formattedDate.getYear());
 
 
-            Spending spending = new Spending(rekening,jml,keterangan,df.parse(date),jenis);
+            Spending spending = new Spending(rekening,jml,keterangan,formattedDate, monthYear,jenis);
 
             spendingViewModel = ViewModelProviders.of(this).get(SpendingViewModel.class);
             spendingViewModel.insert(spending);

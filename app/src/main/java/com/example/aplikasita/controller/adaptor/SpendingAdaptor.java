@@ -66,6 +66,10 @@ public class SpendingAdaptor extends RecyclerView.Adapter<SpendingAdaptor.Spendi
         }
     }
 
+    public Spending getSpending(int pos){
+        return listSpending.get(pos);
+    }
+
 
     public void setListSpending(List<Spending> listSpending) {
         this.listSpending = listSpending;

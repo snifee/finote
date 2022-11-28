@@ -24,23 +24,23 @@ public class Income {
     private String noRekening;
 
     @ColumnInfo(name = "jumlah")
-    private Integer jumlah;
+    private Long jumlah;
 
     @ColumnInfo(name = "waktu")
     private Date waktu;
 
+    @ColumnInfo(name = "bulan_tahun")
+    private String bulanTahun;
+
     @ColumnInfo(name = "keterangan")
     private String keterangan;
 
-    public Income(String noRekening, Integer jumlah, Date waktu, String keterangan) {
+    public Income(String noRekening, Long jumlah, Date waktu, String bulanTahun, String keterangan) {
         this.noRekening = noRekening;
         this.jumlah = jumlah;
         this.waktu = waktu;
+        this.bulanTahun = bulanTahun;
         this.keterangan = keterangan;
-    }
-
-    public Income(){
-
     }
 
     public Long getId() {
@@ -59,11 +59,11 @@ public class Income {
         this.noRekening = noRekening;
     }
 
-    public Integer getJumlah() {
+    public Long getJumlah() {
         return jumlah;
     }
 
-    public void setJumlah(Integer jumlah) {
+    public void setJumlah(Long jumlah) {
         this.jumlah = jumlah;
     }
 
@@ -73,6 +73,14 @@ public class Income {
 
     public void setWaktu(Date waktu) {
         this.waktu = waktu;
+    }
+
+    public String getBulanTahun() {
+        return bulanTahun;
+    }
+
+    public void setBulanTahun(String bulanTahun) {
+        this.bulanTahun = bulanTahun;
     }
 
     public String getKeterangan() {

@@ -7,17 +7,19 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.example.aplikasita.R;
+import com.example.aplikasita.data.entity.Spending;
 import com.example.aplikasita.model.Month;
+import com.example.aplikasita.model.SpendingGroupByModel;
 
 
 public class MonthAdaptor extends RecyclerView.Adapter<MonthAdaptor.MonthViewHolder>{
 
-    private ArrayList<Month> listMonth;
+    private List<SpendingGroupByModel> listMonth;
 
-    public MonthAdaptor(ArrayList<Month> listMonth) {
-        this.listMonth = listMonth;
+    public MonthAdaptor() {
     }
 
     @NonNull
@@ -31,9 +33,9 @@ public class MonthAdaptor extends RecyclerView.Adapter<MonthAdaptor.MonthViewHol
 
     @Override
     public void onBindViewHolder(@NonNull MonthAdaptor.MonthViewHolder holder, int position) {
-        holder.tvMonth.setText(listMonth.get(position).getMonth());
-        holder.tvIncome.setText(listMonth.get(position).getIncome());
-        holder.tvOutcome.setText(listMonth.get(position).getOutcome());
+        holder.tvMonth.setText(listMonth.get(position).getDateYear());
+        holder.tvIncome.setText("XX");
+        holder.tvOutcome.setText(String.valueOf(listMonth.get(position).getTotalSpending()));
     }
 
     @Override
@@ -50,8 +52,13 @@ public class MonthAdaptor extends RecyclerView.Adapter<MonthAdaptor.MonthViewHol
 
             tvMonth = view.findViewById(R.id.idMonth);
             tvIncome = view.findViewById(R.id.idIncome);
-            tvOutcome = view.findViewById(R.id.idOutcome);
+            tvOutcome = view.findViewById(R.id.idSpending);
         }
+    }
+
+    public void setListMonth(List<SpendingGroupByModel> listSpending) {
+        this.listMonth = listSpending;
+        notifyDataSetChanged();
     }
 }
 

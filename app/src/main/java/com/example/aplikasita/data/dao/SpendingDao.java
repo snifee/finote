@@ -8,8 +8,8 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.aplikasita.data.entity.Income;
 import com.example.aplikasita.data.entity.Spending;
+import com.example.aplikasita.model.SpendingGroupByModel;
 
 import java.util.List;
 
@@ -30,5 +30,12 @@ public interface SpendingDao {
 
     @Query("SELECT * FROM spending_table")
     LiveData<List<Spending>> getAllSpending();
+
+    @Query("SELECT * FROM spending_table WHERE bulan_tahun LIKE :rqbulanTahun")
+    LiveData<List<Spending>> getAllSpendingByMonth(String rqbulanTahun);
+
+    @Query("SELECT SUM(jumlah) AS jumlah, bulan_tahun AS dateYear FROM spending_table GROUP BY bulan_tahun")
+    LiveData<List<SpendingGroupByModel>> getCountOfSpending();
+
 
 }

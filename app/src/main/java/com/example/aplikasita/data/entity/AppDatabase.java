@@ -17,11 +17,12 @@ import com.example.aplikasita.data.dao.SpendingDao;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 
-@Database(entities = {Spending.class, Income.class}, version = 5)
+@Database(entities = {Spending.class, Income.class}, version = 2)
 @TypeConverters({DateConverter.class})
 public abstract class AppDatabase extends RoomDatabase {
 
@@ -36,15 +37,17 @@ public abstract class AppDatabase extends RoomDatabase {
             synchronized (AppDatabase.class){
                 if (appDatabase == null){
                     appDatabase = Room.databaseBuilder(context.getApplicationContext(),
-                            AppDatabase.class, "finote_db")
-                            .fallbackToDestructiveMigration()
+                            AppDatabase.class, "finote1_db")
                             .addCallback(roomCallback)
+                            .fallbackToDestructiveMigration()
                             .build();
                 }
             }
         }
+
         return appDatabase;
     };
+
 
 
     private  static RoomDatabase.Callback roomCallback = new RoomDatabase.Callback(){
@@ -52,7 +55,15 @@ public abstract class AppDatabase extends RoomDatabase {
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
             new PopulateDbAsyncTask(appDatabase).execute();
+
         }
+
+        @Override
+        public void onDestructiveMigration(@NonNull SupportSQLiteDatabase db){
+            super.onDestructiveMigration(db);
+            new PopulateDbAsyncTask(appDatabase).execute();
+        }
+
     };
 
     private static class PopulateDbAsyncTask extends AsyncTask<Void,Void,Void>{
@@ -73,21 +84,36 @@ public abstract class AppDatabase extends RoomDatabase {
 
                 String date = d.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
 
-
                 SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
 
                 Date formattedDate = df.parse(date);
 
 
-                incomeDao.insert(new Income("123", 230000,formattedDate,"beli rumah"));
-                incomeDao.insert(new Income("123", 10000,formattedDate,"beli saham"));
+                incomeDao.insert(new Income("123", 230000L,formattedDate, Month.of(formattedDate.getMonth()).toString(),"beli rumah"));
+                incomeDao.insert(new Income("123", 10000L,formattedDate,Month.of(formattedDate.getMonth()).toString(),"beli saham"));
 
+
+                incomeDao.insert(new Income("123", 230000L,formattedDate, Month.of(2).toString(),"beli rumah"));
+                incomeDao.insert(new Income("123", 10000L,formattedDate,Month.of(2).toString(),"beli saham"));
+
+                incomeDao.insert(new Income("123", 230000L,formattedDate, Month.of(3).toString(),"beli rumah"));
+                incomeDao.insert(new Income("123", 10000L,formattedDate,Month.of(3).toString(),"beli saham"));
 //            public Spending( String sumberPengeluaran, Integer jumlah, String keterangan, Date waktu, String jenisPengeluaran) {
 
-                spendingDao.insert(new Spending("03628293", 23000,"beli rumah",formattedDate,"Primer"));
-                spendingDao.insert(new Spending("03628293", 23000,"beli rumah",formattedDate,"Primer"));
-                spendingDao.insert(new Spending("03628293", 23000,"beli rumah",formattedDate,"Primer"));
-                spendingDao.insert(new Spending("03628293", 23000,"beli rumah",formattedDate,"Primer"));
+                spendingDao.insert(new Spending("03628293", 23000L,"beli rumah",formattedDate,Month.of(formattedDate.getMonth()).toString(),"Primer"));
+                spendingDao.insert(new Spending("03628293", 23000L,"beli rumah",formattedDate,Month.of(formattedDate.getMonth()).toString(),"Sekunder"));
+                spendingDao.insert(new Spending("03628293", 23000L,"beli rumah",formattedDate,Month.of(formattedDate.getMonth()).toString(),"Sekunder"));
+                spendingDao.insert(new Spending("03628293", 23000L,"beli rumah",formattedDate,Month.of(formattedDate.getMonth()).toString(),"Primer"));
+
+                spendingDao.insert(new Spending("03628293", 23000L,"beli rumah",formattedDate,Month.of(2).toString(),"Primer"));
+                spendingDao.insert(new Spending("03628293", 23000L,"beli rumah",formattedDate,Month.of(2).toString(),"Sekunder"));
+                spendingDao.insert(new Spending("03628293", 23000L,"beli rumah",formattedDate,Month.of(2).toString(),"Primer"));
+                spendingDao.insert(new Spending("03628293", 23000L,"beli rumah",formattedDate,Month.of(2).toString(),"Primer"));
+
+                spendingDao.insert(new Spending("03628293", 23000L,"beli rumah",formattedDate,Month.of(3).toString(),"Primer"));
+                spendingDao.insert(new Spending("03628293", 23000L,"beli rumah",formattedDate,Month.of(3).toString(),"Sekunder"));
+                spendingDao.insert(new Spending("03628293", 23000L,"beli rumah",formattedDate,Month.of(3).toString(),"Primer"));
+                spendingDao.insert(new Spending("03628293", 23000L,"beli rumah",formattedDate,Month.of(3).toString(),"Primer"));
             }catch (Exception e){
                 System.out.println(e);
             }

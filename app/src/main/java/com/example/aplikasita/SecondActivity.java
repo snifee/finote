@@ -1,32 +1,19 @@
 package com.example.aplikasita;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 
 import com.example.aplikasita.controller.adaptor.PagerAdapter;
 import com.example.aplikasita.controller.fragment.BankFragment;
 import com.example.aplikasita.controller.fragment.HomeFragment;
 import com.example.aplikasita.controller.fragment.PemasukanFragment;
 import com.example.aplikasita.controller.fragment.PengeluaranFragment;
-import com.example.aplikasita.data.IncomeViewModel;
-import com.example.aplikasita.data.entity.Income;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
-import java.text.SimpleDateFormat;
-
-public class MainActivity extends AppCompatActivity {
-
-
-    IncomeViewModel incomeViewModel;
-
+public class SecondActivity extends AppCompatActivity {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
@@ -34,26 +21,22 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_second);
 
 
 
-        tabLayout = findViewById(R.id.tabLayout);
-        viewPager = findViewById(R.id.viewPager);
+        tabLayout = findViewById(R.id.SecondTabLayout);
+        viewPager = findViewById(R.id.SecondViewPager);
 
         tabLayout.addTab(tabLayout.newTab().setText(R.string.spending_tab));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.income_tab));
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.bank_tab));
-        tabLayout.addTab(tabLayout.newTab().setText("dummy"));
 
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager(),FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT, tabLayout.getTabCount());
+        PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT, tabLayout.getTabCount());
 
         pagerAdapter.addFragment(new PengeluaranFragment());
         pagerAdapter.addFragment(new PemasukanFragment());
-        pagerAdapter.addFragment(new BankFragment());
-        pagerAdapter.addFragment(new HomeFragment());
 
         viewPager.setAdapter(pagerAdapter);
 
@@ -75,5 +58,4 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-
 }

@@ -26,7 +26,7 @@ public class Spending {
     private String sumberPengeluaran;
 
     @ColumnInfo(name = "jumlah")
-    private Integer jumlah;
+    private Long jumlah;
 
     @ColumnInfo(name = "keterangan")
     private String keterangan;
@@ -35,20 +35,23 @@ public class Spending {
     @ColumnInfo(name = "waktu")
     private Date waktu;
 
+    @ColumnInfo(name = "bulan_tahun")
+    private String bulanTahun;
+
     @ColumnInfo(name = "jenis_pengeluaran")
     private String jenisPengeluaran;
 
-    public Spending( String sumberPengeluaran, Integer jumlah, String keterangan, Date waktu, String jenisPengeluaran) {
+    public Spending(){
 
+    }
+
+    public Spending(String sumberPengeluaran, Long jumlah, String keterangan, Date waktu, String bulanTahun, String jenisPengeluaran) {
         this.sumberPengeluaran = sumberPengeluaran;
         this.jumlah = jumlah;
         this.keterangan = keterangan;
         this.waktu = waktu;
+        this.bulanTahun = bulanTahun;
         this.jenisPengeluaran = jenisPengeluaran;
-    }
-
-    public Spending(){
-
     }
 
     public Long getId() {
@@ -67,11 +70,11 @@ public class Spending {
         this.sumberPengeluaran = sumberPengeluaran;
     }
 
-    public Integer getJumlah() {
+    public Long getJumlah() {
         return jumlah;
     }
 
-    public void setJumlah(Integer jumlah) {
+    public void setJumlah(Long jumlah) {
         this.jumlah = jumlah;
     }
 
@@ -89,6 +92,14 @@ public class Spending {
 
     public void setWaktu(Date waktu) {
         this.waktu = waktu;
+    }
+
+    public String getBulanTahun() {
+        return bulanTahun;
+    }
+
+    public void setBulanTahun(String bulanTahun) {
+        this.bulanTahun = bulanTahun;
     }
 
     public String getJenisPengeluaran() {

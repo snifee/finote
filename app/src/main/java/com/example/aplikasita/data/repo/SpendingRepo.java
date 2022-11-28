@@ -10,6 +10,7 @@ import com.example.aplikasita.data.dao.SpendingDao;
 import com.example.aplikasita.data.entity.AppDatabase;
 import com.example.aplikasita.data.entity.Income;
 import com.example.aplikasita.data.entity.Spending;
+import com.example.aplikasita.model.SpendingGroupByModel;
 
 import java.util.List;
 
@@ -17,12 +18,15 @@ public class SpendingRepo {
 
     private SpendingDao spendingDao;
     private LiveData<List<Spending>> allSpending;
+    private LiveData<List<SpendingGroupByModel>> countSpendingByMonth;
 
     public SpendingRepo(Application application){
         AppDatabase database = AppDatabase.getDB(application);
         spendingDao = database.spendingDao();
 
         allSpending = spendingDao.getAllSpending();
+
+        countSpendingByMonth = spendingDao.getCountOfSpending();
     }
 
     public void insert(Spending spending){
@@ -43,6 +47,10 @@ public class SpendingRepo {
 
     public LiveData<List<Spending>> getAllSpending() {
         return allSpending;
+    }
+
+    public LiveData<List<SpendingGroupByModel>> getCountSpendingByMonth() {
+        return countSpendingByMonth;
     }
 
     private static class InsertSpendingAsyncTask extends AsyncTask<Spending, Void,Void> {

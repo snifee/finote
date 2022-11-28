@@ -16,6 +16,7 @@ import com.example.aplikasita.data.entity.Income;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
@@ -79,14 +80,18 @@ public class AddIncomeActivity extends AppCompatActivity {
         }
 
         try {
-            int jml= Integer.parseInt(jumlah);
+            Long jml= Long.parseLong(jumlah);
 
             SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
 
+            Date formattedDate = df.parse(date);
+
             System.out.println("haiiii"+df.parse(date));
 
+            String monthYear = Month.of(formattedDate.getMonth()).toString() + String.valueOf(1900+formattedDate.getYear());
 
-            Income income = new Income(rekening,jml,df.parse(date),keterangan);
+
+            Income income = new Income(rekening,jml,formattedDate, monthYear,keterangan);
 
             incomeViewModel = ViewModelProviders.of(this).get(IncomeViewModel.class);
             incomeViewModel.insert(income);

@@ -64,6 +64,10 @@ public class IncomeAdaptor extends RecyclerView.Adapter<IncomeAdaptor.IncomeView
         }
     }
 
+    public Income getIncome(int pos){
+        return listIncome.get(pos);
+    }
+
 
     public void setListIncome(List<Income> listIncome) {
         this.listIncome = listIncome;
