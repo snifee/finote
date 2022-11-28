@@ -5,6 +5,8 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 
+import com.example.aplikasita.utils.EnumCategory;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -51,5 +53,7 @@ public class ExampleUnitTest {
     public void test2(){
         System.out.println(new Date(2005, 5,6));
         System.out.println(Month.of(1).toString());
+
+
     }
 }
