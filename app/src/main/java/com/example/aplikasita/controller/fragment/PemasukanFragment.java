@@ -18,9 +18,8 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.aplikasita.AddIncomeActivity;
-import com.example.aplikasita.MainActivity;
 import com.example.aplikasita.R;
-import com.example.aplikasita.controller.adaptor.IncomeAdaptor;
+import com.example.aplikasita.controller.adaptor.RecycleViewAdapter.IncomeAdaptor;
 import com.example.aplikasita.data.IncomeViewModel;
 import com.example.aplikasita.data.entity.Income;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;

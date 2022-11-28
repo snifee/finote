@@ -17,16 +17,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.aplikasita.AddIncomeActivity;
 import com.example.aplikasita.AddSpendingActivity;
-import com.example.aplikasita.MainActivity;
 import com.example.aplikasita.R;
-import com.example.aplikasita.controller.adaptor.MonthAdaptor;
-import com.example.aplikasita.controller.adaptor.SpendingAdaptor;
-import com.example.aplikasita.data.DummyData;
-import com.example.aplikasita.data.IncomeViewModel;
+import com.example.aplikasita.controller.adaptor.RecycleViewAdapter.SpendingAdaptor;
 import com.example.aplikasita.data.SpendingViewModel;
-import com.example.aplikasita.data.entity.Income;
 import com.example.aplikasita.data.entity.Spending;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 

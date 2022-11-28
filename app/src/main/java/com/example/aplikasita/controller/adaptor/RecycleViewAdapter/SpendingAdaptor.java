@@ -1,4 +1,4 @@
-package com.example.aplikasita.controller.adaptor;
+package com.example.aplikasita.controller.adaptor.RecycleViewAdapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +9,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.aplikasita.R;
-import com.example.aplikasita.data.entity.Income;
 import com.example.aplikasita.data.entity.Spending;
 
 import java.text.SimpleDateFormat;

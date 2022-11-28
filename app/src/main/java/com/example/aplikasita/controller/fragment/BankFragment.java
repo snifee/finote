@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.aplikasita.R;
-import com.example.aplikasita.controller.adaptor.BankRecycleViewAdaptor;
+import com.example.aplikasita.controller.adaptor.RecycleViewAdapter.BankAdaptor;
 import com.example.aplikasita.data.DummyData;
 
 public class BankFragment extends Fragment {
@@ -30,7 +30,7 @@ public class BankFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_bank, container, false);
         recyclerView = view.findViewById(R.id.recycleViewBank);
         recyclerView.setLayoutManager( new LinearLayoutManager(view.getContext()));
-        recyclerView.setAdapter(new BankRecycleViewAdaptor(DummyData.getDataBank()));
+        recyclerView.setAdapter(new BankAdaptor(DummyData.getDataBank()));
 
         return view;
     }

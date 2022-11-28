@@ -1,9 +1,7 @@
 package com.example.aplikasita.controller.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -14,17 +12,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.aplikasita.AddSpendingActivity;
 import com.example.aplikasita.R;
-import com.example.aplikasita.controller.adaptor.MonthAdaptor;
-import com.example.aplikasita.controller.adaptor.SpendingAdaptor;
-import com.example.aplikasita.data.DummyData;
-import com.example.aplikasita.data.IncomeViewModel;
+import com.example.aplikasita.controller.adaptor.RecycleViewAdapter.MonthAdaptor;
 import com.example.aplikasita.data.SpendingViewModel;
-import com.example.aplikasita.data.entity.Income;
-import com.example.aplikasita.data.entity.Spending;
 import com.example.aplikasita.model.SpendingGroupByModel;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 

@@ -22,7 +22,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 
-@Database(entities = {Spending.class, Income.class}, version = 2)
+@Database(entities = {Spending.class, Income.class, Budget.class}, version = 3)
 @TypeConverters({DateConverter.class})
 public abstract class AppDatabase extends RoomDatabase {
 

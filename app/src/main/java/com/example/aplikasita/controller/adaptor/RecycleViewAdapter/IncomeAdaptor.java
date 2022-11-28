@@ -1,4 +1,4 @@
-package com.example.aplikasita.controller.adaptor;
+package com.example.aplikasita.controller.adaptor.RecycleViewAdapter;
 
 import android.view.LayoutInflater;
 import android.view.View;

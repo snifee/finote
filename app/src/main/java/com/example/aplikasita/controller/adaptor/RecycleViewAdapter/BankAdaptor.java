@@ -1,4 +1,4 @@
-package com.example.aplikasita.controller.adaptor;
+package com.example.aplikasita.controller.adaptor.RecycleViewAdapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,17 +14,17 @@ import com.example.aplikasita.model.Bank;
 import java.util.ArrayList;
 
 
-public class BankRecycleViewAdaptor extends RecyclerView.Adapter<BankRecycleViewAdaptor.BankViewHolder>{
+public class BankAdaptor extends RecyclerView.Adapter<BankAdaptor.BankViewHolder>{
 
     private ArrayList<Bank> listBank;
 
-    public BankRecycleViewAdaptor(ArrayList<Bank> listBank) {
+    public BankAdaptor(ArrayList<Bank> listBank) {
         this.listBank = listBank;
     }
 
     @NonNull
     @Override
-    public BankRecycleViewAdaptor.BankViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public BankAdaptor.BankViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
 
         View view = layoutInflater.inflate(R.layout.item_bank,parent,false);
@@ -32,7 +32,7 @@ public class BankRecycleViewAdaptor extends RecyclerView.Adapter<BankRecycleView
     }
 
     @Override
-    public void onBindViewHolder(@NonNull BankRecycleViewAdaptor.BankViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull BankAdaptor.BankViewHolder holder, int position) {
         holder.tvBankName.setText(listBank.get(position).getBankName());
         holder.tvRekening.setText(listBank.get(position).getRekeneing());
         holder.tvSaldo.setText(listBank.get(position).getSaldo());
