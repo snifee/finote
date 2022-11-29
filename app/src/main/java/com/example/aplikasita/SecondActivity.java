@@ -15,6 +15,8 @@ import com.google.android.material.tabs.TabLayout;
 
 public class SecondActivity extends AppCompatActivity {
 
+    public static String MONTH_YEAR = "SECOND_ACT_MONTH_YEAR";
+
     private TabLayout tabLayout;
     private ViewPager viewPager;
 
@@ -22,6 +24,9 @@ public class SecondActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
+
+        Bundle extras = getIntent().getExtras();
+        String monthYear = extras.getString(MONTH_YEAR);
 
 
 
@@ -35,8 +40,8 @@ public class SecondActivity extends AppCompatActivity {
 
         PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT, tabLayout.getTabCount());
 
-        pagerAdapter.addFragment(new PengeluaranFragment());
-        pagerAdapter.addFragment(new PemasukanFragment());
+        pagerAdapter.addFragment(new PengeluaranFragment(monthYear));
+        pagerAdapter.addFragment(new PemasukanFragment(monthYear));
 
         viewPager.setAdapter(pagerAdapter);
 
@@ -58,4 +63,5 @@ public class SecondActivity extends AppCompatActivity {
         });
 
     }
+
 }

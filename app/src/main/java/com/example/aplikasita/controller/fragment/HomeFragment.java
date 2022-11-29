@@ -1,5 +1,6 @@
 package com.example.aplikasita.controller.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,7 +16,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.aplikasita.AddSpendingActivity;
 import com.example.aplikasita.R;
+import com.example.aplikasita.SecondActivity;
 import com.example.aplikasita.controller.adaptor.RecycleViewAdapter.MonthAdaptor;
 import com.example.aplikasita.data.MonthlyViewMode;
 import com.example.aplikasita.data.SpendingViewModel;
@@ -25,7 +28,7 @@ import java.util.List;
 
 public class HomeFragment extends Fragment {
 
-    public static final int ADD_ITEM_RQ =1;
+    public static final int SECOND_ACT =1;
 
     private RecyclerView recyclerView;
     private MonthAdaptor monthAdaptor;
@@ -76,7 +79,12 @@ public class HomeFragment extends Fragment {
         monthAdaptor.setOnItemClickListener(new MonthAdaptor.OnItemClickListener() {
             @Override
             public void onItemClick(MonthlyCashFlow sgbm) {
-                Toast.makeText(getActivity(), String.valueOf(sgbm.getSpendingTotal()), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(), String.valueOf(sgbm.getSpendingTotal()), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), SecondActivity.class);
+                String monthYear = sgbm.getDateYear();
+                intent.putExtra(SecondActivity.MONTH_YEAR,monthYear);
+                startActivityForResult(intent,SECOND_ACT);
+//                startActivity(intent);
             }
         });
 

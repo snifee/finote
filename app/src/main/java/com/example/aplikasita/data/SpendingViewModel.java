@@ -15,6 +15,7 @@ import java.util.List;
 public class SpendingViewModel extends AndroidViewModel {
     private SpendingRepo spendingRepo;
     private LiveData<List<Spending>> allSpending;
+    private LiveData<List<Spending>> allSpendingByMonth;
 
     public SpendingViewModel(@NonNull Application application) {
         super(application);
@@ -42,4 +43,8 @@ public class SpendingViewModel extends AndroidViewModel {
         return allSpending;
     }
 
+    public LiveData<List<Spending>> getAllSpendingByMonth(String month) {
+        this.allSpendingByMonth = spendingRepo.getAllSpendingByMonth(month);
+        return allSpendingByMonth;
+    }
 }

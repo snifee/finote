@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.example.aplikasita.AddSpendingActivity;
 import com.example.aplikasita.R;
+import com.example.aplikasita.SecondActivity;
 import com.example.aplikasita.controller.adaptor.RecycleViewAdapter.SpendingAdaptor;
 import com.example.aplikasita.data.SpendingViewModel;
 import com.example.aplikasita.data.entity.Spending;
@@ -30,14 +31,16 @@ import java.util.List;
 public class PengeluaranFragment extends Fragment {
 
     public static final int ADD_ITEM_RQ =1;
+    private String monthYear;
 
     private RecyclerView recyclerView;
     private SpendingAdaptor spendingAdaptor;
     private SpendingViewModel spendingViewModel;
 
 
-    public PengeluaranFragment() {
+    public PengeluaranFragment(String monthYear) {
         // Required empty public constructor
+        this.monthYear = monthYear;
     }
 
 
@@ -61,14 +64,20 @@ public class PengeluaranFragment extends Fragment {
             }
         });
 
-        spendingViewModel = ViewModelProviders.of(this).get(SpendingViewModel.class);
-        spendingViewModel.getAllSpending().observe(this, new Observer<List<Spending>>() {
-            @Override
-            public void onChanged(@Nullable List<Spending> spendings) {
-                spendingAdaptor.setListSpending(spendings);
+        if (SecondActivity.MONTH_YEAR != null){
+            spendingViewModel = ViewModelProviders.of(this).get(SpendingViewModel.class);
+            spendingViewModel.getAllSpendingByMonth(this.monthYear).observe(this, new Observer<List<Spending>>() {
+                @Override
+                public void onChanged(@Nullable List<Spending> spendings) {
+                    spendingAdaptor.setListSpending(spendings);
 //                System.out.println(incomes.get(0).getMonth());
-            }
-        });
+                }
+            });
+        }else {
+            Toast.makeText(getActivity(), "null", Toast.LENGTH_SHORT).show();
+        }
+
+
 
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT) {
             @Override

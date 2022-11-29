@@ -29,11 +29,13 @@ import java.util.List;
 public class PemasukanFragment extends Fragment {
 
     public static final int ADD_ITEM_RQ =1;
+    private String monthYear;
 
     private RecyclerView recyclerView;
     private IncomeViewModel incomeViewModel;
 
-    public PemasukanFragment() {
+    public PemasukanFragment(String monthYear) {
+        this.monthYear = monthYear;
         // Required empty public constructor
     }
 
@@ -62,7 +64,7 @@ public class PemasukanFragment extends Fragment {
 
 
         incomeViewModel = ViewModelProviders.of(this).get(IncomeViewModel.class);
-        incomeViewModel.getAllIncome().observe(this, new Observer<List<Income>>() {
+        incomeViewModel.getIncomeByMonthYear(monthYear).observe(this, new Observer<List<Income>>() {
             @Override
             public void onChanged(@Nullable List<Income> incomes) {
                 incomeAdaptor.setListIncome(incomes);

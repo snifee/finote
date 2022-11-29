@@ -16,6 +16,7 @@ public class SpendingRepo {
 
     private SpendingDao spendingDao;
     private LiveData<List<Spending>> allSpending;
+    private LiveData<List<Spending>> allSpendingByMonth;
 
     public SpendingRepo(Application application){
         AppDatabase database = AppDatabase.getDB(application);
@@ -44,6 +45,10 @@ public class SpendingRepo {
         return allSpending;
     }
 
+    public LiveData<List<Spending>> getAllSpendingByMonth(String month) {
+        allSpendingByMonth = spendingDao.getAllSpendingByMonth(month);
+        return allSpendingByMonth;
+    }
 
     private static class InsertSpendingAsyncTask extends AsyncTask<Spending, Void,Void> {
         private SpendingDao spendingDao;

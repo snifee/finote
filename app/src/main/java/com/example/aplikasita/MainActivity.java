@@ -41,8 +41,6 @@ public class MainActivity extends AppCompatActivity {
         tabLayout = findViewById(R.id.tabLayout);
         viewPager = findViewById(R.id.viewPager);
 
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.spending_tab));
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.income_tab));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.bank_tab));
         tabLayout.addTab(tabLayout.newTab().setText("dummy"));
 
@@ -50,8 +48,6 @@ public class MainActivity extends AppCompatActivity {
 
         PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager(),FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT, tabLayout.getTabCount());
 
-        pagerAdapter.addFragment(new PengeluaranFragment());
-        pagerAdapter.addFragment(new PemasukanFragment());
         pagerAdapter.addFragment(new BankFragment());
         pagerAdapter.addFragment(new HomeFragment());
 
