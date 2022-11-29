@@ -16,12 +16,14 @@ public class IncomeRepo {
 //    @
     private IncomeDao incomeDao;
     private LiveData<List<Income>> allIncome;
+    private LiveData<List<Income>> incomeByMonthYear;
 
     public  IncomeRepo(Application application){
         AppDatabase database = AppDatabase.getDB(application);
         incomeDao = database.incomeDao();
 
         allIncome = incomeDao.getAllIncome();
+
 
     }
 
@@ -43,6 +45,11 @@ public class IncomeRepo {
 
     public LiveData<List<Income>> getAllIncome(){
         return allIncome;
+    }
+
+    public LiveData<List<Income>> getIncomeByMonthYear(String monthYear) {
+        incomeByMonthYear = incomeDao.getIncomeByYearMonth(monthYear);
+        return incomeByMonthYear;
     }
 
     private static class InsertIncomeAsyncTask extends AsyncTask<Income, Void,Void>{

@@ -27,7 +27,7 @@ public class SpendingAdaptor extends RecyclerView.Adapter<SpendingAdaptor.Spendi
     public SpendingAdaptor.SpendingViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
 
-        View view = layoutInflater.inflate(R.layout.spending_item,parent,false);
+        View view = layoutInflater.inflate(R.layout.item_spending,parent,false);
         return new SpendingViewHolder(view);
     }
 

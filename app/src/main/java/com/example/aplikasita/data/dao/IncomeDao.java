@@ -31,4 +31,7 @@ public interface IncomeDao {
 
     @Query("SELECT * FROM income_table")
     LiveData<List<Income>> getAllIncome();
+
+    @Query("SELECT * FROM income_table WHERE bulan_tahun=:bulanTahun")
+    LiveData<List<Income>> getIncomeByYearMonth(String bulanTahun);
 }

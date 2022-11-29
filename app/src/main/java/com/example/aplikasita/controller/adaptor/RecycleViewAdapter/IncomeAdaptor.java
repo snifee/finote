@@ -28,7 +28,7 @@ public class IncomeAdaptor extends RecyclerView.Adapter<IncomeAdaptor.IncomeView
     public IncomeAdaptor.IncomeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
 
-        View view = layoutInflater.inflate(R.layout.income_item,parent,false);
+        View view = layoutInflater.inflate(R.layout.item_income,parent,false);
         return new IncomeViewHolder(view);
     }
 

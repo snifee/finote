@@ -10,12 +10,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import com.example.aplikasita.R;
-import com.example.aplikasita.model.SpendingGroupByModel;
+import com.example.aplikasita.model.MonthlyCashFlow;
 
 
 public class MonthAdaptor extends RecyclerView.Adapter<MonthAdaptor.MonthViewHolder>{
 
-    private List<SpendingGroupByModel> listMonth;
+    private List<MonthlyCashFlow> listMonth;
+    private OnItemClickListener listener;
 
     public MonthAdaptor() {
     }
@@ -33,7 +34,7 @@ public class MonthAdaptor extends RecyclerView.Adapter<MonthAdaptor.MonthViewHol
     public void onBindViewHolder(@NonNull MonthAdaptor.MonthViewHolder holder, int position) {
         holder.tvMonth.setText(listMonth.get(position).getDateYear());
         holder.tvIncome.setText("XX");
-        holder.tvOutcome.setText(String.valueOf(listMonth.get(position).getTotalSpending()));
+        holder.tvOutcome.setText(String.valueOf(listMonth.get(position).getSpendingTotal()));
     }
 
     @Override
@@ -51,12 +52,31 @@ public class MonthAdaptor extends RecyclerView.Adapter<MonthAdaptor.MonthViewHol
             tvMonth = view.findViewById(R.id.idMonth);
             tvIncome = view.findViewById(R.id.idIncome);
             tvOutcome = view.findViewById(R.id.idSpending);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int pos = getAdapterPosition();
+                    if (listener!=null && pos!= RecyclerView.NO_POSITION){
+                        listener.onItemClick(listMonth.get(pos));
+                    }
+
+                }
+            });
         }
     }
 
-    public void setListMonth(List<SpendingGroupByModel> listSpending) {
+    public void setListMonth(List<MonthlyCashFlow> listSpending) {
         this.listMonth = listSpending;
         notifyDataSetChanged();
+    }
+
+    public interface OnItemClickListener{
+        void onItemClick(MonthlyCashFlow sgbm);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener){
+        this.listener = onItemClickListener;
     }
 }
 

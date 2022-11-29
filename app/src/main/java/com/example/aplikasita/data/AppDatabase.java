@@ -12,6 +12,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.aplikasita.data.dao.BudgetDao;
 import com.example.aplikasita.data.dao.IncomeDao;
+import com.example.aplikasita.data.dao.MonthlyDao;
 import com.example.aplikasita.data.dao.SpendingDao;
 import com.example.aplikasita.data.entity.Budget;
 import com.example.aplikasita.data.entity.Income;
@@ -33,6 +34,8 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract IncomeDao incomeDao();
 
     public abstract BudgetDao budgetDao();
+
+    public abstract MonthlyDao monthlyDao();
 
     private static volatile AppDatabase appDatabase;
 
