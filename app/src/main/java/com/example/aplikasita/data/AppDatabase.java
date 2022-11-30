@@ -17,15 +17,18 @@ import com.example.aplikasita.data.dao.SpendingDao;
 import com.example.aplikasita.data.entity.Budget;
 import com.example.aplikasita.data.entity.Income;
 import com.example.aplikasita.data.entity.Spending;
+import com.example.aplikasita.utils.EnumCategory;
+import com.example.aplikasita.utils.StringUtils;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 
-@Database(entities = {Spending.class, Income.class, Budget.class}, version = 3)
+@Database(entities = {Spending.class, Income.class, Budget.class}, version =2)
 @TypeConverters({DateConverter.class})
 public abstract class AppDatabase extends RoomDatabase {
 
@@ -44,7 +47,7 @@ public abstract class AppDatabase extends RoomDatabase {
             synchronized (AppDatabase.class){
                 if (appDatabase == null){
                     appDatabase = Room.databaseBuilder(context.getApplicationContext(),
-                            AppDatabase.class, "finote1_db")
+                            AppDatabase.class, "fino.db")
                             .addCallback(roomCallback)
                             .fallbackToDestructiveMigration()
                             .build();
@@ -76,10 +79,12 @@ public abstract class AppDatabase extends RoomDatabase {
     private static class PopulateDbAsyncTask extends AsyncTask<Void,Void,Void>{
         private IncomeDao incomeDao;
         private SpendingDao spendingDao;
+        private BudgetDao budgetDao;
 
         private PopulateDbAsyncTask(AppDatabase db){
             incomeDao = db.incomeDao();
             spendingDao = db.spendingDao();
+            budgetDao = db.budgetDao();
         }
 
 
@@ -87,40 +92,36 @@ public abstract class AppDatabase extends RoomDatabase {
         protected Void doInBackground(Void... voids) {
 
             try{
-                LocalDate d = LocalDate.now();
 
-                String date = d.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+                Date date1 = StringUtils.stringToDate("02-05-2022");
+                String month1 = StringUtils.getMonthYear(date1);
 
-                SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+                incomeDao.insert(new Income("123", 230000L,date1, month1,"beli rumah"));
+                incomeDao.insert(new Income("123", 10000L,date1,month1,"beli saham"));
 
-                Date formattedDate = df.parse(date);
+                spendingDao.insert(new Spending("03628293", 23000L,"beli rumah",date1,month1,"Primer"));
+                spendingDao.insert(new Spending("03628293", 23000L,"beli rumah",date1,month1,"Sekunder"));
+                spendingDao.insert(new Spending("03628293", 23000L,"beli rumah",date1,month1,"Sekunder"));
+                spendingDao.insert(new Spending("03628293", 23000L,"beli rumah",date1,month1,"Primer"));
+
+                Date date2 = StringUtils.stringToDate("02-07-2022");
+                String month2 = StringUtils.getMonthYear(date2);
+
+                incomeDao.insert(new Income("123", 230000L,date2, month2,"beli rumah"));
+                incomeDao.insert(new Income("123", 10000L,date2,month2,"beli saham"));
+
+                spendingDao.insert(new Spending("03628293", 23000L,"beli rumah",date2,month2,"Primer"));
+                spendingDao.insert(new Spending("03628293", 23000L,"beli rumah",date2,month2,"Sekunder"));
+                spendingDao.insert(new Spending("03628293", 23000L,"beli rumah",date2,month2,"Sekunder"));
+                spendingDao.insert(new Spending("03628293", 23000L,"beli rumah",date2,month2,"Primer"));
 
 
-                incomeDao.insert(new Income("123", 230000L,formattedDate, Month.of(formattedDate.getMonth()).toString(),"beli rumah"));
-                incomeDao.insert(new Income("123", 10000L,formattedDate,Month.of(formattedDate.getMonth()).toString(),"beli saham"));
+                budgetDao.insert(new Budget(EnumCategory.Sandang.name(), EnumCategory.Sandang.name(), 50000L));
+                budgetDao.insert(new Budget(EnumCategory.Pangan.name(), EnumCategory.Pangan.name(), 50000L));
+                budgetDao.insert(new Budget(EnumCategory.Energi.name(), EnumCategory.Energi.name(), 50000L));
+                budgetDao.insert(new Budget(EnumCategory.Pendidikan.name(), EnumCategory.Pendidikan.name(), 50000L));
+                budgetDao.insert(new Budget(EnumCategory.Hiburan.name(), EnumCategory.Hiburan.name(), 50000L));
 
-
-                incomeDao.insert(new Income("123", 230000L,formattedDate, Month.of(2).toString(),"beli rumah"));
-                incomeDao.insert(new Income("123", 10000L,formattedDate,Month.of(2).toString(),"beli saham"));
-
-                incomeDao.insert(new Income("123", 230000L,formattedDate, Month.of(3).toString(),"beli rumah"));
-                incomeDao.insert(new Income("123", 10000L,formattedDate,Month.of(3).toString(),"beli saham"));
-//            public Spending( String sumberPengeluaran, Integer jumlah, String keterangan, Date waktu, String jenisPengeluaran) {
-
-                spendingDao.insert(new Spending("03628293", 23000L,"beli rumah",formattedDate,Month.of(formattedDate.getMonth()).toString(),"Primer"));
-                spendingDao.insert(new Spending("03628293", 23000L,"beli rumah",formattedDate,Month.of(formattedDate.getMonth()).toString(),"Sekunder"));
-                spendingDao.insert(new Spending("03628293", 23000L,"beli rumah",formattedDate,Month.of(formattedDate.getMonth()).toString(),"Sekunder"));
-                spendingDao.insert(new Spending("03628293", 23000L,"beli rumah",formattedDate,Month.of(formattedDate.getMonth()).toString(),"Primer"));
-
-                spendingDao.insert(new Spending("03628293", 23000L,"beli rumah",formattedDate,Month.of(2).toString(),"Primer"));
-                spendingDao.insert(new Spending("03628293", 23000L,"beli rumah",formattedDate,Month.of(2).toString(),"Sekunder"));
-                spendingDao.insert(new Spending("03628293", 23000L,"beli rumah",formattedDate,Month.of(2).toString(),"Primer"));
-                spendingDao.insert(new Spending("03628293", 23000L,"beli rumah",formattedDate,Month.of(2).toString(),"Primer"));
-
-                spendingDao.insert(new Spending("03628293", 23000L,"beli rumah",formattedDate,Month.of(3).toString(),"Primer"));
-                spendingDao.insert(new Spending("03628293", 23000L,"beli rumah",formattedDate,Month.of(3).toString(),"Sekunder"));
-                spendingDao.insert(new Spending("03628293", 23000L,"beli rumah",formattedDate,Month.of(3).toString(),"Primer"));
-                spendingDao.insert(new Spending("03628293", 23000L,"beli rumah",formattedDate,Month.of(3).toString(),"Primer"));
             }catch (Exception e){
                 System.out.println(e);
             }

@@ -29,4 +29,6 @@
     <string name="jenis_pengeluaran">Jenis Pengeluaran</string>
     <string name="sumber_pengeluaran">Sumber Pengeluaran</string>
     <string name="tujuan_penyimpanan">Tujuan Penyimpanan</string>
+    <string name="home_main">Home</string>
+    <string name="budget">Budget</string>
 </resources>

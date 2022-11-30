@@ -21,7 +21,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:paddingHorizontal="20dp"
-                android:paddingVertical="5sp">
+                android:paddingVertical="10dp">
                 <TextView
                     android:id="@+id/idMonth"
                     android:layout_width="wrap_content"
@@ -36,13 +36,6 @@
                     android:textSize="10sp"
                     android:fontFamily="@font/poppins_light"/>
 
-                <TextView
-                    android:id="@+id/idIncome"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Income: Rp.2.000.000,00"
-                    android:textSize="10sp"
-                    android:fontFamily="@font/poppins_light"/>
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>

@@ -75,13 +75,13 @@ public class AddSpendingActivity extends AppCompatActivity {
         if(date.isEmpty()){
             LocalDateTime d = LocalDateTime.now();
 
-            date = d.format(DateTimeFormatter.ofPattern("dd-MM-yyyy")).toString();
+            date = d.format(DateTimeFormatter.ofPattern("dd-M-yyyy hh:mm:ss")).toString();
         }
 
         try {
             long jml= Long.parseLong(jumlah);
 
-            SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+            SimpleDateFormat df = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
 
             System.out.println("haiiii"+df.parse(date));
 

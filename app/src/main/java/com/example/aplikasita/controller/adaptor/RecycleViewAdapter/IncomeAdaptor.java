@@ -11,14 +11,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.aplikasita.R;
 import com.example.aplikasita.data.entity.Income;
 
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Currency;
 import java.util.List;
 
 
 public class IncomeAdaptor extends RecyclerView.Adapter<IncomeAdaptor.IncomeViewHolder>{
 
     private List<Income> listIncome = new ArrayList<>();
+    private NumberFormat numberFormat = NumberFormat.getCurrencyInstance();;
 
     public IncomeAdaptor() {
     }
@@ -37,10 +40,14 @@ public class IncomeAdaptor extends RecyclerView.Adapter<IncomeAdaptor.IncomeView
     public void onBindViewHolder(@NonNull IncomeAdaptor.IncomeViewHolder holder, int position) {
         Income currentIncome = listIncome.get(position);
 
+        numberFormat.setMaximumFractionDigits(0);
+        numberFormat.setCurrency(Currency.getInstance("IDR"));
+        String income = numberFormat.format(currentIncome.getJumlah());
+
         SimpleDateFormat sdf = new SimpleDateFormat();
 
         holder.tvRekening.setText(String.valueOf(currentIncome.getNoRekening()));
-        holder.tvIncome.setText("Rp."+ String.valueOf(currentIncome.getJumlah())+",00");
+        holder.tvIncome.setText(income);
         holder.tvKeterangan.setText(currentIncome.getKeterangan());
         holder.tvDate.setText(sdf.format(currentIncome.getWaktu()));
     }

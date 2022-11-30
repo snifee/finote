@@ -11,13 +11,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.aplikasita.R;
 import com.example.aplikasita.data.entity.Spending;
 
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Currency;
 import java.util.List;
 
 public class SpendingAdaptor extends RecyclerView.Adapter<SpendingAdaptor.SpendingViewHolder>{
 
     private List<Spending> listSpending = new ArrayList<>();
+    private NumberFormat numberFormat = NumberFormat.getCurrencyInstance();
 
     public SpendingAdaptor() {
     }
@@ -36,10 +39,15 @@ public class SpendingAdaptor extends RecyclerView.Adapter<SpendingAdaptor.Spendi
     public void onBindViewHolder(@NonNull SpendingAdaptor.SpendingViewHolder holder, int position) {
         Spending currentSpending = listSpending.get(position);
 
+        numberFormat.setMaximumFractionDigits(0);
+        numberFormat.setCurrency(Currency.getInstance("IDR"));
+
+        String spending = numberFormat.format(currentSpending.getJumlah());
+
         SimpleDateFormat sdf = new SimpleDateFormat();
 
         holder.tvRekening.setText(String.valueOf(currentSpending.getSumberPengeluaran()));
-        holder.tvSpending.setText("Rp."+ String.valueOf(currentSpending.getJumlah())+",00");
+        holder.tvSpending.setText(spending);
         holder.tvKeterangan.setText(currentSpending.getKeterangan());
         holder.tvDate.setText(sdf.format(currentSpending.getWaktu()));
         holder.tvJenis.setText(currentSpending.getJenisPengeluaran());

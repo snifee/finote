@@ -16,6 +16,7 @@ public class SpendingViewModel extends AndroidViewModel {
     private SpendingRepo spendingRepo;
     private LiveData<List<Spending>> allSpending;
     private LiveData<List<Spending>> allSpendingByMonth;
+    private LiveData<Long> sumofSpendingByMonth;
 
     public SpendingViewModel(@NonNull Application application) {
         super(application);
@@ -47,4 +48,9 @@ public class SpendingViewModel extends AndroidViewModel {
         this.allSpendingByMonth = spendingRepo.getAllSpendingByMonth(month);
         return allSpendingByMonth;
     }
+
+//    public LiveData<Long> getSumofSpendingByMonth(String month) {
+//        this.sumofSpendingByMonth = mo.getSumofSpendingByMonth(month);
+//        return sumofSpendingByMonth;
+//    }
 }

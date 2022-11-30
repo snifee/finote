@@ -14,16 +14,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.aplikasita.AddSpendingActivity;
 import com.example.aplikasita.R;
 import com.example.aplikasita.SecondActivity;
 import com.example.aplikasita.controller.adaptor.RecycleViewAdapter.MonthAdaptor;
-import com.example.aplikasita.data.MonthlyViewMode;
-import com.example.aplikasita.data.SpendingViewModel;
+import com.example.aplikasita.data.MonthlyViewModel;
 import com.example.aplikasita.model.MonthlyCashFlow;
+import com.example.aplikasita.model.MonthlySpending;
 
+import java.text.NumberFormat;
+import java.util.Currency;
 import java.util.List;
 
 public class HomeFragment extends Fragment {
@@ -32,7 +34,10 @@ public class HomeFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private MonthAdaptor monthAdaptor;
-    private MonthlyViewMode monthlyViewMode;
+    private MonthlyViewModel monthlyViewModel;
+    private NumberFormat numberFormat = NumberFormat.getCurrencyInstance();;
+
+    private TextView tvIncome, tvSpending,tvMonth;
 
 
     public HomeFragment() {
@@ -46,16 +51,38 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        tvIncome = view.findViewById(R.id.idHomeIncome);
+        tvSpending = view.findViewById(R.id.idHomeSpending);
+
+        monthlyViewModel = ViewModelProviders.of(this).get(MonthlyViewModel.class);
+        monthlyViewModel.getSumofSpendingByMonth("JULY2022").observe(this, new Observer<Long>() {
+            @Override
+            public void onChanged(Long monthSpending) {
+                if (monthSpending!=null){
+                    numberFormat.setMaximumFractionDigits(0);
+                    numberFormat.setCurrency(Currency.getInstance("IDR"));
+                    String spending = numberFormat.format(monthSpending);
+
+                    tvSpending.setText(spending);
+                }else {
+                    tvSpending.setText("null");
+                }
+
+            }
+        });
+
+
         monthAdaptor = new MonthAdaptor();
         recyclerView = view.findViewById(R.id.idHomeRecycleView);
         recyclerView.setLayoutManager( new LinearLayoutManager(view.getContext()));
         recyclerView.setAdapter(monthAdaptor);
 
-        monthlyViewMode = ViewModelProviders.of(this).get(MonthlyViewMode.class);
-        monthlyViewMode.getAllMonthly().observe(this, new Observer<List<MonthlyCashFlow>>() {
+//        monthlyViewModel = ViewModelProviders.of(this).get(MonthlyViewModel.class);
+        monthlyViewModel.getAllMonthlySpending().observe(this, new Observer<List<MonthlySpending>>() {
             @Override
-            public void onChanged(List<MonthlyCashFlow> monthlyCashFlows) {
-                monthAdaptor.setListMonth(monthlyCashFlows);
+            public void onChanged(List<MonthlySpending> monthlyCashFlows) {
+                monthAdaptor.setListMonthSpending(monthlyCashFlows);
             }
         });
 
@@ -78,10 +105,10 @@ public class HomeFragment extends Fragment {
 
         monthAdaptor.setOnItemClickListener(new MonthAdaptor.OnItemClickListener() {
             @Override
-            public void onItemClick(MonthlyCashFlow sgbm) {
+            public void onItemClick(MonthlySpending monthlySpending) {
 //                Toast.makeText(getActivity(), String.valueOf(sgbm.getSpendingTotal()), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getActivity(), SecondActivity.class);
-                String monthYear = sgbm.getDateYear();
+                String monthYear = monthlySpending.getMonthYear();
                 intent.putExtra(SecondActivity.MONTH_YEAR,monthYear);
                 startActivityForResult(intent,SECOND_ACT);
 //                startActivity(intent);

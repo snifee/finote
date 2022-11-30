@@ -76,13 +76,13 @@ public class AddIncomeActivity extends AppCompatActivity {
         if(date.isEmpty()){
             LocalDateTime d = LocalDateTime.now();
 
-            date = d.format(DateTimeFormatter.ofPattern("dd-MM-yyyy")).toString();
+            date = d.format(DateTimeFormatter.ofPattern("dd-M-yyyy hh:mm:ss")).toString();
         }
 
         try {
             Long jml= Long.parseLong(jumlah);
 
-            SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+            SimpleDateFormat df = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
 
             Date formattedDate = df.parse(date);
 
