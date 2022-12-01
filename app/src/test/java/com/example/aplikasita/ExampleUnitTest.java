@@ -5,20 +5,16 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 
-import com.example.aplikasita.utils.EnumCategory;
-import com.example.aplikasita.utils.StringUtils;
+import com.example.aplikasita.utils.MyStringUtils;
 
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.Currency;
 import java.util.Date;
-import java.util.Locale;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -89,14 +85,16 @@ public class ExampleUnitTest {
 //
 //        }
 
-        int m = StringUtils.stringToDate("02-05-2022").getMonth();
-        int y = StringUtils.stringToDate("02-05-2022").getYear();
+        int m = MyStringUtils.stringToDate("02-05-2022").getMonth();
+        int y = MyStringUtils.stringToDate("02-05-2022").getYear();
 
         String month = Month.of(m+1).toString();
 
-        Date date = StringUtils.stringToDate("02-05-2022");
+        Date date = MyStringUtils.stringToDate("02-05-2022");
 
-        System.out.println(StringUtils.getMonthYear(date));
+        System.out.println(MyStringUtils.getMonthYear(date));
+
+        System.out.println(MyStringUtils.myCapitalizefunc("SAUK"));
 
 
     }

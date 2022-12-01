@@ -1,14 +1,18 @@
-package com.example.aplikasita;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProviders;
+package com.example.aplikasita.controller.fragment;
 
 import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
+
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.aplikasita.R;
 import com.example.aplikasita.data.SpendingViewModel;
 import com.example.aplikasita.data.entity.Spending;
 
@@ -18,13 +22,7 @@ import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
-public class AddSpendingActivity extends AppCompatActivity {
-    public static final String EXTRA_JUMLAH = "com.example.aplikasita.JUMLAH";
-    public static final String EXTRA_REK = "com.example.aplikasita.REK";
-    public static final String EXTRA_KET = "com.example.aplikasita.KET";
-    public static final String EXTRA_DATE = "com.example.aplikasita.DATE";
-
-
+public class AddSpendingFragment extends Fragment {
     private SpendingViewModel spendingViewModel;
 
 
@@ -36,17 +34,24 @@ public class AddSpendingActivity extends AppCompatActivity {
     private EditText editTextDate;
     private Button submitButton;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_spending);
+    public AddSpendingFragment() {
+        // Required empty public constructor
+    }
 
-        editTextSumberPeng = findViewById(R.id.etAddSpendingRekening);
-        editTextJenisPeng = findViewById(R.id.etAddSpendingJenisPengeluaran);
-        editTextJumlahPeng = findViewById(R.id.etAddSpendingJumlah);
-        editTextKet = findViewById(R.id.etAddSpendingKeterangan);
-        editTextDate = findViewById(R.id.etAddSpendingDate);
-        submitButton = findViewById(R.id.submitAddSpendingButton);
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_add_spending, container, false);
+
+        editTextSumberPeng = view.findViewById(R.id.etAddSpendingRekening);
+        editTextJenisPeng = view.findViewById(R.id.etAddSpendingJenisPengeluaran);
+        editTextJumlahPeng = view.findViewById(R.id.etAddSpendingJumlah);
+        editTextKet = view.findViewById(R.id.etAddSpendingKeterangan);
+        editTextDate = view.findViewById(R.id.etAddSpendingDate);
+        submitButton = view.findViewById(R.id.submitAddSpendingButton);
 
 
 
@@ -56,10 +61,8 @@ public class AddSpendingActivity extends AppCompatActivity {
                 saveSpending();
             }
         });
-
-
+        return view;
     }
-
     private void saveSpending(){
         String rekening = editTextSumberPeng.getText()==null ? "":editTextSumberPeng.getText().toString();
         String jumlah = editTextJumlahPeng.getText() ==null ? "":editTextJumlahPeng.getText().toString();
@@ -68,7 +71,7 @@ public class AddSpendingActivity extends AppCompatActivity {
         String jenis = editTextJenisPeng.getText() ==null ? "":editTextJenisPeng.getText().toString();
 
         if (jumlah.isEmpty()){
-            Toast.makeText(this,"Please insert amount",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(),"Please insert amount",Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -98,7 +101,7 @@ public class AddSpendingActivity extends AppCompatActivity {
         }catch (Exception e){
             System.out.println(e);
         }finally {
-            finish();
+            getActivity().finish();
         }
     }
 }

@@ -18,13 +18,8 @@ import com.example.aplikasita.data.entity.Budget;
 import com.example.aplikasita.data.entity.Income;
 import com.example.aplikasita.data.entity.Spending;
 import com.example.aplikasita.utils.EnumCategory;
-import com.example.aplikasita.utils.StringUtils;
+import com.example.aplikasita.utils.MyStringUtils;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.Month;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 
@@ -93,8 +88,8 @@ public abstract class AppDatabase extends RoomDatabase {
 
             try{
 
-                Date date1 = StringUtils.stringToDate("02-05-2022");
-                String month1 = StringUtils.getMonthYear(date1);
+                Date date1 = MyStringUtils.stringToDate("02-05-2022");
+                String month1 = MyStringUtils.getMonthYear(date1);
 
                 incomeDao.insert(new Income("123", 230000L,date1, month1,"beli rumah"));
                 incomeDao.insert(new Income("123", 10000L,date1,month1,"beli saham"));
@@ -104,8 +99,8 @@ public abstract class AppDatabase extends RoomDatabase {
                 spendingDao.insert(new Spending("03628293", 23000L,"beli rumah",date1,month1,"Sekunder"));
                 spendingDao.insert(new Spending("03628293", 23000L,"beli rumah",date1,month1,"Primer"));
 
-                Date date2 = StringUtils.stringToDate("02-07-2022");
-                String month2 = StringUtils.getMonthYear(date2);
+                Date date2 = MyStringUtils.stringToDate("02-07-2022");
+                String month2 = MyStringUtils.getMonthYear(date2);
 
                 incomeDao.insert(new Income("123", 230000L,date2, month2,"beli rumah"));
                 incomeDao.insert(new Income("123", 10000L,date2,month2,"beli saham"));

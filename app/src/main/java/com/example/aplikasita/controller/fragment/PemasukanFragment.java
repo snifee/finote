@@ -17,7 +17,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.aplikasita.AddIncomeActivity;
 import com.example.aplikasita.R;
 import com.example.aplikasita.controller.adaptor.RecycleViewAdapter.IncomeAdaptor;
 import com.example.aplikasita.data.IncomeViewModel;
@@ -52,15 +51,6 @@ public class PemasukanFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recycleViewPemasukan);
         recyclerView.setLayoutManager( new LinearLayoutManager(view.getContext()));
         recyclerView.setAdapter(incomeAdaptor);
-
-        FloatingActionButton addItemButton = view.findViewById(R.id.addIncomeButton);
-        addItemButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), AddIncomeActivity.class);
-                startActivityForResult(intent,ADD_ITEM_RQ);
-            }
-        });
 
 
         incomeViewModel = ViewModelProviders.of(this).get(IncomeViewModel.class);

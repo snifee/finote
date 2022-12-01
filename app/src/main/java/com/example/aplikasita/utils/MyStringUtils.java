@@ -1,8 +1,7 @@
 package com.example.aplikasita.utils;
 
-import java.sql.Time;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import androidx.room.util.StringUtil;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -10,8 +9,9 @@ import java.time.Month;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.Locale;
 
-public class StringUtils {
+public class MyStringUtils {
 
     public static Date stringToDate(String dateString){
 
@@ -52,5 +52,10 @@ public class StringUtils {
         String year = String.valueOf(y);
 
         return month+year;
+    }
+
+    public static String myCapitalizefunc(String str){
+        str = str.toLowerCase();
+        return str.substring(0, 1).toUpperCase() + str.substring(1);
     }
 }

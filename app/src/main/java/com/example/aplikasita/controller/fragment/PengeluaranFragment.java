@@ -17,7 +17,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.aplikasita.AddSpendingActivity;
 import com.example.aplikasita.R;
 import com.example.aplikasita.SecondActivity;
 import com.example.aplikasita.controller.adaptor.RecycleViewAdapter.SpendingAdaptor;
@@ -55,14 +54,6 @@ public class PengeluaranFragment extends Fragment {
         recyclerView.setLayoutManager( new LinearLayoutManager(view.getContext()));
         recyclerView.setAdapter(spendingAdaptor);
 
-        FloatingActionButton addItemButton = view.findViewById(R.id.addSpendingButton);
-        addItemButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), AddSpendingActivity.class);
-                startActivityForResult(intent,ADD_ITEM_RQ);
-            }
-        });
 
         if (SecondActivity.MONTH_YEAR != null){
             spendingViewModel = ViewModelProviders.of(this).get(SpendingViewModel.class);

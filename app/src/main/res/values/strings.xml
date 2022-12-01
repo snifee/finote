@@ -5,8 +5,8 @@
     <string name="login">Login</string>
     <string name="insert_password">Insert PIN</string>
     <string name="welcome">Welcome !</string>
-    <string name="income_tab">INCOME</string>
-    <string name="spending_tab">SPENDING</string>
+    <string name="income_tab">Income</string>
+    <string name="spending_tab">Spending</string>
     <string name="bank_tab">BANK</string>
     <string name="title_activity_main2">MainActivity2</string>
     <!-- Strings used for fragments for navigation -->
@@ -31,4 +31,5 @@
     <string name="tujuan_penyimpanan">Tujuan Penyimpanan</string>
     <string name="home_main">Home</string>
     <string name="budget">Budget</string>
+    <string name="monthly">Monthly</string>
 </resources>

@@ -1,32 +1,29 @@
-package com.example.aplikasita;
+package com.example.aplikasita.controller.fragment;
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
-import android.content.Intent;
-import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.aplikasita.R;
 import com.example.aplikasita.data.IncomeViewModel;
 import com.example.aplikasita.data.entity.Income;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
-public class AddIncomeActivity extends AppCompatActivity {
 
-    public static final String EXTRA_JUMLAH = "com.example.aplikasita.JUMLAH";
-    public static final String EXTRA_REK = "com.example.aplikasita.REK";
-    public static final String EXTRA_KET = "com.example.aplikasita.KET";
-    public static final String EXTRA_DATE = "com.example.aplikasita.DATE";
-
+public class AddIncomeFragment extends Fragment {
 
     IncomeViewModel incomeViewModel;
 
@@ -38,18 +35,24 @@ public class AddIncomeActivity extends AppCompatActivity {
     private EditText editTextDate;
     private Button submitButton;
 
+
+
+    public AddIncomeFragment() {
+        // Required empty public constructor
+    }
+
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_income);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_add_income, container, false);
 
-        editTextRek = findViewById(R.id.etRekening);
-        editTextJumlah = findViewById(R.id.etJumlah);
-        editTextKet = findViewById(R.id.etKeterangan);
-        editTextDate = findViewById(R.id.etDate);
-        submitButton = findViewById(R.id.submitButton);
-
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_exit);
+        editTextRek = view.findViewById(R.id.etRekening);
+        editTextJumlah = view.findViewById(R.id.etJumlah);
+        editTextKet = view.findViewById(R.id.etKeterangan);
+        editTextDate = view.findViewById(R.id.etDate);
+        submitButton = view.findViewById(R.id.submitButton);
 
 
         submitButton.setOnClickListener(new View.OnClickListener() {
@@ -59,7 +62,7 @@ public class AddIncomeActivity extends AppCompatActivity {
             }
         });
 
-
+        return view;
     }
 
     private void saveNote(){
@@ -69,7 +72,7 @@ public class AddIncomeActivity extends AppCompatActivity {
         String date = editTextDate.getText() ==null ? "":editTextDate.getText().toString();
 
         if (jumlah.isEmpty()){
-            Toast.makeText(this,"Please insert amount",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(),"Please insert amount",Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -99,7 +102,7 @@ public class AddIncomeActivity extends AppCompatActivity {
         }catch (Exception e){
             System.out.println(e);
         }finally {
-            finish();
+            getActivity().finish();
         }
     }
 }
