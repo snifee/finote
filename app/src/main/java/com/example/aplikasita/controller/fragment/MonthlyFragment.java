@@ -20,7 +20,7 @@ import com.example.aplikasita.AddCashflowActivity;
 import com.example.aplikasita.R;
 import com.example.aplikasita.SecondActivity;
 import com.example.aplikasita.controller.adaptor.RecycleViewAdapter.MonthAdaptor;
-import com.example.aplikasita.data.MonthlyViewModel;
+import com.example.aplikasita.data.viewmodel.MonthlyViewModel;
 import com.example.aplikasita.model.MonthlySpending;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 

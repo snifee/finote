@@ -5,39 +5,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="10dp"
+    android:gravity="center_horizontal"
 
     tools:context=".controller.fragment.HomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:padding="10dp">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="10dp"
-            android:gravity="center" >
             <TextView
                 android:id="@+id/idHomeMonth"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
                 android:text="November"
+                android:layout_marginBottom="20sp"
+                android:layout_marginTop="30sp"
                 android:textSize="20sp"/>
 
 
-        </LinearLayout>
-
         <com.google.android.material.card.MaterialCardView
             style="?attr/materialCardViewFilledStyle"
-            app:cardCornerRadius="10dp"
+            app:cardCornerRadius="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -142,7 +129,7 @@
 
         <com.google.android.material.card.MaterialCardView
             style="?attr/materialCardViewFilledStyle"
-            app:cardCornerRadius="10dp"
+            app:cardCornerRadius="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp">
@@ -168,13 +155,6 @@
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>
-
-
-
-    </LinearLayout>
-
-
-
 
 
 </LinearLayout>

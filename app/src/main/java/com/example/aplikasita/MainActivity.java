@@ -1,66 +1,52 @@
 package com.example.aplikasita;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 
-import com.example.aplikasita.controller.adaptor.PagerAdapter;
 import com.example.aplikasita.controller.fragment.MonthlyFragment;
 import com.example.aplikasita.controller.fragment.HomeFragment;
-import com.example.aplikasita.data.IncomeViewModel;
-import com.google.android.material.tabs.TabLayout;
+import com.example.aplikasita.data.viewmodel.IncomeViewModel;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
 
 
     IncomeViewModel incomeViewModel;
 
+    private BottomNavigationView bottomNavigationView;
 
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
+    HomeFragment homeFragment = new HomeFragment();
+    MonthlyFragment monthlyFragment = new MonthlyFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
 
 
-        tabLayout = findViewById(R.id.tabLayout);
-        viewPager = findViewById(R.id.viewPager);
+        bottomNavigationView.setOnNavigationItemSelectedListener(this);
 
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.home_main));
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.monthly));
-
-        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-
-        PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager(),FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT, tabLayout.getTabCount());
-
-
-        pagerAdapter.addFragment(new HomeFragment());
-        pagerAdapter.addFragment(new MonthlyFragment());
-
-        viewPager.setAdapter(pagerAdapter);
-
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
-            }
-        });
+        bottomNavigationView.setSelectedItemId(R.id.page_1);
 
     }
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.page_1:
+                getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, homeFragment).commit();
+                return true;
+
+            case R.id.page_2:
+                getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, monthlyFragment).commit();
+                return true;
+        }
+        return false;
+    }
 }

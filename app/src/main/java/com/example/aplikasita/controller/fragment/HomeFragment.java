@@ -1,37 +1,27 @@
 package com.example.aplikasita.controller.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.room.util.StringUtil;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.aplikasita.R;
-import com.example.aplikasita.SecondActivity;
 import com.example.aplikasita.controller.adaptor.RecycleViewAdapter.BudgetAdaptor;
-import com.example.aplikasita.controller.adaptor.RecycleViewAdapter.MonthAdaptor;
-import com.example.aplikasita.data.BudgetViewModel;
-import com.example.aplikasita.data.MonthlyViewModel;
+import com.example.aplikasita.data.viewmodel.BudgetViewModel;
+import com.example.aplikasita.data.viewmodel.MonthlyViewModel;
 import com.example.aplikasita.data.entity.Budget;
-import com.example.aplikasita.model.MonthlyCashFlow;
-import com.example.aplikasita.model.MonthlySpending;
 import com.example.aplikasita.utils.MyStringUtils;
 
 import java.text.NumberFormat;
 import java.time.LocalDate;
-import java.time.Month;
 import java.util.Currency;
 import java.util.List;
 

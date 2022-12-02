@@ -13,7 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.aplikasita.R;
-import com.example.aplikasita.data.SpendingViewModel;
+import com.example.aplikasita.data.viewmodel.SpendingViewModel;
 import com.example.aplikasita.data.entity.Spending;
 
 import java.text.SimpleDateFormat;

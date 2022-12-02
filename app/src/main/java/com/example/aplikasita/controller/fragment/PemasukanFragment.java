@@ -1,6 +1,5 @@
 package com.example.aplikasita.controller.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -19,9 +18,8 @@ import android.widget.Toast;
 
 import com.example.aplikasita.R;
 import com.example.aplikasita.controller.adaptor.RecycleViewAdapter.IncomeAdaptor;
-import com.example.aplikasita.data.IncomeViewModel;
+import com.example.aplikasita.data.viewmodel.IncomeViewModel;
 import com.example.aplikasita.data.entity.Income;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 

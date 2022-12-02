@@ -1,6 +1,5 @@
 package com.example.aplikasita.controller.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -20,9 +19,8 @@ import android.widget.Toast;
 import com.example.aplikasita.R;
 import com.example.aplikasita.SecondActivity;
 import com.example.aplikasita.controller.adaptor.RecycleViewAdapter.SpendingAdaptor;
-import com.example.aplikasita.data.SpendingViewModel;
+import com.example.aplikasita.data.viewmodel.SpendingViewModel;
 import com.example.aplikasita.data.entity.Spending;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 

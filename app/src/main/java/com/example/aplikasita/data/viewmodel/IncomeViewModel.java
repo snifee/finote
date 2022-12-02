@@ -1,4 +1,4 @@
-package com.example.aplikasita.data;
+package com.example.aplikasita.data.viewmodel;
 
 import android.app.Application;
 
