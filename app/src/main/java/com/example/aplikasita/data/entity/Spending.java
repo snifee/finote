@@ -22,15 +22,11 @@ public class Spending {
     @PrimaryKey(autoGenerate = true)
     private Long id;
 
-    @ColumnInfo(name = "sumber_pengluaran")
-    private String sumberPengeluaran;
-
     @ColumnInfo(name = "jumlah")
     private Long jumlah;
 
     @ColumnInfo(name = "keterangan")
     private String keterangan;
-
 
     @ColumnInfo(name = "waktu")
     private Date waktu;
@@ -45,8 +41,7 @@ public class Spending {
 
     }
 
-    public Spending(String sumberPengeluaran, Long jumlah, String keterangan, Date waktu, String bulanTahun, String jenisPengeluaran) {
-        this.sumberPengeluaran = sumberPengeluaran;
+    public Spending(Long jumlah, String keterangan, Date waktu, String bulanTahun, String jenisPengeluaran) {
         this.jumlah = jumlah;
         this.keterangan = keterangan;
         this.waktu = waktu;
@@ -60,14 +55,6 @@ public class Spending {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getSumberPengeluaran() {
-        return sumberPengeluaran;
-    }
-
-    public void setSumberPengeluaran(String sumberPengeluaran) {
-        this.sumberPengeluaran = sumberPengeluaran;
     }
 
     public Long getJumlah() {

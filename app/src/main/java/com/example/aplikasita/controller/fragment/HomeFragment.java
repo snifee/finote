@@ -13,15 +13,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.aplikasita.MainActivity;
 import com.example.aplikasita.R;
 import com.example.aplikasita.controller.adaptor.RecycleViewAdapter.BudgetAdaptor;
 import com.example.aplikasita.data.viewmodel.BudgetViewModel;
+import com.example.aplikasita.data.viewmodel.IncomeViewModel;
 import com.example.aplikasita.data.viewmodel.MonthlyViewModel;
 import com.example.aplikasita.data.entity.Budget;
+import com.example.aplikasita.data.viewmodel.SpendingViewModel;
 import com.example.aplikasita.utils.MyStringUtils;
 
 import java.text.NumberFormat;
 import java.time.LocalDate;
+import java.time.Month;
 import java.util.Currency;
 import java.util.List;
 
@@ -30,7 +34,8 @@ public class HomeFragment extends Fragment {
     private RecyclerView recyclerView;
     private BudgetAdaptor budgetAdaptor;
     private BudgetViewModel budgetViewModel;
-    private MonthlyViewModel monthlyViewModel;
+    private SpendingViewModel spendingViewModel;
+    private IncomeViewModel incomeViewModel;
     private NumberFormat numberFormat = NumberFormat.getCurrencyInstance();;
 
     private TextView tvIncome, tvSpending,tvMonth,tvDate;
@@ -68,8 +73,11 @@ public class HomeFragment extends Fragment {
         tvIncome = view.findViewById(R.id.idHomeIncome);
         tvSpending = view.findViewById(R.id.idHomeSpending);
 
-        monthlyViewModel = ViewModelProviders.of(this).get(MonthlyViewModel.class);
-        monthlyViewModel.getSumofSpendingByMonth("JULY2022").observe(this, new Observer<Long>() {
+        LocalDate currentDateMonth = LocalDate.now();
+        String monthDateNow = currentDateMonth.getMonth().toString()+String.valueOf(currentDateMonth.getYear());
+
+        spendingViewModel = ViewModelProviders.of(this).get(SpendingViewModel.class);
+        spendingViewModel.getSumofSpendingByMonth(monthDateNow).observe(this, new Observer<Long>() {
             @Override
             public void onChanged(Long monthSpending) {
                 if (monthSpending!=null){
@@ -79,7 +87,24 @@ public class HomeFragment extends Fragment {
 
                     tvSpending.setText(spending);
                 }else {
-                    tvSpending.setText("null");
+                    tvSpending.setText("No Spending This Month");
+                }
+
+            }
+        });
+
+        incomeViewModel = ViewModelProviders.of(this).get(IncomeViewModel.class);
+        incomeViewModel.getSumofIncomeByMonth(monthDateNow).observe(this, new Observer<Long>() {
+            @Override
+            public void onChanged(Long monthIncome) {
+                if (monthIncome!=null){
+                    numberFormat.setMaximumFractionDigits(0);
+                    numberFormat.setCurrency(Currency.getInstance("IDR"));
+                    String income = numberFormat.format(monthIncome);
+
+                    tvIncome.setText(income);
+                }else {
+                    tvIncome.setText("No Income This Month");
                 }
 
             }
@@ -87,7 +112,8 @@ public class HomeFragment extends Fragment {
 
         budgetAdaptor = new BudgetAdaptor();
         recyclerView = view.findViewById(R.id.idHomeRecycleView);
-        recyclerView.setLayoutManager( new LinearLayoutManager(view.getContext()));
+        recyclerView.setLayoutManager( new LinearLayoutManager(view.getContext(),LinearLayoutManager.HORIZONTAL,
+                false));
         recyclerView.setAdapter(budgetAdaptor);
 
         budgetViewModel = ViewModelProviders.of(this).get(BudgetViewModel.class);

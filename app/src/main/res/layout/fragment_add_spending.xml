@@ -27,26 +27,10 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_marginTop="28dp"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:hint="@string/rekening">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etAddSpendingRekening"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="number"
-                    />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-
-
-            <com.google.android.material.textfield.TextInputLayout
                 android:layout_marginTop="15dp"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
+                app:endIconMode="clear_text"
                 android:hint="@string/jumlah">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -63,6 +47,7 @@
                 android:layout_marginTop="15dp"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
+                app:endIconMode="clear_text"
                 android:hint="@string/keterangan">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -76,17 +61,17 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_marginTop="15dp"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:hint="@string/jenis_pengeluaran">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etAddSpendingJenisPengeluaran"
+                <AutoCompleteTextView
+                    android:id="@+id/idDropdownCategory"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text"
-                    />
+                    android:inputType="none"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 

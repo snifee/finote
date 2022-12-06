@@ -49,8 +49,8 @@ public class SpendingViewModel extends AndroidViewModel {
         return allSpendingByMonth;
     }
 
-//    public LiveData<Long> getSumofSpendingByMonth(String month) {
-//        this.sumofSpendingByMonth = mo.getSumofSpendingByMonth(month);
-//        return sumofSpendingByMonth;
-//    }
+    public LiveData<Long> getSumofSpendingByMonth(String month) {
+        this.sumofSpendingByMonth = spendingRepo.getSumofSpendingByMonth(month);
+        return sumofSpendingByMonth;
+    }
 }

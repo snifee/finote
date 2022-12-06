@@ -22,17 +22,6 @@
                 android:textSize="20sp"/>
 
 
-        <com.google.android.material.card.MaterialCardView
-            style="?attr/materialCardViewFilledStyle"
-            app:cardCornerRadius="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="5dp"
-                android:orientation="vertical">
                 <com.google.android.material.card.MaterialCardView
                     style="?attr/materialCardViewElevatedStyle"
                     android:layout_width="match_parent"
@@ -120,27 +109,12 @@
                     </LinearLayout>
 
                 </com.google.android.material.card.MaterialCardView>
-            </LinearLayout>
-
-        </com.google.android.material.card.MaterialCardView>
 
 
 
 
-        <com.google.android.material.card.MaterialCardView
-            style="?attr/materialCardViewFilledStyle"
-            app:cardCornerRadius="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center">
                 <TextView
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="15dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Budget"
@@ -149,12 +123,11 @@
                     android:id="@+id/idHomeRecycleView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_margin="10dp">
+                    android:layout_marginHorizontal="5dp">
 
                 </androidx.recyclerview.widget.RecyclerView>
-            </LinearLayout>
 
-        </com.google.android.material.card.MaterialCardView>
+
 
 
 </LinearLayout>

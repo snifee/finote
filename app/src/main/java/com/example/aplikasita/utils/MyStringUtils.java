@@ -1,7 +1,5 @@
 package com.example.aplikasita.utils;
 
-import androidx.room.util.StringUtil;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -9,11 +7,10 @@ import java.time.Month;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
-import java.util.Locale;
 
 public class MyStringUtils {
 
-    public static Date stringToDate(String dateString){
+    public static Date stringDateToDateTime(String dateString){
 
         LocalDateTime localDateTime;
         LocalTime localTime = LocalTime.now();
@@ -26,11 +23,9 @@ public class MyStringUtils {
             localDate = LocalDate.now();
 
         }else{
-
-            dtf = DateTimeFormatter.ofPattern("dd-M-yyyy");
+            dtf = DateTimeFormatter.ofPattern("d-M-yyyy");
 
             localDate = LocalDate.parse(dateString,dtf);
-
         }
 
         try{

@@ -44,23 +44,13 @@
                 />
 
         </com.google.android.material.textfield.TextInputLayout>
-<!--        <EditText-->
-<!--            -->
-<!--            android:id="@+id/textPassword"-->
-<!--            android:layout_width="159dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:hint="@string/insert_password"-->
-<!--            android:importantForAutofill="no"-->
-<!--            android:inputType="textPassword"-->
-<!--            android:minHeight="48dp"-->
-<!--            android:textColorHint="#757575"-->
-<!--            android:layout_margin="10sp"/>-->
 
         <Button
-            style="@style/Widget.Material3.Button.ElevatedButton"
+            style="@style/Widget.Material3.Button.ElevatedButton.Icon"
             android:id="@+id/loginButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:icon="@drawable/ic_login"
             android:text="@string/login"
             android:layout_margin="10sp"/>
     </LinearLayout>

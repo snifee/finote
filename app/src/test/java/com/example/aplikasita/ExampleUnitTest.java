@@ -10,6 +10,7 @@ import com.example.aplikasita.utils.MyStringUtils;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
@@ -68,34 +69,13 @@ public class ExampleUnitTest {
     @Test
     public void test3(){
 
-//        try{
-//            String date = "02-04-2022";
-//
-//            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("hh:mm:ss");
-//
-//            LocalTime localTime = LocalTime.now();
-//
-//            LocalDate localDate = LocalDate.parse(date,DateTimeFormatter.ofPattern("dd-M-yyyy"));
-//
-//
-//            LocalDateTime ldt = LocalDateTime.of(localDate,localTime);
-//
-//            System.out.println(ldt.format(DateTimeFormatter.ofPattern("dd-M-yyyy hh:mm:ss")));
-//        }catch (Exception e){
-//
-//        }
+        LocalDate d = LocalDate.now();
 
-        int m = MyStringUtils.stringToDate("02-05-2022").getMonth();
-        int y = MyStringUtils.stringToDate("02-05-2022").getYear();
+        String date = d.format(DateTimeFormatter.ofPattern("dd-M-yyyy"));
 
-        String month = Month.of(m+1).toString();
+        Date date1 = MyStringUtils.stringDateToDateTime(date);
 
-        Date date = MyStringUtils.stringToDate("02-05-2022");
-
-        System.out.println(MyStringUtils.getMonthYear(date));
-
-        System.out.println(MyStringUtils.myCapitalizefunc("SAUK"));
-
+        System.out.println(date1);
 
     }
 }

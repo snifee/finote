@@ -27,12 +27,10 @@ public interface MonthlyDao {
 //            "GROUP BY spending_table.bulan_tahun")
 //    LiveData<List<MonthlyCashFlow>> getMonthly();
 
-    @Query("SELECT SUM(jumlah) AS spendingTotal, bulan_tahun AS monthYear FROM spending_table GROUP BY bulan_tahun")
-    LiveData<List<MonthlySpending>> getMonthlySpending();
-
 //    @Query("SELECT SUM(jumlah) as totalIncome, bulan_tahun as monthYear FROM income_table GROUP BY bulan_tahun")
 //    LiveData<List<MonthlyIncome>> getMonthlyIncome();
 
-    @Query("SELECT SUM(jumlah) FROM spending_table WHERE bulan_tahun LIKE :rqbulanTahun")
-    LiveData<Long> getSumSpendingByMonth(String rqbulanTahun);
+    @Query("SELECT SUM(jumlah) AS spendingTotal, bulan_tahun AS monthYear FROM spending_table GROUP BY bulan_tahun")
+    LiveData<List<MonthlySpending>> getMonthlySpending();
+
 }

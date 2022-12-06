@@ -46,7 +46,6 @@ public class SpendingAdaptor extends RecyclerView.Adapter<SpendingAdaptor.Spendi
 
         SimpleDateFormat sdf = new SimpleDateFormat();
 
-        holder.tvRekening.setText(String.valueOf(currentSpending.getSumberPengeluaran()));
         holder.tvSpending.setText(spending);
         holder.tvKeterangan.setText(currentSpending.getKeterangan());
         holder.tvDate.setText(sdf.format(currentSpending.getWaktu()));
@@ -65,7 +64,6 @@ public class SpendingAdaptor extends RecyclerView.Adapter<SpendingAdaptor.Spendi
         public SpendingViewHolder(View view){
             super(view);
 
-            tvRekening = view.findViewById(R.id.idTvSpendingRekening);
             tvSpending = view.findViewById(R.id.tvSpendingAmount);
             tvKeterangan = view.findViewById(R.id.idTvSpendingKet);
             tvDate = view.findViewById(R.id.idTvSpendingDate);

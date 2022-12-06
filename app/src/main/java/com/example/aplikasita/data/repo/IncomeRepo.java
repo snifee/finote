@@ -13,10 +13,11 @@ import java.util.List;
 
 public class IncomeRepo {
 
-//    @
     private IncomeDao incomeDao;
     private LiveData<List<Income>> allIncome;
     private LiveData<List<Income>> incomeByMonthYear;
+    private LiveData<Long> sumOfIncomeByMonth;
+
 
     public  IncomeRepo(Application application){
         AppDatabase database = AppDatabase.getDB(application);
@@ -50,6 +51,11 @@ public class IncomeRepo {
     public LiveData<List<Income>> getIncomeByMonthYear(String monthYear) {
         incomeByMonthYear = incomeDao.getIncomeByYearMonth(monthYear);
         return incomeByMonthYear;
+    }
+
+    public LiveData<Long> getSumOfIncomeByMonth(String monthYear) {
+        sumOfIncomeByMonth = incomeDao.getSumIncomeByMonth(monthYear);
+        return sumOfIncomeByMonth;
     }
 
     private static class InsertIncomeAsyncTask extends AsyncTask<Income, Void,Void>{

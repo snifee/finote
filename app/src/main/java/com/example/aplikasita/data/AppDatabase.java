@@ -23,7 +23,7 @@ import com.example.aplikasita.utils.MyStringUtils;
 import java.util.Date;
 
 
-@Database(entities = {Spending.class, Income.class, Budget.class}, version =2)
+@Database(entities = {Spending.class, Income.class, Budget.class}, version =1)
 @TypeConverters({DateConverter.class})
 public abstract class AppDatabase extends RoomDatabase {
 
@@ -42,7 +42,7 @@ public abstract class AppDatabase extends RoomDatabase {
             synchronized (AppDatabase.class){
                 if (appDatabase == null){
                     appDatabase = Room.databaseBuilder(context.getApplicationContext(),
-                            AppDatabase.class, "fino.db")
+                            AppDatabase.class, "database1.db")
                             .addCallback(roomCallback)
                             .fallbackToDestructiveMigration()
                             .build();
@@ -88,27 +88,27 @@ public abstract class AppDatabase extends RoomDatabase {
 
             try{
 
-                Date date1 = MyStringUtils.stringToDate("02-05-2022");
+                Date date1 = MyStringUtils.stringDateToDateTime("02-05-2022 12:12:12");
                 String month1 = MyStringUtils.getMonthYear(date1);
 
                 incomeDao.insert(new Income("123", 230000L,date1, month1,"beli rumah"));
                 incomeDao.insert(new Income("123", 10000L,date1,month1,"beli saham"));
 
-                spendingDao.insert(new Spending("03628293", 23000L,"beli rumah",date1,month1,"Primer"));
-                spendingDao.insert(new Spending("03628293", 23000L,"beli rumah",date1,month1,"Sekunder"));
-                spendingDao.insert(new Spending("03628293", 23000L,"beli rumah",date1,month1,"Sekunder"));
-                spendingDao.insert(new Spending("03628293", 23000L,"beli rumah",date1,month1,"Primer"));
+                spendingDao.insert(new Spending(23000L,"beli rumah",date1,month1,"Primer"));
+                spendingDao.insert(new Spending(23000L,"beli rumah",date1,month1,"Sekunder"));
+                spendingDao.insert(new Spending(23000L,"beli rumah",date1,month1,"Sekunder"));
+                spendingDao.insert(new Spending(23000L,"beli rumah",date1,month1,"Primer"));
 
-                Date date2 = MyStringUtils.stringToDate("02-07-2022");
+                Date date2 = MyStringUtils.stringDateToDateTime("02-07-2022 12:12:12");
                 String month2 = MyStringUtils.getMonthYear(date2);
 
                 incomeDao.insert(new Income("123", 230000L,date2, month2,"beli rumah"));
                 incomeDao.insert(new Income("123", 10000L,date2,month2,"beli saham"));
 
-                spendingDao.insert(new Spending("03628293", 23000L,"beli rumah",date2,month2,"Primer"));
-                spendingDao.insert(new Spending("03628293", 23000L,"beli rumah",date2,month2,"Sekunder"));
-                spendingDao.insert(new Spending("03628293", 23000L,"beli rumah",date2,month2,"Sekunder"));
-                spendingDao.insert(new Spending("03628293", 23000L,"beli rumah",date2,month2,"Primer"));
+                spendingDao.insert(new Spending(23000L,"beli rumah",date2,month2,"Primer"));
+                spendingDao.insert(new Spending(23000L,"beli rumah",date2,month2,"Sekunder"));
+                spendingDao.insert(new Spending(23000L,"beli rumah",date2,month2,"Sekunder"));
+                spendingDao.insert(new Spending(23000L,"beli rumah",date2,month2,"Primer"));
 
 
                 budgetDao.insert(new Budget(EnumCategory.Sandang.name(), EnumCategory.Sandang.name(), 50000L));

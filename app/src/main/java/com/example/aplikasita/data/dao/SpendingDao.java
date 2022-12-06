@@ -34,8 +34,7 @@ public interface SpendingDao {
     @Query("SELECT * FROM spending_table WHERE bulan_tahun LIKE :rqbulanTahun")
     LiveData<List<Spending>> getAllSpendingByMonth(String rqbulanTahun);
 
-//    @Query("SELECT SUM(jumlah) FROM spending_table WHERE bulan_tahun LIKE :rqbulanTahun")
-//    LiveData<Long> getSumSpendingByMonth(String rqbulanTahun);
-
+    @Query("SELECT SUM(jumlah) FROM spending_table WHERE bulan_tahun LIKE :rqbulanTahun")
+    LiveData<Long> getSumSpendingByMonth(String rqbulanTahun);
 
 }

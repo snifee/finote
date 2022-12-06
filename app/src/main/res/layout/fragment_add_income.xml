@@ -31,6 +31,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_marginTop="28dp"
                 android:layout_width="250dp"
+                app:endIconMode="clear_text"
                 android:layout_height="wrap_content"
                 android:hint="@string/tujuan_penyimpanan">
 
@@ -43,18 +44,10 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!--            <EditText-->
-            <!--                android:id="@+id/etJumlah"-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_marginTop="32dp"-->
-            <!--                android:ems="10"-->
-            <!--                android:hint="@string/jumlah"-->
-            <!--                android:inputType="number" />-->
-
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_marginTop="15dp"
                 android:layout_width="250dp"
+                app:endIconMode="clear_text"
                 android:layout_height="wrap_content"
                 android:hint="@string/jumlah">
 
@@ -68,19 +61,12 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!--            <EditText-->
-            <!--                android:id="@+id/etKeterangan"-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_marginTop="32dp"-->
-            <!--                android:ems="10"-->
-            <!--                android:hint="@string/keterangan"-->
-            <!--                android:inputType="text" />-->
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_marginTop="15dp"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
+                app:endIconMode="clear_text"
                 android:hint="@string/keterangan">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -106,7 +92,7 @@
                 android:layout_marginTop="15dp"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:hint="@string/keterangan">
+                android:hint="@string/tanggal">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etDate"

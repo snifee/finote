@@ -15,6 +15,7 @@ public class IncomeViewModel extends AndroidViewModel {
     private IncomeRepo incomeRepo;
     private LiveData<List<Income>> allIncome;
     private LiveData<List<Income>> incomeByMonthYear;
+    private LiveData<Long> sumofIncomeByMonth;
 
     public IncomeViewModel(@NonNull Application application) {
         super(application);
@@ -45,5 +46,10 @@ public class IncomeViewModel extends AndroidViewModel {
     public LiveData<List<Income>> getIncomeByMonthYear(String monthYear) {
         incomeByMonthYear = incomeRepo.getIncomeByMonthYear(monthYear);
         return incomeByMonthYear;
+    }
+
+    public LiveData<Long> getSumofIncomeByMonth(String monthYear) {
+        sumofIncomeByMonth = incomeRepo.getSumOfIncomeByMonth(monthYear);
+        return sumofIncomeByMonth;
     }
 }

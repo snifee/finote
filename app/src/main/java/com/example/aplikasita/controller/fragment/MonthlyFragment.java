@@ -21,6 +21,7 @@ import com.example.aplikasita.R;
 import com.example.aplikasita.SecondActivity;
 import com.example.aplikasita.controller.adaptor.RecycleViewAdapter.MonthAdaptor;
 import com.example.aplikasita.data.viewmodel.MonthlyViewModel;
+import com.example.aplikasita.data.viewmodel.SpendingViewModel;
 import com.example.aplikasita.model.MonthlySpending;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -32,6 +33,7 @@ public class MonthlyFragment extends Fragment {
     public static int ADD_CF_RQ =2;
 
     private RecyclerView recyclerView;
+    private SpendingViewModel spendingViewModel;
     private MonthlyViewModel monthlyViewModel;
     private MonthAdaptor monthAdaptor;
 
