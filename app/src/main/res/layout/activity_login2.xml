@@ -5,8 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/bkg_12_december">
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,13 +30,15 @@
         android:gravity="center">
 
         <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:id="@+id/textPassword"
-            android:layout_width="160dp"
-            android:layout_height="50dp"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
             app:endIconMode="password_toggle"
             android:hint="@string/insert_password">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textPasswordInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"

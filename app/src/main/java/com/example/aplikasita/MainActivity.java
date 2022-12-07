@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.aplikasita.controller.fragment.BudgetFragment;
 import com.example.aplikasita.controller.fragment.MonthlyFragment;
 import com.example.aplikasita.controller.fragment.HomeFragment;
 import com.example.aplikasita.data.viewmodel.IncomeViewModel;
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     HomeFragment homeFragment = new HomeFragment();
     MonthlyFragment monthlyFragment = new MonthlyFragment();
+    BudgetFragment budgetFragment = new BudgetFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -27,7 +29,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         setContentView(R.layout.activity_main);
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
-
 
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
 
@@ -45,6 +46,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
             case R.id.page_2:
                 getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, monthlyFragment).commit();
+                return true;
+
+            case R.id.page_3:
+                getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, budgetFragment).commit();
                 return true;
         }
         return false;

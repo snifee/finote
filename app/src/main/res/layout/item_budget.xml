@@ -3,22 +3,22 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:layout_marginRight="5dp">
+    android:orientation="vertical">
 
 
     <com.google.android.material.card.MaterialCardView
         style="?attr/materialCardViewElevatedStyle"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginVertical="3dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_margin="3dp"
         app:cardCornerRadius="10dp"
         android:minHeight="30dp"
         android:minWidth="0dp">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center_vertical"
             android:orientation="vertical"
             android:paddingHorizontal="20dp"
             android:paddingVertical="20sp">
@@ -29,11 +29,13 @@
                 android:text="Kuota Internet"
                 android:textSize="12sp"/>
             <TextView
+                android:drawableLeft="@drawable/ic_energy"
                 android:id="@+id/idBudgetCategory"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sandang"
+                android:text=" Sandang"
                 android:textSize="10sp"
+                android:layout_marginBottom="10dp"
                 android:fontFamily="@font/poppins_light"/>
 
             <TextView
@@ -42,6 +44,20 @@
                 android:layout_height="wrap_content"
                 android:text="Rp.200.000,00"
                 android:textSize="10sp"/>
+
+            <ProgressBar
+                android:layout_width="match_parent"
+                android:layout_height="1sp"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:id="@+id/idProggressBarIndicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="20% of Rp.200.000,00"
+                android:fontFamily="@font/poppins_light"
+                android:textSize="7sp"/>
         </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>

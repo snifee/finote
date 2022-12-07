@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.aplikasita.MainActivity;
@@ -31,9 +32,7 @@ import java.util.List;
 
 public class HomeFragment extends Fragment {
 
-    private RecyclerView recyclerView;
-    private BudgetAdaptor budgetAdaptor;
-    private BudgetViewModel budgetViewModel;
+    private ProgressBar progressBar;
     private SpendingViewModel spendingViewModel;
     private IncomeViewModel incomeViewModel;
     private NumberFormat numberFormat = NumberFormat.getCurrencyInstance();;
@@ -56,6 +55,10 @@ public class HomeFragment extends Fragment {
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        progressBar = view.findViewById(R.id.idProggressBarSpending);
+        progressBar.setProgress(0);
+
 
         localDate = LocalDate.now();
         currentMonth = localDate.getMonth().toString();
@@ -86,6 +89,10 @@ public class HomeFragment extends Fragment {
                     String spending = numberFormat.format(monthSpending);
 
                     tvSpending.setText(spending);
+
+                    Long progressValue = (monthSpending/1000000)*100;
+
+                    progressBar.setProgress(progressValue.intValue());
                 }else {
                     tvSpending.setText("No Spending This Month");
                 }
@@ -109,21 +116,6 @@ public class HomeFragment extends Fragment {
 
             }
         });
-
-        budgetAdaptor = new BudgetAdaptor();
-        recyclerView = view.findViewById(R.id.idHomeRecycleView);
-        recyclerView.setLayoutManager( new LinearLayoutManager(view.getContext(),LinearLayoutManager.HORIZONTAL,
-                false));
-        recyclerView.setAdapter(budgetAdaptor);
-
-        budgetViewModel = ViewModelProviders.of(this).get(BudgetViewModel.class);
-        budgetViewModel.getAllBudget().observe(this, new Observer<List<Budget>>() {
-            @Override
-            public void onChanged(List<Budget> budgets) {
-                budgetAdaptor.setListBudget(budgets);
-            }
-        });
-
 
         return view;
     }

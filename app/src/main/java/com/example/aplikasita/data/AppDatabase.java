@@ -20,12 +20,17 @@ import com.example.aplikasita.data.entity.Spending;
 import com.example.aplikasita.utils.EnumCategory;
 import com.example.aplikasita.utils.MyStringUtils;
 
+import net.sqlcipher.database.SupportFactory;
+
 import java.util.Date;
+
 
 
 @Database(entities = {Spending.class, Income.class, Budget.class}, version =1)
 @TypeConverters({DateConverter.class})
 public abstract class AppDatabase extends RoomDatabase {
+
+    private static final String DB_NAME = "stuff.db";
 
     public abstract SpendingDao spendingDao();
 
@@ -42,7 +47,7 @@ public abstract class AppDatabase extends RoomDatabase {
             synchronized (AppDatabase.class){
                 if (appDatabase == null){
                     appDatabase = Room.databaseBuilder(context.getApplicationContext(),
-                            AppDatabase.class, "database1.db")
+                            AppDatabase.class, DB_NAME)
                             .addCallback(roomCallback)
                             .fallbackToDestructiveMigration()
                             .build();
@@ -88,7 +93,7 @@ public abstract class AppDatabase extends RoomDatabase {
 
             try{
 
-                Date date1 = MyStringUtils.stringDateToDateTime("02-05-2022 12:12:12");
+                Date date1 = MyStringUtils.stringDateToDateTime("02-12-2022");
                 String month1 = MyStringUtils.getMonthYear(date1);
 
                 incomeDao.insert(new Income("123", 230000L,date1, month1,"beli rumah"));
@@ -99,7 +104,7 @@ public abstract class AppDatabase extends RoomDatabase {
                 spendingDao.insert(new Spending(23000L,"beli rumah",date1,month1,"Sekunder"));
                 spendingDao.insert(new Spending(23000L,"beli rumah",date1,month1,"Primer"));
 
-                Date date2 = MyStringUtils.stringDateToDateTime("02-07-2022 12:12:12");
+                Date date2 = MyStringUtils.stringDateToDateTime("02-07-2022");
                 String month2 = MyStringUtils.getMonthYear(date2);
 
                 incomeDao.insert(new Income("123", 230000L,date2, month2,"beli rumah"));

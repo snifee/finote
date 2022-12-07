@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     tools:context=".controller.fragment.MonthlyFragment"
     android:padding="10dp"
+    android:background="@drawable/bkg_11_november"
     >
 
     <!-- TODO: Update blank fragment layout -->

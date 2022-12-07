@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
+import com.example.aplikasita.data.AppDatabase;
 import com.example.aplikasita.data.entity.Budget;
 import com.example.aplikasita.data.entity.Income;
 import com.example.aplikasita.data.repo.BudgetRepo;
@@ -16,6 +17,7 @@ import java.util.List;
 public class BudgetViewModel extends AndroidViewModel {
     private BudgetRepo budgetRepo;
     private LiveData<List<Budget>> allBudget;
+    private AppDatabase database;
 
     public BudgetViewModel(@NonNull Application application) {
         super(application);

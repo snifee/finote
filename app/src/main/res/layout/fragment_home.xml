@@ -50,16 +50,18 @@
                             android:id="@+id/idHomeSpending"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/ic_money"
                             android:text="Rp.2.000.000,00"
                             android:textSize="11sp"
                             android:fontFamily="@font/poppins_light"/>
 
-                        <com.google.android.material.progressindicator.LinearProgressIndicator
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="15sp">
 
-                        </com.google.android.material.progressindicator.LinearProgressIndicator>
+                            <ProgressBar
+                                android:id="@+id/idProggressBarSpending"
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:max="100"/>
 
                         <TextView
                             android:id="@+id/idProggressSpending"
@@ -101,6 +103,7 @@
                             android:id="@+id/idHomeIncome"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/ic_money"
                             android:text="Rp.2.000.000,00"
                             android:textSize="11sp"
                             android:fontFamily="@font/poppins_light"
@@ -113,19 +116,7 @@
 
 
 
-                <TextView
-                    android:layout_marginTop="15dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Budget"
-                    android:textSize="20sp"/>
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/idHomeRecycleView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginHorizontal="5dp">
 
-                </androidx.recyclerview.widget.RecyclerView>
 
 
 

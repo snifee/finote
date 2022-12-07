@@ -9,4 +9,10 @@
         android:enabled="true"
         android:icon="@drawable/ic_menu"
         android:title="@string/monthly"/>
+
+    <item
+        android:id="@+id/page_3"
+        android:enabled="true"
+        android:icon="@drawable/ic_shopping"
+        android:title="@string/budget"/>
 </menu>
