@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddBudgetActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+
+
+
+            <TextView
+                android:id="@+id/addTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/add_budget"
+                android:textSize="20sp" />
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_marginTop="28dp"
+                android:layout_width="250dp"
+                app:endIconMode="clear_text"
+                android:layout_height="wrap_content"
+                android:hint="@string/kebutuhan">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etBudgetKebutuhan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_marginTop="15dp"
+                android:layout_width="250dp"
+                app:endIconMode="clear_text"
+                android:layout_height="wrap_content"
+                android:hint="@string/jumlah">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etBudgetJumlah"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="number"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_marginTop="15dp"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                app:endIconMode="clear_text"
+                android:hint="@string/keterangan">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etBudgetCategory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="text"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <Button
+                style="@style/Widget.Material3.Button.ElevatedButton"
+                android:id="@+id/submitButtonBudget"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30sp"
+                android:text="@string/submit"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

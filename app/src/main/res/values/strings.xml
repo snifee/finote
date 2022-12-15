@@ -33,6 +33,8 @@
     <string name="budget">Budget</string>
     <string name="monthly">Monthly</string>
     <string name="home">Home</string>
+    <string name="add_budget">Add Budget</string>
+    <string name="kebutuhan">Kebutuhan</string>
 
     <string-array name="category">
         <item>Sandang</item>

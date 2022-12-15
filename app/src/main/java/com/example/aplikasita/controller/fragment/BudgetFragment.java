@@ -38,7 +38,7 @@ public class BudgetFragment extends Fragment {
 
         budgetAdaptor = new BudgetAdaptor();
         recyclerView = view.findViewById(R.id.idBudgetRecycleView);
-        recyclerView.setLayoutManager( new GridLayoutManager(view.getContext(),2));
+        recyclerView.setLayoutManager( new LinearLayoutManager(view.getContext(),LinearLayoutManager.HORIZONTAL,false));
         recyclerView.setAdapter(budgetAdaptor);
 
         budgetViewModel = ViewModelProviders.of(this).get(BudgetViewModel.class);

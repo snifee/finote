@@ -20,13 +20,14 @@ import com.example.aplikasita.data.entity.Spending;
 import com.example.aplikasita.utils.EnumCategory;
 import com.example.aplikasita.utils.MyStringUtils;
 
+import net.sqlcipher.database.SQLiteDatabase;
 import net.sqlcipher.database.SupportFactory;
 
 import java.util.Date;
 
 
 
-@Database(entities = {Spending.class, Income.class, Budget.class}, version =1)
+@Database(entities = {Spending.class, Income.class, Budget.class}, version =3)
 @TypeConverters({DateConverter.class})
 public abstract class AppDatabase extends RoomDatabase {
 
@@ -43,6 +44,7 @@ public abstract class AppDatabase extends RoomDatabase {
     private static volatile AppDatabase appDatabase;
 
     public static AppDatabase getDB(final Context context){
+
         if (appDatabase == null){
             synchronized (AppDatabase.class){
                 if (appDatabase == null){

@@ -19,7 +19,8 @@
         android:id="@+id/idBudgetRecycleView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginHorizontal="5dp">
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginVertical="20dp">
 
     </androidx.recyclerview.widget.RecyclerView>
 
