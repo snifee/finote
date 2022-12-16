@@ -20,7 +20,6 @@ public class BudgetRepo {
     public  BudgetRepo(Application application){
         AppDatabase database = AppDatabase.getDB(application);
         budgetDao = database.budgetDao();
-
         allBudget = budgetDao.getAllBudget();
 
     }

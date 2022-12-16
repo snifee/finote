@@ -27,11 +27,11 @@ import java.util.Date;
 
 
 
-@Database(entities = {Spending.class, Income.class, Budget.class}, version =3)
+@Database(entities = {Spending.class, Income.class, Budget.class}, version =2)
 @TypeConverters({DateConverter.class})
 public abstract class AppDatabase extends RoomDatabase {
 
-    private static final String DB_NAME = "stuff.db";
+    private static final String DB_NAME = "duubub.db";
 
     public abstract SpendingDao spendingDao();
 
@@ -48,8 +48,9 @@ public abstract class AppDatabase extends RoomDatabase {
         if (appDatabase == null){
             synchronized (AppDatabase.class){
                 if (appDatabase == null){
+                    SupportFactory factory = new SupportFactory(SQLiteDatabase.getBytes("password".toCharArray()));
                     appDatabase = Room.databaseBuilder(context.getApplicationContext(),
-                            AppDatabase.class, DB_NAME)
+                            AppDatabase.class, "hallo.db")
                             .addCallback(roomCallback)
                             .fallbackToDestructiveMigration()
                             .build();
