@@ -43,12 +43,12 @@ public abstract class AppDatabase extends RoomDatabase {
 
     private static volatile AppDatabase appDatabase;
 
-    public static AppDatabase getDB(final Context context){
+    public static AppDatabase getDB(final Context context, String password){
 
         if (appDatabase == null){
             synchronized (AppDatabase.class){
                 if (appDatabase == null){
-                    SupportFactory factory = new SupportFactory(SQLiteDatabase.getBytes("password".toCharArray()));
+                    SupportFactory factory = new SupportFactory(SQLiteDatabase.getBytes(password.toCharArray()));
                     appDatabase = Room.databaseBuilder(context.getApplicationContext(),
                             AppDatabase.class, DB_NAME)
                             .addCallback(roomCallback)
@@ -61,6 +61,7 @@ public abstract class AppDatabase extends RoomDatabase {
 
         return appDatabase;
     };
+
 
 
 

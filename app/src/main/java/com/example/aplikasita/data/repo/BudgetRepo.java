@@ -18,7 +18,7 @@ public class BudgetRepo {
     private LiveData<List<Budget>> allBudget;
 
     public  BudgetRepo(Application application){
-        AppDatabase database = AppDatabase.getDB(application);
+        AppDatabase database = AppDatabase.getDB(application,"password");
         budgetDao = database.budgetDao();
         allBudget = budgetDao.getAllBudget();
 

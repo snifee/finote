@@ -9,9 +9,7 @@ import android.widget.Toast;
 
 import com.example.aplikasita.data.entity.Budget;
 import com.example.aplikasita.data.viewmodel.BudgetViewModel;
-import com.example.aplikasita.data.viewmodel.IncomeViewModel;
-
-import java.text.ParseException;
+import com.example.aplikasita.utils.MyStringUtils;
 
 public class AddBudgetActivity extends AppCompatActivity {
 
@@ -23,8 +21,8 @@ public class AddBudgetActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_budget);
 
-        etJumlahKebutuhan = findViewById(R.id.etBudgetJumlah);
-        etKebutuhan = findViewById(R.id.etBudgetKebutuhan);
+        etJumlahKebutuhan = findViewById(R.id.etJumlahBudget);
+        etKebutuhan = findViewById(R.id.etKebutuhan);
         etKategoriKebutuhan = findViewById(R.id.etBudgetCategory);
 
         String kebutuhan = etKebutuhan.getText().toString();
@@ -42,7 +40,6 @@ public class AddBudgetActivity extends AppCompatActivity {
         }catch (Exception e){
             Toast.makeText(this,"Gagal Menyimpan",Toast.LENGTH_SHORT).show();
         }
-
 
     }
 }

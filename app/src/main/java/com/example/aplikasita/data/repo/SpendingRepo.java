@@ -20,7 +20,7 @@ public class SpendingRepo {
     private LiveData<Long> sumofSpendingByMonth;
 
     public SpendingRepo(Application application){
-        AppDatabase database = AppDatabase.getDB(application);
+        AppDatabase database = AppDatabase.getDB(application,"password");
         spendingDao = database.spendingDao();
 
         allSpending = spendingDao.getAllSpending();

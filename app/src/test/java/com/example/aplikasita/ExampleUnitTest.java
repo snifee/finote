@@ -7,6 +7,7 @@ import static org.junit.Assert.*;
 
 import com.example.aplikasita.utils.MyStringUtils;
 
+import java.security.Key;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -77,5 +78,12 @@ public class ExampleUnitTest {
 
         System.out.println(date1);
 
+    }
+
+    @Test
+    public void test4()  throws Exception{
+        Key key = CryptManager.getKey("passwordpassword");
+
+        System.out.println(key.getEncoded().length);
     }
 }

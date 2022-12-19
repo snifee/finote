@@ -17,7 +17,7 @@ public class MonthlyRepo {
     private LiveData<List<MonthlySpending>> allMonthSpening;
 
     public MonthlyRepo(Application application){
-        AppDatabase database = AppDatabase.getDB(application);
+        AppDatabase database = AppDatabase.getDB(application,"password");
         monthlyDao = database.monthlyDao();
 
         this.allMonthSpening = monthlyDao.getMonthlySpending();

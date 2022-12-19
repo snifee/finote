@@ -20,7 +20,7 @@ public class IncomeRepo {
 
 
     public  IncomeRepo(Application application){
-        AppDatabase database = AppDatabase.getDB(application);
+        AppDatabase database = AppDatabase.getDB(application,"password");
         incomeDao = database.incomeDao();
 
         allIncome = incomeDao.getAllIncome();
