@@ -32,14 +32,13 @@ import java.util.List;
 
 public class HomeFragment extends Fragment {
 
-    private ProgressBar progressBar;
     private SpendingViewModel spendingViewModel;
+
     private IncomeViewModel incomeViewModel;
-    private NumberFormat numberFormat = NumberFormat.getCurrencyInstance();;
-
     private TextView tvIncome, tvSpending,tvMonth,tvDate;
-    private String currentMonth;
 
+    private NumberFormat numberFormat = NumberFormat.getCurrencyInstance();;
+    private String currentMonth;
     private LocalDate localDate;
 
 
@@ -56,9 +55,6 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        progressBar = view.findViewById(R.id.idProggressBarSpending);
-        progressBar.setProgress(0);
-
 
         localDate = LocalDate.now();
         currentMonth = localDate.getMonth().toString();
@@ -70,11 +66,10 @@ public class HomeFragment extends Fragment {
 
         String currentDate = MyStringUtils.myCapitalizefunc(day)+", "+date1+" "+currentMonth+" "+year;
 
-        tvMonth = view.findViewById(R.id.idHomeMonth);
-        tvMonth.setText(currentDate);
-
         tvIncome = view.findViewById(R.id.idHomeIncome);
         tvSpending = view.findViewById(R.id.idHomeSpending);
+        tvMonth = view.findViewById(R.id.idHomeMonth);
+        tvMonth.setText(currentDate);
 
         LocalDate currentDateMonth = LocalDate.now();
         String monthDateNow = currentDateMonth.getMonth().toString()+String.valueOf(currentDateMonth.getYear());
@@ -89,10 +84,6 @@ public class HomeFragment extends Fragment {
                     String spending = numberFormat.format(monthSpending);
 
                     tvSpending.setText(spending);
-
-                    Long progressValue = (monthSpending/1000000)*100;
-
-                    progressBar.setProgress(progressValue.intValue());
                 }else {
                     tvSpending.setText("No Spending This Month");
                 }

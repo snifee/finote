@@ -17,7 +17,7 @@
             android:id="@+id/RegisterTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/welcome"
+            android:text="Registration"
             android:textSize="30sp"
             app:textAllCaps="false" />
     </LinearLayout>

@@ -46,7 +46,13 @@ public class RegisterActivity extends AppCompatActivity {
 
                 if ((password.equals(password2))){
 
-                    saveToSharedPreference(password);
+                    MyPreferences.setSharedPreferencePassword(getBaseContext(),password);
+                    MyPreferences.setSharedPreferenceDBKey(getBaseContext(),"user");
+
+                    System.out.println(password);
+
+                    Intent intent = new Intent(RegisterActivity.this,MainActivity.class);
+                    startActivity(intent);
 
                 }
 
@@ -55,10 +61,5 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-
-    private void saveToSharedPreference(String data){
-        MyPreferences.setSharedPreferencePassword(getBaseContext(),password);
-        MyPreferences.setSharedPreferenceDBKey(getBaseContext(),"user");
-    }
 
 }

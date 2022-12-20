@@ -27,6 +27,14 @@
                     android:layout_height="wrap_content"
                     android:text="November"
                     android:textSize="15sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pengeluaran Bulan ini"
+                    android:fontFamily="@font/poppins_light"
+                    android:textSize="10sp"/>
+
                 <TextView
                     android:id="@+id/idSpending"
                     android:layout_width="wrap_content"

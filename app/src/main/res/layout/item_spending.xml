@@ -1,32 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
-    <com.google.android.material.card.MaterialCardView
-        style="?attr/materialCardViewFilledStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="3dp"
-        app:cardCornerRadius="10dp"
-        android:minHeight="100dp"
-        android:minWidth="0dp">
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="15sp">
+            android:paddingVertical="10sp"
+            android:paddingHorizontal="15dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_marginBottom="5sp">
+                android:orientation="horizontal">
 
                 <TextView
                     android:drawableLeft="@drawable/ic_money"
@@ -69,9 +61,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_light"
-                android:text="0885437654468"
-                android:textSize="10sp"
-                android:layout_marginBottom="10sp"/>
+                android:text=""
+                android:textSize="5sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Keterangan:"
+                android:textSize="8sp"
+                />
 
             <TextView
                 android:id="@+id/idTvSpendingKet"
@@ -83,7 +81,4 @@
 
         </LinearLayout>
 
-
-    </com.google.android.material.card.MaterialCardView>
-
-</LinearLayout>
+</FrameLayout>

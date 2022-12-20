@@ -5,6 +5,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 
+import com.example.aplikasita.utils.CryptManager;
 import com.example.aplikasita.utils.MyStringUtils;
 
 import java.security.Key;
@@ -85,5 +86,9 @@ public class ExampleUnitTest {
         Key key = CryptManager.getKey("passwordpassword");
 
         System.out.println(key.getEncoded().length);
+
+        String en = CryptManager.encryptData("helloword","passwordpassword");
+
+        System.out.println(en);
     }
 }
