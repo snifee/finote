@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.aplikasita.utils.HashingUtils;
 import com.example.aplikasita.utils.MyPreferences;
 
 public class LoginActivity extends AppCompatActivity {
@@ -31,8 +32,9 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String correctPassword = MyPreferences.getSharedPreferencePassword(getBaseContext());
+                String encodedPassword = HashingUtils.myHashFunc(passwordInput);
 
-                if (passwordInput.equals(correctPassword)){
+                if (encodedPassword.equals(correctPassword)){
                     Intent intent = new Intent(LoginActivity.this,MainActivity.class);
                     startActivity(intent);
                 }else {

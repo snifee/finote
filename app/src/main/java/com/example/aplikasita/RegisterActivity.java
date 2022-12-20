@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.aplikasita.utils.HashingUtils;
 import com.example.aplikasita.utils.MyPreferences;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -46,10 +47,12 @@ public class RegisterActivity extends AppCompatActivity {
 
                 if ((password.equals(password2))){
 
-                    MyPreferences.setSharedPreferencePassword(getBaseContext(),password);
+                    String encodedPassword = HashingUtils.myHashFunc(password);
+
+                    MyPreferences.setSharedPreferencePassword(getBaseContext(),encodedPassword);
                     MyPreferences.setSharedPreferenceDBKey(getBaseContext(),"user");
 
-                    System.out.println(password);
+                    System.out.println(encodedPassword);
 
                     Intent intent = new Intent(RegisterActivity.this,MainActivity.class);
                     startActivity(intent);

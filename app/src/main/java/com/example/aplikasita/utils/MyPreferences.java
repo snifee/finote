@@ -32,4 +32,5 @@ public class MyPreferences {
     public static String getSharedPreferencePassword(Context context) {
         return getSharedPreferences(context).getString(KEY_PASSWORD,null);
     }
+
 }

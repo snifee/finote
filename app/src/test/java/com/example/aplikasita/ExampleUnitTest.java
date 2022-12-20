@@ -7,7 +7,11 @@ import static org.junit.Assert.*;
 
 import com.example.aplikasita.utils.CryptManager;
 import com.example.aplikasita.utils.MyStringUtils;
+import com.google.common.hash.HashCode;
+import com.google.common.hash.HashFunction;
+import com.google.common.hash.Hashing;
 
+import java.nio.charset.Charset;
 import java.security.Key;
 import java.text.NumberFormat;
 import java.text.ParseException;
@@ -90,5 +94,15 @@ public class ExampleUnitTest {
         String en = CryptManager.encryptData("helloword","passwordpassword");
 
         System.out.println(en);
+    }
+
+    @Test
+    public void test5() {
+
+        HashFunction hashing = Hashing.sha256();
+
+        String password = hashing.hashString("password", Charset.defaultCharset()).toString();
+
+        System.out.println(password);
     }
 }
