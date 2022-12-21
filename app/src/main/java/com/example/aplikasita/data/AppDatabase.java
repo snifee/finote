@@ -18,6 +18,7 @@ import com.example.aplikasita.data.entity.Budget;
 import com.example.aplikasita.data.entity.Income;
 import com.example.aplikasita.data.entity.Spending;
 import com.example.aplikasita.utils.EnumCategory;
+import com.example.aplikasita.utils.MyPreferences;
 import com.example.aplikasita.utils.MyStringUtils;
 
 import net.sqlcipher.database.SQLiteDatabase;
@@ -42,6 +43,8 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract MonthlyDao monthlyDao();
 
     private static volatile AppDatabase appDatabase;
+
+
 
     public static AppDatabase getDB(final Context context, String password){
 

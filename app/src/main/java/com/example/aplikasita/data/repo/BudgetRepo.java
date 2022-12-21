@@ -10,15 +10,25 @@ import com.example.aplikasita.data.dao.IncomeDao;
 import com.example.aplikasita.data.AppDatabase;
 import com.example.aplikasita.data.entity.Budget;
 import com.example.aplikasita.data.entity.Income;
+import com.example.aplikasita.utils.CryptManager;
+import com.example.aplikasita.utils.MyPreferences;
+import com.example.aplikasita.utils.MyStringUtils;
 
 import java.util.List;
 
 public class BudgetRepo {
     private BudgetDao budgetDao;
     private LiveData<List<Budget>> allBudget;
+    private String encryptedDBPassword,dbPassword,userPassword;
 
     public  BudgetRepo(Application application){
-        AppDatabase database = AppDatabase.getDB(application,"password");
+
+        encryptedDBPassword = MyPreferences.getSharedPreferenceDBKey(application);
+        userPassword = MyPreferences.getSharedPreferencePassword(application);
+
+        dbPassword = CryptManager.decrypt(encryptedDBPassword,userPassword);
+
+        AppDatabase database = AppDatabase.getDB(application,dbPassword);
         budgetDao = database.budgetDao();
         allBudget = budgetDao.getAllBudget();
 

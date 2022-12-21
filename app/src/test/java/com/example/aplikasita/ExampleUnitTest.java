@@ -87,13 +87,15 @@ public class ExampleUnitTest {
 
     @Test
     public void test4()  throws Exception{
-        Key key = CryptManager.getKey("passwordpassword");
 
-        System.out.println(key.getEncoded().length);
 
-        String en = CryptManager.encryptData("helloword","passwordpassword");
+        String en = CryptManager.encryptData("helloworldhelloworldhelloworldhelloworldhelloworld","passwordpassword");
 
-        System.out.println(en);
+        System.out.println("Hasil enkripsi:"+en);
+
+        String de = CryptManager.decrypt(en,"passwordpassword");
+
+        System.out.println("Hasil dekripsi:"+de);
     }
 
     @Test
@@ -102,7 +104,9 @@ public class ExampleUnitTest {
         HashFunction hashing = Hashing.sha256();
 
         String password = hashing.hashString("password", Charset.defaultCharset()).toString();
+        String password2 = hashing.hashString("password", Charset.defaultCharset()).toString();
 
         System.out.println(password);
+        System.out.println(password2);
     }
 }

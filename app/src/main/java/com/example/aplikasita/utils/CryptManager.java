@@ -5,10 +5,8 @@ import android.util.Base64;
 
 import java.nio.charset.StandardCharsets;
 import java.security.Key;
-import java.security.KeyStore;
 
 import javax.crypto.Cipher;
-import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
 public class CryptManager {
@@ -18,34 +16,44 @@ public class CryptManager {
     private static final String TRANSFORM = ENCRYPT_ALGO+"/"+BLOCK_MODE+"/"+PADDING;
 
 
-    public static Key getKey(String password) throws Exception{
-        Key key = new SecretKeySpec(password.getBytes(StandardCharsets.UTF_8),ENCRYPT_ALGO);
+    public static SecretKeySpec getKey(String password) throws Exception{
 
-        return key;
+        return new SecretKeySpec(password.getBytes(StandardCharsets.UTF_8),ENCRYPT_ALGO);
     }
 
 
-    public static String encryptData(String data, String password) throws Exception{
-        Key key =  getKey(password);
+    public static String encryptData(String data, String password){
 
-        Cipher cipher = Cipher.getInstance(ENCRYPT_ALGO);
-        cipher.init(Cipher.ENCRYPT_MODE, key);
-        byte[] encryptByteVal = cipher.doFinal(data.getBytes(StandardCharsets.UTF_8));
-        String result = Base64.encodeToString(encryptByteVal, Base64.DEFAULT);
+        try {
+            Key key = getKey(password);
 
-        return result;
+            Cipher cipher = Cipher.getInstance("AES");
+            cipher.init(Cipher.ENCRYPT_MODE, key);
+            byte[] encryptByteVal = cipher.doFinal(data.getBytes());
+
+            return MyEncoder.encodeToString(encryptByteVal, Base64.DEFAULT);
+        }catch (Exception e){
+            return e.toString();
+        }
 
     }
 
-    public static String decrypt(String data,String password) throws Exception
+    public static String decrypt(String data,String password)
     {
-        Key key = getKey(password);
-        Cipher cipher = Cipher.getInstance(ENCRYPT_ALGO);
-        cipher.init(Cipher.DECRYPT_MODE, key);
-        byte[] decryptedValue64 = Base64.decode(data, Base64.DEFAULT);
-        byte [] decryptedByteValue = cipher.doFinal(decryptedValue64);
-        String decryptedValue = new String(decryptedByteValue,"utf-8");
-        return decryptedValue;
+
+        try{
+            Key key = getKey(password);
+            Cipher cipher = Cipher.getInstance("AES");
+            cipher.init(Cipher.DECRYPT_MODE, key);
+            byte[] decryptedValue64 = MyEncoder.decode(data, Base64.DEFAULT);
+            String result = new String(cipher.doFinal(decryptedValue64),"UTF-8");
+
+            return result;
+        }catch (Exception e){
+            return e.toString();
+        }
+
+
 
     }
 

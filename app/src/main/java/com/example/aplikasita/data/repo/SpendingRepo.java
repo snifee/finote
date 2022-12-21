@@ -9,6 +9,8 @@ import com.example.aplikasita.data.dao.SpendingDao;
 import com.example.aplikasita.data.AppDatabase;
 import com.example.aplikasita.data.entity.Spending;
 import com.example.aplikasita.model.MonthlyCashFlow;
+import com.example.aplikasita.utils.CryptManager;
+import com.example.aplikasita.utils.MyPreferences;
 
 import java.util.List;
 
@@ -18,9 +20,16 @@ public class SpendingRepo {
     private LiveData<List<Spending>> allSpending;
     private LiveData<List<Spending>> allSpendingByMonth;
     private LiveData<Long> sumofSpendingByMonth;
+    private String encryptedDBPassword,dbPassword,userPassword;
 
     public SpendingRepo(Application application){
-        AppDatabase database = AppDatabase.getDB(application,"password");
+
+        encryptedDBPassword = MyPreferences.getSharedPreferenceDBKey(application);
+        userPassword = MyPreferences.getSharedPreferencePassword(application);
+
+        dbPassword = CryptManager.decrypt(encryptedDBPassword,userPassword);
+
+        AppDatabase database = AppDatabase.getDB(application,dbPassword);
         spendingDao = database.spendingDao();
 
         allSpending = spendingDao.getAllSpending();

@@ -33,4 +33,9 @@ public class MyPreferences {
         return getSharedPreferences(context).getString(KEY_PASSWORD,null);
     }
 
+    public static boolean isPasswordCorrect(String password, Context context){
+        String correctPassword = getSharedPreferencePassword(context);
+
+        return password.equals(correctPassword);
+    }
 }

@@ -8,6 +8,8 @@ import androidx.lifecycle.LiveData;
 import com.example.aplikasita.data.dao.IncomeDao;
 import com.example.aplikasita.data.AppDatabase;
 import com.example.aplikasita.data.entity.Income;
+import com.example.aplikasita.utils.CryptManager;
+import com.example.aplikasita.utils.MyPreferences;
 
 import java.util.List;
 
@@ -17,10 +19,17 @@ public class IncomeRepo {
     private LiveData<List<Income>> allIncome;
     private LiveData<List<Income>> incomeByMonthYear;
     private LiveData<Long> sumOfIncomeByMonth;
+    private String encryptedDBPassword,dbPassword,userPassword;
 
 
     public  IncomeRepo(Application application){
-        AppDatabase database = AppDatabase.getDB(application,"password");
+
+        encryptedDBPassword = MyPreferences.getSharedPreferenceDBKey(application);
+        userPassword = MyPreferences.getSharedPreferencePassword(application);
+
+        dbPassword = CryptManager.decrypt(encryptedDBPassword,userPassword);
+
+        AppDatabase database = AppDatabase.getDB(application,dbPassword);
         incomeDao = database.incomeDao();
 
         allIncome = incomeDao.getAllIncome();
