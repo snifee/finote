@@ -30,11 +30,12 @@
     <string name="sumber_pengeluaran">Sumber Pengeluaran</string>
     <string name="tujuan_penyimpanan">Tujuan Penyimpanan</string>
     <string name="home_main">Home</string>
-    <string name="budget">Budget</string>
+    <string name="keperluan">Budget</string>
     <string name="monthly">Monthly</string>
     <string name="home">Home</string>
     <string name="add_budget">Add Budget</string>
     <string name="kebutuhan">Kebutuhan</string>
+    <string name="hutang">Hutang</string>
 
     <string-array name="category">
         <item>Sandang</item>

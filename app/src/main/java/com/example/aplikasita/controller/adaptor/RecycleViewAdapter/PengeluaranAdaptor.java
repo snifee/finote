@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.aplikasita.R;
-import com.example.aplikasita.data.entity.Spending;
+import com.example.aplikasita.data.entity.Pengeluaran;
 
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
@@ -17,44 +17,44 @@ import java.util.ArrayList;
 import java.util.Currency;
 import java.util.List;
 
-public class SpendingAdaptor extends RecyclerView.Adapter<SpendingAdaptor.SpendingViewHolder>{
+public class PengeluaranAdaptor extends RecyclerView.Adapter<PengeluaranAdaptor.SpendingViewHolder>{
 
-    private List<Spending> listSpending = new ArrayList<>();
+    private List<Pengeluaran> listPengeluaran = new ArrayList<>();
     private NumberFormat numberFormat = NumberFormat.getCurrencyInstance();
 
-    public SpendingAdaptor() {
+    public PengeluaranAdaptor() {
     }
 
     @NonNull
     @Override
-    public SpendingAdaptor.SpendingViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public PengeluaranAdaptor.SpendingViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
 
-        View view = layoutInflater.inflate(R.layout.item_spending,parent,false);
+        View view = layoutInflater.inflate(R.layout.item_pengeluaran,parent,false);
         return new SpendingViewHolder(view);
     }
 
 
     @Override
-    public void onBindViewHolder(@NonNull SpendingAdaptor.SpendingViewHolder holder, int position) {
-        Spending currentSpending = listSpending.get(position);
+    public void onBindViewHolder(@NonNull PengeluaranAdaptor.SpendingViewHolder holder, int position) {
+        Pengeluaran currentPengeluaran = listPengeluaran.get(position);
 
         numberFormat.setMaximumFractionDigits(0);
         numberFormat.setCurrency(Currency.getInstance("IDR"));
 
-        String spending = numberFormat.format(currentSpending.getJumlah());
+        String spending = numberFormat.format(currentPengeluaran.getJumlah());
 
         SimpleDateFormat sdf = new SimpleDateFormat();
 
         holder.tvSpending.setText(spending);
-        holder.tvKeterangan.setText(currentSpending.getKeterangan());
-        holder.tvDate.setText(sdf.format(currentSpending.getWaktu()));
-        holder.tvJenis.setText(currentSpending.getJenisPengeluaran());
+        holder.tvKeterangan.setText(currentPengeluaran.getKeterangan());
+        holder.tvDate.setText(sdf.format(currentPengeluaran.getWaktu()));
+        holder.tvJenis.setText(currentPengeluaran.getJenisPengeluaran());
     }
 
     @Override
     public int getItemCount() {
-        return (listSpending!=null) ? listSpending.size():0;
+        return (listPengeluaran !=null) ? listPengeluaran.size():0;
     }
 
     public class SpendingViewHolder extends RecyclerView.ViewHolder{
@@ -71,13 +71,13 @@ public class SpendingAdaptor extends RecyclerView.Adapter<SpendingAdaptor.Spendi
         }
     }
 
-    public Spending getSpending(int pos){
-        return listSpending.get(pos);
+    public Pengeluaran getSpending(int pos){
+        return listPengeluaran.get(pos);
     }
 
 
-    public void setListSpending(List<Spending> listSpending) {
-        this.listSpending = listSpending;
+    public void setListSpending(List<Pengeluaran> listPengeluaran) {
+        this.listPengeluaran = listPengeluaran;
         notifyDataSetChanged();
     }
 }

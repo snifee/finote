@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.aplikasita.R;
-import com.example.aplikasita.data.entity.Income;
+import com.example.aplikasita.data.entity.Pendapatan;
 
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
@@ -18,43 +18,43 @@ import java.util.Currency;
 import java.util.List;
 
 
-public class IncomeAdaptor extends RecyclerView.Adapter<IncomeAdaptor.IncomeViewHolder>{
+public class PendapatanAdaptor extends RecyclerView.Adapter<PendapatanAdaptor.IncomeViewHolder>{
 
-    private List<Income> listIncome = new ArrayList<>();
+    private List<Pendapatan> listPendapatan = new ArrayList<>();
     private NumberFormat numberFormat = NumberFormat.getCurrencyInstance();;
 
-    public IncomeAdaptor() {
+    public PendapatanAdaptor() {
     }
 
     @NonNull
     @Override
-    public IncomeAdaptor.IncomeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public PendapatanAdaptor.IncomeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
 
-        View view = layoutInflater.inflate(R.layout.item_income,parent,false);
+        View view = layoutInflater.inflate(R.layout.item_pendapatan,parent,false);
         return new IncomeViewHolder(view);
     }
 
 
     @Override
-    public void onBindViewHolder(@NonNull IncomeAdaptor.IncomeViewHolder holder, int position) {
-        Income currentIncome = listIncome.get(position);
+    public void onBindViewHolder(@NonNull PendapatanAdaptor.IncomeViewHolder holder, int position) {
+        Pendapatan currentPendapatan = listPendapatan.get(position);
 
         numberFormat.setMaximumFractionDigits(0);
         numberFormat.setCurrency(Currency.getInstance("IDR"));
-        String income = numberFormat.format(currentIncome.getJumlah());
+        String income = numberFormat.format(currentPendapatan.getJumlah());
 
         SimpleDateFormat sdf = new SimpleDateFormat();
 
-        holder.tvRekening.setText(String.valueOf(currentIncome.getNoRekening()));
+        holder.tvRekening.setText(String.valueOf(currentPendapatan.getNoRekening()));
         holder.tvIncome.setText(income);
-        holder.tvKeterangan.setText(currentIncome.getKeterangan());
-        holder.tvDate.setText(sdf.format(currentIncome.getWaktu()));
+        holder.tvKeterangan.setText(currentPendapatan.getKeterangan());
+        holder.tvDate.setText(sdf.format(currentPendapatan.getWaktu()));
     }
 
     @Override
     public int getItemCount() {
-        return (listIncome!=null) ? listIncome.size():0;
+        return (listPendapatan !=null) ? listPendapatan.size():0;
     }
 
     public class IncomeViewHolder extends RecyclerView.ViewHolder{
@@ -71,13 +71,13 @@ public class IncomeAdaptor extends RecyclerView.Adapter<IncomeAdaptor.IncomeView
         }
     }
 
-    public Income getIncome(int pos){
-        return listIncome.get(pos);
+    public Pendapatan getIncome(int pos){
+        return listPendapatan.get(pos);
     }
 
 
-    public void setListIncome(List<Income> listIncome) {
-        this.listIncome = listIncome;
+    public void setListIncome(List<Pendapatan> listPendapatan) {
+        this.listPendapatan = listPendapatan;
         notifyDataSetChanged();
     }
 }

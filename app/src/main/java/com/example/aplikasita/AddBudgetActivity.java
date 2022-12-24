@@ -7,9 +7,8 @@ import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.aplikasita.data.entity.Budget;
+import com.example.aplikasita.data.entity.Keperluan;
 import com.example.aplikasita.data.viewmodel.BudgetViewModel;
-import com.example.aplikasita.utils.MyStringUtils;
 
 public class AddBudgetActivity extends AppCompatActivity {
 
@@ -32,10 +31,10 @@ public class AddBudgetActivity extends AppCompatActivity {
         try {
             Long jumlah = Long.parseLong(jumlahString);
 
-            Budget budget = new Budget(kebutuhan,kategoriKebutuhan,jumlah);
+            Keperluan keperluan = new Keperluan(kebutuhan,kategoriKebutuhan,jumlah);
 
             budgetViewModel = ViewModelProviders.of(this).get(BudgetViewModel.class);
-            budgetViewModel.insert(budget);
+            budgetViewModel.insert(keperluan);
 
         }catch (Exception e){
             Toast.makeText(this,"Gagal Menyimpan",Toast.LENGTH_SHORT).show();

@@ -19,10 +19,10 @@ import android.widget.Toast;
 import com.example.aplikasita.AddCashflowActivity;
 import com.example.aplikasita.R;
 import com.example.aplikasita.SecondActivity;
-import com.example.aplikasita.controller.adaptor.RecycleViewAdapter.MonthAdaptor;
+import com.example.aplikasita.controller.adaptor.RecycleViewAdapter.BulanAdaptor;
 import com.example.aplikasita.data.viewmodel.MonthlyViewModel;
 import com.example.aplikasita.data.viewmodel.SpendingViewModel;
-import com.example.aplikasita.model.MonthlySpending;
+import com.example.aplikasita.dto.MonthlySpending;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
@@ -35,7 +35,7 @@ public class MonthlyFragment extends Fragment {
     private RecyclerView recyclerView;
     private SpendingViewModel spendingViewModel;
     private MonthlyViewModel monthlyViewModel;
-    private MonthAdaptor monthAdaptor;
+    private BulanAdaptor bulanAdaptor;
 
 
     public MonthlyFragment() {
@@ -46,17 +46,17 @@ public class MonthlyFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        monthAdaptor = new MonthAdaptor();
+        bulanAdaptor = new BulanAdaptor();
         View view = inflater.inflate(R.layout.fragment_monthly, container, false);
         recyclerView = view.findViewById(R.id.recycleViewMonthly);
         recyclerView.setLayoutManager( new LinearLayoutManager(view.getContext()));
-        recyclerView.setAdapter(monthAdaptor);
+        recyclerView.setAdapter(bulanAdaptor);
 
         monthlyViewModel = ViewModelProviders.of(this).get(MonthlyViewModel.class);
         monthlyViewModel.getAllMonthlySpending().observe(this, new Observer<List<MonthlySpending>>() {
             @Override
             public void onChanged(List<MonthlySpending> monthlySpendings) {
-                monthAdaptor.setListMonthSpending(monthlySpendings);
+                bulanAdaptor.setListMonthSpending(monthlySpendings);
             }
         });
 
@@ -73,7 +73,7 @@ public class MonthlyFragment extends Fragment {
             }
         }).attachToRecyclerView(recyclerView);
 
-        monthAdaptor.setOnItemClickListener(new MonthAdaptor.OnItemClickListener() {
+        bulanAdaptor.setOnItemClickListener(new BulanAdaptor.OnItemClickListener() {
             @Override
             public void onItemClick(MonthlySpending monthlySpending) {
 //                Toast.makeText(getActivity(), String.valueOf(sgbm.getSpendingTotal()), Toast.LENGTH_SHORT).show();

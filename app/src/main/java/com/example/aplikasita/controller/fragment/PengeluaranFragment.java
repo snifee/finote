@@ -19,9 +19,9 @@ import android.widget.Toast;
 
 import com.example.aplikasita.R;
 import com.example.aplikasita.SecondActivity;
-import com.example.aplikasita.controller.adaptor.RecycleViewAdapter.SpendingAdaptor;
+import com.example.aplikasita.controller.adaptor.RecycleViewAdapter.PengeluaranAdaptor;
+import com.example.aplikasita.data.entity.Pengeluaran;
 import com.example.aplikasita.data.viewmodel.SpendingViewModel;
-import com.example.aplikasita.data.entity.Spending;
 
 import java.util.List;
 
@@ -32,7 +32,7 @@ public class PengeluaranFragment extends Fragment {
     private String monthYear;
 
     private RecyclerView recyclerView;
-    private SpendingAdaptor spendingAdaptor;
+    private PengeluaranAdaptor pengeluaranAdaptor;
     private SpendingViewModel spendingViewModel;
 
 
@@ -48,19 +48,19 @@ public class PengeluaranFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_pengeluaran, container, false);
-        spendingAdaptor = new SpendingAdaptor();
+        pengeluaranAdaptor = new PengeluaranAdaptor();
         recyclerView = view.findViewById(R.id.recycleViewPengeluaran);
         recyclerView.setLayoutManager( new LinearLayoutManager(view.getContext()));
-        recyclerView.setAdapter(spendingAdaptor);
+        recyclerView.setAdapter(pengeluaranAdaptor);
         recyclerView.addItemDecoration(new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL));
 
 
         if (SecondActivity.MONTH_YEAR != null){
             spendingViewModel = ViewModelProviders.of(this).get(SpendingViewModel.class);
-            spendingViewModel.getAllSpendingByMonth(this.monthYear).observe(this, new Observer<List<Spending>>() {
+            spendingViewModel.getAllSpendingByMonth(this.monthYear).observe(this, new Observer<List<Pengeluaran>>() {
                 @Override
-                public void onChanged(@Nullable List<Spending> spendings) {
-                    spendingAdaptor.setListSpending(spendings);
+                public void onChanged(@Nullable List<Pengeluaran> pengeluarans) {
+                    pengeluaranAdaptor.setListSpending(pengeluarans);
 //                System.out.println(incomes.get(0).getMonth());
                 }
             });
@@ -78,7 +78,7 @@ public class PengeluaranFragment extends Fragment {
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                spendingViewModel.delete(spendingAdaptor.getSpending(viewHolder.getAdapterPosition()));
+                spendingViewModel.delete(pengeluaranAdaptor.getSpending(viewHolder.getAdapterPosition()));
                 Toast.makeText(getActivity(),"Deleted",Toast.LENGTH_SHORT).show();
             }
         }).attachToRecyclerView(recyclerView);

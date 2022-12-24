@@ -9,20 +9,19 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.aplikasita.R;
-import com.example.aplikasita.data.entity.Budget;
+import com.example.aplikasita.data.entity.Keperluan;
 
 import java.text.NumberFormat;
-import java.util.ArrayList;
 import java.util.Currency;
 import java.util.List;
 
 
-public class BudgetAdaptor extends RecyclerView.Adapter<BudgetAdaptor.BudgetViewHolder>{
+public class KeperluanAdaptor extends RecyclerView.Adapter<KeperluanAdaptor.BudgetViewHolder>{
 
-    private List<Budget> listBudget;
+    private List<Keperluan> listKeperluan;
     private NumberFormat numberFormat = NumberFormat.getCurrencyInstance();
 
-    public BudgetAdaptor() {
+    public KeperluanAdaptor() {
 
     }
 
@@ -31,7 +30,7 @@ public class BudgetAdaptor extends RecyclerView.Adapter<BudgetAdaptor.BudgetView
     public BudgetViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
 
-        View view = layoutInflater.inflate(R.layout.item_budget,parent,false);
+        View view = layoutInflater.inflate(R.layout.item_keperluan,parent,false);
         return new BudgetViewHolder(view);
     }
 
@@ -40,16 +39,16 @@ public class BudgetAdaptor extends RecyclerView.Adapter<BudgetAdaptor.BudgetView
 
         numberFormat.setMaximumFractionDigits(0);
         numberFormat.setCurrency(Currency.getInstance("IDR"));
-        String amount = numberFormat.format(listBudget.get(position).getJumlah());
+        String amount = numberFormat.format(listKeperluan.get(position).getJumlah());
 
-        holder.tvNeeds.setText(listBudget.get(position).getKebutuhan());
+        holder.tvNeeds.setText(listKeperluan.get(position).getKebutuhan());
         holder.tvAmount.setText(amount);
-        holder.tvNeedsCategory.setText(listBudget.get(position).getCategoryKebutuhan());
+        holder.tvNeedsCategory.setText(listKeperluan.get(position).getKategoriKebutuhan());
     }
 
     @Override
     public int getItemCount() {
-        return (listBudget!=null) ? listBudget.size():0;
+        return (listKeperluan !=null) ? listKeperluan.size():0;
     }
 
     public class BudgetViewHolder extends RecyclerView.ViewHolder{
@@ -65,8 +64,8 @@ public class BudgetAdaptor extends RecyclerView.Adapter<BudgetAdaptor.BudgetView
         }
     }
 
-    public void setListBudget(List<Budget> listBudget) {
-        this.listBudget = listBudget;
+    public void setListBudget(List<Keperluan> listKeperluan) {
+        this.listKeperluan = listKeperluan;
         notifyDataSetChanged();
     }
 }

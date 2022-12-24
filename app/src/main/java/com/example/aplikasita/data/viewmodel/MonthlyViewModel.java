@@ -7,9 +7,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.example.aplikasita.data.repo.MonthlyRepo;
-import com.example.aplikasita.model.MonthlyCashFlow;
-import com.example.aplikasita.model.MonthlyIncome;
-import com.example.aplikasita.model.MonthlySpending;
+import com.example.aplikasita.dto.MonthlySpending;
 
 import java.util.List;
 

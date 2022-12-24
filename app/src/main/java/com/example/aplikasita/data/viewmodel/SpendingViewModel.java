@@ -6,51 +6,50 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
-import com.example.aplikasita.data.entity.Spending;
-import com.example.aplikasita.data.repo.SpendingRepo;
-import com.example.aplikasita.model.MonthlyCashFlow;
+import com.example.aplikasita.data.entity.Pengeluaran;
+import com.example.aplikasita.data.repo.PengeluaranRepo;
 
 import java.util.List;
 
 public class SpendingViewModel extends AndroidViewModel {
-    private SpendingRepo spendingRepo;
-    private LiveData<List<Spending>> allSpending;
-    private LiveData<List<Spending>> allSpendingByMonth;
+    private PengeluaranRepo pengeluaranRepo;
+    private LiveData<List<Pengeluaran>> allSpending;
+    private LiveData<List<Pengeluaran>> allSpendingByMonth;
     private LiveData<Long> sumofSpendingByMonth;
 
     public SpendingViewModel(@NonNull Application application) {
         super(application);
-        this.spendingRepo = new SpendingRepo(application);
-        this.allSpending = spendingRepo.getAllSpending();
+        this.pengeluaranRepo = new PengeluaranRepo(application);
+        this.allSpending = pengeluaranRepo.getAllSpending();
     }
 
-    public void insert(Spending spending){
-        spendingRepo.insert(spending);
+    public void insert(Pengeluaran pengeluaran){
+        pengeluaranRepo.insert(pengeluaran);
     }
 
-    public void update(Spending spending){
-        spendingRepo.update(spending);
+    public void update(Pengeluaran pengeluaran){
+        pengeluaranRepo.update(pengeluaran);
     }
 
-    public void delete(Spending spending){
-        spendingRepo.delete(spending);
+    public void delete(Pengeluaran pengeluaran){
+        pengeluaranRepo.delete(pengeluaran);
     }
 
     public void deleteAll(){
-        spendingRepo.deleteAll();
+        pengeluaranRepo.deleteAll();
     }
 
-    public LiveData<List<Spending>> getAllSpending() {
+    public LiveData<List<Pengeluaran>> getAllSpending() {
         return allSpending;
     }
 
-    public LiveData<List<Spending>> getAllSpendingByMonth(String month) {
-        this.allSpendingByMonth = spendingRepo.getAllSpendingByMonth(month);
+    public LiveData<List<Pengeluaran>> getAllSpendingByMonth(String month) {
+        this.allSpendingByMonth = pengeluaranRepo.getAllSpendingByMonth(month);
         return allSpendingByMonth;
     }
 
     public LiveData<Long> getSumofSpendingByMonth(String month) {
-        this.sumofSpendingByMonth = spendingRepo.getSumofSpendingByMonth(month);
+        this.sumofSpendingByMonth = pengeluaranRepo.getSumofSpendingByMonth(month);
         return sumofSpendingByMonth;
     }
 }

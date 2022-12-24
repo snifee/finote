@@ -7,8 +7,8 @@ import androidx.viewpager.widget.ViewPager;
 import android.os.Bundle;
 
 import com.example.aplikasita.controller.adaptor.PagerAdapter;
-import com.example.aplikasita.controller.fragment.AddIncomeFragment;
-import com.example.aplikasita.controller.fragment.AddSpendingFragment;
+import com.example.aplikasita.controller.fragment.TambahPendapatanFragment;
+import com.example.aplikasita.controller.fragment.TambahPengeluaranFragment;
 import com.google.android.material.tabs.TabLayout;
 
 public class AddCashflowActivity extends AppCompatActivity {
@@ -32,8 +32,8 @@ public class AddCashflowActivity extends AppCompatActivity {
 
         PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT, tabLayout.getTabCount());
 
-        pagerAdapter.addFragment(new AddSpendingFragment());
-        pagerAdapter.addFragment(new AddIncomeFragment());
+        pagerAdapter.addFragment(new TambahPengeluaranFragment());
+        pagerAdapter.addFragment(new TambahPendapatanFragment());
 
 
         viewPager.setAdapter(pagerAdapter);

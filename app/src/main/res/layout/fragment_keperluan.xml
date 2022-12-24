@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".controller.fragment.BudgetFragment">
+    tools:context=".controller.fragment.KeperluanFragment">
 
     <TextView
         android:layout_marginTop="15dp"

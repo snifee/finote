@@ -12,22 +12,22 @@ import java.util.Currency;
 import java.util.List;
 
 import com.example.aplikasita.R;
-import com.example.aplikasita.model.MonthlySpending;
+import com.example.aplikasita.dto.MonthlySpending;
 
 
-public class MonthAdaptor extends RecyclerView.Adapter<MonthAdaptor.MonthViewHolder>{
+public class BulanAdaptor extends RecyclerView.Adapter<BulanAdaptor.MonthViewHolder>{
 
     private List<MonthlySpending> listMonthSpending;
 
     private OnItemClickListener listener;
     NumberFormat format = NumberFormat.getCurrencyInstance();
 
-    public MonthAdaptor() {
+    public BulanAdaptor() {
     }
 
     @NonNull
     @Override
-    public MonthAdaptor.MonthViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public BulanAdaptor.MonthViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
 
         View view = layoutInflater.inflate(R.layout.item_month,parent,false);
@@ -35,7 +35,7 @@ public class MonthAdaptor extends RecyclerView.Adapter<MonthAdaptor.MonthViewHol
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MonthAdaptor.MonthViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull BulanAdaptor.MonthViewHolder holder, int position) {
 
         format.setMaximumFractionDigits(0);
         format.setCurrency(Currency.getInstance("IDR"));

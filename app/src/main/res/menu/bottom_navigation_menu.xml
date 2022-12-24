@@ -14,5 +14,11 @@
         android:id="@+id/page_3"
         android:enabled="true"
         android:icon="@drawable/ic_shopping"
-        android:title="@string/budget"/>
+        android:title="@string/keperluan"/>
+
+    <item
+        android:id="@+id/page_4"
+        android:enabled="true"
+        android:icon="@drawable/ic_money"
+        android:title="@string/hutang"/>
 </menu>

@@ -1,22 +1,12 @@
-package com.example.aplikasita.model;
+package com.example.aplikasita.dto;
 
-public class MonthlyCashFlow {
-    private float spendingTotal;
+public class MonthlyIncome {
     private float incomeTotal;
     private String dateYear;
 
-    public MonthlyCashFlow(float spendingTotal, float incomeTotal, String dateYear) {
-        this.spendingTotal = spendingTotal;
+    public MonthlyIncome(float spendingTotal, float incomeTotal, String dateYear) {
         this.incomeTotal = incomeTotal;
         this.dateYear = dateYear;
-    }
-
-    public float getSpendingTotal() {
-        return spendingTotal;
-    }
-
-    public void setSpendingTotal(float spendingTotal) {
-        this.spendingTotal = spendingTotal;
     }
 
     public float getIncomeTotal() {

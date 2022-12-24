@@ -5,23 +5,23 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "budget_table")
-public class Budget {
+@Entity(tableName = "tabel_keperluan")
+public class Keperluan {
     @PrimaryKey(autoGenerate = true)
     private Long id;
 
     @ColumnInfo(name = "kebutuhan")
     private String kebutuhan;
 
-    @ColumnInfo(name = "category_kebutuhan")
-    private String categoryKebutuhan;
+    @ColumnInfo(name = "katagori_kebutuhan")
+    private String kategoriKebutuhan;
 
     @ColumnInfo(name = "jumlah")
     private Long jumlah;
 
-    public Budget(String kebutuhan, String categoryKebutuhan, Long jumlah) {
+    public Keperluan(String kebutuhan, String kategoriKebutuhan, Long jumlah) {
         this.kebutuhan = kebutuhan;
-        this.categoryKebutuhan = categoryKebutuhan;
+        this.kategoriKebutuhan = kategoriKebutuhan;
         this.jumlah = jumlah;
     }
 
@@ -41,12 +41,12 @@ public class Budget {
         this.kebutuhan = kebutuhan;
     }
 
-    public String getCategoryKebutuhan() {
-        return categoryKebutuhan;
+    public String getKategoriKebutuhan() {
+        return kategoriKebutuhan;
     }
 
-    public void setCategoryKebutuhan(String categoryKebutuhan) {
-        this.categoryKebutuhan = categoryKebutuhan;
+    public void setKategoriKebutuhan(String kategoriKebutuhan) {
+        this.kategoriKebutuhan = kategoriKebutuhan;
     }
 
     public Long getJumlah() {

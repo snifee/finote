@@ -17,8 +17,8 @@ import java.util.Date;
 // created_at TEXT DEFAULT CURRENT_TIMESTAMP);
 
 
-@Entity(tableName = "spending_table")
-public class Spending {
+@Entity(tableName = "tabel_pengeluaran")
+public class Pengeluaran {
     @PrimaryKey(autoGenerate = true)
     private Long id;
 
@@ -37,11 +37,11 @@ public class Spending {
     @ColumnInfo(name = "jenis_pengeluaran")
     private String jenisPengeluaran;
 
-    public Spending(){
+    public Pengeluaran(){
 
     }
 
-    public Spending(Long jumlah, String keterangan, Date waktu, String bulanTahun, String jenisPengeluaran) {
+    public Pengeluaran(Long jumlah, String keterangan, Date waktu, String bulanTahun, String jenisPengeluaran) {
         this.jumlah = jumlah;
         this.keterangan = keterangan;
         this.waktu = waktu;

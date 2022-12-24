@@ -5,7 +5,6 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,19 +13,19 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.aplikasita.R;
-import com.example.aplikasita.controller.adaptor.RecycleViewAdapter.BudgetAdaptor;
-import com.example.aplikasita.data.entity.Budget;
+import com.example.aplikasita.controller.adaptor.RecycleViewAdapter.KeperluanAdaptor;
+import com.example.aplikasita.data.entity.Keperluan;
 import com.example.aplikasita.data.viewmodel.BudgetViewModel;
 
 import java.util.List;
 
-public class BudgetFragment extends Fragment {
+public class KeperluanFragment extends Fragment {
 
     private RecyclerView recyclerView;
-    private BudgetAdaptor budgetAdaptor;
+    private KeperluanAdaptor keperluanAdaptor;
     private BudgetViewModel budgetViewModel;
 
-    public BudgetFragment() {
+    public KeperluanFragment() {
         // Required empty public constructor
     }
 
@@ -34,18 +33,18 @@ public class BudgetFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_budget, container, false);
+        View view = inflater.inflate(R.layout.fragment_keperluan, container, false);
 
-        budgetAdaptor = new BudgetAdaptor();
+        keperluanAdaptor = new KeperluanAdaptor();
         recyclerView = view.findViewById(R.id.idBudgetRecycleView);
         recyclerView.setLayoutManager( new LinearLayoutManager(view.getContext(),LinearLayoutManager.HORIZONTAL,false));
-        recyclerView.setAdapter(budgetAdaptor);
+        recyclerView.setAdapter(keperluanAdaptor);
 
         budgetViewModel = ViewModelProviders.of(this).get(BudgetViewModel.class);
-        budgetViewModel.getAllBudget().observe(this, new Observer<List<Budget>>() {
+        budgetViewModel.getAllBudget().observe(this, new Observer<List<Keperluan>>() {
             @Override
-            public void onChanged(List<Budget> budgets) {
-                budgetAdaptor.setListBudget(budgets);
+            public void onChanged(List<Keperluan> keperluans) {
+                keperluanAdaptor.setListBudget(keperluans);
             }
         });
 

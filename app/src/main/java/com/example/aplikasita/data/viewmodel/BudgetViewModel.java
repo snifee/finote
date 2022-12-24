@@ -7,38 +7,36 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.example.aplikasita.data.AppDatabase;
-import com.example.aplikasita.data.entity.Budget;
-import com.example.aplikasita.data.entity.Income;
-import com.example.aplikasita.data.repo.BudgetRepo;
-import com.example.aplikasita.data.repo.IncomeRepo;
+import com.example.aplikasita.data.entity.Keperluan;
+import com.example.aplikasita.data.repo.KeperluanRepo;
 
 import java.util.List;
 
 public class BudgetViewModel extends AndroidViewModel {
-    private BudgetRepo budgetRepo;
-    private LiveData<List<Budget>> allBudget;
+    private KeperluanRepo keperluanRepo;
+    private LiveData<List<Keperluan>> allBudget;
     private AppDatabase database;
 
     public BudgetViewModel(@NonNull Application application) {
         super(application);
-        budgetRepo = new BudgetRepo(application);
-        allBudget = budgetRepo.getAllBudget();
+        keperluanRepo = new KeperluanRepo(application);
+        allBudget = keperluanRepo.getAllBudget();
     }
 
-    public void insert(Budget budget){
-        budgetRepo.insert(budget);
+    public void insert(Keperluan keperluan){
+        keperluanRepo.insert(keperluan);
     }
 
-    public void update(Budget budget){
-        budgetRepo.update(budget);
+    public void update(Keperluan keperluan){
+        keperluanRepo.update(keperluan);
     }
 
-    public void delete(Budget budget){
-        budgetRepo.delete(budget);
+    public void delete(Keperluan keperluan){
+        keperluanRepo.delete(keperluan);
     }
 
 
-    public LiveData<List<Budget>> getAllBudget() {
+    public LiveData<List<Keperluan>> getAllBudget() {
         return allBudget;
     }
 }

@@ -3,7 +3,6 @@ package com.example.aplikasita.data.entity;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-import androidx.room.Relation;
 
 import java.util.Date;
 
@@ -15,8 +14,8 @@ import java.util.Date;
 // created_at TEXT DEFAULT CURRENT_TIMESTAMP);
 
 
-@Entity(tableName = "income_table")
-public class Income {
+@Entity(tableName = "tabel_pendapatan")
+public class Pendapatan {
     @PrimaryKey(autoGenerate = true)
     private Long id;
 
@@ -35,7 +34,7 @@ public class Income {
     @ColumnInfo(name = "keterangan")
     private String keterangan;
 
-    public Income(String noRekening, Long jumlah, Date waktu, String bulanTahun, String keterangan) {
+    public Pendapatan(String noRekening, Long jumlah, Date waktu, String bulanTahun, String keterangan) {
         this.noRekening = noRekening;
         this.jumlah = jumlah;
         this.waktu = waktu;

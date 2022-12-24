@@ -18,9 +18,9 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.aplikasita.R;
-import com.example.aplikasita.controller.adaptor.RecycleViewAdapter.IncomeAdaptor;
+import com.example.aplikasita.controller.adaptor.RecycleViewAdapter.PendapatanAdaptor;
 import com.example.aplikasita.data.viewmodel.IncomeViewModel;
-import com.example.aplikasita.data.entity.Income;
+import com.example.aplikasita.data.entity.Pendapatan;
 
 import java.util.List;
 
@@ -44,20 +44,20 @@ public class PemasukanFragment extends Fragment {
 
 
 
-        final IncomeAdaptor incomeAdaptor = new IncomeAdaptor();
+        final PendapatanAdaptor pendapatanAdaptor = new PendapatanAdaptor();
 
         View view = inflater.inflate(R.layout.fragment_pemasukan, container, false);
         recyclerView = view.findViewById(R.id.recycleViewPemasukan);
         recyclerView.setLayoutManager( new LinearLayoutManager(view.getContext()));
-        recyclerView.setAdapter(incomeAdaptor);
+        recyclerView.setAdapter(pendapatanAdaptor);
         recyclerView.addItemDecoration(new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL));
 
 
         incomeViewModel = ViewModelProviders.of(this).get(IncomeViewModel.class);
-        incomeViewModel.getIncomeByMonthYear(monthYear).observe(this, new Observer<List<Income>>() {
+        incomeViewModel.getIncomeByMonthYear(monthYear).observe(this, new Observer<List<Pendapatan>>() {
             @Override
-            public void onChanged(@Nullable List<Income> incomes) {
-                incomeAdaptor.setListIncome(incomes);
+            public void onChanged(@Nullable List<Pendapatan> pendapatans) {
+                pendapatanAdaptor.setListIncome(pendapatans);
 //                System.out.println(incomes.get(0).getMonth());
             }
         });
@@ -71,7 +71,7 @@ public class PemasukanFragment extends Fragment {
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                incomeViewModel.delete(incomeAdaptor.getIncome(viewHolder.getAdapterPosition()));
+                incomeViewModel.delete(pendapatanAdaptor.getIncome(viewHolder.getAdapterPosition()));
                 Toast.makeText(getActivity(),"Deleted",Toast.LENGTH_SHORT).show();
             }
         }).attachToRecyclerView(recyclerView);

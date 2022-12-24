@@ -1,4 +1,4 @@
-package com.example.aplikasita.model;
+package com.example.aplikasita.dto;
 
 
 public class Month {

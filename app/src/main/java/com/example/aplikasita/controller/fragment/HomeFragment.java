@@ -5,30 +5,20 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.example.aplikasita.MainActivity;
 import com.example.aplikasita.R;
-import com.example.aplikasita.controller.adaptor.RecycleViewAdapter.BudgetAdaptor;
-import com.example.aplikasita.data.viewmodel.BudgetViewModel;
 import com.example.aplikasita.data.viewmodel.IncomeViewModel;
-import com.example.aplikasita.data.viewmodel.MonthlyViewModel;
-import com.example.aplikasita.data.entity.Budget;
 import com.example.aplikasita.data.viewmodel.SpendingViewModel;
 import com.example.aplikasita.utils.MyStringUtils;
 
 import java.text.NumberFormat;
 import java.time.LocalDate;
-import java.time.Month;
 import java.util.Currency;
-import java.util.List;
 
 public class HomeFragment extends Fragment {
 

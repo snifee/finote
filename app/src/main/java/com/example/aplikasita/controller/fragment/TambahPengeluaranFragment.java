@@ -9,55 +9,63 @@ import androidx.lifecycle.ViewModelProviders;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.aplikasita.R;
-import com.example.aplikasita.data.viewmodel.IncomeViewModel;
-import com.example.aplikasita.data.entity.Income;
+import com.example.aplikasita.data.entity.Pengeluaran;
+import com.example.aplikasita.data.viewmodel.SpendingViewModel;
 import com.example.aplikasita.utils.MyStringUtils;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 
+public class TambahPengeluaranFragment extends Fragment {
 
-public class AddIncomeFragment extends Fragment {
+    private SpendingViewModel spendingViewModel;
 
-    IncomeViewModel incomeViewModel;
-
-
-
-    private EditText editTextRek;
-    private EditText editTextJumlah;
+    private EditText editTextJumlahPeng;
     private EditText editTextKet;
     private EditText editTextDate;
     private Button submitButton;
+    private AutoCompleteTextView autoCompleteCategory;
 
+    private String rekening, jumlah, keterangan,date,jenis;
 
-
-    public AddIncomeFragment() {
+    public TambahPengeluaranFragment() {
         // Required empty public constructor
     }
+
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_add_income, container, false);
+        View view = inflater.inflate(R.layout.fragment_add_spending, container, false);
 
-        editTextRek = view.findViewById(R.id.etRekening);
-        editTextJumlah = view.findViewById(R.id.etJumlah);
-        editTextKet = view.findViewById(R.id.etKeterangan);
-        editTextDate = view.findViewById(R.id.etDate);
-        submitButton = view.findViewById(R.id.submitButton);
+        editTextJumlahPeng = view.findViewById(R.id.etAddSpendingJumlah);
+        editTextKet = view.findViewById(R.id.etAddSpendingKeterangan);
+        editTextDate = view.findViewById(R.id.etAddSpendingDate);
+        submitButton = view.findViewById(R.id.submitAddSpendingButton);
+        autoCompleteCategory = view.findViewById(R.id.idDropdownCategory);
+
+        String[] category = getResources().getStringArray(R.array.category);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getActivity(),R.layout.dropdown_category,category);
+        autoCompleteCategory.setAdapter(arrayAdapter);
+        autoCompleteCategory.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                jenis = autoCompleteCategory.getText().toString();
+            }
+        });
 
         editTextDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,18 +95,16 @@ public class AddIncomeFragment extends Fragment {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                saveNote();
+                saveSpending();
             }
         });
 
         return view;
     }
-
-    private void saveNote(){
-        String rekening = editTextRek.getText()==null ? "":editTextRek.getText().toString();
-        String jumlah = editTextJumlah.getText() ==null ? "":editTextJumlah.getText().toString();
-        String keterangan = editTextKet.getText() ==null ? "":editTextKet.getText().toString();
-        String date = editTextDate.getText() ==null ? "":editTextDate.getText().toString();
+    private void saveSpending(){
+        jumlah = editTextJumlahPeng.getText() ==null ? "":editTextJumlahPeng.getText().toString();
+        keterangan = editTextKet.getText() ==null ? "":editTextKet.getText().toString();
+        date = editTextDate.getText() ==null ? "":editTextDate.getText().toString();
 
         if (jumlah.isEmpty()){
             Toast.makeText(getActivity(),"Please insert amount",Toast.LENGTH_SHORT).show();
@@ -112,16 +118,16 @@ public class AddIncomeFragment extends Fragment {
         }
 
         try {
-            Long jml= Long.parseLong(jumlah);
+            long jml= Long.parseLong(jumlah);
 
             Date inputDate = MyStringUtils.stringDateToDateTime(date);
 
             String monthYear = MyStringUtils.getMonthYear(inputDate);
 
-            Income income = new Income(rekening,jml,inputDate, monthYear,keterangan);
+            Pengeluaran pengeluaran = new Pengeluaran(jml,keterangan,inputDate, monthYear,jenis);
 
-            incomeViewModel = ViewModelProviders.of(this).get(IncomeViewModel.class);
-            incomeViewModel.insert(income);
+            spendingViewModel = ViewModelProviders.of(this).get(SpendingViewModel.class);
+            spendingViewModel.insert(pengeluaran);
 
         }catch (Exception e){
             System.out.println(e);
