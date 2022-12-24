@@ -8,7 +8,7 @@
         android:id="@+id/page_2"
         android:enabled="true"
         android:icon="@drawable/ic_menu"
-        android:title="@string/monthly"/>
+        android:title="@string/perbulan"/>
 
     <item
         android:id="@+id/page_3"

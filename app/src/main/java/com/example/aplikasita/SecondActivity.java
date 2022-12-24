@@ -37,7 +37,7 @@ public class SecondActivity extends AppCompatActivity {
         addItemButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(),AddCashflowActivity.class);
+                Intent intent = new Intent(view.getContext(), TambahCashflowActivity.class);
                 startActivityForResult(intent,ADD_CF_RQ);
             }
         });
@@ -47,8 +47,8 @@ public class SecondActivity extends AppCompatActivity {
         tabLayout = findViewById(R.id.SecondTabLayout);
         viewPager = findViewById(R.id.SecondViewPager);
 
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.spending_tab));
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.income_tab));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.pengeluaran));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.pendapatan));
 
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 

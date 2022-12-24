@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddBudgetActivity">
+    tools:context=".TambahKeperluanActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -22,7 +22,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="@string/add_budget"
+                android:text="@string/tambah_keperluan"
                 android:textSize="20sp" />
 
             <com.google.android.material.textfield.TextInputLayout

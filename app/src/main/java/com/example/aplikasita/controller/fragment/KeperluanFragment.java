@@ -36,8 +36,8 @@ public class KeperluanFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_keperluan, container, false);
 
         keperluanAdaptor = new KeperluanAdaptor();
-        recyclerView = view.findViewById(R.id.idBudgetRecycleView);
-        recyclerView.setLayoutManager( new LinearLayoutManager(view.getContext(),LinearLayoutManager.HORIZONTAL,false));
+        recyclerView = view.findViewById(R.id.keperluanRecycleView);
+        recyclerView.setLayoutManager( new LinearLayoutManager(view.getContext()));
         recyclerView.setAdapter(keperluanAdaptor);
 
         budgetViewModel = ViewModelProviders.of(this).get(BudgetViewModel.class);

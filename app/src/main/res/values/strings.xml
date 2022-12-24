@@ -3,21 +3,18 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="login">Login</string>
-    <string name="insert_password">Password</string>
-    <string name="welcome">Welcome !</string>
-    <string name="income_tab">Income</string>
-    <string name="spending_tab">Spending</string>
-    <string name="bank_tab">BANK</string>
+    <string name="password">Password</string>
+    <string name="selamat_datang">Selamat Datang !</string>
+    <string name="pendapatan">Pendapatan</string>
+    <string name="pengeluaran">Pengeluaran</string>
+    <string name="bank">Bank</string>
     <string name="title_activity_main2">MainActivity2</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
-
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="add_income">Add Income</string>
+    <string name="tambah_pendapatan">Tambah Pendapatan</string>
     <string name="rekening">Rekening</string>
     <string name="jumlah">Jumlah</string>
     <string name="tanggal">Tanggal</string>
@@ -25,19 +22,25 @@
     <string name="submit">Submit</string>
 
     <string name="lorem">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text.</string>
-    <string name="add_spending">Add Spending</string>
+    <string name="tambah_pengeluaran">Tambah Pengeluaran</string>
     <string name="jenis_pengeluaran">Jenis Pengeluaran</string>
     <string name="sumber_pengeluaran">Sumber Pengeluaran</string>
     <string name="tujuan_penyimpanan">Tujuan Penyimpanan</string>
     <string name="home_main">Home</string>
-    <string name="keperluan">Budget</string>
-    <string name="monthly">Monthly</string>
+    <string name="keperluan">Keperluan</string>
+    <string name="perbulan">Perbulan</string>
     <string name="home">Home</string>
-    <string name="add_budget">Add Budget</string>
+    <string name="tambah_keperluan">Tambah Keperluan</string>
     <string name="kebutuhan">Kebutuhan</string>
     <string name="hutang">Hutang</string>
+    <string name="registrasi">Registrasi</string>
+    <string name="re_enter_password">Re-Enter Password</string>
+    <string name="lanjutkan">Lanjutkan</string>
+    <string name="pengeluaran_bulan_ini">Pengeluaran Bulan ini</string>
+    <string name="pemasukan_bulan_ini">Pemasukan Bulan ini</string>
+    <string name="total_pengeluaran_perbulan">Total Pengeluaran Perbulan</string>
 
-    <string-array name="category">
+    <string-array name="kategori_keperluan">
         <item>Sandang</item>
         <item>Pangan</item>
         <item>Pendidikan</item>

@@ -10,7 +10,7 @@ import android.widget.Toast;
 import com.example.aplikasita.data.entity.Keperluan;
 import com.example.aplikasita.data.viewmodel.BudgetViewModel;
 
-public class AddBudgetActivity extends AppCompatActivity {
+public class TambahKeperluanActivity extends AppCompatActivity {
 
     private EditText etKebutuhan,etJumlahKebutuhan, etKategoriKebutuhan;
     private BudgetViewModel budgetViewModel;
@@ -18,7 +18,7 @@ public class AddBudgetActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_budget);
+        setContentView(R.layout.activity_tambah_keperluan);
 
         etJumlahKebutuhan = findViewById(R.id.etJumlahBudget);
         etKebutuhan = findViewById(R.id.etKebutuhan);

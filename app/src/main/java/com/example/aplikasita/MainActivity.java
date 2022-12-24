@@ -8,7 +8,7 @@ import android.view.MenuItem;
 
 import com.example.aplikasita.controller.fragment.KeperluanFragment;
 import com.example.aplikasita.controller.fragment.HutangFragment;
-import com.example.aplikasita.controller.fragment.MonthlyFragment;
+import com.example.aplikasita.controller.fragment.PerbulanFragment;
 import com.example.aplikasita.controller.fragment.HomeFragment;
 import com.example.aplikasita.data.viewmodel.IncomeViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     private BottomNavigationView bottomNavigationView;
 
     HomeFragment homeFragment = new HomeFragment();
-    MonthlyFragment monthlyFragment = new MonthlyFragment();
+    PerbulanFragment perbulanFragment = new PerbulanFragment();
     KeperluanFragment keperluanFragment = new KeperluanFragment();
     HutangFragment hutangFragment = new HutangFragment();
 
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 return true;
 
             case R.id.page_2:
-                getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, monthlyFragment).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, perbulanFragment).commit();
                 return true;
 
             case R.id.page_3:

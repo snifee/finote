@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddIncomeActivity">
+    tools:context=".AddSpendingActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -12,50 +12,31 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center">
 
-
-
             <TextView
-                android:id="@+id/addTitle"
+                android:id="@+id/addSpendingTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="@string/add_income"
+                android:text="@string/tambah_pengeluaran"
                 android:textSize="20sp" />
 
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_marginTop="28dp"
-                android:layout_width="250dp"
-                app:endIconMode="clear_text"
-                android:layout_height="wrap_content"
-                android:hint="@string/tujuan_penyimpanan">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etRekening"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"
-                    />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
                 android:layout_marginTop="15dp"
                 android:layout_width="250dp"
-                app:endIconMode="clear_text"
                 android:layout_height="wrap_content"
+                app:endIconMode="clear_text"
                 android:hint="@string/jumlah">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etJumlah"
+                    android:id="@+id/etAddSpendingJumlah"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:ems="10"
                     android:inputType="number"
                     />
 
@@ -70,23 +51,30 @@
                 android:hint="@string/keterangan">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etKeterangan"
+                    android:id="@+id/etAddSpendingKeterangan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:ems="10"
                     android:inputType="text"
                     />
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!--            <EditText-->
-            <!--                android:id="@+id/etDate"-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_marginTop="32dp"-->
-            <!--                android:ems="10"-->
-            <!--                android:hint="@string/tanggal"-->
-            <!--                android:inputType="date" />-->
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_marginTop="15dp"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/jenis_pengeluaran">
+
+                <AutoCompleteTextView
+                    android:id="@+id/idDropdownCategory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_marginTop="15dp"
@@ -95,10 +83,9 @@
                 android:hint="@string/tanggal">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etDate"
+                    android:id="@+id/etAddSpendingDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:ems="10"
                     android:inputType="date"
                     />
 
@@ -106,7 +93,7 @@
 
             <Button
                 style="@style/Widget.Material3.Button.ElevatedButton"
-                android:id="@+id/submitButton"
+                android:id="@+id/submitAddSpendingButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30sp"

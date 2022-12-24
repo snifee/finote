@@ -26,7 +26,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".AddBudgetActivity"
+            android:name=".TambahKeperluanActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -40,7 +40,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".AddCashflowActivity"
+            android:name=".TambahCashflowActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

@@ -11,7 +11,7 @@ import com.example.aplikasita.controller.fragment.TambahPendapatanFragment;
 import com.example.aplikasita.controller.fragment.TambahPengeluaranFragment;
 import com.google.android.material.tabs.TabLayout;
 
-public class AddCashflowActivity extends AppCompatActivity {
+public class TambahCashflowActivity extends AppCompatActivity {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
@@ -19,13 +19,13 @@ public class AddCashflowActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_cashflow);
+        setContentView(R.layout.activity_tambah_cashflow);
 
         tabLayout = findViewById(R.id.tabLayoutAddCf);
         viewPager = findViewById(R.id.viewPagerAddcf);
 
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.add_spending));
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.add_income));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.tambah_pengeluaran));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.tambah_pendapatan));
 
 
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);

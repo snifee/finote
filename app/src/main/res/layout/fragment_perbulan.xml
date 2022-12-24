@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".controller.fragment.MonthlyFragment"
+    tools:context=".controller.fragment.PerbulanFragment"
     android:padding="10dp"
-    >
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
 
     <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/total_pengeluaran_perbulan"
+        android:layout_margin="20dp"
+        android:textSize="20dp"
+        />
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycleViewMonthly"
+        android:id="@+id/recycleViewPerbulan"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
@@ -23,4 +31,4 @@
         android:layout_marginHorizontal="20sp"
  />
 
-</FrameLayout>
+</LinearLayout>

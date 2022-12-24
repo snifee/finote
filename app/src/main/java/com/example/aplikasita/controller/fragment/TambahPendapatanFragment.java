@@ -48,7 +48,7 @@ public class TambahPendapatanFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_add_income, container, false);
+        View view = inflater.inflate(R.layout.fragment_tambah_pendapatan, container, false);
 
         editTextRek = view.findViewById(R.id.etRekening);
         editTextJumlah = view.findViewById(R.id.etJumlah);

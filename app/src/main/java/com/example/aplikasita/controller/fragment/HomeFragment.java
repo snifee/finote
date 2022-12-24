@@ -58,7 +58,7 @@ public class HomeFragment extends Fragment {
 
         tvIncome = view.findViewById(R.id.idHomeIncome);
         tvSpending = view.findViewById(R.id.idHomeSpending);
-        tvMonth = view.findViewById(R.id.idHomeMonth);
+        tvMonth = view.findViewById(R.id.tvHomeBulan);
         tvMonth.setText(currentDate);
 
         LocalDate currentDateMonth = LocalDate.now();

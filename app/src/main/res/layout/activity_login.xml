@@ -17,7 +17,7 @@
             android:id="@+id/loginTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/welcome"
+            android:text="@string/selamat_datang"
             android:textSize="30sp"
             app:textAllCaps="false" />
     </LinearLayout>
@@ -34,7 +34,7 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             app:endIconMode="password_toggle"
-            android:hint="@string/insert_password">
+            android:hint="@string/password">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etInputPassword"

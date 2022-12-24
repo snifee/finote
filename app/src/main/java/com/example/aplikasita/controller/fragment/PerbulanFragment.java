@@ -16,7 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.aplikasita.AddCashflowActivity;
+import com.example.aplikasita.TambahCashflowActivity;
 import com.example.aplikasita.R;
 import com.example.aplikasita.SecondActivity;
 import com.example.aplikasita.controller.adaptor.RecycleViewAdapter.BulanAdaptor;
@@ -27,7 +27,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
-public class MonthlyFragment extends Fragment {
+public class PerbulanFragment extends Fragment {
 
     public static int SECOND_ACT =1;
     public static int ADD_CF_RQ =2;
@@ -38,7 +38,7 @@ public class MonthlyFragment extends Fragment {
     private BulanAdaptor bulanAdaptor;
 
 
-    public MonthlyFragment() {
+    public PerbulanFragment() {
         // Required empty public constructor
     }
 
@@ -47,8 +47,8 @@ public class MonthlyFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         bulanAdaptor = new BulanAdaptor();
-        View view = inflater.inflate(R.layout.fragment_monthly, container, false);
-        recyclerView = view.findViewById(R.id.recycleViewMonthly);
+        View view = inflater.inflate(R.layout.fragment_perbulan, container, false);
+        recyclerView = view.findViewById(R.id.recycleViewPerbulan);
         recyclerView.setLayoutManager( new LinearLayoutManager(view.getContext()));
         recyclerView.setAdapter(bulanAdaptor);
 
@@ -89,7 +89,7 @@ public class MonthlyFragment extends Fragment {
         addItemButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), AddCashflowActivity.class);
+                Intent intent = new Intent(getActivity(), TambahCashflowActivity.class);
                 startActivityForResult(intent,ADD_CF_RQ);
             }
         });

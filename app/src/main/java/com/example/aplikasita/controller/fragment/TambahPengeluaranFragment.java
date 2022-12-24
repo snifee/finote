@@ -49,7 +49,7 @@ public class TambahPengeluaranFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_add_spending, container, false);
+        View view = inflater.inflate(R.layout.fragment_tambah_pengeluaran, container, false);
 
         editTextJumlahPeng = view.findViewById(R.id.etAddSpendingJumlah);
         editTextKet = view.findViewById(R.id.etAddSpendingKeterangan);
@@ -57,8 +57,8 @@ public class TambahPengeluaranFragment extends Fragment {
         submitButton = view.findViewById(R.id.submitAddSpendingButton);
         autoCompleteCategory = view.findViewById(R.id.idDropdownCategory);
 
-        String[] category = getResources().getStringArray(R.array.category);
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getActivity(),R.layout.dropdown_category,category);
+        String[] category = getResources().getStringArray(R.array.kategori_keperluan);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getActivity(),R.layout.dropdown_kategori,category);
         autoCompleteCategory.setAdapter(arrayAdapter);
         autoCompleteCategory.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
