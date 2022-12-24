@@ -21,17 +21,11 @@ public class HutangRepo {
 
     private HutangDao hutangDao;
     private LiveData<List<Hutang>> allHutang;
-    private String encryptedDBPassword,dbPassword,userPassword;
 
 
     public HutangRepo(Application application){
 
-        encryptedDBPassword = MyPreferences.getSharedPreferenceDBKey(application);
-        userPassword = MyPreferences.getSharedPreferencePassword(application);
-
-        dbPassword = CryptManager.decrypt(encryptedDBPassword,userPassword);
-
-        AppDatabase database = AppDatabase.getDB(application,dbPassword);
+        AppDatabase database = AppDatabase.getDB(application);
         hutangDao = database.hutangDao();
 
         allHutang = hutangDao.getAllHutang();

@@ -17,6 +17,8 @@ import android.widget.Toast;
 import com.example.aplikasita.R;
 import com.example.aplikasita.data.entity.Pendapatan;
 import com.example.aplikasita.data.viewmodel.IncomeViewModel;
+import com.example.aplikasita.utils.CryptManager;
+import com.example.aplikasita.utils.MyPreferences;
 import com.example.aplikasita.utils.MyStringUtils;
 
 import java.time.LocalDate;
@@ -91,7 +93,7 @@ public class TambahPendapatanFragment extends Fragment {
         return view;
     }
 
-    private void saveNote(){
+    private void saveNote(String password){
         String rekening = editTextRek.getText()==null ? "":editTextRek.getText().toString();
         String jumlah = editTextJumlah.getText() ==null ? "":editTextJumlah.getText().toString();
         String keterangan = editTextKet.getText() ==null ? "":editTextKet.getText().toString();
@@ -114,6 +116,8 @@ public class TambahPendapatanFragment extends Fragment {
             Date inputDate = MyStringUtils.stringDateToDateTime(date);
 
             String monthYear = MyStringUtils.getMonthYear(inputDate);
+
+            rekening = CryptManager.encryptData(rekening,password);
 
             Pendapatan pendapatan = new Pendapatan(rekening,jml,inputDate, monthYear,keterangan);
 

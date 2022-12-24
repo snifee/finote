@@ -16,16 +16,10 @@ import java.util.List;
 public class KeperluanRepo {
     private KeperluanDao keperluanDao;
     private LiveData<List<Keperluan>> allBudget;
-    private String encryptedDBPassword,dbPassword,userPassword;
 
     public KeperluanRepo(Application application){
 
-        encryptedDBPassword = MyPreferences.getSharedPreferenceDBKey(application);
-        userPassword = MyPreferences.getSharedPreferencePassword(application);
-
-        dbPassword = CryptManager.decrypt(encryptedDBPassword,userPassword);
-
-        AppDatabase database = AppDatabase.getDB(application,dbPassword);
+        AppDatabase database = AppDatabase.getDB(application);
         keperluanDao = database.keperluanDao();
         allBudget = keperluanDao.getAllBudget();
 

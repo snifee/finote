@@ -21,7 +21,6 @@ public class CryptManager {
         return new SecretKeySpec(password.getBytes(StandardCharsets.UTF_8),ENCRYPT_ALGO);
     }
 
-
     public static String encryptData(String data, String password){
 
         try {
@@ -38,8 +37,7 @@ public class CryptManager {
 
     }
 
-    public static String decrypt(String data,String password)
-    {
+    public static String decrypt(String data,String password) {
 
         try{
             Key key = getKey(password);

@@ -15,16 +15,10 @@ import java.util.List;
 public class MonthlyRepo {
     private MonthlyDao monthlyDao;
     private LiveData<List<MonthlySpending>> allMonthSpening;
-    private String encryptedDBPassword,dbPassword,userPassword;
 
     public MonthlyRepo(Application application){
 
-        encryptedDBPassword = MyPreferences.getSharedPreferenceDBKey(application);
-        userPassword = MyPreferences.getSharedPreferencePassword(application);
-
-        dbPassword = CryptManager.decrypt(encryptedDBPassword,userPassword);
-
-        AppDatabase database = AppDatabase.getDB(application,dbPassword);
+        AppDatabase database = AppDatabase.getDB(application);
         monthlyDao = database.monthlyDao();
 
         this.allMonthSpening = monthlyDao.getMonthlySpending();

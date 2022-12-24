@@ -33,7 +33,7 @@ import java.util.Date;
 @TypeConverters({DateConverter.class})
 public abstract class AppDatabase extends RoomDatabase {
 
-    private static final String DB_NAME = "encrypted.db";
+    private static final String DB_NAME = "databse.db";
 
     public abstract PengeluaranDao pengeluaranDao();
 
@@ -49,17 +49,15 @@ public abstract class AppDatabase extends RoomDatabase {
 
 
 
-    public static AppDatabase getDB(final Context context, String password){
+    public static AppDatabase getDB(final Context context){
 
         if (appDatabase == null){
             synchronized (AppDatabase.class){
                 if (appDatabase == null){
-                    SupportFactory factory = new SupportFactory(SQLiteDatabase.getBytes(password.toCharArray()));
                     appDatabase = Room.databaseBuilder(context.getApplicationContext(),
                             AppDatabase.class, DB_NAME)
                             .addCallback(roomCallback)
                             .fallbackToDestructiveMigration()
-                            .openHelperFactory(factory)
                             .build();
                 }
             }

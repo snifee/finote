@@ -35,10 +35,6 @@ public class LoginActivity extends AppCompatActivity {
                 String encodedPassword = HashingUtils.myHashFunc(passwordInput);
                 String correctPassword = MyPreferences.getSharedPreferencePassword(getBaseContext());
 
-                System.out.println("passwordInput "+passwordInput);
-                System.out.println(encodedPassword);
-                System.out.println(correctPassword);
-
                 if (encodedPassword.equals(correctPassword)){
 
                     startActivity(new Intent(LoginActivity.this,MainActivity.class));

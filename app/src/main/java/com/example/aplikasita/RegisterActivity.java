@@ -53,13 +53,7 @@ public class RegisterActivity extends AppCompatActivity {
                     String encodedPassword = HashingUtils.myHashFunc(password);
 
                     MyPreferences.setSharedPreferencePassword(getBaseContext(),encodedPassword);
-                    MyPreferences.setSharedPreferenceDBKey(getBaseContext(),"user");
 
-                    System.out.println(password);
-
-                    System.out.println(MyPreferences.getSharedPreferencePassword(getBaseContext()));
-
-                    databaseKeyEncryption(encodedPassword,"password",getBaseContext());
 
                     Intent intent = new Intent(RegisterActivity.this,MainActivity.class);
                     startActivity(intent);
@@ -73,17 +67,6 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
 
-    public void databaseKeyEncryption(String password, String key, Context context){
-
-        try {
-            String encryptedKey = CryptManager.encryptData(key,password);
-
-            MyPreferences.setSharedPreferenceDBKey(context,encryptedKey);
-        }catch (Exception e){
-
-        }
-
-    }
 
 
 }
