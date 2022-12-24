@@ -33,7 +33,7 @@ import java.util.Date;
 @TypeConverters({DateConverter.class})
 public abstract class AppDatabase extends RoomDatabase {
 
-    private static final String DB_NAME = "encrypted2.db";
+    private static final String DB_NAME = "encrypted.db";
 
     public abstract PengeluaranDao pengeluaranDao();
 
@@ -135,7 +135,8 @@ public abstract class AppDatabase extends RoomDatabase {
                 keperluanDao.insert(new Keperluan(EnumCategory.Pendidikan.name(), EnumCategory.Pendidikan.name(), 50000L));
                 keperluanDao.insert(new Keperluan(EnumCategory.Hiburan.name(), EnumCategory.Hiburan.name(), 50000L));
 
-                hutangDao.insert(new Hutang(200000L,date2,"apalah"));
+                hutangDao.insert(new Hutang(200000L,date2,"apalah",false));
+                hutangDao.insert(new Hutang(200000L,date2,"apalah",true));
 
             }catch (Exception e){
                 System.out.println(e);

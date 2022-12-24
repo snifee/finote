@@ -28,6 +28,12 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="Rp.24.000,00" />
+            <TextView
+                android:id="@+id/tvLunas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:textSize="7dp" />
 
             <TextView
                 android:id="@+id/tvJatuhTempo"

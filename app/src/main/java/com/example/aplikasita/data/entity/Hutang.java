@@ -22,10 +22,14 @@ public class Hutang {
     @ColumnInfo(name = "keterangan")
     private String keterangan;
 
-    public Hutang(Long jumlah, Date jatuhTempo, String keterangan) {
+    @ColumnInfo(name = "lunas")
+    private Boolean isLunas;
+
+    public Hutang(Long jumlah, Date jatuhTempo, String keterangan, Boolean isLunas) {
         this.jumlah = jumlah;
         this.jatuhTempo = jatuhTempo;
         this.keterangan = keterangan;
+        this.isLunas = isLunas;
     }
 
     public Long getId() {
@@ -58,5 +62,13 @@ public class Hutang {
 
     public void setKeterangan(String keterangan) {
         this.keterangan = keterangan;
+    }
+
+    public Boolean getLunas() {
+        return isLunas;
+    }
+
+    public void setLunas(Boolean lunas) {
+        isLunas = lunas;
     }
 }

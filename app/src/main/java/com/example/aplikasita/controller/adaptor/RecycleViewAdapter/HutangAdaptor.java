@@ -49,6 +49,7 @@ public class HutangAdaptor extends RecyclerView.Adapter<HutangAdaptor.HutangView
         holder.tvJumlahHutang.setText(jumlah);
         holder.tvKeterangan.setText(hutang.getKeterangan());
         holder.tvJatuhTempo.setText(sdf.format(hutang.getJatuhTempo()));
+        if (hutang.getLunas()) holder.tvLunas.setText(R.string.lunas);
     }
 
     @Override
@@ -58,13 +59,14 @@ public class HutangAdaptor extends RecyclerView.Adapter<HutangAdaptor.HutangView
 
     public class HutangViewHolder extends RecyclerView.ViewHolder{
 
-        private TextView tvJatuhTempo, tvJumlahHutang, tvKeterangan;
+        private TextView tvJatuhTempo, tvJumlahHutang, tvKeterangan,tvLunas;
 
         public HutangViewHolder(View view){
             super(view);
             tvJumlahHutang = view.findViewById(R.id.tvJumlahHutang);
             tvKeterangan = view.findViewById(R.id.tvKeteranganHutang);
             tvJatuhTempo = view.findViewById(R.id.tvJatuhTempo);
+            tvLunas = view.findViewById(R.id.tvLunas);
         }
     }
 

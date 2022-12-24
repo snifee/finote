@@ -39,6 +39,7 @@
     <string name="pengeluaran_bulan_ini">Pengeluaran Bulan ini</string>
     <string name="pemasukan_bulan_ini">Pemasukan Bulan ini</string>
     <string name="total_pengeluaran_perbulan">Total Pengeluaran Perbulan</string>
+    <string name="lunas">(Lunas)</string>
 
     <string-array name="kategori_keperluan">
         <item>Sandang</item>
