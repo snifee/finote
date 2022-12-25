@@ -19,11 +19,16 @@ import android.widget.Toast;
 
 import com.example.aplikasita.R;
 import com.example.aplikasita.TambahHutangActivity;
+import com.example.aplikasita.TambahKebutuhanActivity;
 import com.example.aplikasita.controller.adaptor.RecycleViewAdapter.HutangAdaptor;
+import com.example.aplikasita.controller.adaptor.RecycleViewAdapter.KebutuhanAdaptor;
 import com.example.aplikasita.data.entity.Hutang;
+import com.example.aplikasita.data.entity.Kebutuhan;
 import com.example.aplikasita.data.viewmodel.HutangViewModel;
+import com.example.aplikasita.utils.MyStringUtils;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class HutangFragment extends Fragment {
@@ -77,6 +82,24 @@ public class HutangFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), TambahHutangActivity.class);
+
+                startActivity(intent);
+            }
+        });
+
+        hutangAdaptor.setOnItemClickListener(new HutangAdaptor.OnItemClickListener() {
+            @Override
+            public void onItemClick(Hutang hutang) {
+                Intent intent = new Intent(getActivity(), TambahHutangActivity.class);
+
+                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-YYYY");
+                String date = sdf.format(hutang.getJatuhTempo());
+
+                intent.putExtra(TambahHutangActivity.JUMLAH, hutang.getJumlah());
+                intent.putExtra(TambahHutangActivity.KETERANGAN, hutang.getKeterangan());
+                intent.putExtra(TambahHutangActivity.JATUH_TEMPO, date);
+                intent.putExtra(TambahHutangActivity.IS_LUNAS, hutang.getLunas());
+                intent.putExtra(TambahHutangActivity.ID,hutang.getId());
 
                 startActivity(intent);
             }

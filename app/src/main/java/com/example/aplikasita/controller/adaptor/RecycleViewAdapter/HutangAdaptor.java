@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.aplikasita.R;
 import com.example.aplikasita.data.entity.Hutang;
+import com.example.aplikasita.data.entity.Kebutuhan;
 
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
@@ -21,7 +22,8 @@ import java.util.List;
 public class HutangAdaptor extends RecyclerView.Adapter<HutangAdaptor.HutangViewHolder>{
 
     private List<Hutang> listHutang = new ArrayList<>();
-    private NumberFormat numberFormat = NumberFormat.getCurrencyInstance();;
+    private NumberFormat numberFormat = NumberFormat.getCurrencyInstance();
+    private OnItemClickListener listener;
 
     public HutangAdaptor() {
     }
@@ -67,11 +69,30 @@ public class HutangAdaptor extends RecyclerView.Adapter<HutangAdaptor.HutangView
             tvKeterangan = view.findViewById(R.id.tvKeteranganHutang);
             tvJatuhTempo = view.findViewById(R.id.tvJatuhTempo);
             tvLunas = view.findViewById(R.id.tvLunas);
+
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int pos = getAdapterPosition();
+                    if (listener != null && pos != RecyclerView.NO_POSITION){
+                        listener.onItemClick(listHutang.get(pos));
+                    }
+
+                }
+            });
         }
     }
 
     public Hutang getHutang(int pos){
         return listHutang.get(pos);
+    }
+
+    public interface OnItemClickListener{
+        void onItemClick(Hutang hutang);
+    }
+
+    public void setOnItemClickListener(HutangAdaptor.OnItemClickListener listener){
+        this.listener = listener;
     }
 
 
