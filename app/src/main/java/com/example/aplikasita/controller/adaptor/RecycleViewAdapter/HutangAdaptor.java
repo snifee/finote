@@ -51,7 +51,11 @@ public class HutangAdaptor extends RecyclerView.Adapter<HutangAdaptor.HutangView
         holder.tvJumlahHutang.setText(jumlah);
         holder.tvKeterangan.setText(hutang.getKeterangan());
         holder.tvJatuhTempo.setText(sdf.format(hutang.getJatuhTempo()));
-        if (hutang.getLunas()) holder.tvLunas.setText(R.string.lunas);
+        if (hutang.getLunas()){
+            holder.tvLunas.setText(R.string.lunas);
+        }else {
+            holder.tvLunas.setText("");
+        }
     }
 
     @Override
