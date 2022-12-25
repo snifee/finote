@@ -1,34 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".controller.fragment.PerbulanFragment"
-    android:padding="10dp"
-    android:orientation="vertical"
-    android:gravity="center_horizontal">
+    android:padding="10dp">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/tvTitlePerbulan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/total_pengeluaran_perbulan"
         android:layout_margin="20dp"
         android:textSize="20dp"
-        />
+
+        android:layout_centerHorizontal="true" />
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleViewPerbulan"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_below="@id/tvTitlePerbulan"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addCfButtonMonthly"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end|bottom"
-        android:src="@drawable/ic_add"
-        android:layout_marginBottom="10sp"
-        android:layout_marginHorizontal="20sp"
- />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="29dp"
+        android:layout_marginBottom="38dp"
+        android:src="@drawable/ic_add" />
 
-</LinearLayout>
+</RelativeLayout>

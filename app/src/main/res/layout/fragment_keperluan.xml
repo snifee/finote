@@ -5,13 +5,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".controller.fragment.KeperluanFragment">
+    tools:context=".controller.fragment.KebutuhanFragment">
 
     <TextView
         android:layout_marginTop="15dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/kebutuhan"
+        android:text="@string/kebutuhan_perbulan"
         android:textSize="20sp"/>
 
     <androidx.recyclerview.widget.RecyclerView

@@ -13,19 +13,19 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.aplikasita.R;
-import com.example.aplikasita.controller.adaptor.RecycleViewAdapter.KeperluanAdaptor;
+import com.example.aplikasita.controller.adaptor.RecycleViewAdapter.KebutuhanAdaptor;
 import com.example.aplikasita.data.entity.Keperluan;
 import com.example.aplikasita.data.viewmodel.BudgetViewModel;
 
 import java.util.List;
 
-public class KeperluanFragment extends Fragment {
+public class KebutuhanFragment extends Fragment {
 
     private RecyclerView recyclerView;
-    private KeperluanAdaptor keperluanAdaptor;
+    private KebutuhanAdaptor kebutuhanAdaptor;
     private BudgetViewModel budgetViewModel;
 
-    public KeperluanFragment() {
+    public KebutuhanFragment() {
         // Required empty public constructor
     }
 
@@ -35,16 +35,16 @@ public class KeperluanFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_keperluan, container, false);
 
-        keperluanAdaptor = new KeperluanAdaptor();
+        kebutuhanAdaptor = new KebutuhanAdaptor();
         recyclerView = view.findViewById(R.id.keperluanRecycleView);
         recyclerView.setLayoutManager( new LinearLayoutManager(view.getContext()));
-        recyclerView.setAdapter(keperluanAdaptor);
+        recyclerView.setAdapter(kebutuhanAdaptor);
 
         budgetViewModel = ViewModelProviders.of(this).get(BudgetViewModel.class);
         budgetViewModel.getAllBudget().observe(this, new Observer<List<Keperluan>>() {
             @Override
             public void onChanged(List<Keperluan> keperluans) {
-                keperluanAdaptor.setListBudget(keperluans);
+                kebutuhanAdaptor.setListBudget(keperluans);
             }
         });
 

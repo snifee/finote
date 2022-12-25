@@ -70,7 +70,7 @@ public class HutangAdaptor extends RecyclerView.Adapter<HutangAdaptor.HutangView
         }
     }
 
-    public Hutang getIncome(int pos){
+    public Hutang getHutang(int pos){
         return listHutang.get(pos);
     }
 

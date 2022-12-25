@@ -16,12 +16,12 @@ import java.util.Currency;
 import java.util.List;
 
 
-public class KeperluanAdaptor extends RecyclerView.Adapter<KeperluanAdaptor.BudgetViewHolder>{
+public class KebutuhanAdaptor extends RecyclerView.Adapter<KebutuhanAdaptor.BudgetViewHolder>{
 
     private List<Keperluan> listKeperluan;
     private NumberFormat numberFormat = NumberFormat.getCurrencyInstance();
 
-    public KeperluanAdaptor() {
+    public KebutuhanAdaptor() {
 
     }
 

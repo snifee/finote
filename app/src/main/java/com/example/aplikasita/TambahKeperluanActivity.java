@@ -36,6 +36,8 @@ public class TambahKeperluanActivity extends AppCompatActivity {
             budgetViewModel = ViewModelProviders.of(this).get(BudgetViewModel.class);
             budgetViewModel.insert(keperluan);
 
+            finish();
+
         }catch (Exception e){
             Toast.makeText(this,"Gagal Menyimpan",Toast.LENGTH_SHORT).show();
         }

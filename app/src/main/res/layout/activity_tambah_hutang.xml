@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TambahHutangActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+
+
+
+            <TextView
+                android:id="@+id/addTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/tambah_hutang"
+                android:textSize="20sp" />
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_marginTop="15dp"
+                android:layout_width="250dp"
+                app:endIconMode="clear_text"
+                android:layout_height="wrap_content"
+                android:hint="@string/jumlah">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etJumlah"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="number"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_marginTop="15dp"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                app:endIconMode="clear_text"
+                android:hint="@string/keterangan">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etKeterangan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="text"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_marginTop="15dp"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/jatuh_tempo">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etJatuhTempo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="date"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <CheckBox
+                android:id="@+id/checkboxIsLunas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="85dp"
+                android:layout_marginTop="20dp"
+                android:text="Lunas"
+                />
+
+            <Button
+                style="@style/Widget.Material3.Button.ElevatedButton"
+                android:id="@+id/submitButtonHutang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30sp"
+                android:text="@string/submit"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

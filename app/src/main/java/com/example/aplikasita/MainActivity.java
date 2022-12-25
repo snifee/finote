@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.example.aplikasita.controller.fragment.KeperluanFragment;
+import com.example.aplikasita.controller.fragment.KebutuhanFragment;
 import com.example.aplikasita.controller.fragment.HutangFragment;
 import com.example.aplikasita.controller.fragment.PerbulanFragment;
 import com.example.aplikasita.controller.fragment.HomeFragment;
@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     HomeFragment homeFragment = new HomeFragment();
     PerbulanFragment perbulanFragment = new PerbulanFragment();
-    KeperluanFragment keperluanFragment = new KeperluanFragment();
+    KebutuhanFragment kebutuhanFragment = new KebutuhanFragment();
     HutangFragment hutangFragment = new HutangFragment();
 
     @Override
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 return true;
 
             case R.id.page_3:
-                getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, keperluanFragment).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, kebutuhanFragment).commit();
                 return true;
 
             case R.id.page_4:
