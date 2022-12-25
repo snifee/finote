@@ -27,7 +27,6 @@
     <string name="sumber_pengeluaran">Sumber Pengeluaran</string>
     <string name="tujuan_penyimpanan">Tujuan Penyimpanan</string>
     <string name="home_main">Home</string>
-    <string name="keperluan">Keperluan</string>
     <string name="kebutuhan_perbulan">Kebutuhan Perbulan</string>
     <string name="perbulan">Perbulan</string>
     <string name="home">Home</string>
@@ -43,6 +42,7 @@
     <string name="lunas">(Lunas)</string>
     <string name="tambah_hutang">Tambah Hutang</string>
     <string name="jatuh_tempo">Jatuh Tempo</string>
+    <string name="kategori_kebutuhan">Kategori Kebutuhan</string>
 
     <string-array name="kategori_keperluan">
         <item>Sandang</item>

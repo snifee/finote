@@ -19,7 +19,7 @@ import android.widget.Toast;
 
 import com.example.aplikasita.R;
 import com.example.aplikasita.data.entity.Pengeluaran;
-import com.example.aplikasita.data.viewmodel.SpendingViewModel;
+import com.example.aplikasita.data.viewmodel.PengeluaranViewModel;
 import com.example.aplikasita.utils.MyStringUtils;
 
 import java.time.LocalDate;
@@ -29,7 +29,7 @@ import java.util.Date;
 
 public class TambahPengeluaranFragment extends Fragment {
 
-    private SpendingViewModel spendingViewModel;
+    private PengeluaranViewModel pengeluaranViewModel;
 
     private EditText editTextJumlahPeng;
     private EditText editTextKet;
@@ -126,8 +126,8 @@ public class TambahPengeluaranFragment extends Fragment {
 
             Pengeluaran pengeluaran = new Pengeluaran(jml,keterangan,inputDate, monthYear,jenis);
 
-            spendingViewModel = ViewModelProviders.of(this).get(SpendingViewModel.class);
-            spendingViewModel.insert(pengeluaran);
+            pengeluaranViewModel = ViewModelProviders.of(this).get(PengeluaranViewModel.class);
+            pengeluaranViewModel.insert(pengeluaran);
 
         }catch (Exception e){
             System.out.println(e);

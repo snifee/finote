@@ -10,13 +10,13 @@ import com.example.aplikasita.controller.fragment.KebutuhanFragment;
 import com.example.aplikasita.controller.fragment.HutangFragment;
 import com.example.aplikasita.controller.fragment.PerbulanFragment;
 import com.example.aplikasita.controller.fragment.HomeFragment;
-import com.example.aplikasita.data.viewmodel.IncomeViewModel;
+import com.example.aplikasita.data.viewmodel.PemasukanViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
 
 
-    IncomeViewModel incomeViewModel;
+    PemasukanViewModel pemasukanViewModel;
 
     private BottomNavigationView bottomNavigationView;
 

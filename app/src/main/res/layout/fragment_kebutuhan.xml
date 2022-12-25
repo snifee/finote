@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
     tools:context=".controller.fragment.KebutuhanFragment">
 
     <TextView
+        android:id="@+id/tvkebutuhanTitle"
         android:layout_marginTop="15dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/kebutuhan_perbulan"
+        android:layout_centerHorizontal="true"
         android:textSize="20sp"/>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -19,9 +19,20 @@
         android:id="@+id/keperluanRecycleView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginHorizontal="5dp"
-        android:layout_marginVertical="20dp">
+        android:layout_below="@id/tvkebutuhanTitle"
+        android:layout_margin="5dp">
 
     </androidx.recyclerview.widget.RecyclerView>
 
-</LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fbTambahKebutuhan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="29dp"
+        android:layout_marginBottom="38dp"
+        android:src="@drawable/ic_add" />
+
+</RelativeLayout>

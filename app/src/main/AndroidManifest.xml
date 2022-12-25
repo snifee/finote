@@ -34,7 +34,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".TambahKeperluanActivity"
+            android:name=".TambahKebutuhanActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

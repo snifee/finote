@@ -11,12 +11,12 @@ import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.aplikasita.data.dao.HutangDao;
-import com.example.aplikasita.data.dao.KeperluanDao;
+import com.example.aplikasita.data.dao.KebutuhanDao;
 import com.example.aplikasita.data.dao.PendapatanDao;
 import com.example.aplikasita.data.dao.MonthlyDao;
 import com.example.aplikasita.data.dao.PengeluaranDao;
 import com.example.aplikasita.data.entity.Hutang;
-import com.example.aplikasita.data.entity.Keperluan;
+import com.example.aplikasita.data.entity.Kebutuhan;
 import com.example.aplikasita.data.entity.Pendapatan;
 import com.example.aplikasita.data.entity.Pengeluaran;
 import com.example.aplikasita.utils.EnumCategory;
@@ -29,7 +29,7 @@ import java.util.Date;
 
 
 
-@Database(entities = {Pengeluaran.class, Pendapatan.class, Keperluan.class, Hutang.class}, version =1)
+@Database(entities = {Pengeluaran.class, Pendapatan.class, Kebutuhan.class, Hutang.class}, version =1)
 @TypeConverters({DateConverter.class})
 public abstract class AppDatabase extends RoomDatabase {
 
@@ -39,7 +39,7 @@ public abstract class AppDatabase extends RoomDatabase {
 
     public abstract PendapatanDao pemasukanDao();
 
-    public abstract KeperluanDao keperluanDao();
+    public abstract KebutuhanDao keperluanDao();
 
     public abstract MonthlyDao monthlyDao();
 
@@ -90,13 +90,13 @@ public abstract class AppDatabase extends RoomDatabase {
     private static class PopulateDbAsyncTask extends AsyncTask<Void,Void,Void>{
         private PendapatanDao pendapatanDao;
         private PengeluaranDao pengeluaranDao;
-        private KeperluanDao keperluanDao;
+        private KebutuhanDao kebutuhanDao;
         private HutangDao hutangDao;
 
         private PopulateDbAsyncTask(AppDatabase db){
             pendapatanDao = db.pemasukanDao();
             pengeluaranDao = db.pengeluaranDao();
-            keperluanDao = db.keperluanDao();
+            kebutuhanDao = db.keperluanDao();
             hutangDao = db.hutangDao();
         }
 
@@ -129,11 +129,11 @@ public abstract class AppDatabase extends RoomDatabase {
                 pengeluaranDao.insert(new Pengeluaran(23000L,"beli rumah",date2,month2,"Primer"));
 
 
-                keperluanDao.insert(new Keperluan(EnumCategory.Sandang.name(), EnumCategory.Sandang.name(), 50000L));
-                keperluanDao.insert(new Keperluan(EnumCategory.Pangan.name(), EnumCategory.Pangan.name(), 50000L));
-                keperluanDao.insert(new Keperluan(EnumCategory.Energi.name(), EnumCategory.Energi.name(), 50000L));
-                keperluanDao.insert(new Keperluan(EnumCategory.Pendidikan.name(), EnumCategory.Pendidikan.name(), 50000L));
-                keperluanDao.insert(new Keperluan(EnumCategory.Hiburan.name(), EnumCategory.Hiburan.name(), 50000L));
+                kebutuhanDao.insert(new Kebutuhan(EnumCategory.Sandang.name(), EnumCategory.Sandang.name(), 50000L));
+                kebutuhanDao.insert(new Kebutuhan(EnumCategory.Pangan.name(), EnumCategory.Pangan.name(), 50000L));
+                kebutuhanDao.insert(new Kebutuhan(EnumCategory.Energi.name(), EnumCategory.Energi.name(), 50000L));
+                kebutuhanDao.insert(new Kebutuhan(EnumCategory.Pendidikan.name(), EnumCategory.Pendidikan.name(), 50000L));
+                kebutuhanDao.insert(new Kebutuhan(EnumCategory.Hiburan.name(), EnumCategory.Hiburan.name(), 50000L));
 
                 hutangDao.insert(new Hutang(200000L,date2,"apalah",false));
                 hutangDao.insert(new Hutang(200000L,date2,"apalah",true));

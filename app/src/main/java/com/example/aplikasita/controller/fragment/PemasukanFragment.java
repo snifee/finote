@@ -19,7 +19,7 @@ import android.widget.Toast;
 
 import com.example.aplikasita.R;
 import com.example.aplikasita.controller.adaptor.RecycleViewAdapter.PendapatanAdaptor;
-import com.example.aplikasita.data.viewmodel.IncomeViewModel;
+import com.example.aplikasita.data.viewmodel.PemasukanViewModel;
 import com.example.aplikasita.data.entity.Pendapatan;
 
 import java.util.List;
@@ -30,7 +30,7 @@ public class PemasukanFragment extends Fragment {
     private String monthYear;
 
     private RecyclerView recyclerView;
-    private IncomeViewModel incomeViewModel;
+    private PemasukanViewModel pemasukanViewModel;
 
     public PemasukanFragment(String monthYear) {
         this.monthYear = monthYear;
@@ -53,8 +53,8 @@ public class PemasukanFragment extends Fragment {
         recyclerView.addItemDecoration(new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL));
 
 
-        incomeViewModel = ViewModelProviders.of(this).get(IncomeViewModel.class);
-        incomeViewModel.getIncomeByMonthYear(monthYear).observe(this, new Observer<List<Pendapatan>>() {
+        pemasukanViewModel = ViewModelProviders.of(this).get(PemasukanViewModel.class);
+        pemasukanViewModel.getIncomeByMonthYear(monthYear).observe(this, new Observer<List<Pendapatan>>() {
             @Override
             public void onChanged(@Nullable List<Pendapatan> pendapatans) {
                 pendapatanAdaptor.setListIncome(pendapatans);
@@ -71,7 +71,7 @@ public class PemasukanFragment extends Fragment {
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                incomeViewModel.delete(pendapatanAdaptor.getIncome(viewHolder.getAdapterPosition()));
+                pemasukanViewModel.delete(pendapatanAdaptor.getIncome(viewHolder.getAdapterPosition()));
                 Toast.makeText(getActivity(),"Deleted",Toast.LENGTH_SHORT).show();
             }
         }).attachToRecyclerView(recyclerView);

@@ -6,7 +6,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "tabel_keperluan")
-public class Keperluan {
+public class Kebutuhan {
     @PrimaryKey(autoGenerate = true)
     private Long id;
 
@@ -19,7 +19,7 @@ public class Keperluan {
     @ColumnInfo(name = "jumlah")
     private Long jumlah;
 
-    public Keperluan(String kebutuhan, String kategoriKebutuhan, Long jumlah) {
+    public Kebutuhan(String kebutuhan, String kategoriKebutuhan, Long jumlah) {
         this.kebutuhan = kebutuhan;
         this.kategoriKebutuhan = kategoriKebutuhan;
         this.jumlah = jumlah;

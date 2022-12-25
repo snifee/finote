@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TambahKeperluanActivity">
+    tools:context=".TambahKebutuhanActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -16,9 +16,8 @@
             android:orientation="vertical"
             android:gravity="center">
 
-
-
             <TextView
+                android:id="@+id/tvTambahKebutuhanTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -64,10 +63,10 @@
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 app:endIconMode="clear_text"
-                android:hint="@string/keterangan">
+                android:hint="@string/kategori_kebutuhan">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etBudgetCategory"
+                    android:id="@+id/etKatagoriKebutuhan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -79,7 +78,7 @@
 
             <Button
                 style="@style/Widget.Material3.Button.ElevatedButton"
-                android:id="@+id/submitButtonBudget"
+                android:id="@+id/submitButtonKebutuhan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30sp"

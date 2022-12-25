@@ -12,8 +12,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.aplikasita.R;
-import com.example.aplikasita.data.viewmodel.IncomeViewModel;
-import com.example.aplikasita.data.viewmodel.SpendingViewModel;
+import com.example.aplikasita.data.viewmodel.PemasukanViewModel;
+import com.example.aplikasita.data.viewmodel.PengeluaranViewModel;
 import com.example.aplikasita.utils.MyStringUtils;
 
 import java.text.NumberFormat;
@@ -22,9 +22,9 @@ import java.util.Currency;
 
 public class HomeFragment extends Fragment {
 
-    private SpendingViewModel spendingViewModel;
+    private PengeluaranViewModel pengeluaranViewModel;
 
-    private IncomeViewModel incomeViewModel;
+    private PemasukanViewModel pemasukanViewModel;
     private TextView tvIncome, tvSpending,tvMonth,tvDate;
 
     private NumberFormat numberFormat = NumberFormat.getCurrencyInstance();;
@@ -64,8 +64,8 @@ public class HomeFragment extends Fragment {
         LocalDate currentDateMonth = LocalDate.now();
         String monthDateNow = currentDateMonth.getMonth().toString()+String.valueOf(currentDateMonth.getYear());
 
-        spendingViewModel = ViewModelProviders.of(this).get(SpendingViewModel.class);
-        spendingViewModel.getSumofSpendingByMonth(monthDateNow).observe(this, new Observer<Long>() {
+        pengeluaranViewModel = ViewModelProviders.of(this).get(PengeluaranViewModel.class);
+        pengeluaranViewModel.getSumofSpendingByMonth(monthDateNow).observe(this, new Observer<Long>() {
             @Override
             public void onChanged(Long monthSpending) {
                 if (monthSpending!=null){
@@ -81,8 +81,8 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        incomeViewModel = ViewModelProviders.of(this).get(IncomeViewModel.class);
-        incomeViewModel.getSumofIncomeByMonth(monthDateNow).observe(this, new Observer<Long>() {
+        pemasukanViewModel = ViewModelProviders.of(this).get(PemasukanViewModel.class);
+        pemasukanViewModel.getSumofIncomeByMonth(monthDateNow).observe(this, new Observer<Long>() {
             @Override
             public void onChanged(Long monthIncome) {
                 if (monthIncome!=null){

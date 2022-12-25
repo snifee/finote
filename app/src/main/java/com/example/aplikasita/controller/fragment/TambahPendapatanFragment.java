@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 import com.example.aplikasita.R;
 import com.example.aplikasita.data.entity.Pendapatan;
-import com.example.aplikasita.data.viewmodel.IncomeViewModel;
+import com.example.aplikasita.data.viewmodel.PemasukanViewModel;
 import com.example.aplikasita.utils.MyStringUtils;
 
 import java.time.LocalDate;
@@ -27,7 +27,7 @@ import java.util.Date;
 
 public class TambahPendapatanFragment extends Fragment {
 
-    IncomeViewModel incomeViewModel;
+    PemasukanViewModel pemasukanViewModel;
 
 
 
@@ -117,8 +117,8 @@ public class TambahPendapatanFragment extends Fragment {
 
             Pendapatan pendapatan = new Pendapatan(rekening,jml,inputDate, monthYear,keterangan);
 
-            incomeViewModel = ViewModelProviders.of(this).get(IncomeViewModel.class);
-            incomeViewModel.insert(pendapatan);
+            pemasukanViewModel = ViewModelProviders.of(this).get(PemasukanViewModel.class);
+            pemasukanViewModel.insert(pendapatan);
 
         }catch (Exception e){
             System.out.println(e);

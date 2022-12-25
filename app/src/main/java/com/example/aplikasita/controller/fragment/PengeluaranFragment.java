@@ -21,7 +21,7 @@ import com.example.aplikasita.R;
 import com.example.aplikasita.SecondActivity;
 import com.example.aplikasita.controller.adaptor.RecycleViewAdapter.PengeluaranAdaptor;
 import com.example.aplikasita.data.entity.Pengeluaran;
-import com.example.aplikasita.data.viewmodel.SpendingViewModel;
+import com.example.aplikasita.data.viewmodel.PengeluaranViewModel;
 
 import java.util.List;
 
@@ -33,7 +33,7 @@ public class PengeluaranFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private PengeluaranAdaptor pengeluaranAdaptor;
-    private SpendingViewModel spendingViewModel;
+    private PengeluaranViewModel pengeluaranViewModel;
 
 
     public PengeluaranFragment(String monthYear) {
@@ -56,8 +56,8 @@ public class PengeluaranFragment extends Fragment {
 
 
         if (SecondActivity.MONTH_YEAR != null){
-            spendingViewModel = ViewModelProviders.of(this).get(SpendingViewModel.class);
-            spendingViewModel.getAllSpendingByMonth(this.monthYear).observe(this, new Observer<List<Pengeluaran>>() {
+            pengeluaranViewModel = ViewModelProviders.of(this).get(PengeluaranViewModel.class);
+            pengeluaranViewModel.getAllSpendingByMonth(this.monthYear).observe(this, new Observer<List<Pengeluaran>>() {
                 @Override
                 public void onChanged(@Nullable List<Pengeluaran> pengeluarans) {
                     pengeluaranAdaptor.setListSpending(pengeluarans);
@@ -78,7 +78,7 @@ public class PengeluaranFragment extends Fragment {
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                spendingViewModel.delete(pengeluaranAdaptor.getSpending(viewHolder.getAdapterPosition()));
+                pengeluaranViewModel.delete(pengeluaranAdaptor.getSpending(viewHolder.getAdapterPosition()));
                 Toast.makeText(getActivity(),"Deleted",Toast.LENGTH_SHORT).show();
             }
         }).attachToRecyclerView(recyclerView);

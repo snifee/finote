@@ -21,7 +21,7 @@ import com.example.aplikasita.R;
 import com.example.aplikasita.SecondActivity;
 import com.example.aplikasita.controller.adaptor.RecycleViewAdapter.BulanAdaptor;
 import com.example.aplikasita.data.viewmodel.MonthlyViewModel;
-import com.example.aplikasita.data.viewmodel.SpendingViewModel;
+import com.example.aplikasita.data.viewmodel.PengeluaranViewModel;
 import com.example.aplikasita.dto.MonthlySpending;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -33,7 +33,7 @@ public class PerbulanFragment extends Fragment {
     public static int ADD_CF_RQ =2;
 
     private RecyclerView recyclerView;
-    private SpendingViewModel spendingViewModel;
+    private PengeluaranViewModel pengeluaranViewModel;
     private MonthlyViewModel monthlyViewModel;
     private BulanAdaptor bulanAdaptor;
 

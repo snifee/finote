@@ -8,24 +8,24 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.aplikasita.data.entity.Keperluan;
+import com.example.aplikasita.data.entity.Kebutuhan;
 
 import java.util.List;
 
 @Dao
-public interface KeperluanDao {
+public interface KebutuhanDao {
 
     @Insert
-    void insert(Keperluan keperluan);
+    void insert(Kebutuhan kebutuhan);
 
     @Update
-    void update(Keperluan keperluan);
+    void update(Kebutuhan kebutuhan);
 
     @Delete
-    void delete(Keperluan keperluan);
+    void delete(Kebutuhan kebutuhan);
 
     @Query("SELECT * FROM tabel_keperluan")
-    LiveData<List<Keperluan>> getAllBudget();
+    LiveData<List<Kebutuhan>> getAllBudget();
 
     @Query("SELECT SUM(jumlah) AS jumlah FROM tabel_keperluan")
     LiveData<Long> getTotalBudget();

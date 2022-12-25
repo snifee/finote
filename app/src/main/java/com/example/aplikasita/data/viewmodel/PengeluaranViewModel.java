@@ -11,13 +11,13 @@ import com.example.aplikasita.data.repo.PengeluaranRepo;
 
 import java.util.List;
 
-public class SpendingViewModel extends AndroidViewModel {
+public class PengeluaranViewModel extends AndroidViewModel {
     private PengeluaranRepo pengeluaranRepo;
     private LiveData<List<Pengeluaran>> allSpending;
     private LiveData<List<Pengeluaran>> allSpendingByMonth;
     private LiveData<Long> sumofSpendingByMonth;
 
-    public SpendingViewModel(@NonNull Application application) {
+    public PengeluaranViewModel(@NonNull Application application) {
         super(application);
         this.pengeluaranRepo = new PengeluaranRepo(application);
         this.allSpending = pengeluaranRepo.getAllSpending();
