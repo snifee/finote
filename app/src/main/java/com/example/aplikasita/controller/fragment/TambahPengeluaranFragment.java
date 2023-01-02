@@ -29,20 +29,17 @@ import java.util.Date;
 
 public class TambahPengeluaranFragment extends Fragment {
 
-    private PengeluaranViewModel pengeluaranViewModel;
-
-    private EditText editTextJumlahPeng;
-    private EditText editTextKet;
-    private EditText editTextDate;
-    private Button submitButton;
-    private AutoCompleteTextView autoCompleteCategory;
-
-    private String rekening, jumlah, keterangan,date,jenis;
-
     public TambahPengeluaranFragment() {
         // Required empty public constructor
     }
 
+    private PengeluaranViewModel pengeluaranViewModel;
+
+    private EditText editTextJumlahPeng,editTextKet,editTextDate;
+    private Button submitButton;
+    private AutoCompleteTextView autoCompleteCategory;
+
+    private String rekening, jumlah, keterangan,date,jenis;
 
 
     @Override
@@ -90,7 +87,6 @@ public class TambahPengeluaranFragment extends Fragment {
                 datePickerDialog.show();
             }
         });
-
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override

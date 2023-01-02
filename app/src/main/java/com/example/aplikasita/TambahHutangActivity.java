@@ -129,8 +129,6 @@ public class TambahHutangActivity extends AppCompatActivity {
                 hutangViewModel.insert(hutang);
 
                 finish();
-
-
             }
 
 

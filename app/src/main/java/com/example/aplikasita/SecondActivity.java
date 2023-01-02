@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.aplikasita.controller.adaptor.PagerAdapter;
-import com.example.aplikasita.controller.fragment.PemasukanFragment;
+import com.example.aplikasita.controller.fragment.PendapatanFragment;
 import com.example.aplikasita.controller.fragment.PengeluaranFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
@@ -55,7 +55,7 @@ public class SecondActivity extends AppCompatActivity {
         PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT, tabLayout.getTabCount());
 
         pagerAdapter.addFragment(new PengeluaranFragment(monthYear));
-        pagerAdapter.addFragment(new PemasukanFragment(monthYear));
+        pagerAdapter.addFragment(new PendapatanFragment(monthYear));
 
         viewPager.setAdapter(pagerAdapter);
 

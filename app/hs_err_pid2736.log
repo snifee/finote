@@ -1,0 +1,198 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 132120576 bytes for Failed to commit area from 0x00000000e0000000 to 0x00000000e7e00000 of length 132120576.
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (./src/hotspot/os/windows/os_windows.cpp:3619), pid=2736, tid=23256
+#
+# JRE version:  (11.0.13) (build )
+# Java VM: OpenJDK 64-Bit Server VM (11.0.13+0-b1751.21-8125866, mixed mode, sharing, tiered, compressed oops, g1 gc, windows-amd64)
+# No core dump will be written. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -Djava.awt.headless=true -Dorg.gradle.internal.worker.tmpdir=D:\Mine\Documents\documents\Kuliah\Tugas Akhir\Aplikasi Tugas Akhir\finote\app\build\tmp\testDebugUnitTest\work -Dorg.gradle.native=false --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED -Xmx512m -Dfile.encoding=UTF-8 -Duser.country=ID -Duser.language=en -Duser.variant -ea worker.org.gradle.process.internal.worker.GradleWorkerMain 'Gradle Test Executor 1'
+
+Host: Intel(R) Core(TM) i5-8300H CPU @ 2.30GHz, 8 cores, 7G,  Windows 11 , 64 bit Build 22621 (10.0.22621.963)
+Time: Mon Jan  2 03:40:18 2023 Malay Peninsula Standard Time elapsed time: 0.021803 seconds (0d 0h 0m 0s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x0000018e4d816800):  JavaThread "Unknown thread" [_thread_in_vm, id=23256, stack(0x00000087cf600000,0x00000087cf700000)]
+
+Stack: [0x00000087cf600000,0x00000087cf700000]
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x6100fa]
+V  [jvm.dll+0x747090]
+V  [jvm.dll+0x7486ad]
+V  [jvm.dll+0x748d83]
+V  [jvm.dll+0x24ab48]
+V  [jvm.dll+0x60d164]
+V  [jvm.dll+0x601e75]
+V  [jvm.dll+0x308bdb]
+V  [jvm.dll+0x308b4a]
+V  [jvm.dll+0x308a22]
+V  [jvm.dll+0x30d986]
+V  [jvm.dll+0x357093]
+V  [jvm.dll+0x357796]
+V  [jvm.dll+0x357193]
+V  [jvm.dll+0x2e3448]
+V  [jvm.dll+0x2e45f7]
+V  [jvm.dll+0x7242e7]
+V  [jvm.dll+0x725adc]
+V  [jvm.dll+0x364629]
+V  [jvm.dll+0x707cee]
+V  [jvm.dll+0x3d2633]
+V  [jvm.dll+0x3d4a21]
+C  [jli.dll+0x536b]
+C  [ucrtbase.dll+0x29363]
+C  [KERNEL32.DLL+0x126bd]
+C  [ntdll.dll+0x5dfb8]
+
+
+---------------  P R O C E S S  ---------------
+
+Threads class SMR info:
+_java_thread_list=0x0000018e4b693f40, length=0, elements={
+}
+
+Java Threads: ( => current thread )
+
+Other Threads:
+  0x0000018e4d838800 GCTaskThread "GC Thread#0" [stack: 0x00000087cf700000,0x00000087cf800000] [id=1596]
+  0x0000018e4d846800 ConcurrentGCThread "G1 Main Marker" [stack: 0x00000087cf800000,0x00000087cf900000] [id=1388]
+  0x0000018e4d848800 ConcurrentGCThread "G1 Conc#0" [stack: 0x00000087cf900000,0x00000087cfa00000] [id=10376]
+
+[error occurred during error reporting (printing all threads), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ff865013dd7]
+
+VM state:not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x0000018e4d811cc0] Heap_lock - owner thread: 0x0000018e4d816800
+
+Heap address: 0x00000000e0000000, size: 512 MB, Compressed Oops mode: Non-zero based: 0x00000000e0000000
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 0
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+Events (1 events):
+Event: 0.012 Loaded shared library C:\Program Files\Android\Android Studio\jre\bin\zip.dll
+
+
+Dynamic libraries:
+0x00007ff7c30b0000 - 0x00007ff7c30ba000 	C:\Program Files\Android\Android Studio\jre\bin\java.exe
+0x00007ff8f3a50000 - 0x00007ff8f3c64000 	C:\WINDOWS\SYSTEM32\ntdll.dll
+0x00007ff8f2b50000 - 0x00007ff8f2c13000 	C:\WINDOWS\System32\KERNEL32.DLL
+0x00007ff8f10f0000 - 0x00007ff8f148d000 	C:\WINDOWS\System32\KERNELBASE.dll
+0x00007ff8f1600000 - 0x00007ff8f1711000 	C:\WINDOWS\System32\ucrtbase.dll
+0x00007ff8979a0000 - 0x00007ff8979b9000 	C:\Program Files\Android\Android Studio\jre\bin\jli.dll
+0x00007ff897ba0000 - 0x00007ff897bb7000 	C:\Program Files\Android\Android Studio\jre\bin\VCRUNTIME140.dll
+0x00007ff8f3840000 - 0x00007ff8f39ed000 	C:\WINDOWS\System32\USER32.dll
+0x00007ff8f0f60000 - 0x00007ff8f0f86000 	C:\WINDOWS\System32\win32u.dll
+0x00007ff8f2100000 - 0x00007ff8f2129000 	C:\WINDOWS\System32\GDI32.dll
+0x00007ff8db870000 - 0x00007ff8dbafe000 	C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.22621.608_none_a9444ca7c10bb01d\COMCTL32.dll
+0x00007ff8f1720000 - 0x00007ff8f1832000 	C:\WINDOWS\System32\gdi32full.dll
+0x00007ff8f2dc0000 - 0x00007ff8f2e67000 	C:\WINDOWS\System32\msvcrt.dll
+0x00007ff8f0f90000 - 0x00007ff8f102a000 	C:\WINDOWS\System32\msvcp_win.dll
+0x00007ff8f34f0000 - 0x00007ff8f3522000 	C:\WINDOWS\System32\IMM32.DLL
+0x00007ff88ca60000 - 0x00007ff88cafd000 	C:\Program Files\Android\Android Studio\jre\bin\msvcp140.dll
+0x00007ff864d20000 - 0x00007ff865822000 	C:\Program Files\Android\Android Studio\jre\bin\server\jvm.dll
+0x00007ff8f3720000 - 0x00007ff8f37ce000 	C:\WINDOWS\System32\ADVAPI32.dll
+0x00007ff8f22b0000 - 0x00007ff8f2354000 	C:\WINDOWS\System32\sechost.dll
+0x00007ff8f2ca0000 - 0x00007ff8f2db5000 	C:\WINDOWS\System32\RPCRT4.dll
+0x00007ff8f1ba0000 - 0x00007ff8f1ba8000 	C:\WINDOWS\System32\PSAPI.DLL
+0x00007ff8e8dc0000 - 0x00007ff8e8df4000 	C:\WINDOWS\SYSTEM32\WINMM.dll
+0x00007ff8e76b0000 - 0x00007ff8e76ba000 	C:\WINDOWS\SYSTEM32\VERSION.dll
+0x00007ff8c87e0000 - 0x00007ff8c87e9000 	C:\WINDOWS\SYSTEM32\WSOCK32.dll
+0x00007ff8f3470000 - 0x00007ff8f34e1000 	C:\WINDOWS\System32\WS2_32.dll
+0x00007ff8eff80000 - 0x00007ff8eff98000 	C:\WINDOWS\SYSTEM32\kernel.appcore.dll
+0x00007ff8e8ed0000 - 0x00007ff8e8ee1000 	C:\Program Files\Android\Android Studio\jre\bin\verify.dll
+0x00007ff8ee770000 - 0x00007ff8ee99e000 	C:\WINDOWS\SYSTEM32\DBGHELP.DLL
+0x00007ff8f30e0000 - 0x00007ff8f346a000 	C:\WINDOWS\System32\combase.dll
+0x00007ff8f21d0000 - 0x00007ff8f22a7000 	C:\WINDOWS\System32\OLEAUT32.dll
+0x00007ff8ca620000 - 0x00007ff8ca652000 	C:\WINDOWS\SYSTEM32\dbgcore.DLL
+0x00007ff8f0e70000 - 0x00007ff8f0eeb000 	C:\WINDOWS\System32\bcryptPrimitives.dll
+0x00007ff8c3100000 - 0x00007ff8c3129000 	C:\Program Files\Android\Android Studio\jre\bin\java.dll
+0x00007ff8e9f80000 - 0x00007ff8e9f8b000 	C:\Program Files\Android\Android Studio\jre\bin\jimage.dll
+0x00007ff8e8160000 - 0x00007ff8e8178000 	C:\Program Files\Android\Android Studio\jre\bin\zip.dll
+
+dbghelp: loaded successfully - version: 4.0.5 - missing functions: none
+symbol engine: initialized successfully - sym options: 0x614 - pdb path: .;C:\Program Files\Android\Android Studio\jre\bin;C:\WINDOWS\SYSTEM32;C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.22621.608_none_a9444ca7c10bb01d;C:\Program Files\Android\Android Studio\jre\bin\server
+
+VM Arguments:
+jvm_args: -Djava.awt.headless=true -Dorg.gradle.internal.worker.tmpdir=D:\Mine\Documents\documents\Kuliah\Tugas Akhir\Aplikasi Tugas Akhir\finote\app\build\tmp\testDebugUnitTest\work -Dorg.gradle.native=false --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED -Xmx512m -Dfile.encoding=UTF-8 -Duser.country=ID -Duser.language=en -Duser.variant -ea 
+java_command: worker.org.gradle.process.internal.worker.GradleWorkerMain 'Gradle Test Executor 1'
+java_class_path (initial): C:\Users\razya\.gradle\caches\7.3.3\workerMain\gradle-worker.jar;D:\Mine\Documents\documents\Kuliah\Tugas Akhir\Aplikasi Tugas Akhir\finote\app\build\intermediates\javac\debugUnitTest\classes;D:\Mine\Documents\documents\Kuliah\Tugas Akhir\Aplikasi Tugas Akhir\finote\app\build\intermediates\runtime_app_classes_jar\debug\classes.jar;C:\Users\razya\.gradle\caches\modules-2\files-2.1\junit\junit\4.13.2\8ac9e16d933b6fb43bc7f576336b8f4d7eb5ba12\junit-4.13.2.jar;C:\Users\razya\.gradle\caches\transforms-3\bd849a6a36552a6f651c288b45da09f9\transformed\databinding-adapters-7.2.2-runtime.jar;C:\Users\razya\.gradle\caches\transforms-3\c721962e353b25328cebc9bcccc47135\transformed\databinding-runtime-7.2.2-runtime.jar;C:\Users\razya\.gradle\caches\transforms-3\0b1ec709b88b8951f25a6262b7a315af\transformed\viewbinding-7.2.2-runtime.jar;C:\Users\razya\.gradle\caches\modules-2\files-2.1\androidx.databinding\databinding-common\7.2.2\cb53bd625b7a99cf218f46634d07d1886441288\databinding-common-7.2.2.jar;C:\Users\razya\.gradle\caches\transforms-3\a1fc97f59c077d1d9b421ef7dd4b7f30\transformed\android-database-sqlcipher-4.5.0-runtime.jar;C:\Users\razya\.gradle\caches\transforms-3\4f441610ee4d11f8af48913ab299cd55\transformed\navigation-ui-2.5.3-runtime.jar;C:\Users\razya\.gradle\caches\transforms-3\abdbc07313db8d38f48a3692742cdd45\transformed\material-1.7.0-runtime.jar;C:\Users\razya\.gradle\caches\transforms-3\4186e803c64a7064783fc1fdccab741b\transformed\constraintlayout-2.1.4-runtime.jar;C:\Users\razya\.gradle\caches\transforms-3\6938b4e87ff695a773dbb6a96e8103cf\transformed\appcompat-resources-1.5.1-runtime.jar;C:\Users\razya\.gradle\caches\transforms-3\4583e7b56d0e43c2ac3f7485a270b0c7\transformed\appcompat-1.5.1-runtime.jar;C:\Users\razya\.gradle\caches\transforms-3\9f4ab71f120d004b709bd051db45b18d\transformed\lifecycle-extensions-2.2.0-runtime.jar;C:\Users\razya\.gradle\caches\transforms-3\8804cc5c55aa624e3ec352156bc20ccf\transformed\viewpager2-1.0.0-runtime.ja
+Launcher Type: SUN_STANDARD
+
+[Global flags]
+     intx CICompilerCount                          = 4                                         {product} {ergonomic}
+     uint ConcGCThreads                            = 2                                         {product} {ergonomic}
+     uint G1ConcRefinementThreads                  = 8                                         {product} {ergonomic}
+   size_t G1HeapRegionSize                         = 1048576                                   {product} {ergonomic}
+    uintx GCDrainStackTargetSize                   = 64                                        {product} {ergonomic}
+   size_t InitialHeapSize                          = 132120576                                 {product} {ergonomic}
+   size_t MarkStackSize                            = 4194304                                   {product} {ergonomic}
+   size_t MaxHeapSize                              = 536870912                                 {product} {command line}
+   size_t MinHeapDeltaBytes                        = 1048576                                   {product} {ergonomic}
+    uintx NonNMethodCodeHeapSize                   = 5836300                                {pd product} {ergonomic}
+    uintx NonProfiledCodeHeapSize                  = 122910970                              {pd product} {ergonomic}
+    uintx ProfiledCodeHeapSize                     = 122910970                              {pd product} {ergonomic}
+    uintx ReservedCodeCacheSize                    = 251658240                              {pd product} {ergonomic}
+     bool SegmentedCodeCache                       = true                                      {product} {ergonomic}
+     bool UseCompressedClassPointers               = true                                 {lp64_product} {ergonomic}
+     bool UseCompressedOops                        = true                                 {lp64_product} {ergonomic}
+     bool UseG1GC                                  = true                                      {product} {ergonomic}
+     bool UseLargePagesIndividualAllocation        = false                                  {pd product} {ergonomic}
+
+Logging:
+Log output configuration:
+ #0: stdout all=warning uptime,level,tags
+ #1: stderr all=off uptime,level,tags
+
+Environment Variables:
+PATH=C:\Program Files\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Git\cmd;C:\Users\razya\anaconda3\Library\bin;C:\Users\razya\AppData\Local\Programs\Python\Python310;C:\Users\razya\AppData\Local\Programs\Python\Python310\Scripts;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\nodejs\;C:\llvm-mingw-20211002-msvcrt-x86_64\bin;C:\Gradle\gradle-7.4.1-all\gradle-7.4.1\bin;C:\Program Files\Go\bin;C:\Program Files\dotnet\;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\PostgreSQL\15\bin;C:\Program Files\MATLAB\R2022b\bin;C:\Program Files\Cloudflare\Cloudflare WARP\;C:\Users\razya\AppData\Local\Programs\Python\Python38\Scripts\;C:\Users\razya\AppData\Local\Programs\Python\Python38\;C:\Users\razya\AppData\Local\Microsoft\WindowsApps;C:\Program Files\JetBrains\PyCharm Community Edition 2021.2.3\bin;C:\Users\razya\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\heroku\bin;C:\Users\razya\AppData\Roaming\npm;C:\Users\razya\flutter_windows_2.10.3-stable\flutter\bin;C:\Users\razya\go\bin;C:\Maven\apache-maven-3.8.6-bin\apache-maven-3.8.6\bin;C:\sqlite3;C:\Users\razya\AppData\Local\JetBrains\Toolbox\scripts;C:\Users\razya\AppData\Local\GitHubDesktop\bin
+USERNAME=razya
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 158 Stepping 10, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 11 , 64 bit Build 22621 (10.0.22621.963)
+OS uptime: 2 days 11:50 hours
+Hyper-V role detected
+
+CPU:total 8 (initial active 8) (4 cores per cpu, 2 threads per core) family 6 model 158 stepping 10 microcode 0xde, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, erms, 3dnowpref, lzcnt, ht, tsc, tscinvbit, bmi1, bmi2, adx, fma
+
+Memory: 4k page, system-wide physical 8048M (578M free)
+TotalPageFile size 20048M (AvailPageFile size 99M)
+current process WorkingSet (physical memory assigned to process): 11M, peak: 11M
+current process commit charge ("private bytes"): 59M, peak: 185M
+
+vm_info: OpenJDK 64-Bit Server VM (11.0.13+0-b1751.21-8125866) for windows-amd64 JRE (11.0.13+0-b1751.21-8125866), built on Feb  2 2022 03:00:22 by "builder" with MS VC++ 14.0 (VS2015)
+
+END.

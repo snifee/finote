@@ -65,12 +65,6 @@ public class TambahKebutuhanActivity extends AppCompatActivity {
                 }
             });
         }
-
-
-
-
-
-
     }
 
     private void saveKebutuhan(){

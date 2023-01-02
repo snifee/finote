@@ -50,7 +50,6 @@ public abstract class AppDatabase extends RoomDatabase {
 
 
     public static AppDatabase getDB(final Context context, String password){
-
         if (appDatabase == null){
             synchronized (AppDatabase.class){
                 if (appDatabase == null){
@@ -64,7 +63,6 @@ public abstract class AppDatabase extends RoomDatabase {
                 }
             }
         }
-
         return appDatabase;
     }
 

@@ -27,7 +27,7 @@ public class CryptManager {
         try {
             Key key = getKey(password);
 
-            Cipher cipher = Cipher.getInstance("AES");
+            Cipher cipher = Cipher.getInstance("AES/CBC");
             cipher.init(Cipher.ENCRYPT_MODE, key);
             byte[] encryptByteVal = cipher.doFinal(data.getBytes());
 
@@ -40,10 +40,9 @@ public class CryptManager {
 
     public static String decrypt(String data,String password)
     {
-
         try{
             Key key = getKey(password);
-            Cipher cipher = Cipher.getInstance("AES");
+            Cipher cipher = Cipher.getInstance("AES/CBC");
             cipher.init(Cipher.DECRYPT_MODE, key);
             byte[] decryptedValue64 = MyEncoder.decode(data, Base64.DEFAULT);
             String result = new String(cipher.doFinal(decryptedValue64),"UTF-8");
@@ -52,9 +51,6 @@ public class CryptManager {
         }catch (Exception e){
             return e.toString();
         }
-
-
-
     }
 
 }

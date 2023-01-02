@@ -5,7 +5,10 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 
+import android.util.Base64;
+
 import com.example.aplikasita.utils.CryptManager;
+import com.example.aplikasita.utils.MyEncoder;
 import com.example.aplikasita.utils.MyStringUtils;
 import com.google.common.hash.HashCode;
 import com.google.common.hash.HashFunction;
@@ -13,6 +16,7 @@ import com.google.common.hash.Hashing;
 
 import java.nio.charset.Charset;
 import java.security.Key;
+import java.security.SecureRandom;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -108,5 +112,29 @@ public class ExampleUnitTest {
 
         System.out.println(password);
         System.out.println(password2);
+    }
+
+    @Test
+    public void test6(){
+        byte[] result = new byte[32];
+        SecureRandom secureRandom = new SecureRandom();
+        secureRandom.nextBytes(result);
+        System.out.println(result.length);
+        System.out.println(MyEncoder.encodeToString(result, Base64.DEFAULT));
+    }
+
+
+    @Test
+    public void test7(){
+        String str1 = "helloworld";
+        String str2 = MyEncoder.encodeToString(str1.getBytes(),Base64.DEFAULT);
+
+        String ciphertext1 = CryptManager.encryptData(str1,"sayasangatsukamakansatekambinggg");
+        String ciphertext2 = CryptManager.encryptData(str2,"sayasangatsukamakansatekambinggg");
+
+        String cipherTextInBinary = MyStringUtils.convertStringToBinary(ciphertext1);
+        String plainTextInBinary = MyStringUtils.convertStringToBinary(str1);
+        System.out.println(cipherTextInBinary.length());
+        System.out.println(plainTextInBinary.length());
     }
 }

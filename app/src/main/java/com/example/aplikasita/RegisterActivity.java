@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,7 +14,12 @@ import android.widget.Toast;
 
 import com.example.aplikasita.utils.CryptManager;
 import com.example.aplikasita.utils.HashingUtils;
+import com.example.aplikasita.utils.MyEncoder;
 import com.example.aplikasita.utils.MyPreferences;
+
+import java.security.SecureRandom;
+
+import javax.crypto.KeyGenerator;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -59,7 +66,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                     System.out.println(MyPreferences.getSharedPreferencePassword(getBaseContext()));
 
-                    databaseKeyEncryption(encodedPassword,"password",getBaseContext());
+                    databaseKeyEncryption(encodedPassword,generateKey(),getBaseContext());
 
                     Intent intent = new Intent(RegisterActivity.this,MainActivity.class);
                     startActivity(intent);
@@ -83,6 +90,13 @@ public class RegisterActivity extends AppCompatActivity {
 
         }
 
+    }
+
+    public String generateKey(){
+            byte[] result = new byte[32];
+            SecureRandom secureRandom = new SecureRandom();
+            secureRandom.nextBytes(result);
+            return MyEncoder.encodeToString(result, Base64.DEFAULT);
     }
 
 

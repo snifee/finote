@@ -24,7 +24,7 @@ import com.example.aplikasita.data.entity.Pendapatan;
 
 import java.util.List;
 
-public class PemasukanFragment extends Fragment {
+public class PendapatanFragment extends Fragment {
 
     public static final int ADD_ITEM_RQ =1;
     private String monthYear;
@@ -32,7 +32,7 @@ public class PemasukanFragment extends Fragment {
     private RecyclerView recyclerView;
     private PemasukanViewModel pemasukanViewModel;
 
-    public PemasukanFragment(String monthYear) {
+    public PendapatanFragment(String monthYear) {
         this.monthYear = monthYear;
         // Required empty public constructor
     }
