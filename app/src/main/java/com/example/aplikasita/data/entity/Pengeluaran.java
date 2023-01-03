@@ -1,8 +1,11 @@
 package com.example.aplikasita.data.entity;
 
 
+import static androidx.room.ForeignKey.CASCADE;
+
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
 import java.util.Date;
@@ -17,10 +20,14 @@ import java.util.Date;
 // created_at TEXT DEFAULT CURRENT_TIMESTAMP);
 
 
-@Entity(tableName = "tabel_pengeluaran")
+@Entity(tableName = "tabel_pengeluaran",
+        foreignKeys = @ForeignKey(entity = Kebutuhan.class,
+        parentColumns = "idKebutuhan",
+        childColumns = "idKebutuhanPengeluaran",
+        onDelete = CASCADE))
 public class Pengeluaran {
     @PrimaryKey(autoGenerate = true)
-    private Long id;
+    private Long idPengeluara;
 
     @ColumnInfo(name = "jumlah")
     private Long jumlah;
@@ -34,27 +41,26 @@ public class Pengeluaran {
     @ColumnInfo(name = "bulan_tahun")
     private String bulanTahun;
 
-    @ColumnInfo(name = "jenis_pengeluaran")
-    private String jenisPengeluaran;
+    private Long idKebutuhanPengeluaran;
 
     public Pengeluaran(){
 
     }
 
-    public Pengeluaran(Long jumlah, String keterangan, Date waktu, String bulanTahun, String jenisPengeluaran) {
+    public Pengeluaran(Long jumlah, String keterangan, Date waktu, String bulanTahun, Long idKebutuhanPengeluaran) {
         this.jumlah = jumlah;
         this.keterangan = keterangan;
         this.waktu = waktu;
         this.bulanTahun = bulanTahun;
-        this.jenisPengeluaran = jenisPengeluaran;
+        this.idKebutuhanPengeluaran = idKebutuhanPengeluaran;
     }
 
-    public Long getId() {
-        return id;
+    public Long getIdPengeluara() {
+        return idPengeluara;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdPengeluara(Long idPengeluara) {
+        this.idPengeluara = idPengeluara;
     }
 
     public Long getJumlah() {
@@ -89,11 +95,11 @@ public class Pengeluaran {
         this.bulanTahun = bulanTahun;
     }
 
-    public String getJenisPengeluaran() {
-        return jenisPengeluaran;
+    public Long getIdKebutuhanPengeluaran() {
+        return idKebutuhanPengeluaran;
     }
 
-    public void setJenisPengeluaran(String jenisPengeluaran) {
-        this.jenisPengeluaran = jenisPengeluaran;
+    public void setIdKebutuhanPengeluaran(Long idKebutuhanPengeluaran) {
+        this.idKebutuhanPengeluaran = idKebutuhanPengeluaran;
     }
 }

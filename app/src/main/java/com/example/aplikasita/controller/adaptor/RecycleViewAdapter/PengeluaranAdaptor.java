@@ -49,7 +49,7 @@ public class PengeluaranAdaptor extends RecyclerView.Adapter<PengeluaranAdaptor.
         holder.tvSpending.setText(spending);
         holder.tvKeterangan.setText(currentPengeluaran.getKeterangan());
         holder.tvDate.setText(sdf.format(currentPengeluaran.getWaktu()));
-        holder.tvJenis.setText(currentPengeluaran.getJenisPengeluaran());
+        holder.tvJenis.setText(String.valueOf(currentPengeluaran.getIdKebutuhanPengeluaran()));
     }
 
     @Override

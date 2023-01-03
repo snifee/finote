@@ -8,6 +8,7 @@ import static org.junit.Assert.*;
 import android.util.Base64;
 
 import com.example.aplikasita.utils.CryptManager;
+import com.example.aplikasita.utils.HashingUtils;
 import com.example.aplikasita.utils.MyEncoder;
 import com.example.aplikasita.utils.MyStringUtils;
 import com.google.common.hash.HashCode;
@@ -97,7 +98,7 @@ public class ExampleUnitTest {
 
         System.out.println("Hasil enkripsi:"+en);
 
-        String de = CryptManager.decrypt(en,"passwordpassword");
+        String de = CryptManager.decrypt(en,"passwordpassworh");
 
         System.out.println("Hasil dekripsi:"+de);
     }
@@ -111,7 +112,7 @@ public class ExampleUnitTest {
         String password2 = hashing.hashString("password", Charset.defaultCharset()).toString();
 
         System.out.println(password);
-        System.out.println(password2);
+        System.out.println(HashingUtils.myMd5Func("password"));
     }
 
     @Test

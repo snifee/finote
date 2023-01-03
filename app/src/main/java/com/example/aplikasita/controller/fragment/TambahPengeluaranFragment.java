@@ -39,7 +39,8 @@ public class TambahPengeluaranFragment extends Fragment {
     private Button submitButton;
     private AutoCompleteTextView autoCompleteCategory;
 
-    private String rekening, jumlah, keterangan,date,jenis;
+    private String rekening, jumlah, keterangan,date;
+    private Long jenis;
 
 
     @Override
@@ -60,7 +61,7 @@ public class TambahPengeluaranFragment extends Fragment {
         autoCompleteCategory.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                jenis = autoCompleteCategory.getText().toString();
+                jenis = Long.valueOf(arrayAdapter.getPosition(autoCompleteCategory.getText().toString()));
             }
         });
 

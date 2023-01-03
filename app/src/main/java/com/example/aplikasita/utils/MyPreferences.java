@@ -5,8 +5,9 @@ import android.content.SharedPreferences;
 
 public class MyPreferences {
 
-    static final String KEY_DB_KEY = "dbkey";
-    static final String KEY_PASSWORD = "password";
+    public static final String KEY_DB_KEY = "dbkey";
+    public static final String KEY_PASSWORD = "password";
+    public static final String CURRENT_PASSWORD = "user_password";
 
 
     private static SharedPreferences getSharedPreferences(Context context){
@@ -32,6 +33,23 @@ public class MyPreferences {
     public static String getSharedPreferencePassword(Context context) {
         return getSharedPreferences(context).getString(KEY_PASSWORD,null);
     }
+
+    public static void setSharedPreferenceTemporaryPassword(Context context,String tempPassword){
+        SharedPreferences.Editor editor = getSharedPreferences(context).edit();
+        editor.putString(CURRENT_PASSWORD,tempPassword);
+        editor.apply();
+    }
+
+    public static void deleteSharedPreferenceTemporaryPassword(Context context){
+        SharedPreferences.Editor editor = getSharedPreferences(context).edit();
+        editor.remove(CURRENT_PASSWORD);
+        editor.apply();
+    }
+
+    public static String getSharedPreferenceTemporaryPassword(Context context) {
+        return getSharedPreferences(context).getString(CURRENT_PASSWORD,null);
+    }
+
 
     public static boolean isPasswordCorrect(String password, Context context){
         String correctPassword = getSharedPreferencePassword(context);

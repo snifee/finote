@@ -3,6 +3,8 @@ package com.example.aplikasita;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -11,6 +13,7 @@ import com.example.aplikasita.controller.fragment.HutangFragment;
 import com.example.aplikasita.controller.fragment.PerbulanFragment;
 import com.example.aplikasita.controller.fragment.HomeFragment;
 import com.example.aplikasita.data.viewmodel.PemasukanViewModel;
+import com.example.aplikasita.utils.MyPreferences;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
@@ -59,5 +62,13 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 return true;
         }
         return false;
+    }
+
+    @Override
+    public void onDestroy()
+    {
+        super.onDestroy();
+        MyPreferences.deleteSharedPreferenceTemporaryPassword(getApplicationContext());
+        System.out.println("app dimatikan");
     }
 }

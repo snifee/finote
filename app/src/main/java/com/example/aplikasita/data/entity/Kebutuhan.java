@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "tabel_keperluan")
 public class Kebutuhan {
     @PrimaryKey(autoGenerate = true)
-    private Long id;
+    private Long idKebutuhan;
 
     @ColumnInfo(name = "kebutuhan")
     private String kebutuhan;
@@ -25,12 +25,12 @@ public class Kebutuhan {
         this.jumlah = jumlah;
     }
 
-    public Long getId() {
-        return id;
+    public Long getIdKebutuhan() {
+        return idKebutuhan;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdKebutuhan(Long idKebutuhan) {
+        this.idKebutuhan = idKebutuhan;
     }
 
     public String getKebutuhan() {

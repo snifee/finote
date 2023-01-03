@@ -19,15 +19,16 @@ public class PemasukanRepo {
     private LiveData<List<Pendapatan>> allIncome;
     private LiveData<List<Pendapatan>> incomeByMonthYear;
     private LiveData<Long> sumOfIncomeByMonth;
-    private String encryptedDBPassword,dbPassword,userPassword;
+    private String encryptedDBPassword,dbPassword,userPassword,currectPassword;
 
 
     public PemasukanRepo(Application application){
 
         encryptedDBPassword = MyPreferences.getSharedPreferenceDBKey(application);
         userPassword = MyPreferences.getSharedPreferencePassword(application);
+        currectPassword = MyPreferences.getSharedPreferenceTemporaryPassword(application);
 
-        dbPassword = CryptManager.decrypt(encryptedDBPassword,userPassword);
+        dbPassword = CryptManager.decrypt(encryptedDBPassword,currectPassword);
 
         AppDatabase database = AppDatabase.getDB(application,dbPassword);
         pendapatanDao = database.pemasukanDao();

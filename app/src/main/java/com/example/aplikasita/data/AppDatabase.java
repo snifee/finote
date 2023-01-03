@@ -50,19 +50,14 @@ public abstract class AppDatabase extends RoomDatabase {
 
 
     public static AppDatabase getDB(final Context context, String password){
-        if (appDatabase == null){
-            synchronized (AppDatabase.class){
-                if (appDatabase == null){
-                    SupportFactory factory = new SupportFactory(SQLiteDatabase.getBytes(password.toCharArray()));
-                    appDatabase = Room.databaseBuilder(context.getApplicationContext(),
-                            AppDatabase.class, DB_NAME)
-                            .addCallback(roomCallback)
-                            .fallbackToDestructiveMigration()
-                            .openHelperFactory(factory)
-                            .build();
-                }
-            }
-        }
+
+        SupportFactory factory = new SupportFactory(SQLiteDatabase.getBytes(password.toCharArray()));
+        appDatabase = Room.databaseBuilder(context.getApplicationContext(),
+                AppDatabase.class, DB_NAME)
+                .addCallback(roomCallback)
+                .fallbackToDestructiveMigration()
+                .openHelperFactory(factory)
+                .build();
         return appDatabase;
     }
 
@@ -107,13 +102,19 @@ public abstract class AppDatabase extends RoomDatabase {
                 Date date1 = MyStringUtils.stringDateToDateTime("02-12-2022");
                 String month1 = MyStringUtils.getMonthYear(date1);
 
+                kebutuhanDao.insert(new Kebutuhan(EnumCategory.Sandang.name(), EnumCategory.Sandang.name(), 50000L));
+                kebutuhanDao.insert(new Kebutuhan(EnumCategory.Pangan.name(), EnumCategory.Pangan.name(), 50000L));
+                kebutuhanDao.insert(new Kebutuhan(EnumCategory.Energi.name(), EnumCategory.Energi.name(), 50000L));
+                kebutuhanDao.insert(new Kebutuhan(EnumCategory.Pendidikan.name(), EnumCategory.Pendidikan.name(), 50000L));
+                kebutuhanDao.insert(new Kebutuhan(EnumCategory.Hiburan.name(), EnumCategory.Hiburan.name(), 50000L));
+
                 pendapatanDao.insert(new Pendapatan("123", 230000L,date1, month1,"beli rumah"));
                 pendapatanDao.insert(new Pendapatan("123", 10000L,date1,month1,"beli saham"));
 
-                pengeluaranDao.insert(new Pengeluaran(23000L,"beli rumah",date1,month1,"Primer"));
-                pengeluaranDao.insert(new Pengeluaran(23000L,"beli rumah",date1,month1,"Sekunder"));
-                pengeluaranDao.insert(new Pengeluaran(23000L,"beli rumah",date1,month1,"Sekunder"));
-                pengeluaranDao.insert(new Pengeluaran(23000L,"beli rumah",date1,month1,"Primer"));
+                pengeluaranDao.insert(new Pengeluaran(23000L,"beli rumah",date1,month1,1L));
+                pengeluaranDao.insert(new Pengeluaran(23000L,"beli rumah",date1,month1,2L));
+                pengeluaranDao.insert(new Pengeluaran(23000L,"beli rumah",date1,month1,3L));
+                pengeluaranDao.insert(new Pengeluaran(23000L,"beli rumah",date1,month1,4L));
 
                 Date date2 = MyStringUtils.stringDateToDateTime("02-07-2022");
                 String month2 = MyStringUtils.getMonthYear(date2);
@@ -121,17 +122,11 @@ public abstract class AppDatabase extends RoomDatabase {
                 pendapatanDao.insert(new Pendapatan("123", 230000L,date2, month2,"beli rumah"));
                 pendapatanDao.insert(new Pendapatan("123", 10000L,date2,month2,"beli saham"));
 
-                pengeluaranDao.insert(new Pengeluaran(23000L,"beli rumah",date2,month2,"Primer"));
-                pengeluaranDao.insert(new Pengeluaran(23000L,"beli rumah",date2,month2,"Sekunder"));
-                pengeluaranDao.insert(new Pengeluaran(23000L,"beli rumah",date2,month2,"Sekunder"));
-                pengeluaranDao.insert(new Pengeluaran(23000L,"beli rumah",date2,month2,"Primer"));
+                pengeluaranDao.insert(new Pengeluaran(23000L,"beli rumah",date2,month2,1L));
+                pengeluaranDao.insert(new Pengeluaran(23000L,"beli rumah",date2,month2,1L));
+                pengeluaranDao.insert(new Pengeluaran(23000L,"beli rumah",date2,month2,1L));
+                pengeluaranDao.insert(new Pengeluaran(23000L,"beli rumah",date2,month2,1L));
 
-
-                kebutuhanDao.insert(new Kebutuhan(EnumCategory.Sandang.name(), EnumCategory.Sandang.name(), 50000L));
-                kebutuhanDao.insert(new Kebutuhan(EnumCategory.Pangan.name(), EnumCategory.Pangan.name(), 50000L));
-                kebutuhanDao.insert(new Kebutuhan(EnumCategory.Energi.name(), EnumCategory.Energi.name(), 50000L));
-                kebutuhanDao.insert(new Kebutuhan(EnumCategory.Pendidikan.name(), EnumCategory.Pendidikan.name(), 50000L));
-                kebutuhanDao.insert(new Kebutuhan(EnumCategory.Hiburan.name(), EnumCategory.Hiburan.name(), 50000L));
 
                 hutangDao.insert(new Hutang(200000L,date2,"apalah",false));
                 hutangDao.insert(new Hutang(200000L,date2,"apalah",true));

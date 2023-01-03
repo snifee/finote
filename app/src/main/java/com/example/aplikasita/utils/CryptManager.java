@@ -13,7 +13,7 @@ public class CryptManager {
     private static final String ENCRYPT_ALGO = KeyProperties.KEY_ALGORITHM_AES;
     private static final String BLOCK_MODE = KeyProperties.BLOCK_MODE_CBC;
     private static final String PADDING = KeyProperties.ENCRYPTION_PADDING_PKCS7;
-    private static final String TRANSFORM = ENCRYPT_ALGO+"/"+BLOCK_MODE+"/"+PADDING;
+    private static final String TRANSFORM = ENCRYPT_ALGO+"/"+BLOCK_MODE;
 
 
     public static SecretKeySpec getKey(String password) throws Exception{
@@ -27,7 +27,7 @@ public class CryptManager {
         try {
             Key key = getKey(password);
 
-            Cipher cipher = Cipher.getInstance("AES/CBC");
+            Cipher cipher = Cipher.getInstance("AES");
             cipher.init(Cipher.ENCRYPT_MODE, key);
             byte[] encryptByteVal = cipher.doFinal(data.getBytes());
 
@@ -42,7 +42,7 @@ public class CryptManager {
     {
         try{
             Key key = getKey(password);
-            Cipher cipher = Cipher.getInstance("AES/CBC");
+            Cipher cipher = Cipher.getInstance("AES");
             cipher.init(Cipher.DECRYPT_MODE, key);
             byte[] decryptedValue64 = MyEncoder.decode(data, Base64.DEFAULT);
             String result = new String(cipher.doFinal(decryptedValue64),"UTF-8");

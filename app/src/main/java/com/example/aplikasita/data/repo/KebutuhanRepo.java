@@ -16,14 +16,18 @@ import java.util.List;
 public class KebutuhanRepo {
     private KebutuhanDao kebutuhanDao;
     private LiveData<List<Kebutuhan>> allBudget;
-    private String encryptedDBPassword,dbPassword,userPassword;
+    private String encryptedDBPassword,dbPassword,userPassword,currectPassword;
 
     public KebutuhanRepo(Application application){
 
         encryptedDBPassword = MyPreferences.getSharedPreferenceDBKey(application);
         userPassword = MyPreferences.getSharedPreferencePassword(application);
+        currectPassword = MyPreferences.getSharedPreferenceTemporaryPassword(application);
 
-        dbPassword = CryptManager.decrypt(encryptedDBPassword,userPassword);
+        dbPassword = CryptManager.decrypt(encryptedDBPassword,currectPassword);
+
+        System.out.println(dbPassword);
+        System.out.println(encryptedDBPassword);
 
         AppDatabase database = AppDatabase.getDB(application,dbPassword);
         kebutuhanDao = database.keperluanDao();

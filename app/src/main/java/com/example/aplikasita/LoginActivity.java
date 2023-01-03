@@ -41,7 +41,10 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (encodedPassword.equals(correctPassword)){
 
+                    MyPreferences.setSharedPreferenceTemporaryPassword(getBaseContext(),passwordInput);
                     startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                    finish();
+
 
                 }else {
 

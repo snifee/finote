@@ -59,7 +59,7 @@ public class KebutuhanFragment extends Fragment {
                 Intent intent = new Intent(getActivity(), TambahKebutuhanActivity.class);
 
                 intent.putExtra(TambahKebutuhanActivity.JUMLAH, kebutuhan.getJumlah());
-                intent.putExtra(TambahKebutuhanActivity.ID, kebutuhan.getId());
+                intent.putExtra(TambahKebutuhanActivity.ID, kebutuhan.getIdKebutuhan());
                 intent.putExtra(TambahKebutuhanActivity.KEBUTUHAN, kebutuhan.getKebutuhan());
                 intent.putExtra(TambahKebutuhanActivity.KATEGORI, kebutuhan.getKategoriKebutuhan());
 

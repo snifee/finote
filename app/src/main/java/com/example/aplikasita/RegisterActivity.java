@@ -55,18 +55,19 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Password Tidak Sama",Toast.LENGTH_SHORT).show();
                 }
 
-                if ((password.equals(password2))){
+                if (password.length()!=16){
+                    Toast.makeText(getApplicationContext(),"Panjang Password harus 16 char",Toast.LENGTH_SHORT).show();
+                }
+
+                if ((password.equals(password2)) && password.length()==16){
 
                     String encodedPassword = HashingUtils.myHashFunc(password);
 
                     MyPreferences.setSharedPreferencePassword(getBaseContext(),encodedPassword);
-                    MyPreferences.setSharedPreferenceDBKey(getBaseContext(),"user");
 
-                    System.out.println(password);
+                    databaseKeyEncryption(password,generateKey(),getBaseContext());
 
-                    System.out.println(MyPreferences.getSharedPreferencePassword(getBaseContext()));
-
-                    databaseKeyEncryption(encodedPassword,generateKey(),getBaseContext());
+                    MyPreferences.setSharedPreferenceTemporaryPassword(getBaseContext(),password);
 
                     Intent intent = new Intent(RegisterActivity.this,MainActivity.class);
                     startActivity(intent);

@@ -96,7 +96,7 @@ public class TambahKebutuhanActivity extends AppCompatActivity {
             Long jumlah = Long.parseLong(jumlahString);
 
             Kebutuhan keperluan = new Kebutuhan(kebutuhan,kategoriKebutuhan,jumlah);
-            keperluan.setId(id);
+            keperluan.setIdKebutuhan(id);
 
             kebutuhanViewModel = ViewModelProviders.of(this).get(KebutuhanViewModel.class);
             kebutuhanViewModel.update(keperluan);
