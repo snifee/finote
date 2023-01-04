@@ -32,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 String passwordInput = inputPassword.getText().toString();
 
-                String encodedPassword = HashingUtils.myHashFunc(passwordInput);
+                String encodedPassword = HashingUtils.hashingSHA256(passwordInput);
                 String correctPassword = MyPreferences.getSharedPreferencePassword(getBaseContext());
 
                 System.out.println("passwordInput "+passwordInput);

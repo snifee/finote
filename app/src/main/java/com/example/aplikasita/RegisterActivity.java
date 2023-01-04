@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
@@ -18,8 +17,6 @@ import com.example.aplikasita.utils.MyEncoder;
 import com.example.aplikasita.utils.MyPreferences;
 
 import java.security.SecureRandom;
-
-import javax.crypto.KeyGenerator;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -61,35 +58,35 @@ public class RegisterActivity extends AppCompatActivity {
 
                 if ((password.equals(password2)) && password.length()==16){
 
-                    String encodedPassword = HashingUtils.myHashFunc(password);
+                    try {
 
-                    MyPreferences.setSharedPreferencePassword(getBaseContext(),encodedPassword);
+                        registrasi(password);
 
-                    databaseKeyEncryption(password,generateKey(),getBaseContext());
+                        Intent intent = new Intent(RegisterActivity.this,MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }catch (Exception e){
 
-                    MyPreferences.setSharedPreferenceTemporaryPassword(getBaseContext(),password);
-
-                    Intent intent = new Intent(RegisterActivity.this,MainActivity.class);
-                    startActivity(intent);
-                    finish();
-
+                    }
                 }
-
-
             }
         });
     }
 
 
-    public void databaseKeyEncryption(String password, String key, Context context){
+    public void registrasi(String password){
 
-        try {
-            String encryptedKey = CryptManager.encryptData(key,password);
+        String encodedPassword = HashingUtils.hashingSHA256(password);
 
-            MyPreferences.setSharedPreferenceDBKey(context,encryptedKey);
-        }catch (Exception e){
+        MyPreferences.setSharedPreferencePassword(getBaseContext(),encodedPassword);
 
-        }
+        String databaseKey = generateKey();
+
+        String encryptedKey = CryptManager.aesEncryption(databaseKey,password);
+
+        MyPreferences.setSharedPreferenceDBKey(getBaseContext(),encryptedKey);
+
+        MyPreferences.setSharedPreferenceTemporaryPassword(getBaseContext(),password);
 
     }
 

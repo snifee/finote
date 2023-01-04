@@ -28,7 +28,7 @@ public class PemasukanRepo {
         userPassword = MyPreferences.getSharedPreferencePassword(application);
         currectPassword = MyPreferences.getSharedPreferenceTemporaryPassword(application);
 
-        dbPassword = CryptManager.decrypt(encryptedDBPassword,currectPassword);
+        dbPassword = CryptManager.aesDecryption(encryptedDBPassword,currectPassword);
 
         AppDatabase database = AppDatabase.getDB(application,dbPassword);
         pendapatanDao = database.pemasukanDao();

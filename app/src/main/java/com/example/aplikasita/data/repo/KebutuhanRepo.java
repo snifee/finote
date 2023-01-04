@@ -24,7 +24,7 @@ public class KebutuhanRepo {
         userPassword = MyPreferences.getSharedPreferencePassword(application);
         currectPassword = MyPreferences.getSharedPreferenceTemporaryPassword(application);
 
-        dbPassword = CryptManager.decrypt(encryptedDBPassword,currectPassword);
+        dbPassword = CryptManager.aesDecryption(encryptedDBPassword,currectPassword);
 
         System.out.println(dbPassword);
         System.out.println(encryptedDBPassword);

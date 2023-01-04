@@ -22,7 +22,7 @@ public class CryptManager {
     }
 
 
-    public static String encryptData(String data, String password){
+    public static String aesEncryption(String data, String password){
 
         try {
             Key key = getKey(password);
@@ -38,7 +38,7 @@ public class CryptManager {
 
     }
 
-    public static String decrypt(String data,String password)
+    public static String aesDecryption(String data, String password)
     {
         try{
             Key key = getKey(password);

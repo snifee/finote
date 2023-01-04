@@ -84,4 +84,32 @@ public class MyStringUtils {
         return result.stream().collect(Collectors.joining(separator));
     }
 
+    public static String convertStringToBinary2(String input) {
+
+        String mapArray = "";
+
+        for(int b=0;b<input.length();b++){
+
+            int asciValueOfChar =(int)input.charAt(b);
+
+            String binaryInt = Integer.toBinaryString(asciValueOfChar);
+
+            String paddedBinaryInt = String.format("%8s", binaryInt);
+
+            paddedBinaryInt = paddedBinaryInt.replace(' ', '0');
+
+            System.out.println("ASCII Code::"+asciValueOfChar);
+
+            System.out.println("Binary of Char::"+binaryInt);
+
+            System.out.println("Binary of Padded Char::"+binaryInt);
+
+            mapArray = mapArray + paddedBinaryInt ;
+
+        }
+
+        return mapArray;
+
+    }
+
 }

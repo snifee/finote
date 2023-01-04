@@ -9,14 +9,14 @@ import android.util.Base64;
 
 import com.example.aplikasita.utils.CryptManager;
 import com.example.aplikasita.utils.HashingUtils;
+import com.example.aplikasita.utils.MyAvalancheEffect;
 import com.example.aplikasita.utils.MyEncoder;
 import com.example.aplikasita.utils.MyStringUtils;
-import com.google.common.hash.HashCode;
 import com.google.common.hash.HashFunction;
 import com.google.common.hash.Hashing;
 
+import java.math.BigInteger;
 import java.nio.charset.Charset;
-import java.security.Key;
 import java.security.SecureRandom;
 import java.text.NumberFormat;
 import java.text.ParseException;
@@ -94,11 +94,11 @@ public class ExampleUnitTest {
     public void test4()  throws Exception{
 
 
-        String en = CryptManager.encryptData("helloworldhelloworldhelloworldhelloworldhelloworld","passwordpassword");
+        String en = CryptManager.aesEncryption("helloworld","passwordpassword");
 
         System.out.println("Hasil enkripsi:"+en);
 
-        String de = CryptManager.decrypt(en,"passwordpassworh");
+        String de = CryptManager.aesDecryption(en,"passwordpassword");
 
         System.out.println("Hasil dekripsi:"+de);
     }
@@ -127,15 +127,33 @@ public class ExampleUnitTest {
 
     @Test
     public void test7(){
-        String str1 = "helloworld";
-        String str2 = MyEncoder.encodeToString(str1.getBytes(),Base64.DEFAULT);
 
-        String ciphertext1 = CryptManager.encryptData(str1,"sayasangatsukamakansatekambinggg");
-        String ciphertext2 = CryptManager.encryptData(str2,"sayasangatsukamakansatekambinggg");
+        String[] plaintext1 = {"onepunchman","jujutsukaisen","attackontitan","chainsawman","sayasukamakan","informatika","hallodunia","udayana","helloworld","fakultasmipa"};
+        String[] plaintext2 = {"onepunchmao","jujutsukaiseo","attackontitao","chainsawmao","sayasukamakac","informatikc","hallodunic","udayanc","helloworlg","fakultasmipo"};
 
-        String cipherTextInBinary = MyStringUtils.convertStringToBinary(ciphertext1);
-        String plainTextInBinary = MyStringUtils.convertStringToBinary(str1);
-        System.out.println(cipherTextInBinary.length());
-        System.out.println(plainTextInBinary.length());
+        for (int i=0;i<plaintext1.length;i++){
+            String str1 = plaintext1[i];
+            String str2 = plaintext2[i];
+
+            String ciphertext1 = CryptManager.aesEncryption(str1,"passwordpassword");
+            String ciphertext2 = CryptManager.aesEncryption(str2,"passwordpassword");
+
+
+            System.out.println(str1);
+            System.out.println(str2);
+
+//        System.out.println(MyStringUtils.convertStringToBinary2(ciphertext1));
+//        System.out.println(MyStringUtils.convertStringToBinary2(ciphertext2));
+
+
+            double av = MyAvalancheEffect.calculateAE(ciphertext1,ciphertext2);
+
+            System.out.println(av);
+            System.out.println();
+            System.out.println();
+        }
+
+
+
     }
 }

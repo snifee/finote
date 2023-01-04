@@ -7,11 +7,7 @@ import androidx.lifecycle.LiveData;
 
 import com.example.aplikasita.data.AppDatabase;
 import com.example.aplikasita.data.dao.HutangDao;
-import com.example.aplikasita.data.dao.HutangDao;
-import com.example.aplikasita.data.dao.PengeluaranDao;
 import com.example.aplikasita.data.entity.Hutang;
-import com.example.aplikasita.data.entity.Hutang;
-import com.example.aplikasita.data.entity.Pengeluaran;
 import com.example.aplikasita.utils.CryptManager;
 import com.example.aplikasita.utils.MyPreferences;
 
@@ -30,7 +26,7 @@ public class HutangRepo {
         userPassword = MyPreferences.getSharedPreferencePassword(application);
         currectPassword = MyPreferences.getSharedPreferenceTemporaryPassword(application);
 
-        dbPassword = CryptManager.decrypt(encryptedDBPassword,currectPassword);
+        dbPassword = CryptManager.aesDecryption(encryptedDBPassword,currectPassword);
 
         AppDatabase database = AppDatabase.getDB(application,dbPassword);
         hutangDao = database.hutangDao();

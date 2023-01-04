@@ -50,7 +50,6 @@ public abstract class AppDatabase extends RoomDatabase {
 
 
     public static AppDatabase getDB(final Context context, String password){
-
         SupportFactory factory = new SupportFactory(SQLiteDatabase.getBytes(password.toCharArray()));
         appDatabase = Room.databaseBuilder(context.getApplicationContext(),
                 AppDatabase.class, DB_NAME)
