@@ -18,8 +18,8 @@ public class SecondActivity extends AppCompatActivity {
 
     public static String MONTH_YEAR = "SECOND_ACT_MONTH_YEAR";
     public static int ADD_CF_RQ = 1;
+    public static final String FRAGMENTVIEW = "FRAGMENT";
 
-    private TabLayout tabLayout;
     private ViewPager viewPager;
 
 
@@ -42,39 +42,21 @@ public class SecondActivity extends AppCompatActivity {
             }
         });
 
-
-
-        tabLayout = findViewById(R.id.SecondTabLayout);
         viewPager = findViewById(R.id.SecondViewPager);
 
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.pengeluaran));
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.pendapatan));
 
-        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+        PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT,1);
 
-        PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT, tabLayout.getTabCount());
+        if (getIntent().getIntExtra(FRAGMENTVIEW,1)==1){
+            pagerAdapter.addFragment(new PengeluaranFragment(monthYear));
+        }else if (getIntent().getIntExtra(FRAGMENTVIEW,1)==2){
+            pagerAdapter.addFragment(new PendapatanFragment(monthYear));
+        }
 
-        pagerAdapter.addFragment(new PengeluaranFragment(monthYear));
-        pagerAdapter.addFragment(new PendapatanFragment(monthYear));
+
 
         viewPager.setAdapter(pagerAdapter);
 
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
-            }
-        });
 
     }
 

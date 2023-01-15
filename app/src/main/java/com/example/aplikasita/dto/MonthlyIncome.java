@@ -2,11 +2,11 @@ package com.example.aplikasita.dto;
 
 public class MonthlyIncome {
     private float incomeTotal;
-    private String dateYear;
+    private String monthYear;
 
-    public MonthlyIncome(float spendingTotal, float incomeTotal, String dateYear) {
+    public MonthlyIncome(float incomeTotal, String monthYear) {
         this.incomeTotal = incomeTotal;
-        this.dateYear = dateYear;
+        this.monthYear = monthYear;
     }
 
     public float getIncomeTotal() {
@@ -17,11 +17,11 @@ public class MonthlyIncome {
         this.incomeTotal = incomeTotal;
     }
 
-    public String getDateYear() {
-        return dateYear;
+    public String getMonthYear() {
+        return monthYear;
     }
 
-    public void setDateYear(String dateYear) {
-        this.dateYear = dateYear;
+    public void setMonthYear(String monthYear) {
+        this.monthYear = monthYear;
     }
 }

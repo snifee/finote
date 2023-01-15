@@ -8,20 +8,12 @@
 
     tools:context=".SecondActivity">
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/SecondTabLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tabMode="fixed" />
-
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/SecondViewPager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SecondTabLayout"
         app:layout_constraintVertical_bias="0.0"
         tools:layout_editor_absoluteX="0dp">
 
