@@ -29,11 +29,11 @@ import java.util.Date;
 
 
 
-@Database(entities = {Pengeluaran.class, Pendapatan.class, Kebutuhan.class, Hutang.class}, version =1)
+@Database(entities = {Pengeluaran.class, Pendapatan.class, Kebutuhan.class, Hutang.class}, version =4)
 @TypeConverters({DateConverter.class})
 public abstract class AppDatabase extends RoomDatabase {
 
-    private static final String DB_NAME = "encrypted.db";
+    private static final String DB_NAME = "encrypted1.db";
 
     public abstract PengeluaranDao pengeluaranDao();
 
@@ -99,7 +99,6 @@ public abstract class AppDatabase extends RoomDatabase {
             try{
 
                 Date date1 = MyStringUtils.stringDateToDateTime("02-12-2022");
-                String month1 = MyStringUtils.getMonthYear(date1);
 
                 kebutuhanDao.insert(new Kebutuhan(EnumCategory.Sandang.name(), EnumCategory.Sandang.name(), 50000L));
                 kebutuhanDao.insert(new Kebutuhan(EnumCategory.Pangan.name(), EnumCategory.Pangan.name(), 50000L));
@@ -107,24 +106,23 @@ public abstract class AppDatabase extends RoomDatabase {
                 kebutuhanDao.insert(new Kebutuhan(EnumCategory.Pendidikan.name(), EnumCategory.Pendidikan.name(), 50000L));
                 kebutuhanDao.insert(new Kebutuhan(EnumCategory.Hiburan.name(), EnumCategory.Hiburan.name(), 50000L));
 
-                pendapatanDao.insert(new Pendapatan("123", 230000L,date1, month1,"beli rumah"));
-                pendapatanDao.insert(new Pendapatan("123", 10000L,date1,month1,"beli saham"));
+                pendapatanDao.insert(new Pendapatan("123", 230000L,date1,"beli rumah"));
+                pendapatanDao.insert(new Pendapatan("123", 10000L,date1,"beli saham"));
 
-                pengeluaranDao.insert(new Pengeluaran(23000L,"beli rumah",date1,month1,1L));
-                pengeluaranDao.insert(new Pengeluaran(23000L,"beli rumah",date1,month1,2L));
-                pengeluaranDao.insert(new Pengeluaran(23000L,"beli rumah",date1,month1,3L));
-                pengeluaranDao.insert(new Pengeluaran(23000L,"beli rumah",date1,month1,4L));
+                pengeluaranDao.insert(new Pengeluaran(23000L,"beli rumah",date1,1L));
+                pengeluaranDao.insert(new Pengeluaran(23000L,"beli rumah",date1,2L));
+                pengeluaranDao.insert(new Pengeluaran(23000L,"beli rumah",date1,3L));
+                pengeluaranDao.insert(new Pengeluaran(23000L,"beli rumah",date1,4L));
 
                 Date date2 = MyStringUtils.stringDateToDateTime("02-07-2022");
-                String month2 = MyStringUtils.getMonthYear(date2);
 
-                pendapatanDao.insert(new Pendapatan("123", 230000L,date2, month2,"beli rumah"));
-                pendapatanDao.insert(new Pendapatan("123", 10000L,date2,month2,"beli saham"));
+                pendapatanDao.insert(new Pendapatan("123", 230000L,date2,"beli rumah"));
+                pendapatanDao.insert(new Pendapatan("123", 10000L,date2,"beli saham"));
 
-                pengeluaranDao.insert(new Pengeluaran(23000L,"beli rumah",date2,month2,1L));
-                pengeluaranDao.insert(new Pengeluaran(23000L,"beli rumah",date2,month2,1L));
-                pengeluaranDao.insert(new Pengeluaran(23000L,"beli rumah",date2,month2,1L));
-                pengeluaranDao.insert(new Pengeluaran(23000L,"beli rumah",date2,month2,1L));
+                pengeluaranDao.insert(new Pengeluaran(23000L,"beli rumah",date2,1L));
+                pengeluaranDao.insert(new Pengeluaran(23000L,"beli rumah",date2,1L));
+                pengeluaranDao.insert(new Pengeluaran(23000L,"beli rumah",date2,1L));
+                pengeluaranDao.insert(new Pengeluaran(23000L,"beli rumah",date2,1L));
 
 
                 hutangDao.insert(new Hutang(200000L,date2,"apalah",false));

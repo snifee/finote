@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.aplikasita.R;
 import com.example.aplikasita.dto.MonthlyIncome;
+import com.example.aplikasita.utils.MyStringUtils;
 
 import java.text.NumberFormat;
 import java.util.Currency;
@@ -44,7 +45,8 @@ public class PendapatanPerbulanAdaptor extends RecyclerView.Adapter<PendapatanPe
 //        String income = format.format(listMonthIncome.get(position).getIncomeTotal());
         String income = format.format(listMonthIncome.get(position).getIncomeTotal());
 
-        holder.tvMonth.setText(listMonthIncome.get(position).getMonthYear());
+        String mountYear = MyStringUtils.stringToMonthYear(listMonthIncome.get(position).getMonthYear());
+        holder.tvMonth.setText(mountYear);
 //        holder.tvIncome.setText(income);
         holder.tvOutcome.setText(income);
     }

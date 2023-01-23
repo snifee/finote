@@ -14,6 +14,20 @@ import java.util.stream.Collectors;
 
 public class MyStringUtils {
 
+    public static String stringToMonthYear(String s){
+        try{
+            int mountInt = Integer.parseInt(s.substring(0,2));
+            String month = MyStringUtils.myCapitalizefunc(Month.of(mountInt).name());
+
+            String year = s.substring(3,s.length());
+
+            return month+" "+year;
+        }catch (Exception e){
+            return null;
+        }
+
+    }
+
     public static Date stringDateToDateTime(String dateString){
 
         LocalDateTime localDateTime;

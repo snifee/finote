@@ -113,9 +113,7 @@ public class TambahPendapatanFragment extends Fragment {
 
             Date inputDate = MyStringUtils.stringDateToDateTime(date);
 
-            String monthYear = MyStringUtils.getMonthYear(inputDate);
-
-            Pendapatan pendapatan = new Pendapatan(rekening,jml,inputDate, monthYear,keterangan);
+            Pendapatan pendapatan = new Pendapatan(rekening,jml,inputDate,keterangan);
 
             pemasukanViewModel = ViewModelProviders.of(this).get(PemasukanViewModel.class);
             pemasukanViewModel.insert(pendapatan);

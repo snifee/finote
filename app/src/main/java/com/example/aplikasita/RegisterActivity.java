@@ -21,10 +21,10 @@ import java.security.SecureRandom;
 public class RegisterActivity extends AppCompatActivity {
 
 
-    private EditText etPassword,etPassword2;
+    private EditText etPassword,etPassword2,etEmail;
     private Button registerButton;
 
-    private String password,password2;
+    private String email,password,password2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +37,7 @@ public class RegisterActivity extends AppCompatActivity {
             finish();
         }
 
+        etEmail = findViewById(R.id.etEmailInput);
         etPassword = findViewById(R.id.etPasswordInput);
         etPassword2 = findViewById(R.id.etPasswordInput2);
         registerButton = findViewById(R.id.registerButton);
@@ -45,6 +46,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                email = etEmail.getText().toString();
                 password = etPassword.getText().toString();
                 password2 = etPassword2.getText().toString();
 
@@ -56,11 +58,11 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Panjang Password harus 16 char",Toast.LENGTH_SHORT).show();
                 }
 
-                if ((password.equals(password2)) && password.length()==16){
+                if ((password.equals(password2)) && password.length()==16 && !email.isEmpty()){
 
                     try {
 
-                        registrasi(password);
+                        registrasi(email,password);
 
                         Intent intent = new Intent(RegisterActivity.this,MainActivity.class);
                         startActivity(intent);
@@ -68,17 +70,21 @@ public class RegisterActivity extends AppCompatActivity {
                     }catch (Exception e){
 
                     }
+                }else {
+                    Toast.makeText(RegisterActivity.this, "Email cannot empty", Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
 
 
-    public void registrasi(String password){
+    public void registrasi(String email,String password){
 
         String encodedPassword = HashingUtils.hashingSHA256(password);
 
         MyPreferences.setSharedPreferencePassword(getBaseContext(),encodedPassword);
+
+        MyPreferences.setSharedPreferenceEmail(getBaseContext(),email);
 
         String databaseKey = generateKey();
 

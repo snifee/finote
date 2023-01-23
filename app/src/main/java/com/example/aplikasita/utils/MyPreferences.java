@@ -5,9 +5,11 @@ import android.content.SharedPreferences;
 
 public class MyPreferences {
 
-    public static final String KEY_DB_KEY = "dbkey";
-    public static final String KEY_PASSWORD = "password";
-    public static final String CURRENT_PASSWORD = "user_password";
+    public static final String KEY_DB_KEY = "DB_KEY";
+    public static final String KEY_PASSWORD = "PASSWORD_KEY";
+
+    public static final String KEY_EMAIL = "EMAIL_KEY";
+    public static final String TEMP_PASSWORD = "TEMP_SAVED_PASSWORD";
 
 
     private static SharedPreferences getSharedPreferences(Context context){
@@ -17,6 +19,12 @@ public class MyPreferences {
     public static void setSharedPreferenceDBKey(Context context, String username){
         SharedPreferences.Editor editor = getSharedPreferences(context).edit();
         editor.putString(KEY_DB_KEY,username);
+        editor.apply();
+    }
+
+    public static void setSharedPreferenceEmail(Context context, String email){
+        SharedPreferences.Editor editor = getSharedPreferences(context).edit();
+        editor.putString(KEY_EMAIL,email);
         editor.apply();
     }
 
@@ -30,24 +38,28 @@ public class MyPreferences {
         return getSharedPreferences(context).getString(KEY_DB_KEY,null);
     }
 
+    public static String getSharedPreferenceEmail(Context context) {
+        return getSharedPreferences(context).getString(KEY_EMAIL,null);
+    }
+
     public static String getSharedPreferencePassword(Context context) {
         return getSharedPreferences(context).getString(KEY_PASSWORD,null);
     }
 
     public static void setSharedPreferenceTemporaryPassword(Context context,String tempPassword){
         SharedPreferences.Editor editor = getSharedPreferences(context).edit();
-        editor.putString(CURRENT_PASSWORD,tempPassword);
+        editor.putString(TEMP_PASSWORD,tempPassword);
         editor.apply();
     }
 
     public static void deleteSharedPreferenceTemporaryPassword(Context context){
         SharedPreferences.Editor editor = getSharedPreferences(context).edit();
-        editor.remove(CURRENT_PASSWORD);
+        editor.remove(TEMP_PASSWORD);
         editor.apply();
     }
 
     public static String getSharedPreferenceTemporaryPassword(Context context) {
-        return getSharedPreferences(context).getString(CURRENT_PASSWORD,null);
+        return getSharedPreferences(context).getString(TEMP_PASSWORD,null);
     }
 
 

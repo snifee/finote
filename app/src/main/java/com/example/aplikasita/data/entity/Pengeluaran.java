@@ -38,20 +38,16 @@ public class Pengeluaran {
     @ColumnInfo(name = "waktu")
     private Date waktu;
 
-    @ColumnInfo(name = "bulan_tahun")
-    private String bulanTahun;
-
     private Long idKebutuhanPengeluaran;
 
     public Pengeluaran(){
 
     }
 
-    public Pengeluaran(Long jumlah, String keterangan, Date waktu, String bulanTahun, Long idKebutuhanPengeluaran) {
+    public Pengeluaran(Long jumlah, String keterangan, Date waktu, Long idKebutuhanPengeluaran) {
         this.jumlah = jumlah;
         this.keterangan = keterangan;
         this.waktu = waktu;
-        this.bulanTahun = bulanTahun;
         this.idKebutuhanPengeluaran = idKebutuhanPengeluaran;
     }
 
@@ -85,14 +81,6 @@ public class Pengeluaran {
 
     public void setWaktu(Date waktu) {
         this.waktu = waktu;
-    }
-
-    public String getBulanTahun() {
-        return bulanTahun;
-    }
-
-    public void setBulanTahun(String bulanTahun) {
-        this.bulanTahun = bulanTahun;
     }
 
     public Long getIdKebutuhanPengeluaran() {

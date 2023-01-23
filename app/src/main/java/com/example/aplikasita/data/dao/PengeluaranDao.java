@@ -30,10 +30,10 @@ public interface PengeluaranDao {
     @Query("SELECT * FROM tabel_pengeluaran")
     LiveData<List<Pengeluaran>> getAllSpending();
 
-    @Query("SELECT * FROM tabel_pengeluaran WHERE bulan_tahun LIKE :rqbulanTahun")
+    @Query("SELECT * FROM tabel_pengeluaran WHERE strftime('%m-%Y', waktu / 1000, 'unixepoch') LIKE :rqbulanTahun")
     LiveData<List<Pengeluaran>> getAllSpendingByMonth(String rqbulanTahun);
 
-    @Query("SELECT SUM(jumlah) FROM tabel_pengeluaran WHERE bulan_tahun LIKE :rqbulanTahun")
+    @Query("SELECT SUM(jumlah) FROM tabel_pengeluaran WHERE strftime('%m-%Y', waktu / 1000, 'unixepoch') LIKE :rqbulanTahun")
     LiveData<Long> getSumSpendingByMonth(String rqbulanTahun);
 
 }

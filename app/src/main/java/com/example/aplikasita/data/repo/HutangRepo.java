@@ -2,6 +2,7 @@ package com.example.aplikasita.data.repo;
 
 import android.app.Application;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 
@@ -27,6 +28,8 @@ public class HutangRepo {
         currectPassword = MyPreferences.getSharedPreferenceTemporaryPassword(application);
 
         dbPassword = CryptManager.aesDecryption(encryptedDBPassword,currectPassword);
+
+        Log.i(null, "HutangRepo: "+dbPassword);
 
         AppDatabase database = AppDatabase.getDB(application,dbPassword);
         hutangDao = database.hutangDao();

@@ -28,17 +28,13 @@ public class Pendapatan {
     @ColumnInfo(name = "waktu")
     private Date waktu;
 
-    @ColumnInfo(name = "bulan_tahun")
-    private String bulanTahun;
-
     @ColumnInfo(name = "keterangan")
     private String keterangan;
 
-    public Pendapatan(String noRekening, Long jumlah, Date waktu, String bulanTahun, String keterangan) {
+    public Pendapatan(String noRekening, Long jumlah, Date waktu, String keterangan) {
         this.noRekening = noRekening;
         this.jumlah = jumlah;
         this.waktu = waktu;
-        this.bulanTahun = bulanTahun;
         this.keterangan = keterangan;
     }
 
@@ -72,14 +68,6 @@ public class Pendapatan {
 
     public void setWaktu(Date waktu) {
         this.waktu = waktu;
-    }
-
-    public String getBulanTahun() {
-        return bulanTahun;
-    }
-
-    public void setBulanTahun(String bulanTahun) {
-        this.bulanTahun = bulanTahun;
     }
 
     public String getKeterangan() {

@@ -13,6 +13,7 @@ import java.util.List;
 
 import com.example.aplikasita.R;
 import com.example.aplikasita.dto.MonthlySpending;
+import com.example.aplikasita.utils.MyStringUtils;
 
 
 public class PengeluaranPerbulanAdaptor extends RecyclerView.Adapter<PengeluaranPerbulanAdaptor.MonthViewHolder>{
@@ -43,7 +44,8 @@ public class PengeluaranPerbulanAdaptor extends RecyclerView.Adapter<Pengeluaran
 //        String income = format.format(listMonthIncome.get(position).getIncomeTotal());
         String spending = format.format(listMonthSpending.get(position).getSpendingTotal());
 
-        holder.tvMonth.setText(listMonthSpending.get(position).getMonthYear());
+        String monthYear = MyStringUtils.stringToMonthYear(listMonthSpending.get(position).getMonthYear());
+        holder.tvMonth.setText(monthYear);
 //        holder.tvIncome.setText(income);
         holder.tvOutcome.setText(spending);
     }

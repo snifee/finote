@@ -43,6 +43,7 @@
     <string name="tambah_hutang">Tambah Hutang</string>
     <string name="jatuh_tempo">Jatuh Tempo</string>
     <string name="kategori_kebutuhan">Kategori Kebutuhan</string>
+    <string name="email">Email</string>
 
     <string-array name="kategori_keperluan">
         <item>Sandang</item>

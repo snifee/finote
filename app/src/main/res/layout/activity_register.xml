@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingTop="150sp"
+        android:paddingTop="100sp"
         android:gravity="center">
         <TextView
             android:id="@+id/RegisterTitle"
@@ -26,12 +26,27 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingVertical="50sp"
+        android:paddingVertical="25sp"
         android:gravity="center">
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="250dp"
+            android:layout_marginBottom="15dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/email">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etEmailInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-            android:layout_width="150dp"
+            android:layout_width="250dp"
             android:layout_marginBottom="15dp"
             android:layout_height="wrap_content"
             app:endIconMode="password_toggle"
@@ -48,7 +63,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-            android:layout_width="150dp"
+            android:layout_width="250dp"
             android:layout_marginBottom="15dp"
             android:layout_height="wrap_content"
             app:endIconMode="password_toggle"

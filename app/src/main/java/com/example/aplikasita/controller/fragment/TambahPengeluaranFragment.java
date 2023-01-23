@@ -119,9 +119,7 @@ public class TambahPengeluaranFragment extends Fragment {
 
             Date inputDate = MyStringUtils.stringDateToDateTime(date);
 
-            String monthYear = MyStringUtils.getMonthYear(inputDate);
-
-            Pengeluaran pengeluaran = new Pengeluaran(jml,keterangan,inputDate, monthYear,jenis);
+            Pengeluaran pengeluaran = new Pengeluaran(jml,keterangan,inputDate,jenis);
 
             pengeluaranViewModel = ViewModelProviders.of(this).get(PengeluaranViewModel.class);
             pengeluaranViewModel.insert(pengeluaran);
