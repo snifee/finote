@@ -9,6 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.aplikasita.R;
+import com.example.aplikasita.data.EnumKategori;
+import com.example.aplikasita.data.dao.KebutuhanDao;
 import com.example.aplikasita.data.entity.Pengeluaran;
 
 import java.text.NumberFormat;
@@ -21,6 +23,8 @@ public class PengeluaranAdaptor extends RecyclerView.Adapter<PengeluaranAdaptor.
 
     private List<Pengeluaran> listPengeluaran = new ArrayList<>();
     private NumberFormat numberFormat = NumberFormat.getCurrencyInstance();
+
+    private KebutuhanDao kebutuhanDao;
 
     public PengeluaranAdaptor() {
     }
@@ -49,7 +53,8 @@ public class PengeluaranAdaptor extends RecyclerView.Adapter<PengeluaranAdaptor.
         holder.tvSpending.setText(spending);
         holder.tvKeterangan.setText(currentPengeluaran.getKeterangan());
         holder.tvDate.setText(sdf.format(currentPengeluaran.getWaktu()));
-        holder.tvJenis.setText(String.valueOf(currentPengeluaran.getIdKebutuhanPengeluaran()));
+        String jenis = EnumKategori.valueOf(currentPengeluaran.getIdKategoriPengeluaran()).get().toString();
+        holder.tvJenis.setText(jenis);
     }
 
     @Override

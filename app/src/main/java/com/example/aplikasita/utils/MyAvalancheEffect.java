@@ -24,7 +24,7 @@ public class MyAvalancheEffect {
             for (int i = 0;i<zeroNeeded;i++){
                 padded = padded.concat("0");
             }
-            System.out.println("padded : "+padded);
+//            System.out.println("padded : "+padded);
 
             c1binary = padded + c1binary;
         }
@@ -36,7 +36,7 @@ public class MyAvalancheEffect {
             for (int i = 0;i<zeroNeeded;i++){
                 padded = padded.concat("0");
             }
-            System.out.println("padded : "+padded);
+//            System.out.println("padded : "+padded);
 
             c2binary = padded + c2binary;
         }
@@ -54,6 +54,7 @@ public class MyAvalancheEffect {
         float totalBit = (float) c1binary.length();
         float bitChanged = (float) countBiyChanged;
         float result = bitChanged/totalBit;
+        System.out.println("AV value:"+result);
         return result;
     }
 }

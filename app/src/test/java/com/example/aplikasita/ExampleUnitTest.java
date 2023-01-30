@@ -80,13 +80,12 @@ public class ExampleUnitTest {
     @Test
     public void test3(){
 
-        LocalDate d = LocalDate.now();
+        Date currentDateMonth = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("MM-YYYY");
+        String monthDateNow = sdf.format(currentDateMonth);
 
-        String date = d.format(DateTimeFormatter.ofPattern("dd-M-yyyy"));
-
-        Date date1 = MyStringUtils.stringDateToDateTime(date);
-
-        System.out.println(date1);
+        System.out.println(monthDateNow);
+        System.out.println(currentDateMonth);
 
     }
 
@@ -128,8 +127,8 @@ public class ExampleUnitTest {
     @Test
     public void test7(){
 
-        String[] plaintext1 = {"onepunchman","jujutsukaisen","attackontitan","chainsawman","sayasukamakan","informatika","hallodunia","udayana","helloworld","fakultasmipa"};
-        String[] plaintext2 = {"onepunchmao","jujutsukaiseo","attackontitao","chainsawmao","sayasukamakac","informatikc","hallodunic","udayanc","helloworlg","fakultasmipo"};
+        String[] plaintext1 = {"onepunchmanonepunchmanonepunchma","jujutsukaisenjujutsukaisenjujuts","attackontitanattackontitanattack","chainsawmanchainsawmanchainsawma","sayasukamakansayasukamakansayasu","informatikainformatikainformatik","halloduniahalloduniahalloduniaha","udayanaudayanaudayanaudayanauday","helloworldhelloworldhelloworldhe","fakultasmipafakultasmipafakultas"};
+        String[] plaintext2 = {"onepunchmanonepunchmanonepunchmo","jujutsukaisenjujutsukaisenjujuto","attackontitanattackontitanattaco","chainsawmanchainsawmanchainsawmo","sayasukamakansayasukamakansayasc","informatikainformatikainformatic","halloduniahalloduniahalloduniaho","udayanaudayanaudayanaudayanaudac","helloworldhelloworldhelloworldho","fakultasmipafakultasmipafakultaz"};
 
         for (int i=0;i<plaintext1.length;i++){
             String str1 = plaintext1[i];
@@ -142,15 +141,9 @@ public class ExampleUnitTest {
             System.out.println(str1);
             System.out.println(str2);
 
-//        System.out.println(MyStringUtils.convertStringToBinary2(ciphertext1));
-//        System.out.println(MyStringUtils.convertStringToBinary2(ciphertext2));
-
 
             double av = MyAvalancheEffect.calculateAE(ciphertext1,ciphertext2);
 
-            System.out.println(av);
-            System.out.println();
-            System.out.println();
         }
 
 

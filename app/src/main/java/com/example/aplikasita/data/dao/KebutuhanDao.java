@@ -24,9 +24,11 @@ public interface KebutuhanDao {
     @Delete
     void delete(Kebutuhan kebutuhan);
 
-    @Query("SELECT * FROM tabel_keperluan")
+    @Query("SELECT * FROM tabel_anggaran_kebutuhan")
     LiveData<List<Kebutuhan>> getAllBudget();
 
-    @Query("SELECT SUM(jumlah) AS jumlah FROM tabel_keperluan")
+    @Query("SELECT SUM(jumlah) AS jumlah FROM tabel_anggaran_kebutuhan")
     LiveData<Long> getTotalBudget();
+
+
 }

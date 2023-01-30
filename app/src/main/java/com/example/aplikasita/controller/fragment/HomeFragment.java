@@ -5,6 +5,9 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,13 +15,18 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.aplikasita.R;
+import com.example.aplikasita.controller.adaptor.RecycleViewAdapter.PengeluaranKategoriAdaptor;
 import com.example.aplikasita.data.viewmodel.PemasukanViewModel;
 import com.example.aplikasita.data.viewmodel.PengeluaranViewModel;
+import com.example.aplikasita.dto.TotalSpendingByKategori;
 import com.example.aplikasita.utils.MyStringUtils;
 
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Currency;
+import java.util.Date;
+import java.util.List;
 
 public class HomeFragment extends Fragment {
 
@@ -61,8 +69,11 @@ public class HomeFragment extends Fragment {
         tvMonth = view.findViewById(R.id.tvHomeBulan);
         tvMonth.setText(currentDate);
 
-        LocalDate currentDateMonth = LocalDate.now();
-        String monthDateNow = currentDateMonth.getMonth().toString()+String.valueOf(currentDateMonth.getYear());
+        Date currentDateMonth = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("MM-YYYY");
+        String monthDateNow = sdf.format(currentDateMonth);
+
+        System.out.println(monthDateNow);
 
         pengeluaranViewModel = ViewModelProviders.of(this).get(PengeluaranViewModel.class);
         pengeluaranViewModel.getSumofSpendingByMonth(monthDateNow).observe(this, new Observer<Long>() {
@@ -78,6 +89,19 @@ public class HomeFragment extends Fragment {
                     tvSpending.setText("No Spending This Month");
                 }
 
+            }
+        });
+
+        PengeluaranKategoriAdaptor pengeluaranKategoriAdaptor = new PengeluaranKategoriAdaptor();
+        RecyclerView recyclerView = view.findViewById(R.id.recycleViewTotalPengeluaran);
+        recyclerView.setLayoutManager( new LinearLayoutManager(view.getContext()));
+        recyclerView.setAdapter(pengeluaranKategoriAdaptor);
+        recyclerView.addItemDecoration(new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL));
+
+        pengeluaranViewModel.getTotalSpendingGroupByKategori().observe(this, new Observer<List<TotalSpendingByKategori>>() {
+            @Override
+            public void onChanged(List<TotalSpendingByKategori> list) {
+                pengeluaranKategoriAdaptor.setList(list);
             }
         });
 

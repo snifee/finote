@@ -10,24 +10,14 @@ import androidx.room.PrimaryKey;
 
 import java.util.Date;
 
-//CREATE TABLE IF NOT EXISTS pengeluaran
-// (id INTEGER PRIMARY KEY AUTOINCREMENT,
-// sumber_pengeluaran INTEGER,
-// jumlah INTEGER,
-// keterangan TEXT,
-// waktu DATETIME,
-// jenis_pengeluaran TEXT,
-// created_at TEXT DEFAULT CURRENT_TIMESTAMP);
-
-
 @Entity(tableName = "tabel_pengeluaran",
-        foreignKeys = @ForeignKey(entity = Kebutuhan.class,
-        parentColumns = "idKebutuhan",
-        childColumns = "idKebutuhanPengeluaran",
+        foreignKeys = @ForeignKey(entity = KategoriPengeluaran.class,
+        parentColumns = "id",
+        childColumns = "idKategoriPengeluaran",
         onDelete = CASCADE))
 public class Pengeluaran {
     @PrimaryKey(autoGenerate = true)
-    private Long idPengeluara;
+    private Long idPengeluaran;
 
     @ColumnInfo(name = "jumlah")
     private Long jumlah;
@@ -38,25 +28,25 @@ public class Pengeluaran {
     @ColumnInfo(name = "waktu")
     private Date waktu;
 
-    private Long idKebutuhanPengeluaran;
+    private Integer idKategoriPengeluaran;
 
     public Pengeluaran(){
 
     }
 
-    public Pengeluaran(Long jumlah, String keterangan, Date waktu, Long idKebutuhanPengeluaran) {
+    public Pengeluaran(Long jumlah, String keterangan, Date waktu, Integer idKategoriPengeluaran) {
         this.jumlah = jumlah;
         this.keterangan = keterangan;
         this.waktu = waktu;
-        this.idKebutuhanPengeluaran = idKebutuhanPengeluaran;
+        this.idKategoriPengeluaran = idKategoriPengeluaran;
     }
 
-    public Long getIdPengeluara() {
-        return idPengeluara;
+    public Long getIdPengeluaran() {
+        return idPengeluaran;
     }
 
-    public void setIdPengeluara(Long idPengeluara) {
-        this.idPengeluara = idPengeluara;
+    public void setIdPengeluaran(Long idPengeluaran) {
+        this.idPengeluaran = idPengeluaran;
     }
 
     public Long getJumlah() {
@@ -83,11 +73,11 @@ public class Pengeluaran {
         this.waktu = waktu;
     }
 
-    public Long getIdKebutuhanPengeluaran() {
-        return idKebutuhanPengeluaran;
+    public Integer getIdKategoriPengeluaran() {
+        return idKategoriPengeluaran;
     }
 
-    public void setIdKebutuhanPengeluaran(Long idKebutuhanPengeluaran) {
-        this.idKebutuhanPengeluaran = idKebutuhanPengeluaran;
+    public void setIdKategoriPengeluaran(Integer idKategoriPengeluaran) {
+        this.idKategoriPengeluaran = idKategoriPengeluaran;
     }
 }

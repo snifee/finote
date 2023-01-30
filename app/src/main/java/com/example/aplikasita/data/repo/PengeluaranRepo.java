@@ -8,10 +8,12 @@ import androidx.lifecycle.LiveData;
 import com.example.aplikasita.data.dao.PengeluaranDao;
 import com.example.aplikasita.data.AppDatabase;
 import com.example.aplikasita.data.entity.Pengeluaran;
+import com.example.aplikasita.dto.TotalSpendingByKategori;
 import com.example.aplikasita.utils.CryptManager;
 import com.example.aplikasita.utils.MyPreferences;
 
 import java.util.List;
+import java.util.Map;
 
 public class PengeluaranRepo {
 
@@ -20,6 +22,8 @@ public class PengeluaranRepo {
     private LiveData<List<Pengeluaran>> allSpendingByMonth;
     private LiveData<Long> sumofSpendingByMonth;
     private String encryptedDBPassword,dbPassword,userPassword,currectPassword;
+
+    private LiveData<List<TotalSpendingByKategori>> totalSpendingGroupByKategori;
 
     public PengeluaranRepo(Application application){
 
@@ -33,6 +37,8 @@ public class PengeluaranRepo {
         pengeluaranDao = database.pengeluaranDao();
 
         allSpending = pengeluaranDao.getAllSpending();
+
+        totalSpendingGroupByKategori = pengeluaranDao.totalSpendingByKategori();
     }
 
     public void insert(Pengeluaran pengeluaran){
@@ -58,6 +64,10 @@ public class PengeluaranRepo {
     public LiveData<List<Pengeluaran>> getAllSpendingByMonth(String month) {
         allSpendingByMonth = pengeluaranDao.getAllSpendingByMonth(month);
         return allSpendingByMonth;
+    }
+
+    public LiveData<List<TotalSpendingByKategori>> getTotalSpendingGroupByKategori() {
+        return totalSpendingGroupByKategori;
     }
 
     public LiveData<Long> getSumofSpendingByMonth(String m) {

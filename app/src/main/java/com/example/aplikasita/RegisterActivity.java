@@ -19,11 +19,8 @@ import com.example.aplikasita.utils.MyPreferences;
 import java.security.SecureRandom;
 
 public class RegisterActivity extends AppCompatActivity {
-
-
     private EditText etPassword,etPassword2,etEmail;
     private Button registerButton;
-
     private String email,password,password2;
 
     @Override
@@ -41,7 +38,6 @@ public class RegisterActivity extends AppCompatActivity {
         etPassword = findViewById(R.id.etPasswordInput);
         etPassword2 = findViewById(R.id.etPasswordInput2);
         registerButton = findViewById(R.id.registerButton);
-
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

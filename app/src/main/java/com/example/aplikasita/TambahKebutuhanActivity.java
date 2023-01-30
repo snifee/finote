@@ -6,6 +6,9 @@ import androidx.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -26,9 +29,13 @@ public class TambahKebutuhanActivity extends AppCompatActivity {
 
 
     private EditText etKebutuhan,etJumlahKebutuhan, etKategoriKebutuhan;
+
+    private AutoCompleteTextView autoCompleteCategory;
     private TextView tvTitle;
     private KebutuhanViewModel kebutuhanViewModel;
     private Button submitButton;
+
+    private Integer jenis;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,20 +48,32 @@ public class TambahKebutuhanActivity extends AppCompatActivity {
 
         etJumlahKebutuhan = findViewById(R.id.etJumlahBudget);
         etKebutuhan = findViewById(R.id.etKebutuhan);
-        etKategoriKebutuhan = findViewById(R.id.etKatagoriKebutuhan);
         submitButton = findViewById(R.id.submitButtonKebutuhan);
         tvTitle = findViewById(R.id.tvTambahKebutuhanTitle);
+        autoCompleteCategory = findViewById(R.id.idDropdownCategory2);
+
+        String[] category = getResources().getStringArray(R.array.kategori_keperluan);
+        ArrayAdapter<String > arrayAdapter = new ArrayAdapter<>(this,R.layout.dropdown_kategori,category);
+        autoCompleteCategory.setAdapter(arrayAdapter);
+        autoCompleteCategory.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                jenis = Integer.valueOf(arrayAdapter.getPosition(autoCompleteCategory.getText().toString()))+1;
+                System.out.println(jenis);
+                System.out.println(jenis);
+                System.out.println(jenis);
+            }
+        });
 
         if (intent.hasExtra(ID)){
             tvTitle.setText("Edit Kebutuhan");
             etJumlahKebutuhan.setText(String.valueOf(intent.getLongExtra(JUMLAH,0)));
             etKebutuhan.setText(intent.getStringExtra(KEBUTUHAN));
-            etKategoriKebutuhan.setText(intent.getStringExtra(KATEGORI));
 
             submitButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    editKebutuhan(intent.getLongExtra(ID,0));
+                    editKebutuhan(intent.getIntExtra(ID,0));
                 }
             });
         }else {
@@ -69,13 +88,12 @@ public class TambahKebutuhanActivity extends AppCompatActivity {
 
     private void saveKebutuhan(){
         String kebutuhan = etKebutuhan.getText().toString();
-        String kategoriKebutuhan = etKategoriKebutuhan.getText().toString();
         String jumlahString = etJumlahKebutuhan.getText().toString();
 
         try {
             Long jumlah = Long.parseLong(jumlahString);
 
-            Kebutuhan keperluan = new Kebutuhan(kebutuhan,kategoriKebutuhan,jumlah);
+            Kebutuhan keperluan = new Kebutuhan(kebutuhan,jenis,jumlah);
 
             kebutuhanViewModel = ViewModelProviders.of(this).get(KebutuhanViewModel.class);
             kebutuhanViewModel.insert(keperluan);
@@ -87,15 +105,14 @@ public class TambahKebutuhanActivity extends AppCompatActivity {
         }
     }
 
-    private void editKebutuhan(Long id){
+    private void editKebutuhan(Integer id){
         String kebutuhan = etKebutuhan.getText().toString();
-        String kategoriKebutuhan = etKategoriKebutuhan.getText().toString();
         String jumlahString = etJumlahKebutuhan.getText().toString();
 
         try {
             Long jumlah = Long.parseLong(jumlahString);
 
-            Kebutuhan keperluan = new Kebutuhan(kebutuhan,kategoriKebutuhan,jumlah);
+            Kebutuhan keperluan = new Kebutuhan(kebutuhan,jenis,jumlah);
             keperluan.setIdKebutuhan(id);
 
             kebutuhanViewModel = ViewModelProviders.of(this).get(KebutuhanViewModel.class);

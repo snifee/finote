@@ -18,7 +18,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.aplikasita.R;
+import com.example.aplikasita.data.dao.KebutuhanDao;
 import com.example.aplikasita.data.entity.Pengeluaran;
+import com.example.aplikasita.data.repo.KebutuhanRepo;
 import com.example.aplikasita.data.viewmodel.PengeluaranViewModel;
 import com.example.aplikasita.utils.MyStringUtils;
 
@@ -26,6 +28,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 public class TambahPengeluaranFragment extends Fragment {
 
@@ -40,7 +43,11 @@ public class TambahPengeluaranFragment extends Fragment {
     private AutoCompleteTextView autoCompleteCategory;
 
     private String rekening, jumlah, keterangan,date;
-    private Long jenis;
+    private Integer jenis;
+
+    private KebutuhanRepo kebutuhanRepo;
+
+    private KebutuhanDao kebutuhanDao;
 
 
     @Override
@@ -56,12 +63,15 @@ public class TambahPengeluaranFragment extends Fragment {
         autoCompleteCategory = view.findViewById(R.id.idDropdownCategory);
 
         String[] category = getResources().getStringArray(R.array.kategori_keperluan);
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getActivity(),R.layout.dropdown_kategori,category);
+        ArrayAdapter<String > arrayAdapter = new ArrayAdapter<>(getActivity(),R.layout.dropdown_kategori,category);
         autoCompleteCategory.setAdapter(arrayAdapter);
         autoCompleteCategory.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                jenis = Long.valueOf(arrayAdapter.getPosition(autoCompleteCategory.getText().toString()));
+                jenis = Integer.valueOf(arrayAdapter.getPosition(autoCompleteCategory.getText().toString()))+1;
+                System.out.println(jenis);
+                System.out.println(jenis);
+                System.out.println(jenis);
             }
         });
 

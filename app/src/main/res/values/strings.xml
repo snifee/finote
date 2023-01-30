@@ -44,6 +44,7 @@
     <string name="jatuh_tempo">Jatuh Tempo</string>
     <string name="kategori_kebutuhan">Kategori Kebutuhan</string>
     <string name="email">Email</string>
+    <string name="tambah_anggaran_kebutuhan">Tambah Anggaran Kebutuhan</string>
 
     <string-array name="kategori_keperluan">
         <item>Sandang</item>

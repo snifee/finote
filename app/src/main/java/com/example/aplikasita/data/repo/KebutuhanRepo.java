@@ -16,6 +16,8 @@ import java.util.List;
 public class KebutuhanRepo {
     private KebutuhanDao kebutuhanDao;
     private LiveData<List<Kebutuhan>> allBudget;
+
+    private List<Integer> allIdKebutuhan;
     private String encryptedDBPassword,dbPassword,userPassword,currectPassword;
 
     public KebutuhanRepo(Application application){
@@ -49,6 +51,10 @@ public class KebutuhanRepo {
 
     public LiveData<List<Kebutuhan>> getAllBudget(){
         return allBudget;
+    }
+
+    public List<Integer> getAllIdKebutuhan() {
+        return allIdKebutuhan;
     }
 
     private static class InsertBudgetAsyncTask extends AsyncTask<Kebutuhan, Void,Void> {

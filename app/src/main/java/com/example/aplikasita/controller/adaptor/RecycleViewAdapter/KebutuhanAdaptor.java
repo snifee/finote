@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.aplikasita.R;
+import com.example.aplikasita.data.EnumKategori;
 import com.example.aplikasita.data.entity.Kebutuhan;
 
 import java.text.NumberFormat;
@@ -44,7 +45,8 @@ public class KebutuhanAdaptor extends RecyclerView.Adapter<KebutuhanAdaptor.Budg
 
         holder.tvNeeds.setText(listKebutuhan.get(position).getKebutuhan());
         holder.tvAmount.setText(amount);
-        holder.tvNeedsCategory.setText(listKebutuhan.get(position).getKategoriKebutuhan());
+        String jenis = EnumKategori.valueOf(listKebutuhan.get(position).getIdKategoriPengeluaran()).get().toString();
+        holder.tvNeedsCategory.setText(jenis);
     }
 
     @Override

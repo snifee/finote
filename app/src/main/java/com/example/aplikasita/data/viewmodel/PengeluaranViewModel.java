@@ -8,8 +8,10 @@ import androidx.lifecycle.LiveData;
 
 import com.example.aplikasita.data.entity.Pengeluaran;
 import com.example.aplikasita.data.repo.PengeluaranRepo;
+import com.example.aplikasita.dto.TotalSpendingByKategori;
 
 import java.util.List;
+import java.util.Map;
 
 public class PengeluaranViewModel extends AndroidViewModel {
     private PengeluaranRepo pengeluaranRepo;
@@ -17,10 +19,14 @@ public class PengeluaranViewModel extends AndroidViewModel {
     private LiveData<List<Pengeluaran>> allSpendingByMonth;
     private LiveData<Long> sumofSpendingByMonth;
 
+    private LiveData<List<TotalSpendingByKategori>> totalSpendingGroupByKategori;
+
+
     public PengeluaranViewModel(@NonNull Application application) {
         super(application);
         this.pengeluaranRepo = new PengeluaranRepo(application);
         this.allSpending = pengeluaranRepo.getAllSpending();
+        this.totalSpendingGroupByKategori = pengeluaranRepo.getTotalSpendingGroupByKategori();
     }
 
     public void insert(Pengeluaran pengeluaran){
@@ -51,5 +57,9 @@ public class PengeluaranViewModel extends AndroidViewModel {
     public LiveData<Long> getSumofSpendingByMonth(String month) {
         this.sumofSpendingByMonth = pengeluaranRepo.getSumofSpendingByMonth(month);
         return sumofSpendingByMonth;
+    }
+
+    public LiveData<List<TotalSpendingByKategori>> getTotalSpendingGroupByKategori() {
+        return totalSpendingGroupByKategori;
     }
 }

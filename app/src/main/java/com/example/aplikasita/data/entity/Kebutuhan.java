@@ -5,31 +5,35 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "tabel_keperluan")
+@Entity(tableName = "tabel_anggaran_kebutuhan")
 public class Kebutuhan {
     @PrimaryKey(autoGenerate = true)
-    private Long idKebutuhan;
+    private Integer idKebutuhan;
 
     @ColumnInfo(name = "kebutuhan")
     private String kebutuhan;
 
-    @ColumnInfo(name = "katagori_kebutuhan")
-    private String kategoriKebutuhan;
+    @ColumnInfo(name = "id_katagori_pengeluaran")
+    private Integer idKategoriPengeluaran;
 
     @ColumnInfo(name = "jumlah")
     private Long jumlah;
 
-    public Kebutuhan(String kebutuhan, String kategoriKebutuhan, Long jumlah) {
+    public Kebutuhan(String kebutuhan, Integer kategoriKebutuhan, Long jumlah) {
         this.kebutuhan = kebutuhan;
-        this.kategoriKebutuhan = kategoriKebutuhan;
+        this.idKategoriPengeluaran = kategoriKebutuhan;
         this.jumlah = jumlah;
     }
 
-    public Long getIdKebutuhan() {
+    public Kebutuhan(){
+
+    }
+
+    public Integer getIdKebutuhan() {
         return idKebutuhan;
     }
 
-    public void setIdKebutuhan(Long idKebutuhan) {
+    public void setIdKebutuhan(Integer idKebutuhan) {
         this.idKebutuhan = idKebutuhan;
     }
 
@@ -41,12 +45,12 @@ public class Kebutuhan {
         this.kebutuhan = kebutuhan;
     }
 
-    public String getKategoriKebutuhan() {
-        return kategoriKebutuhan;
+    public Integer getIdKategoriPengeluaran() {
+        return idKategoriPengeluaran;
     }
 
-    public void setKategoriKebutuhan(String kategoriKebutuhan) {
-        this.kategoriKebutuhan = kategoriKebutuhan;
+    public void setIdKategoriPengeluaran(Integer idKategoriPengeluaran) {
+        this.idKategoriPengeluaran = idKategoriPengeluaran;
     }
 
     public Long getJumlah() {
