@@ -20,10 +20,6 @@ public class SecondActivity extends AppCompatActivity {
     public static int ADD_CF_RQ = 1;
     public static final String FRAGMENTVIEW = "FRAGMENT";
 
-    private ViewPager viewPager;
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -42,7 +38,7 @@ public class SecondActivity extends AppCompatActivity {
             }
         });
 
-        viewPager = findViewById(R.id.SecondViewPager);
+        ViewPager viewPager = findViewById(R.id.SecondViewPager);
 
 
         PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT,1);

@@ -24,10 +24,7 @@ import java.util.List;
 
 public class KebutuhanFragment extends Fragment {
 
-    private RecyclerView recyclerView;
-    private KebutuhanAdaptor kebutuhanAdaptor;
     private KebutuhanViewModel kebutuhanViewModel;
-    private FloatingActionButton tambahKebutuhanButton;
 
     public KebutuhanFragment() {
         // Required empty public constructor
@@ -39,8 +36,8 @@ public class KebutuhanFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_kebutuhan, container, false);
 
-        kebutuhanAdaptor = new KebutuhanAdaptor();
-        recyclerView = view.findViewById(R.id.keperluanRecycleView);
+        KebutuhanAdaptor kebutuhanAdaptor = new KebutuhanAdaptor();
+        RecyclerView recyclerView = view.findViewById(R.id.keperluanRecycleView);
         recyclerView.setLayoutManager( new LinearLayoutManager(view.getContext()));
         recyclerView.setAdapter(kebutuhanAdaptor);
 
@@ -68,7 +65,7 @@ public class KebutuhanFragment extends Fragment {
         });
 
 
-        tambahKebutuhanButton = view.findViewById(R.id.fbTambahKebutuhan);
+        FloatingActionButton tambahKebutuhanButton = view.findViewById(R.id.fbTambahKebutuhan);
         tambahKebutuhanButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

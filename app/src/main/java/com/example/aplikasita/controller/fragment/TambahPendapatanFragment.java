@@ -29,16 +29,6 @@ public class TambahPendapatanFragment extends Fragment {
 
     PemasukanViewModel pemasukanViewModel;
 
-
-
-    private EditText editTextRek;
-    private EditText editTextJumlah;
-    private EditText editTextKet;
-    private EditText editTextDate;
-    private Button submitButton;
-
-
-
     public TambahPendapatanFragment() {
         // Required empty public constructor
     }
@@ -50,11 +40,11 @@ public class TambahPendapatanFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_tambah_pendapatan, container, false);
 
-        editTextRek = view.findViewById(R.id.etRekening);
-        editTextJumlah = view.findViewById(R.id.etJumlah);
-        editTextKet = view.findViewById(R.id.etKeterangan);
-        editTextDate = view.findViewById(R.id.etDate);
-        submitButton = view.findViewById(R.id.submitButton);
+        EditText editTextRek = view.findViewById(R.id.etRekening);
+        EditText editTextJumlah = view.findViewById(R.id.etJumlah);
+        EditText editTextKet = view.findViewById(R.id.etKeterangan);
+        EditText editTextDate = view.findViewById(R.id.etDate);
+        Button submitButton = view.findViewById(R.id.submitButton);
 
         editTextDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,23 +74,30 @@ public class TambahPendapatanFragment extends Fragment {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                saveNote();
+
+                String rekening = editTextRek.getText()==null ? "":editTextRek.getText().toString();
+                String jumlah = editTextJumlah.getText() ==null ? "":editTextJumlah.getText().toString();
+                String keterangan = editTextKet.getText() ==null ? "":editTextKet.getText().toString();
+                String date = editTextDate.getText() ==null ? "":editTextDate.getText().toString();
+
+                if (jumlah.isEmpty()){
+                    Toast.makeText(getActivity(),"Please insert amount",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                saveData(rekening,jumlah,keterangan,date);
+
+                getActivity().finish();
+
             }
         });
 
         return view;
     }
 
-    private void saveNote(){
-        String rekening = editTextRek.getText()==null ? "":editTextRek.getText().toString();
-        String jumlah = editTextJumlah.getText() ==null ? "":editTextJumlah.getText().toString();
-        String keterangan = editTextKet.getText() ==null ? "":editTextKet.getText().toString();
-        String date = editTextDate.getText() ==null ? "":editTextDate.getText().toString();
+    private void saveData(String rekening,String jumlah,String keterangan,String date){
 
-        if (jumlah.isEmpty()){
-            Toast.makeText(getActivity(),"Please insert amount",Toast.LENGTH_SHORT).show();
-            return;
-        }
+
 
         if(date.isEmpty()){
             LocalDate d = LocalDate.now();
@@ -120,8 +117,6 @@ public class TambahPendapatanFragment extends Fragment {
 
         }catch (Exception e){
             System.out.println(e);
-        }finally {
-            getActivity().finish();
         }
     }
 }

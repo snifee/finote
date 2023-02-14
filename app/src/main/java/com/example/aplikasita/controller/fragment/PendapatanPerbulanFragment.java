@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.example.aplikasita.R;
 import com.example.aplikasita.SecondActivity;
 import com.example.aplikasita.TambahCashflowActivity;
+import com.example.aplikasita.controller.adaptor.RecycleViewAdapter.PendapatanAdaptor;
 import com.example.aplikasita.controller.adaptor.RecycleViewAdapter.PendapatanPerbulanAdaptor;
 import com.example.aplikasita.controller.adaptor.RecycleViewAdapter.PengeluaranPerbulanAdaptor;
 import com.example.aplikasita.data.viewmodel.MonthlyViewModel;
@@ -34,10 +35,8 @@ public class PendapatanPerbulanFragment extends Fragment {
     public static int SECOND_ACT =1;
     public static int PENDAPATAN = 2;
 
-    private RecyclerView recyclerView;
     private PemasukanViewModel pemasukanViewModel;
     private MonthlyViewModel monthlyViewModel;
-    private PendapatanPerbulanAdaptor pendapatanPerbulanAdaptor;
 
     public PendapatanPerbulanFragment() {
         // Required empty public constructor
@@ -47,9 +46,9 @@ public class PendapatanPerbulanFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        pendapatanPerbulanAdaptor = new PendapatanPerbulanAdaptor();
+        PendapatanPerbulanAdaptor pendapatanPerbulanAdaptor = new PendapatanPerbulanAdaptor();
         View view = inflater.inflate(R.layout.fragment_pendapatan_perbulan, container, false);
-        recyclerView = view.findViewById(R.id.recycleViewPendapatanPerbulan);
+        RecyclerView recyclerView = view.findViewById(R.id.recycleViewPendapatanPerbulan);
         recyclerView.setLayoutManager( new LinearLayoutManager(view.getContext()));
         recyclerView.setAdapter(pendapatanPerbulanAdaptor);
 

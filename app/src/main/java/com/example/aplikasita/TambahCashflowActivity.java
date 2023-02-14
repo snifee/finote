@@ -13,16 +13,13 @@ import com.google.android.material.tabs.TabLayout;
 
 public class TambahCashflowActivity extends AppCompatActivity {
 
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tambah_cashflow);
 
-        tabLayout = findViewById(R.id.tabLayoutAddCf);
-        viewPager = findViewById(R.id.viewPagerAddcf);
+        TabLayout tabLayout = findViewById(R.id.tabLayoutAddCf);
+        ViewPager viewPager = findViewById(R.id.viewPagerAddcf);
 
         tabLayout.addTab(tabLayout.newTab().setText(R.string.tambah_pengeluaran));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.tambah_pendapatan));

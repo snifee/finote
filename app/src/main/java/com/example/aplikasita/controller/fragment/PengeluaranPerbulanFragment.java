@@ -31,11 +31,7 @@ public class PengeluaranPerbulanFragment extends Fragment {
 
     public static int SECOND_ACT =1;
     public static int PENGELUARAN =1;
-
-    private RecyclerView recyclerView;
-    private PengeluaranViewModel pengeluaranViewModel;
     private MonthlyViewModel monthlyViewModel;
-    private PengeluaranPerbulanAdaptor pengeluaranPerbulanAdaptor;
 
     public PengeluaranPerbulanFragment() {
         // Required empty public constructor
@@ -46,9 +42,9 @@ public class PengeluaranPerbulanFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        pengeluaranPerbulanAdaptor = new PengeluaranPerbulanAdaptor();
+        PengeluaranPerbulanAdaptor pengeluaranPerbulanAdaptor = new PengeluaranPerbulanAdaptor();
         View view = inflater.inflate(R.layout.fragment_pengeluaran_perbulan, container, false);
-        recyclerView = view.findViewById(R.id.recycleViewPengeluaranPerbulan);
+        RecyclerView recyclerView = view.findViewById(R.id.recycleViewPengeluaranPerbulan);
         recyclerView.setLayoutManager( new LinearLayoutManager(view.getContext()));
         recyclerView.setAdapter(pengeluaranPerbulanAdaptor);
 

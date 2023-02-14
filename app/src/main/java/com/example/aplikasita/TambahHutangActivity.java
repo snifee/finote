@@ -29,26 +29,19 @@ public class TambahHutangActivity extends AppCompatActivity {
     public static final String JATUH_TEMPO = "package com.example.aplikasita.JATUH_TEMPO";
     public static final String IS_LUNAS = "package com.example.aplikasita.IS_LUNAS";
     public static final String ID = "package com.example.aplikasita.ID";
-
-    private EditText etJumlah;
-    private EditText etKeterangan;
-    private EditText etJatuhTempo;
-    private Button submitButton;
-    private CheckBox checkBoxLunas;
     private HutangViewModel hutangViewModel;
-    private TextView tvTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tambah_hutang);
 
-        etJumlah = findViewById(R.id.etJumlah);
-        etKeterangan = findViewById(R.id.etKeterangan);
-        etJatuhTempo = findViewById(R.id.etJatuhTempo);
-        submitButton = findViewById(R.id.submitButtonHutang);
-        checkBoxLunas = findViewById(R.id.checkboxIsLunas);
-        tvTitle = findViewById(R.id.tvTambahHutangTitle);
+        EditText etJumlah = findViewById(R.id.etJumlah);
+        EditText etKeterangan = findViewById(R.id.etKeterangan);
+        EditText etJatuhTempo = findViewById(R.id.etJatuhTempo);
+        Button submitButton = findViewById(R.id.submitButtonHutang);
+        CheckBox checkBoxLunas = findViewById(R.id.checkboxIsLunas);
+        TextView tvTitle = findViewById(R.id.tvTambahHutangTitle);
 
         etJatuhTempo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,8 +82,19 @@ public class TambahHutangActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
 
-                    editHutang(intent.getLongExtra(ID,0));
+                    if (etKeterangan.getText().toString().isEmpty() || etJatuhTempo.getText().toString().isEmpty() || etKeterangan.getText().toString().isEmpty()){
+                        Toast.makeText(getBaseContext(),"semua field harus diisi",Toast.LENGTH_SHORT).show();
+                    }else {
 
+                        Long jumlah = Long.parseLong(etJumlah.getText().toString());
+                        String keterangan = etKeterangan.getText().toString();
+                        Date jatuhTempo = MyStringUtils.stringDateToDateTime(etJatuhTempo.getText().toString());
+                        Boolean isLunas = checkBoxLunas.isChecked();
+
+                        editHutang(intent.getLongExtra(ID, 0), jumlah, jatuhTempo,keterangan, isLunas);
+
+                        finish();
+                    }
                 }
             });
         }else {
@@ -98,75 +102,41 @@ public class TambahHutangActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
 
-                    saveHutang();
+                    if (etKeterangan.getText().toString().isEmpty() || etJatuhTempo.getText().toString().isEmpty() || etKeterangan.getText().toString().isEmpty()){
+                        Toast.makeText(getBaseContext(),"semua field harus diisi",Toast.LENGTH_SHORT).show();
+                    }else {
+
+                        Long jumlah = Long.parseLong(etJumlah.getText().toString());
+                        String keterangan = etKeterangan.getText().toString();
+                        Date jatuhTempo = MyStringUtils.stringDateToDateTime(etJatuhTempo.getText().toString());
+                        Boolean isLunas = checkBoxLunas.isChecked();
+
+                        saveHutang(jumlah, jatuhTempo,keterangan, isLunas);
+
+                        finish();
+                    }
 
                 }
             });
         }
+    }
 
+    private void saveHutang(Long jumlah, Date jatuhTempo,String keterangan, Boolean isLunas){
+
+        Hutang hutang = new Hutang(jumlah, jatuhTempo,keterangan, isLunas);
+
+        hutangViewModel = ViewModelProviders.of(this).get(HutangViewModel.class);
+        hutangViewModel.insert(hutang);
 
     }
 
-    private void saveHutang(){
-        try {
+    private void editHutang(Long id, Long jumlah, Date jatuhTempo,String keterangan, Boolean isLunas){
 
-            if (etKeterangan.getText().toString().isEmpty() || etJatuhTempo.getText().toString().isEmpty() || etKeterangan.getText().toString().isEmpty()){
-                Toast.makeText(this, "semua field harus diisi",Toast.LENGTH_SHORT).show();
-            }else {
-                String keterangan;
-                Date jatuhTempo;
-                Long jumlah;
-                Boolean isLunas;
+        Hutang hutang = new Hutang(jumlah, jatuhTempo,keterangan, isLunas);
+        hutang.setId(id);
 
-                jumlah = Long.parseLong(etJumlah.getText().toString());
-                keterangan = etKeterangan.getText().toString();
-                jatuhTempo = MyStringUtils.stringDateToDateTime(etJatuhTempo.getText().toString());
-                isLunas = checkBoxLunas.isChecked();
+        hutangViewModel = ViewModelProviders.of(this).get(HutangViewModel.class);
+        hutangViewModel.update(hutang);
 
-                Hutang hutang = new Hutang(jumlah, jatuhTempo,keterangan, isLunas);
-
-                hutangViewModel = ViewModelProviders.of(this).get(HutangViewModel.class);
-                hutangViewModel.insert(hutang);
-
-                finish();
-            }
-
-
-        }catch (Exception e){
-
-        }
-    }
-
-    private void editHutang(Long id){
-        try {
-
-            if (etKeterangan.getText().toString().isEmpty() || etJatuhTempo.getText().toString().isEmpty() || etKeterangan.getText().toString().isEmpty()){
-                Toast.makeText(this, "semua field harus diisi",Toast.LENGTH_SHORT).show();
-            }else {
-                String keterangan;
-                Date jatuhTempo;
-                Long jumlah;
-                Boolean isLunas;
-
-                jumlah = Long.parseLong(etJumlah.getText().toString());
-                keterangan = etKeterangan.getText().toString();
-                jatuhTempo = MyStringUtils.stringDateToDateTime(etJatuhTempo.getText().toString());
-                isLunas = checkBoxLunas.isChecked();
-
-                Hutang hutang = new Hutang(jumlah, jatuhTempo,keterangan, isLunas);
-                hutang.setId(id);
-
-                hutangViewModel = ViewModelProviders.of(this).get(HutangViewModel.class);
-                hutangViewModel.update(hutang);
-
-                finish();
-
-
-            }
-
-
-        }catch (Exception e){
-
-        }
     }
 }

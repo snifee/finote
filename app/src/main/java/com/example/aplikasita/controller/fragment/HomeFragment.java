@@ -31,20 +31,11 @@ import java.util.List;
 public class HomeFragment extends Fragment {
 
     private PengeluaranViewModel pengeluaranViewModel;
-
     private PemasukanViewModel pemasukanViewModel;
-    private TextView tvIncome, tvSpending,tvMonth,tvDate;
-
-    private NumberFormat numberFormat = NumberFormat.getCurrencyInstance();;
-    private String currentMonth;
-    private LocalDate localDate;
-
 
     public HomeFragment() {
         // Required empty public constructor
     }
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -52,10 +43,10 @@ public class HomeFragment extends Fragment {
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        NumberFormat numberFormat = NumberFormat.getCurrencyInstance();
 
-
-        localDate = LocalDate.now();
-        currentMonth = localDate.getMonth().toString();
+        LocalDate localDate = LocalDate.now();
+        String currentMonth = localDate.getMonth().toString();
         currentMonth = MyStringUtils.myCapitalizefunc(currentMonth);
 
         String day = localDate.getDayOfWeek().toString();
@@ -64,9 +55,9 @@ public class HomeFragment extends Fragment {
 
         String currentDate = MyStringUtils.myCapitalizefunc(day)+", "+date1+" "+currentMonth+" "+year;
 
-        tvIncome = view.findViewById(R.id.idHomeIncome);
-        tvSpending = view.findViewById(R.id.idHomeSpending);
-        tvMonth = view.findViewById(R.id.tvHomeBulan);
+        TextView tvIncome = view.findViewById(R.id.idHomeIncome);
+        TextView tvSpending = view.findViewById(R.id.idHomeSpending);
+        TextView tvMonth = view.findViewById(R.id.tvHomeBulan);
         tvMonth.setText(currentDate);
 
         Date currentDateMonth = new Date();

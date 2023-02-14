@@ -19,9 +19,6 @@ import com.example.aplikasita.utils.MyPreferences;
 import java.security.SecureRandom;
 
 public class RegisterActivity extends AppCompatActivity {
-    private EditText etPassword,etPassword2,etEmail;
-    private Button registerButton;
-    private String email,password,password2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,17 +31,17 @@ public class RegisterActivity extends AppCompatActivity {
             finish();
         }
 
-        etEmail = findViewById(R.id.etEmailInput);
-        etPassword = findViewById(R.id.etPasswordInput);
-        etPassword2 = findViewById(R.id.etPasswordInput2);
-        registerButton = findViewById(R.id.registerButton);
+        EditText etEmail = findViewById(R.id.etEmailInput);
+        EditText etPassword = findViewById(R.id.etPasswordInput);
+        EditText etPassword2 = findViewById(R.id.etPasswordInput2);
+        Button registerButton = findViewById(R.id.registerButton);
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                email = etEmail.getText().toString();
-                password = etPassword.getText().toString();
-                password2 = etPassword2.getText().toString();
+                String email = etEmail.getText().toString();
+                String password = etPassword.getText().toString();
+                String password2 = etPassword2.getText().toString();
 
                 if (!(password.equals(password2))){
                     Toast.makeText(getApplicationContext(),"Password Tidak Sama",Toast.LENGTH_SHORT).show();

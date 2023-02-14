@@ -21,9 +21,6 @@ public class PerbulanFragment extends Fragment {
 
     public static int ADD_CF_RQ =2;
 
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
-
     public PerbulanFragment() {
         // Required empty public constructor
     }
@@ -34,8 +31,8 @@ public class PerbulanFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_perbulan, container, false);
 
-        tabLayout = view.findViewById(R.id.MonthlyTabLayout);
-        viewPager = view.findViewById(R.id.MonthlyViewPager);
+        TabLayout tabLayout = view.findViewById(R.id.MonthlyTabLayout);
+        ViewPager viewPager = view.findViewById(R.id.MonthlyViewPager);
 
         tabLayout.addTab(tabLayout.newTab().setText("Pendapatan Perbulan"));
         tabLayout.addTab(tabLayout.newTab().setText("Pengeluaran Perbulan"));

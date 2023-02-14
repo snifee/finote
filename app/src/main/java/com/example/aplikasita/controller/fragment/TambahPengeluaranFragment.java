@@ -37,17 +37,7 @@ public class TambahPengeluaranFragment extends Fragment {
     }
 
     private PengeluaranViewModel pengeluaranViewModel;
-
-    private EditText editTextJumlahPeng,editTextKet,editTextDate;
-    private Button submitButton;
-    private AutoCompleteTextView autoCompleteCategory;
-
-    private String rekening, jumlah, keterangan,date;
     private Integer jenis;
-
-    private KebutuhanRepo kebutuhanRepo;
-
-    private KebutuhanDao kebutuhanDao;
 
 
     @Override
@@ -56,11 +46,11 @@ public class TambahPengeluaranFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_tambah_pengeluaran, container, false);
 
-        editTextJumlahPeng = view.findViewById(R.id.etAddSpendingJumlah);
-        editTextKet = view.findViewById(R.id.etAddSpendingKeterangan);
-        editTextDate = view.findViewById(R.id.etAddSpendingDate);
-        submitButton = view.findViewById(R.id.submitAddSpendingButton);
-        autoCompleteCategory = view.findViewById(R.id.idDropdownCategory);
+        EditText editTextJumlahPeng = view.findViewById(R.id.etAddSpendingJumlah);
+        EditText editTextKet = view.findViewById(R.id.etAddSpendingKeterangan);
+        EditText editTextDate = view.findViewById(R.id.etAddSpendingDate);
+        Button submitButton = view.findViewById(R.id.submitAddSpendingButton);
+        AutoCompleteTextView autoCompleteCategory = view.findViewById(R.id.idDropdownCategory);
 
         String[] category = getResources().getStringArray(R.array.kategori_keperluan);
         ArrayAdapter<String > arrayAdapter = new ArrayAdapter<>(getActivity(),R.layout.dropdown_kategori,category);
@@ -69,9 +59,6 @@ public class TambahPengeluaranFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 jenis = Integer.valueOf(arrayAdapter.getPosition(autoCompleteCategory.getText().toString()))+1;
-                System.out.println(jenis);
-                System.out.println(jenis);
-                System.out.println(jenis);
             }
         });
 
@@ -102,21 +89,24 @@ public class TambahPengeluaranFragment extends Fragment {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                saveSpending();
+
+                String jumlah = editTextJumlahPeng.getText() ==null ? "":editTextJumlahPeng.getText().toString();
+                String keterangan = editTextKet.getText() ==null ? "":editTextKet.getText().toString();
+                String date = editTextDate.getText() ==null ? "":editTextDate.getText().toString();
+                saveSpending(jumlah, keterangan, date);
+
+                if (jumlah.isEmpty()){
+                    Toast.makeText(getActivity(),"Please insert amount",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                getActivity().finish();
             }
         });
 
         return view;
     }
-    private void saveSpending(){
-        jumlah = editTextJumlahPeng.getText() ==null ? "":editTextJumlahPeng.getText().toString();
-        keterangan = editTextKet.getText() ==null ? "":editTextKet.getText().toString();
-        date = editTextDate.getText() ==null ? "":editTextDate.getText().toString();
-
-        if (jumlah.isEmpty()){
-            Toast.makeText(getActivity(),"Please insert amount",Toast.LENGTH_SHORT).show();
-            return;
-        }
+    private void saveSpending(String jumlah,String keterangan, String date){
 
         if(date.isEmpty()){
             LocalDate d = LocalDate.now();
@@ -136,8 +126,6 @@ public class TambahPengeluaranFragment extends Fragment {
 
         }catch (Exception e){
             System.out.println(e);
-        }finally {
-            getActivity().finish();
         }
     }
 }

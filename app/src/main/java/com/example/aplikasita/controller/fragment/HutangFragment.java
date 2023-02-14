@@ -32,25 +32,19 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class HutangFragment extends Fragment {
-
-    private HutangAdaptor hutangAdaptor;
-    private RecyclerView recyclerView;
     private HutangViewModel hutangViewModel;
-    private FloatingActionButton floatingActionButton;
-
 
     public HutangFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_hutang, container, false);
 
-        hutangAdaptor = new HutangAdaptor();
-        recyclerView = view.findViewById(R.id.hutangRecycleView);
+        HutangAdaptor hutangAdaptor = new HutangAdaptor();
+        RecyclerView recyclerView = view.findViewById(R.id.hutangRecycleView);
         recyclerView.setLayoutManager( new LinearLayoutManager(view.getContext()));
         recyclerView.setAdapter(hutangAdaptor);
         recyclerView.addItemDecoration(new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL));
@@ -77,7 +71,7 @@ public class HutangFragment extends Fragment {
             }
         }).attachToRecyclerView(recyclerView);
 
-        floatingActionButton = view.findViewById(R.id.addHutangFloatingButton);
+        FloatingActionButton floatingActionButton = view.findViewById(R.id.addHutangFloatingButton);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -26,15 +26,7 @@ public class TambahKebutuhanActivity extends AppCompatActivity {
     public static final String JUMLAH = "com.example.aplikasita.JUMLAH";
     public static final String ID = "com.example.aplikasita.ID";
     public static final String KATEGORI = "com.example.aplikasita.KATEGORI";
-
-
-    private EditText etKebutuhan,etJumlahKebutuhan, etKategoriKebutuhan;
-
-    private AutoCompleteTextView autoCompleteCategory;
-    private TextView tvTitle;
     private KebutuhanViewModel kebutuhanViewModel;
-    private Button submitButton;
-
     private Integer jenis;
 
     @Override
@@ -46,11 +38,11 @@ public class TambahKebutuhanActivity extends AppCompatActivity {
 
 
 
-        etJumlahKebutuhan = findViewById(R.id.etJumlahBudget);
-        etKebutuhan = findViewById(R.id.etKebutuhan);
-        submitButton = findViewById(R.id.submitButtonKebutuhan);
-        tvTitle = findViewById(R.id.tvTambahKebutuhanTitle);
-        autoCompleteCategory = findViewById(R.id.idDropdownCategory2);
+        EditText etJumlahKebutuhan = findViewById(R.id.etJumlahBudget);
+        EditText etKebutuhan = findViewById(R.id.etKebutuhan);
+        Button submitButton = findViewById(R.id.submitButtonKebutuhan);
+        TextView tvTitle = findViewById(R.id.tvTambahKebutuhanTitle);
+        AutoCompleteTextView autoCompleteCategory = findViewById(R.id.idDropdownCategory2);
 
         String[] category = getResources().getStringArray(R.array.kategori_keperluan);
         ArrayAdapter<String > arrayAdapter = new ArrayAdapter<>(this,R.layout.dropdown_kategori,category);
@@ -59,9 +51,6 @@ public class TambahKebutuhanActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 jenis = Integer.valueOf(arrayAdapter.getPosition(autoCompleteCategory.getText().toString()))+1;
-                System.out.println(jenis);
-                System.out.println(jenis);
-                System.out.println(jenis);
             }
         });
 
@@ -73,55 +62,56 @@ public class TambahKebutuhanActivity extends AppCompatActivity {
             submitButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    editKebutuhan(intent.getIntExtra(ID,0));
+                    String kebutuhan = etKebutuhan.getText().toString();
+                    String jumlahInString = etJumlahKebutuhan.getText().toString();
+
+                    try {
+                        Long jumlah = Long.parseLong(jumlahInString);
+
+                        editKebutuhan(intent.getIntExtra(ID,0),kebutuhan,jenis, jumlah);
+
+                        finish();
+
+                    }catch (Exception e){
+                        Toast.makeText(getBaseContext(),"Gagal Menyimpan",Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
         }else {
             submitButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    saveKebutuhan();
+                    String kebutuhan = etKebutuhan.getText().toString();
+                    String jumlahInString = etJumlahKebutuhan.getText().toString();
+
+                    try {
+                        Long jumlah = Long.parseLong(jumlahInString);
+
+                        saveKebutuhan(kebutuhan,jenis, jumlah);
+
+                        finish();
+
+                    }catch (Exception e){
+                        Toast.makeText(getBaseContext(),"Gagal Menyimpan",Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
         }
     }
 
-    private void saveKebutuhan(){
-        String kebutuhan = etKebutuhan.getText().toString();
-        String jumlahString = etJumlahKebutuhan.getText().toString();
+    private void saveKebutuhan(String kebutuhan,Integer jenis,Long jumlah){
 
-        try {
-            Long jumlah = Long.parseLong(jumlahString);
+        Kebutuhan keperluan = new Kebutuhan(kebutuhan,jenis,jumlah);
 
-            Kebutuhan keperluan = new Kebutuhan(kebutuhan,jenis,jumlah);
-
-            kebutuhanViewModel = ViewModelProviders.of(this).get(KebutuhanViewModel.class);
-            kebutuhanViewModel.insert(keperluan);
-
-            finish();
-
-        }catch (Exception e){
-            Toast.makeText(this,"Gagal Menyimpan",Toast.LENGTH_SHORT).show();
-        }
+        kebutuhanViewModel = ViewModelProviders.of(this).get(KebutuhanViewModel.class);
+        kebutuhanViewModel.insert(keperluan);
     }
 
-    private void editKebutuhan(Integer id){
-        String kebutuhan = etKebutuhan.getText().toString();
-        String jumlahString = etJumlahKebutuhan.getText().toString();
+    private void editKebutuhan(Integer id, String kebutuhan,Integer jenis,Long jumlah){
+        Kebutuhan keperluan = new Kebutuhan(kebutuhan,jenis,jumlah);
+        keperluan.setIdKebutuhan(id);
 
-        try {
-            Long jumlah = Long.parseLong(jumlahString);
-
-            Kebutuhan keperluan = new Kebutuhan(kebutuhan,jenis,jumlah);
-            keperluan.setIdKebutuhan(id);
-
-            kebutuhanViewModel = ViewModelProviders.of(this).get(KebutuhanViewModel.class);
-            kebutuhanViewModel.update(keperluan);
-
-            finish();
-
-        }catch (Exception e){
-            Toast.makeText(this,"Gagal Menyimpan",Toast.LENGTH_SHORT).show();
-        }
+        kebutuhanViewModel = ViewModelProviders.of(this).get(KebutuhanViewModel.class);
+        kebutuhanViewModel.update(keperluan);
     }
 }

@@ -16,22 +16,18 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
 
-
-    PemasukanViewModel pemasukanViewModel;
-
-    private BottomNavigationView bottomNavigationView;
-
-    HomeFragment homeFragment = new HomeFragment();
-    PerbulanFragment perbulanFragment = new PerbulanFragment();
-    KebutuhanFragment kebutuhanFragment = new KebutuhanFragment();
-    HutangFragment hutangFragment = new HutangFragment();
+    private PemasukanViewModel pemasukanViewModel;
+    private HomeFragment homeFragment = new HomeFragment();
+    private PerbulanFragment perbulanFragment = new PerbulanFragment();
+    private KebutuhanFragment kebutuhanFragment = new KebutuhanFragment();
+    private HutangFragment hutangFragment = new HutangFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        bottomNavigationView = findViewById(R.id.bottom_navigation);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
 

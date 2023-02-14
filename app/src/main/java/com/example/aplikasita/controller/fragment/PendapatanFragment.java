@@ -28,8 +28,6 @@ public class PendapatanFragment extends Fragment {
 
     public static final int ADD_ITEM_RQ =1;
     private String monthYear;
-
-    private RecyclerView recyclerView;
     private PemasukanViewModel pemasukanViewModel;
 
     public PendapatanFragment(String monthYear) {
@@ -47,7 +45,7 @@ public class PendapatanFragment extends Fragment {
         final PendapatanAdaptor pendapatanAdaptor = new PendapatanAdaptor();
 
         View view = inflater.inflate(R.layout.fragment_pemasukan, container, false);
-        recyclerView = view.findViewById(R.id.recycleViewPemasukan);
+        RecyclerView recyclerView = view.findViewById(R.id.recycleViewPemasukan);
         recyclerView.setLayoutManager( new LinearLayoutManager(view.getContext()));
         recyclerView.setAdapter(pendapatanAdaptor);
         recyclerView.addItemDecoration(new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL));

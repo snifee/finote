@@ -30,9 +30,6 @@ public class PengeluaranFragment extends Fragment {
 
     public static final int ADD_ITEM_RQ =1;
     private String monthYear;
-
-    private RecyclerView recyclerView;
-    private PengeluaranAdaptor pengeluaranAdaptor;
     private PengeluaranViewModel pengeluaranViewModel;
 
 
@@ -48,8 +45,8 @@ public class PengeluaranFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_pengeluaran, container, false);
-        pengeluaranAdaptor = new PengeluaranAdaptor();
-        recyclerView = view.findViewById(R.id.recycleViewPengeluaran);
+        PengeluaranAdaptor pengeluaranAdaptor = new PengeluaranAdaptor();
+        RecyclerView recyclerView = view.findViewById(R.id.recycleViewPengeluaran);
         recyclerView.setLayoutManager( new LinearLayoutManager(view.getContext()));
         recyclerView.setAdapter(pengeluaranAdaptor);
         recyclerView.addItemDecoration(new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL));
