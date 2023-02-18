@@ -38,7 +38,6 @@ public class PengeluaranRepo {
 
         allSpending = pengeluaranDao.getAllSpending();
 
-        totalSpendingGroupByKategori = pengeluaranDao.totalSpendingByKategori();
     }
 
     public void insert(Pengeluaran pengeluaran){
@@ -66,7 +65,8 @@ public class PengeluaranRepo {
         return allSpendingByMonth;
     }
 
-    public LiveData<List<TotalSpendingByKategori>> getTotalSpendingGroupByKategori() {
+    public LiveData<List<TotalSpendingByKategori>> getTotalSpendingGroupByKategori(String monthYear) {
+        totalSpendingGroupByKategori = pengeluaranDao.totalSpendingByKategori( monthYear);
         return totalSpendingGroupByKategori;
     }
 

@@ -34,19 +34,13 @@ public class LoginActivity extends AppCompatActivity {
 
                 String passwordInput = inputPassword.getText().toString();
 
-                String encodedPassword = HashingUtils.hashingSHA256(passwordInput);
-                String correctPassword = MyPreferences.getSharedPreferencePassword(getBaseContext());
+                Boolean passwordCorrect = login(passwordInput);
 
-                System.out.println("passwordInput "+passwordInput);
-                System.out.println(encodedPassword);
-                System.out.println(correctPassword);
 
-                if (encodedPassword.equals(correctPassword)){
+                if (passwordCorrect){
 
-                    MyPreferences.setSharedPreferenceTemporaryPassword(getBaseContext(),passwordInput);
                     startActivity(new Intent(LoginActivity.this,MainActivity.class));
                     finish();
-
 
                 }else {
 
@@ -57,4 +51,21 @@ public class LoginActivity extends AppCompatActivity {
         });
 
     }
+
+    private boolean login(String password){
+        String encodedPassword = HashingUtils.hashingSHA256(password);
+        String correctPassword = MyPreferences.getSharedPreferencePassword(getBaseContext());
+
+        if (encodedPassword.equals(correctPassword)){
+
+            MyPreferences.setSharedPreferenceTemporaryPassword(getBaseContext(),password);
+
+            return true;
+
+        }else {
+
+            return false;
+        }
+    }
 }
+

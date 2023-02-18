@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.aplikasita.R;
 import com.example.aplikasita.data.EnumKategori;
 import com.example.aplikasita.data.entity.Kebutuhan;
+import com.example.aplikasita.data.entity.Pengeluaran;
 
 import java.text.NumberFormat;
 import java.util.Currency;
@@ -45,13 +46,22 @@ public class KebutuhanAdaptor extends RecyclerView.Adapter<KebutuhanAdaptor.Budg
 
         holder.tvNeeds.setText(listKebutuhan.get(position).getKebutuhan());
         holder.tvAmount.setText(amount);
-        String jenis = EnumKategori.valueOf(listKebutuhan.get(position).getIdKategoriPengeluaran()).get().toString();
-        holder.tvNeedsCategory.setText(jenis);
+        try{
+            String jenis = EnumKategori.valueOf(listKebutuhan.get(position).getIdKategoriPengeluaran()).get().toString();
+            holder.tvNeedsCategory.setText(jenis);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
     }
 
     @Override
     public int getItemCount() {
         return (listKebutuhan !=null) ? listKebutuhan.size():0;
+    }
+
+    public Kebutuhan getNeeds(int pos){
+        return listKebutuhan.get(pos);
     }
 
     public class BudgetViewHolder extends RecyclerView.ViewHolder{

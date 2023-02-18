@@ -26,7 +26,6 @@ public class PengeluaranViewModel extends AndroidViewModel {
         super(application);
         this.pengeluaranRepo = new PengeluaranRepo(application);
         this.allSpending = pengeluaranRepo.getAllSpending();
-        this.totalSpendingGroupByKategori = pengeluaranRepo.getTotalSpendingGroupByKategori();
     }
 
     public void insert(Pengeluaran pengeluaran){
@@ -59,7 +58,8 @@ public class PengeluaranViewModel extends AndroidViewModel {
         return sumofSpendingByMonth;
     }
 
-    public LiveData<List<TotalSpendingByKategori>> getTotalSpendingGroupByKategori() {
+    public LiveData<List<TotalSpendingByKategori>> getTotalSpendingGroupByKategori(String monthYear) {
+        totalSpendingGroupByKategori = pengeluaranRepo.getTotalSpendingGroupByKategori(monthYear);
         return totalSpendingGroupByKategori;
     }
 }

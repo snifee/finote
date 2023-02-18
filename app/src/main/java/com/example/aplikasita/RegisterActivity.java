@@ -2,10 +2,8 @@ package com.example.aplikasita;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,10 +11,8 @@ import android.widget.Toast;
 
 import com.example.aplikasita.utils.CryptManager;
 import com.example.aplikasita.utils.HashingUtils;
-import com.example.aplikasita.utils.MyEncoder;
+import com.example.aplikasita.utils.KeyManager;
 import com.example.aplikasita.utils.MyPreferences;
-
-import java.security.SecureRandom;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -79,7 +75,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         MyPreferences.setSharedPreferenceEmail(getBaseContext(),email);
 
-        String databaseKey = generateKey();
+        String databaseKey = KeyManager.generateKey();
 
         String encryptedKey = CryptManager.aesEncryption(databaseKey,password);
 
@@ -88,13 +84,5 @@ public class RegisterActivity extends AppCompatActivity {
         MyPreferences.setSharedPreferenceTemporaryPassword(getBaseContext(),password);
 
     }
-
-    public String generateKey(){
-            byte[] result = new byte[32];
-            SecureRandom secureRandom = new SecureRandom();
-            secureRandom.nextBytes(result);
-            return MyEncoder.encodeToString(result, Base64.DEFAULT);
-    }
-
 
 }

@@ -86,7 +86,7 @@ public class TambahHutangActivity extends AppCompatActivity {
                         Toast.makeText(getBaseContext(),"semua field harus diisi",Toast.LENGTH_SHORT).show();
                     }else {
 
-                        Long jumlah = Long.parseLong(etJumlah.getText().toString());
+                        String jumlah = etJumlah.getText().toString();
                         String keterangan = etKeterangan.getText().toString();
                         Date jatuhTempo = MyStringUtils.stringDateToDateTime(etJatuhTempo.getText().toString());
                         Boolean isLunas = checkBoxLunas.isChecked();
@@ -106,7 +106,7 @@ public class TambahHutangActivity extends AppCompatActivity {
                         Toast.makeText(getBaseContext(),"semua field harus diisi",Toast.LENGTH_SHORT).show();
                     }else {
 
-                        Long jumlah = Long.parseLong(etJumlah.getText().toString());
+                        String jumlah = etJumlah.getText().toString();
                         String keterangan = etKeterangan.getText().toString();
                         Date jatuhTempo = MyStringUtils.stringDateToDateTime(etJatuhTempo.getText().toString());
                         Boolean isLunas = checkBoxLunas.isChecked();
@@ -121,22 +121,29 @@ public class TambahHutangActivity extends AppCompatActivity {
         }
     }
 
-    private void saveHutang(Long jumlah, Date jatuhTempo,String keterangan, Boolean isLunas){
+    private void saveHutang(String jumlah, Date jatuhTempo,String keterangan, Boolean isLunas){
 
-        Hutang hutang = new Hutang(jumlah, jatuhTempo,keterangan, isLunas);
+        try{
+            Long jml = Long.parseLong(jumlah);
+            Hutang hutang = new Hutang(jml, jatuhTempo,keterangan, isLunas);
 
-        hutangViewModel = ViewModelProviders.of(this).get(HutangViewModel.class);
-        hutangViewModel.insert(hutang);
+            hutangViewModel = ViewModelProviders.of(this).get(HutangViewModel.class);
+            hutangViewModel.insert(hutang);
+        }catch (Exception e){
 
+        }
     }
 
-    private void editHutang(Long id, Long jumlah, Date jatuhTempo,String keterangan, Boolean isLunas){
+    private void editHutang(Long id, String jumlah, Date jatuhTempo,String keterangan, Boolean isLunas){
+        try{
+            Long jml = Long.parseLong(jumlah);
+            Hutang hutang = new Hutang(jml, jatuhTempo,keterangan, isLunas);
+            hutang.setId(id);
 
-        Hutang hutang = new Hutang(jumlah, jatuhTempo,keterangan, isLunas);
-        hutang.setId(id);
+            hutangViewModel = ViewModelProviders.of(this).get(HutangViewModel.class);
+            hutangViewModel.update(hutang);
+        }catch (Exception e){
 
-        hutangViewModel = ViewModelProviders.of(this).get(HutangViewModel.class);
-        hutangViewModel.update(hutang);
-
+        }
     }
 }

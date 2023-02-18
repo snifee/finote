@@ -97,8 +97,6 @@ public class TambahPendapatanFragment extends Fragment {
 
     private void saveData(String rekening,String jumlah,String keterangan,String date){
 
-
-
         if(date.isEmpty()){
             LocalDate d = LocalDate.now();
 

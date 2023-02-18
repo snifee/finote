@@ -39,7 +39,7 @@ public interface PengeluaranDao {
     @Query("SELECT SUM(jumlah) FROM tabel_pengeluaran WHERE strftime('%m-%Y', waktu / 1000, 'unixepoch') LIKE :rqbulanTahun")
     LiveData<Long> getSumSpendingByMonth(String rqbulanTahun);
 
-    @Query("SELECT SUM(jumlah) AS total, idKategoriPengeluaran AS kategori FROM  tabel_pengeluaran GROUP BY idKategoriPengeluaran")
-    LiveData<List<TotalSpendingByKategori>> totalSpendingByKategori();
+    @Query("SELECT SUM(jumlah) AS total, idKategoriPengeluaran AS kategori FROM  tabel_pengeluaran WHERE strftime('%m-%Y', waktu / 1000, 'unixepoch') LIKE :rqbulanTahun GROUP BY idKategoriPengeluaran")
+    LiveData<List<TotalSpendingByKategori>> totalSpendingByKategori(String rqbulanTahun);
 
 }

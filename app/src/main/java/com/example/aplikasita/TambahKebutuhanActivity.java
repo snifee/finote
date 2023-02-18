@@ -62,11 +62,9 @@ public class TambahKebutuhanActivity extends AppCompatActivity {
             submitButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    String kebutuhan = etKebutuhan.getText().toString();
-                    String jumlahInString = etJumlahKebutuhan.getText().toString();
-
                     try {
-                        Long jumlah = Long.parseLong(jumlahInString);
+                        String kebutuhan = etKebutuhan.getText().toString();
+                        String jumlah = etJumlahKebutuhan.getText().toString();
 
                         editKebutuhan(intent.getIntExtra(ID,0),kebutuhan,jenis, jumlah);
 
@@ -81,12 +79,10 @@ public class TambahKebutuhanActivity extends AppCompatActivity {
             submitButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    String kebutuhan = etKebutuhan.getText().toString();
-                    String jumlahInString = etJumlahKebutuhan.getText().toString();
 
                     try {
-                        Long jumlah = Long.parseLong(jumlahInString);
-
+                        String kebutuhan = etKebutuhan.getText().toString();
+                        String jumlah = etJumlahKebutuhan.getText().toString();
                         saveKebutuhan(kebutuhan,jenis, jumlah);
 
                         finish();
@@ -99,19 +95,29 @@ public class TambahKebutuhanActivity extends AppCompatActivity {
         }
     }
 
-    private void saveKebutuhan(String kebutuhan,Integer jenis,Long jumlah){
+    private void saveKebutuhan(String kebutuhan,Integer jenis,String jumlah){
+        try{
+            Long jml = Long.parseLong(jumlah);
+            Kebutuhan keperluan = new Kebutuhan(kebutuhan,jenis,jml);
 
-        Kebutuhan keperluan = new Kebutuhan(kebutuhan,jenis,jumlah);
+            kebutuhanViewModel = ViewModelProviders.of(this).get(KebutuhanViewModel.class);
+            kebutuhanViewModel.insert(keperluan);
+        }catch (Exception e){
 
-        kebutuhanViewModel = ViewModelProviders.of(this).get(KebutuhanViewModel.class);
-        kebutuhanViewModel.insert(keperluan);
+        }
     }
 
-    private void editKebutuhan(Integer id, String kebutuhan,Integer jenis,Long jumlah){
-        Kebutuhan keperluan = new Kebutuhan(kebutuhan,jenis,jumlah);
-        keperluan.setIdKebutuhan(id);
+    private void editKebutuhan(Integer id, String kebutuhan,Integer jenis,String jumlah){
+        try{
+            Long jml = Long.parseLong(jumlah);
+            Kebutuhan keperluan = new Kebutuhan(kebutuhan,jenis,jml);
+            keperluan.setIdKebutuhan(id);
 
-        kebutuhanViewModel = ViewModelProviders.of(this).get(KebutuhanViewModel.class);
-        kebutuhanViewModel.update(keperluan);
+            kebutuhanViewModel = ViewModelProviders.of(this).get(KebutuhanViewModel.class);
+            kebutuhanViewModel.update(keperluan);
+        }catch (Exception e){
+
+        }
+
     }
 }

@@ -93,7 +93,7 @@ public class TambahPengeluaranFragment extends Fragment {
                 String jumlah = editTextJumlahPeng.getText() ==null ? "":editTextJumlahPeng.getText().toString();
                 String keterangan = editTextKet.getText() ==null ? "":editTextKet.getText().toString();
                 String date = editTextDate.getText() ==null ? "":editTextDate.getText().toString();
-                saveSpending(jumlah, keterangan, date);
+                saveSpending(jumlah, keterangan, date,jenis);
 
                 if (jumlah.isEmpty()){
                     Toast.makeText(getActivity(),"Please insert amount",Toast.LENGTH_SHORT).show();
@@ -106,7 +106,7 @@ public class TambahPengeluaranFragment extends Fragment {
 
         return view;
     }
-    private void saveSpending(String jumlah,String keterangan, String date){
+    private void saveSpending(String jumlah,String keterangan, String date,Integer jenis){
 
         if(date.isEmpty()){
             LocalDate d = LocalDate.now();

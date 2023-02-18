@@ -5,17 +5,20 @@ import android.util.Base64;
 
 import java.nio.charset.StandardCharsets;
 import java.security.Key;
+import java.security.SecureRandom;
 
 import javax.crypto.Cipher;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
 public class CryptManager {
-    private static final String ENCRYPT_ALGO = KeyProperties.KEY_ALGORITHM_AES;
-    private static final String BLOCK_MODE = KeyProperties.BLOCK_MODE_CBC;
-    private static final String PADDING = KeyProperties.ENCRYPTION_PADDING_PKCS7;
-    private static final String TRANSFORM = ENCRYPT_ALGO+"/"+BLOCK_MODE;
+    private static final String ENCRYPT_ALGO = "AES";
+    private static final String BLOCK_MODE = "CBC";
+    private static final String PADDING = "PKCS5Padding";
+    private static final String TRANSFORM = ENCRYPT_ALGO+"/"+BLOCK_MODE+"/"+PADDING;
 
-
+    private static final IvParameterSpec IV = new IvParameterSpec("axhvchybmsllnayb".getBytes());
     public static SecretKeySpec getKey(String password) throws Exception{
 
         return new SecretKeySpec(password.getBytes(StandardCharsets.UTF_8),ENCRYPT_ALGO);
@@ -27,8 +30,8 @@ public class CryptManager {
         try {
             Key key = getKey(password);
 
-            Cipher cipher = Cipher.getInstance("AES");
-            cipher.init(Cipher.ENCRYPT_MODE, key);
+            Cipher cipher = Cipher.getInstance(TRANSFORM);
+            cipher.init(Cipher.ENCRYPT_MODE, key,IV);
             byte[] encryptByteVal = cipher.doFinal(data.getBytes());
 
             return MyEncoder.encodeToString(encryptByteVal, Base64.DEFAULT);
@@ -42,8 +45,8 @@ public class CryptManager {
     {
         try{
             Key key = getKey(password);
-            Cipher cipher = Cipher.getInstance("AES");
-            cipher.init(Cipher.DECRYPT_MODE, key);
+            Cipher cipher = Cipher.getInstance(TRANSFORM);
+            cipher.init(Cipher.DECRYPT_MODE, key,IV);
             byte[] decryptedValue64 = MyEncoder.decode(data, Base64.DEFAULT);
             String result = new String(cipher.doFinal(decryptedValue64),"UTF-8");
 
@@ -51,6 +54,12 @@ public class CryptManager {
         }catch (Exception e){
             return e.toString();
         }
+    }
+
+    public static IvParameterSpec generateIv() {
+        byte[] iv = new byte[16];
+        new SecureRandom().nextBytes(iv);
+        return new IvParameterSpec(iv);
     }
 
 }

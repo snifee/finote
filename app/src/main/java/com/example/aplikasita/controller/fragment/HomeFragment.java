@@ -89,7 +89,7 @@ public class HomeFragment extends Fragment {
         recyclerView.setAdapter(pengeluaranKategoriAdaptor);
         recyclerView.addItemDecoration(new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL));
 
-        pengeluaranViewModel.getTotalSpendingGroupByKategori().observe(this, new Observer<List<TotalSpendingByKategori>>() {
+        pengeluaranViewModel.getTotalSpendingGroupByKategori(monthDateNow).observe(this, new Observer<List<TotalSpendingByKategori>>() {
             @Override
             public void onChanged(List<TotalSpendingByKategori> list) {
                 pengeluaranKategoriAdaptor.setList(list);
