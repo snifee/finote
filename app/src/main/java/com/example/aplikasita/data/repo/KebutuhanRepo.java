@@ -18,20 +18,10 @@ public class KebutuhanRepo {
     private LiveData<List<Kebutuhan>> allBudget;
 
     private List<Integer> allIdKebutuhan;
-    private String encryptedDBPassword,dbPassword,userPassword,currectPassword;
 
     public KebutuhanRepo(Application application){
 
-        encryptedDBPassword = MyPreferences.getSharedPreferenceDBKey(application);
-        userPassword = MyPreferences.getSharedPreferencePassword(application);
-        currectPassword = MyPreferences.getSharedPreferenceTemporaryPassword(application);
-
-        dbPassword = CryptManager.aesDecryption(encryptedDBPassword,currectPassword);
-
-        System.out.println(dbPassword);
-        System.out.println(encryptedDBPassword);
-
-        AppDatabase database = AppDatabase.getDB(application,dbPassword);
+        AppDatabase database = AppDatabase.getInstance();
         kebutuhanDao = database.keperluanDao();
         allBudget = kebutuhanDao.getAllBudget();
 

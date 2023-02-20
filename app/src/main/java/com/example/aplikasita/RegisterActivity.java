@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.aplikasita.data.AppDatabase;
 import com.example.aplikasita.utils.CryptManager;
 import com.example.aplikasita.utils.HashingUtils;
 import com.example.aplikasita.utils.KeyManager;
@@ -77,11 +78,11 @@ public class RegisterActivity extends AppCompatActivity {
 
         String databaseKey = KeyManager.generateKey();
 
+        AppDatabase.getDB(getApplicationContext(),databaseKey);
+
         String encryptedKey = CryptManager.aesEncryption(databaseKey,password);
 
         MyPreferences.setSharedPreferenceDBKey(getBaseContext(),encryptedKey);
-
-        MyPreferences.setSharedPreferenceTemporaryPassword(getBaseContext(),password);
 
     }
 

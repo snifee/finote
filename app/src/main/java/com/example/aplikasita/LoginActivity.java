@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.aplikasita.data.AppDatabase;
+import com.example.aplikasita.utils.CryptManager;
 import com.example.aplikasita.utils.HashingUtils;
 import com.example.aplikasita.utils.MyPreferences;
 
@@ -58,7 +60,10 @@ public class LoginActivity extends AppCompatActivity {
 
         if (encodedPassword.equals(correctPassword)){
 
-            MyPreferences.setSharedPreferenceTemporaryPassword(getBaseContext(),password);
+            String encryptedDBPassword = MyPreferences.getSharedPreferenceDBKey(getApplicationContext());
+            String dbPassword = CryptManager.aesDecryption(encryptedDBPassword,password);
+
+            AppDatabase.getDB(getApplicationContext(),dbPassword);
 
             return true;
 
