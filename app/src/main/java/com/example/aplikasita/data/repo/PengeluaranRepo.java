@@ -21,19 +21,12 @@ public class PengeluaranRepo {
     private LiveData<List<Pengeluaran>> allSpending;
     private LiveData<List<Pengeluaran>> allSpendingByMonth;
     private LiveData<Long> sumofSpendingByMonth;
-    private String encryptedDBPassword,dbPassword,userPassword,currectPassword;
 
     private LiveData<List<TotalSpendingByKategori>> totalSpendingGroupByKategori;
 
     public PengeluaranRepo(Application application){
 
-        encryptedDBPassword = MyPreferences.getSharedPreferenceDBKey(application);
-        userPassword = MyPreferences.getSharedPreferencePassword(application);
-        currectPassword = MyPreferences.getSharedPreferenceTemporaryPassword(application);
-
-        dbPassword = CryptManager.aesDecryption(encryptedDBPassword,currectPassword);
-
-        AppDatabase database = AppDatabase.getDB(application,dbPassword);
+        AppDatabase database = AppDatabase.getInstance();
         pengeluaranDao = database.pengeluaranDao();
 
         allSpending = pengeluaranDao.getAllSpending();

@@ -17,17 +17,10 @@ public class MonthlyRepo {
     private MonthlyDao monthlyDao;
     private LiveData<List<MonthlySpending>> allMonthSpening;
     private LiveData<List<MonthlyIncome>> allMonthIncome;
-    private String encryptedDBPassword,dbPassword,userPassword,currectPassword;
 
     public MonthlyRepo(Application application){
 
-        encryptedDBPassword = MyPreferences.getSharedPreferenceDBKey(application);
-        userPassword = MyPreferences.getSharedPreferencePassword(application);
-        currectPassword = MyPreferences.getSharedPreferenceTemporaryPassword(application);
-
-        dbPassword = CryptManager.aesDecryption(encryptedDBPassword,currectPassword);
-
-        AppDatabase database = AppDatabase.getDB(application,dbPassword);
+        AppDatabase database = AppDatabase.getInstance();
         monthlyDao = database.monthlyDao();
 
         this.allMonthSpening = monthlyDao.getMonthlySpending();
