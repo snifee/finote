@@ -78,14 +78,11 @@ public class RegisterActivity extends AppCompatActivity {
 
         String databaseKey = KeyManager.generateKey();
 
+        AppDatabase.getDB(getApplicationContext(),databaseKey);
+
         String encryptedKey = CryptManager.aesEncryption(databaseKey,password);
 
         MyPreferences.setSharedPreferenceDBKey(getBaseContext(),encryptedKey);
-
-        String encryptedDBPassword = MyPreferences.getSharedPreferenceDBKey(getApplicationContext());
-        String dbPassword = CryptManager.aesDecryption(encryptedDBPassword,password);
-
-        AppDatabase.getDB(getApplicationContext(),dbPassword);
     }
 
 }
