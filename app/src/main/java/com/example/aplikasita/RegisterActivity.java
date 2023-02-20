@@ -81,8 +81,6 @@ public class RegisterActivity extends AppCompatActivity {
 
         MyPreferences.setSharedPreferenceDBKey(getBaseContext(),encryptedKey);
 
-        getApplicationContext()
-
         MyPreferences.setSharedPreferenceTemporaryPassword(getBaseContext(),password);
 
     }
