@@ -1,14 +1,11 @@
-package com.example.aplikasita.controller.fragment;
+package com.example.aplikasita;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
-
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -18,9 +15,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.aplikasita.R;
-import com.example.aplikasita.data.dao.KebutuhanDao;
 import com.example.aplikasita.data.entity.Pengeluaran;
-import com.example.aplikasita.data.repo.KebutuhanRepo;
 import com.example.aplikasita.data.viewmodel.PengeluaranViewModel;
 import com.example.aplikasita.utils.MyStringUtils;
 
@@ -28,32 +23,25 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
-public class TambahPengeluaranFragment extends Fragment {
-
-    public TambahPengeluaranFragment() {
-        // Required empty public constructor
-    }
+public class TambahPengeluaranActivity extends AppCompatActivity {
 
     private PengeluaranViewModel pengeluaranViewModel;
     private Integer jenis;
 
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_tambah_pengeluaran, container, false);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_tambah_pengeluaran);
 
-        EditText editTextJumlahPeng = view.findViewById(R.id.etAddSpendingJumlah);
-        EditText editTextKet = view.findViewById(R.id.etAddSpendingKeterangan);
-        EditText editTextDate = view.findViewById(R.id.etAddSpendingDate);
-        Button submitButton = view.findViewById(R.id.submitAddSpendingButton);
-        AutoCompleteTextView autoCompleteCategory = view.findViewById(R.id.idDropdownCategory);
+        EditText editTextJumlahPeng = findViewById(R.id.etAddSpendingJumlah);
+        EditText editTextKet = findViewById(R.id.etAddSpendingKeterangan);
+        EditText editTextDate = findViewById(R.id.etAddSpendingDate);
+        Button submitButton = findViewById(R.id.submitAddSpendingButton);
+        AutoCompleteTextView autoCompleteCategory = findViewById(R.id.idDropdownCategory);
 
         String[] category = getResources().getStringArray(R.array.kategori_keperluan);
-        ArrayAdapter<String > arrayAdapter = new ArrayAdapter<>(getActivity(),R.layout.dropdown_kategori,category);
+        ArrayAdapter<String > arrayAdapter = new ArrayAdapter<>(this,R.layout.dropdown_kategori,category);
         autoCompleteCategory.setAdapter(arrayAdapter);
         autoCompleteCategory.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -72,7 +60,7 @@ public class TambahPengeluaranFragment extends Fragment {
                 int day = c.get(Calendar.DAY_OF_MONTH);
 
                 DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        getActivity(),
+                        getBaseContext(),
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker view, int year,
@@ -96,16 +84,16 @@ public class TambahPengeluaranFragment extends Fragment {
                 saveSpending(jumlah, keterangan, date,jenis);
 
                 if (jumlah.isEmpty()){
-                    Toast.makeText(getActivity(),"Please insert amount",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getBaseContext(),"Please insert amount",Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                getActivity().finish();
+                finish();
             }
         });
 
-        return view;
     }
+
     private void saveSpending(String jumlah,String keterangan, String date,Integer jenis){
 
         if(date.isEmpty()){

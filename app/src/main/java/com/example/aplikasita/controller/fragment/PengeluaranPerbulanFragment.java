@@ -18,10 +18,9 @@ import android.widget.Toast;
 
 import com.example.aplikasita.R;
 import com.example.aplikasita.SecondActivity;
-import com.example.aplikasita.TambahCashflowActivity;
+import com.example.aplikasita.TambahPengeluaranActivity;
 import com.example.aplikasita.controller.adaptor.RecycleViewAdapter.PengeluaranPerbulanAdaptor;
 import com.example.aplikasita.data.viewmodel.MonthlyViewModel;
-import com.example.aplikasita.data.viewmodel.PengeluaranViewModel;
 import com.example.aplikasita.dto.MonthlySpending;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -53,6 +52,15 @@ public class PengeluaranPerbulanFragment extends Fragment {
             @Override
             public void onChanged(List<MonthlySpending> monthlySpendings) {
                 pengeluaranPerbulanAdaptor.setListMonthSpending(monthlySpendings);
+            }
+        });
+
+        FloatingActionButton addItemButton = view.findViewById(R.id.addCfButton);
+        addItemButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), TambahPengeluaranActivity.class);
+                startActivity(intent);
             }
         });
 

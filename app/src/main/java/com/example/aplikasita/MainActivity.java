@@ -8,7 +8,7 @@ import android.view.MenuItem;
 
 import com.example.aplikasita.controller.fragment.KebutuhanFragment;
 import com.example.aplikasita.controller.fragment.HutangFragment;
-import com.example.aplikasita.controller.fragment.PerbulanFragment;
+import com.example.aplikasita.controller.fragment.TransaksiPerbulanFragment;
 import com.example.aplikasita.controller.fragment.HomeFragment;
 import com.example.aplikasita.data.viewmodel.PemasukanViewModel;
 import com.example.aplikasita.utils.MyPreferences;
@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     private PemasukanViewModel pemasukanViewModel;
     private HomeFragment homeFragment = new HomeFragment();
-    private PerbulanFragment perbulanFragment = new PerbulanFragment();
+    private TransaksiPerbulanFragment transaksiPerbulanFragment = new TransaksiPerbulanFragment();
     private KebutuhanFragment kebutuhanFragment = new KebutuhanFragment();
     private HutangFragment hutangFragment = new HutangFragment();
 
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 return true;
 
             case R.id.page_2:
-                getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, perbulanFragment).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, transaksiPerbulanFragment).commit();
                 return true;
 
             case R.id.page_3:

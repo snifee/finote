@@ -1,5 +1,6 @@
 package com.example.aplikasita.controller.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -18,9 +19,12 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.aplikasita.R;
+import com.example.aplikasita.TambahPendapatanActivity;
+import com.example.aplikasita.TambahPengeluaranActivity;
 import com.example.aplikasita.controller.adaptor.RecycleViewAdapter.PendapatanAdaptor;
 import com.example.aplikasita.data.viewmodel.PemasukanViewModel;
 import com.example.aplikasita.data.entity.Pendapatan;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
@@ -50,6 +54,14 @@ public class PendapatanFragment extends Fragment {
         recyclerView.setAdapter(pendapatanAdaptor);
         recyclerView.addItemDecoration(new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL));
 
+        FloatingActionButton addItemButton = view.findViewById(R.id.addCfButton);
+        addItemButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), TambahPendapatanActivity.class);
+                getActivity().startActivity(intent);
+            }
+        });
 
         pemasukanViewModel = ViewModelProviders.of(this).get(PemasukanViewModel.class);
         pemasukanViewModel.getIncomeByMonthYear(monthYear).observe(this, new Observer<List<Pendapatan>>() {

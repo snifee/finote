@@ -18,14 +18,11 @@ import android.widget.Toast;
 
 import com.example.aplikasita.R;
 import com.example.aplikasita.SecondActivity;
-import com.example.aplikasita.TambahCashflowActivity;
-import com.example.aplikasita.controller.adaptor.RecycleViewAdapter.PendapatanAdaptor;
+import com.example.aplikasita.TambahPengeluaranActivity;
 import com.example.aplikasita.controller.adaptor.RecycleViewAdapter.PendapatanPerbulanAdaptor;
-import com.example.aplikasita.controller.adaptor.RecycleViewAdapter.PengeluaranPerbulanAdaptor;
 import com.example.aplikasita.data.viewmodel.MonthlyViewModel;
 import com.example.aplikasita.data.viewmodel.PemasukanViewModel;
 import com.example.aplikasita.dto.MonthlyIncome;
-import com.example.aplikasita.dto.MonthlySpending;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
@@ -51,6 +48,15 @@ public class PendapatanPerbulanFragment extends Fragment {
         RecyclerView recyclerView = view.findViewById(R.id.recycleViewPendapatanPerbulan);
         recyclerView.setLayoutManager( new LinearLayoutManager(view.getContext()));
         recyclerView.setAdapter(pendapatanPerbulanAdaptor);
+
+        FloatingActionButton addItemButton = view.findViewById(R.id.addCfButton);
+        addItemButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), TambahPengeluaranActivity.class);
+                startActivity(intent);
+            }
+        });
 
         monthlyViewModel = ViewModelProviders.of(this).get(MonthlyViewModel.class);
         monthlyViewModel.getAllMonthlyIncome().observe(this, new Observer<List<MonthlyIncome>>() {

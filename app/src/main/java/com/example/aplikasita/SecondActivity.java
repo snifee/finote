@@ -29,15 +29,6 @@ public class SecondActivity extends AppCompatActivity {
         String monthYear = extras.getString(MONTH_YEAR);
 
 
-        FloatingActionButton addItemButton = findViewById(R.id.addCfButtonSecondAct);
-        addItemButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), TambahCashflowActivity.class);
-                startActivityForResult(intent,ADD_CF_RQ);
-            }
-        });
-
         ViewPager viewPager = findViewById(R.id.SecondViewPager);
 
 
