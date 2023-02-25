@@ -1,0 +1,720 @@
+@startuml
+class MyEncoder {
++ {static} String encodeToString(byte[],int)
++ {static} byte[] decode(String,int)
+}
+class Month {
+- Long id
+- String month
+- String year
+}
+class Hutang {
+- Long id
+- Long jumlah
+- Date jatuhTempo
+- String keterangan
+- Boolean isLunas
++ Long getId()
++ void setId(Long)
++ Long getJumlah()
++ void setJumlah(Long)
++ Date getJatuhTempo()
++ void setJatuhTempo(Date)
++ String getKeterangan()
++ void setKeterangan(String)
++ Boolean getLunas()
++ void setLunas(Boolean)
+}
+class MonthlySpending {
+- float spendingTotal
+- String monthYear
++ float getSpendingTotal()
++ void setSpendingTotal(float)
++ String getMonthYear()
++ void setMonthYear(String)
+}
+enum EnumKategori {
++  Sandang
++  Pangan
++  Pendidikan
++  Energi
++  Hiburan
+- int value
++ {static} Optional<EnumKategori> valueOf(int)
+}
+class PendapatanFragment {
++ {static} int ADD_ITEM_RQ
+- String monthYear
+- PemasukanViewModel pemasukanViewModel
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
+}
+class KebutuhanAdaptor {
+- List<Kebutuhan> listKebutuhan
+- NumberFormat numberFormat
+- OnItemClickListener listener
++ BudgetViewHolder onCreateViewHolder(ViewGroup,int)
++ void onBindViewHolder(BudgetViewHolder,int)
++ int getItemCount()
++ Kebutuhan getNeeds(int)
++ void setOnItemClickListener(OnItemClickListener)
++ void setListBudget(List<Kebutuhan>)
+}
+class KebutuhanAdaptor.BudgetViewHolder {
+- TextView tvNeeds
+}
+interface KebutuhanAdaptor.OnItemClickListener {
+~ void onItemClick(Kebutuhan)
+}
+class PendapatanPerbulanFragment {
++ {static} int SECOND_ACT
++ {static} int PENDAPATAN
+- PemasukanViewModel pemasukanViewModel
+- MonthlyViewModel monthlyViewModel
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
+}
+class TambahPengeluaranActivity {
+- PengeluaranViewModel pengeluaranViewModel
+- Integer jenis
+# void onCreate(Bundle)
+- void saveSpending(String,String,String,Integer)
+}
+interface PendapatanDao {
+~ void insert(Pendapatan)
+~ void update(Pendapatan)
+~ void delete(Pendapatan)
+~ void deleteAllIncome()
+~ LiveData<List<Pendapatan>> getAllIncome()
+~ LiveData<List<Pendapatan>> getIncomeByYearMonth(String)
+~ LiveData<Long> getSumIncomeByMonth(String)
+}
+class PengeluaranPerbulanAdaptor {
+- List<MonthlySpending> listMonthSpending
+- OnItemClickListener listener
+~ NumberFormat format
++ PengeluaranPerbulanAdaptor.MonthViewHolder onCreateViewHolder(ViewGroup,int)
++ void onBindViewHolder(PengeluaranPerbulanAdaptor.MonthViewHolder,int)
++ int getItemCount()
++ void setListMonthSpending(List<MonthlySpending>)
++ void setOnItemClickListener(OnItemClickListener)
+}
+class PengeluaranPerbulanAdaptor.MonthViewHolder {
+- TextView tvMonth
+}
+interface PengeluaranPerbulanAdaptor.OnItemClickListener {
+~ void onItemClick(MonthlySpending)
+}
+class KebutuhanRepo {
+- KebutuhanDao kebutuhanDao
+- LiveData<List<Kebutuhan>> allBudget
+- List<Integer> allIdKebutuhan
++ void insert(Kebutuhan)
++ void update(Kebutuhan)
++ void delete(Kebutuhan)
++ LiveData<List<Kebutuhan>> getAllBudget()
++ List<Integer> getAllIdKebutuhan()
+}
+class KebutuhanRepo.InsertBudgetAsyncTask {
+- KebutuhanDao kebutuhanDao
+# Void doInBackground(Kebutuhan)
+}
+class KebutuhanRepo.UpdateBudgetAsyncTask {
+- KebutuhanDao kebutuhanDao
+# Void doInBackground(Kebutuhan)
+}
+class KebutuhanRepo.DeleteBudgetAsyncTask {
+- KebutuhanDao kebutuhanDao
+# Void doInBackground(Kebutuhan)
+}
+class PengeluaranFragment {
++ {static} int ADD_ITEM_RQ
+- String monthYear
+- PengeluaranViewModel pengeluaranViewModel
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
+}
+interface KebutuhanDao {
+~ void insert(Kebutuhan)
+~ void update(Kebutuhan)
+~ void delete(Kebutuhan)
+~ LiveData<List<Kebutuhan>> getAllBudget()
+~ LiveData<Long> getTotalBudget()
+}
+class KebutuhanViewModel {
+- KebutuhanRepo kebutuhanRepo
+- LiveData<List<Kebutuhan>> allBudget
+- AppDatabase database
++ void insert(Kebutuhan)
++ void update(Kebutuhan)
++ void delete(Kebutuhan)
++ LiveData<List<Kebutuhan>> getAllBudget()
+}
+class PemasukanRepo {
+- PendapatanDao pendapatanDao
+- LiveData<List<Pendapatan>> allIncome
+- LiveData<List<Pendapatan>> incomeByMonthYear
+- LiveData<Long> sumOfIncomeByMonth
++ void insert(Pendapatan)
++ void update(Pendapatan)
++ void delete(Pendapatan)
++ void deleteAll()
++ LiveData<List<Pendapatan>> getAllIncome()
++ LiveData<List<Pendapatan>> getIncomeByMonthYear(String)
++ LiveData<Long> getSumOfIncomeByMonth(String)
+}
+class PemasukanRepo.InsertIncomeAsyncTask {
+- PendapatanDao pendapatanDao
+# Void doInBackground(Pendapatan)
+}
+class PemasukanRepo.UpdateIncomeAsyncTask {
+- PendapatanDao pendapatanDao
+# Void doInBackground(Pendapatan)
+}
+class PemasukanRepo.DeleteIncomeAsyncTask {
+- PendapatanDao pendapatanDao
+# Void doInBackground(Pendapatan)
+}
+class PemasukanRepo.DeleteAllIncomeAsyncTask {
+- PendapatanDao pendapatanDao
+# Void doInBackground(Void)
+}
+class PengeluaranKategoriAdaptor {
+- List<TotalSpendingByKategori> listKebutuhan
+- NumberFormat numberFormat
+- OnItemClickListener listener
++ KatSpendingViewHolder onCreateViewHolder(ViewGroup,int)
++ void onBindViewHolder(KatSpendingViewHolder,int)
++ int getItemCount()
++ void setOnItemClickListener(OnItemClickListener)
++ void setList(List<TotalSpendingByKategori>)
+}
+class PengeluaranKategoriAdaptor.KatSpendingViewHolder {
+- TextView tvAmount
+}
+interface PengeluaranKategoriAdaptor.OnItemClickListener {
+~ void onItemClick(TotalSpendingByKategori)
+}
+class PengeluaranPerbulanFragment {
++ {static} int SECOND_ACT
++ {static} int PENGELUARAN
+- MonthlyViewModel monthlyViewModel
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
+}
+class KeyManager {
++ {static} String generateKey()
+}
+class HashingUtils {
++ {static} String hashingSHA256(String)
++ {static} String myMd5Func(String)
+}
+class MyAvalancheEffect {
++ {static} float calculateAE(String,String)
+}
+class MyStringUtils {
++ {static} String stringToMonthYear(String)
++ {static} Date stringDateToDateTime(String)
++ {static} String getMonthYear(Date)
++ {static} String myCapitalizefunc(String)
++ {static} String convertStringToBinary(String)
++ {static} String prettyBinary(String,int,String)
++ {static} String convertStringToBinary2(String)
+}
+class MonthlyCashFlow {
+- float spendingTotal
+- float incomeTotal
+- String dateYear
++ float getSpendingTotal()
++ void setSpendingTotal(float)
++ float getIncomeTotal()
++ void setIncomeTotal(float)
++ String getDateYear()
++ void setDateYear(String)
+}
+class PengeluaranViewModel {
+- PengeluaranRepo pengeluaranRepo
+- LiveData<List<Pengeluaran>> allSpending
+- LiveData<List<Pengeluaran>> allSpendingByMonth
+- LiveData<Long> sumofSpendingByMonth
+- LiveData<List<TotalSpendingByKategori>> totalSpendingGroupByKategori
++ void insert(Pengeluaran)
++ void update(Pengeluaran)
++ void delete(Pengeluaran)
++ void deleteAll()
++ LiveData<List<Pengeluaran>> getAllSpending()
++ LiveData<List<Pengeluaran>> getAllSpendingByMonth(String)
++ LiveData<Long> getSumofSpendingByMonth(String)
++ LiveData<List<TotalSpendingByKategori>> getTotalSpendingGroupByKategori(String)
+}
+class TambahPendapatanActivity {
+- PemasukanViewModel pemasukanViewModel
+# void onCreate(Bundle)
+- void saveData(String,String,String,String)
+}
+class LoginActivity {
+# void onCreate(Bundle)
+- boolean login(String)
+}
+interface PengeluaranDao {
+~ void insert(Pengeluaran)
+~ void update(Pengeluaran)
+~ void delete(Pengeluaran)
+~ void deleteAllSpending()
+~ LiveData<List<Pengeluaran>> getAllSpending()
+~ LiveData<List<Pengeluaran>> getAllSpendingByMonth(String)
+~ LiveData<Long> getSumSpendingByMonth(String)
+~ LiveData<List<TotalSpendingByKategori>> totalSpendingByKategori(String)
+}
+class MonthlyViewModel {
+- MonthlyRepo monthlyRepo
+- LiveData<List<MonthlySpending>> allMonthlySpending
+- LiveData<List<MonthlyIncome>> allMonthlyIncome
++ LiveData<List<MonthlySpending>> getAllMonthlySpending()
++ LiveData<List<MonthlyIncome>> getAllMonthlyIncome()
+}
+interface MonthlyDao {
+~ LiveData<List<MonthlySpending>> getMonthlySpending()
+~ LiveData<List<MonthlyIncome>> getMonthlyIncome()
+}
+class TambahHutangActivity {
++ {static} String JUMLAH
++ {static} String KETERANGAN
++ {static} String JATUH_TEMPO
++ {static} String IS_LUNAS
++ {static} String ID
+- HutangViewModel hutangViewModel
+# void onCreate(Bundle)
+- void saveHutang(String,Date,String,Boolean)
+- void editHutang(Long,String,Date,String,Boolean)
+}
+class PengeluaranWithKategori {
++ KategoriPengeluaran kategoriPengeluaran
++ List<Pengeluaran> pengeluarans
+}
+class CryptManager {
+- {static} String ENCRYPT_ALGO
+- {static} String BLOCK_MODE
+- {static} String PADDING
+- {static} String TRANSFORM
+- {static} IvParameterSpec IV
++ {static} SecretKeySpec getKey(String)
++ {static} String aesEncryption(String,String)
++ {static} String aesDecryption(String,String)
++ {static} IvParameterSpec generateIv()
+}
+class MyPreferences {
++ {static} String KEY_DB_KEY
++ {static} String KEY_PASSWORD
++ {static} String KEY_EMAIL
++ {static} String TEMP_PASSWORD
+- {static} SharedPreferences getSharedPreferences(Context)
++ {static} void setSharedPreferenceDBKey(Context,String)
++ {static} void setSharedPreferenceEmail(Context,String)
++ {static} void setSharedPreferencePassword(Context,String)
++ {static} String getSharedPreferenceDBKey(Context)
++ {static} String getSharedPreferenceEmail(Context)
++ {static} String getSharedPreferencePassword(Context)
++ {static} void setSharedPreferenceTemporaryPassword(Context,String)
++ {static} void deleteSharedPreferenceTemporaryPassword(Context)
++ {static} String getSharedPreferenceTemporaryPassword(Context)
++ {static} boolean isPasswordCorrect(String,Context)
+}
+abstract class AppDatabase {
+- {static} String DB_NAME
+- {static} AppDatabase appDatabase
+- {static} RoomDatabase.Callback roomCallback
++ {abstract}PengeluaranDao pengeluaranDao()
++ {abstract}PendapatanDao pemasukanDao()
++ {abstract}KebutuhanDao keperluanDao()
++ {abstract}MonthlyDao monthlyDao()
++ {abstract}HutangDao hutangDao()
++ {abstract}KategoriPengeluaranDao kategoriPengeluaranDao()
++ {static} AppDatabase getDB(Context,String)
++ {static} AppDatabase getInstance()
+}
+class AppDatabase.PopulateDbAsyncTask {
+- PendapatanDao pendapatanDao
+- PengeluaranDao pengeluaranDao
+- KebutuhanDao kebutuhanDao
+- HutangDao hutangDao
+- KategoriPengeluaranDao kategoriPengeluaranDao
+# Void doInBackground(Void)
+}
+class MonthlyRepo {
+- MonthlyDao monthlyDao
+- LiveData<List<MonthlySpending>> allMonthSpening
+- LiveData<List<MonthlyIncome>> allMonthIncome
++ LiveData<List<MonthlySpending>> getAllMonthSpening()
++ LiveData<List<MonthlyIncome>> getAllMonthIncome()
+}
+class PengeluaranRepo {
+- PengeluaranDao pengeluaranDao
+- LiveData<List<Pengeluaran>> allSpending
+- LiveData<List<Pengeluaran>> allSpendingByMonth
+- LiveData<Long> sumofSpendingByMonth
+- LiveData<List<TotalSpendingByKategori>> totalSpendingGroupByKategori
++ void insert(Pengeluaran)
++ void update(Pengeluaran)
++ void delete(Pengeluaran)
++ void deleteAll()
++ LiveData<List<Pengeluaran>> getAllSpending()
++ LiveData<List<Pengeluaran>> getAllSpendingByMonth(String)
++ LiveData<List<TotalSpendingByKategori>> getTotalSpendingGroupByKategori(String)
++ LiveData<Long> getSumofSpendingByMonth(String)
+}
+class PengeluaranRepo.InsertSpendingAsyncTask {
+- PengeluaranDao pengeluaranDao
+# Void doInBackground(Pengeluaran)
+}
+class PengeluaranRepo.UpdateSpendingAsyncTask {
+- PengeluaranDao pengeluaranDao
+# Void doInBackground(Pengeluaran)
+}
+class PengeluaranRepo.DeleteSpendingAsyncTask {
+- PengeluaranDao pengeluaranDao
+# Void doInBackground(Pengeluaran)
+}
+class PengeluaranRepo.DeleteAllSpendingAsyncTask {
+- PengeluaranDao pengeluaranDao
+# Void doInBackground(Void)
+}
+interface HutangDao {
+~ void insert(Hutang)
+~ void update(Hutang)
+~ void delete(Hutang)
+~ LiveData<List<Hutang>> getAllHutang()
+}
+class SecondActivity {
++ {static} String MONTH_YEAR
++ {static} int ADD_CF_RQ
++ {static} String FRAGMENTVIEW
+# void onCreate(Bundle)
+}
+class RegisterActivity {
+# void onCreate(Bundle)
++ void registration(String,String)
+}
+class HutangRepo {
+- HutangDao hutangDao
+- LiveData<List<Hutang>> allHutang
++ void insert(Hutang)
++ void update(Hutang)
++ void delete(Hutang)
++ LiveData<List<Hutang>> getAllHutang()
+}
+class HutangRepo.InsertHutangAsyncTask {
+- HutangDao hutangDao
+# Void doInBackground(Hutang)
+}
+class HutangRepo.UpdateHutangAsyncTask {
+- HutangDao hutangDao
+# Void doInBackground(Hutang)
+}
+class HutangRepo.DeleteHutangAsyncTask {
+- HutangDao hutangDao
+# Void doInBackground(Hutang)
+}
+class TransaksiPerbulanFragment {
++ {static} int ADD_CF_RQ
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
+}
+class Kebutuhan {
+- Integer idKebutuhan
+- String kebutuhan
+- Integer idKategoriPengeluaran
+- Long jumlah
++ Integer getIdKebutuhan()
++ void setIdKebutuhan(Integer)
++ String getKebutuhan()
++ void setKebutuhan(String)
++ Integer getIdKategoriPengeluaran()
++ void setIdKategoriPengeluaran(Integer)
++ Long getJumlah()
++ void setJumlah(Long)
+}
+class HutangAdaptor {
+- List<Hutang> listHutang
+- NumberFormat numberFormat
+- OnItemClickListener listener
++ HutangAdaptor.HutangViewHolder onCreateViewHolder(ViewGroup,int)
++ void onBindViewHolder(HutangAdaptor.HutangViewHolder,int)
++ int getItemCount()
++ Hutang getHutang(int)
++ void setOnItemClickListener(HutangAdaptor.OnItemClickListener)
++ void setListHutang(List<Hutang>)
+}
+class HutangAdaptor.HutangViewHolder {
+- TextView tvJatuhTempo
+}
+interface HutangAdaptor.OnItemClickListener {
+~ void onItemClick(Hutang)
+}
+class KategoriPengeluaran {
+- Integer id
+- String nama
++ Integer getId()
++ void setId(Integer)
++ String getNama()
++ void setNama(String)
+}
+class HomeFragment {
+- PengeluaranViewModel pengeluaranViewModel
+- PemasukanViewModel pemasukanViewModel
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
+}
+class HutangViewModel {
+- HutangRepo hutangRepo
+- LiveData<List<Hutang>> allHutang
+- AppDatabase database
++ void insert(Hutang)
++ void update(Hutang)
++ void delete(Hutang)
++ LiveData<List<Hutang>> getAllBudget()
+}
+class DateConverter {
++ {static} Date fromTimestamp(Long)
++ {static} Long dateToTimestamp(Date)
+}
+class PengeluaranAdaptor {
+- List<Pengeluaran> listPengeluaran
+- NumberFormat numberFormat
+- KebutuhanDao kebutuhanDao
++ PengeluaranAdaptor.SpendingViewHolder onCreateViewHolder(ViewGroup,int)
++ void onBindViewHolder(PengeluaranAdaptor.SpendingViewHolder,int)
++ int getItemCount()
++ Pengeluaran getSpending(int)
++ void setListSpending(List<Pengeluaran>)
+}
+class PengeluaranAdaptor.SpendingViewHolder {
+- TextView tvDate
+}
+class KebutuhanFragment {
+- KebutuhanViewModel kebutuhanViewModel
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
+}
+class TotalSpendingByKategori {
+~ Integer kategori
+~ Long total
+~ String monthYear
++ Integer getKategori()
++ void setKategori(Integer)
++ Long getTotal()
++ void setTotal(Long)
++ String getMonthYear()
++ void setMonthYear(String)
+}
+class Pendapatan {
+- Long id
+- String noRekening
+- Long jumlah
+- Date waktu
+- String keterangan
++ Long getId()
++ void setId(Long)
++ String getNoRekening()
++ void setNoRekening(String)
++ Long getJumlah()
++ void setJumlah(Long)
++ Date getWaktu()
++ void setWaktu(Date)
++ String getKeterangan()
++ void setKeterangan(String)
+}
+class MonthlyIncome {
+- float incomeTotal
+- String monthYear
++ float getIncomeTotal()
++ void setIncomeTotal(float)
++ String getMonthYear()
++ void setMonthYear(String)
+}
+class KebutuhanWithKategori {
++ KategoriPengeluaran kategoriPengeluaran
++ List<Kebutuhan> kebutuhans
+}
+class TambahKebutuhanActivity {
++ {static} int TAMBAH_KEBUTUHAN
++ {static} int EDIT_KEBUTUHAN
++ {static} String KEBUTUHAN
++ {static} String JUMLAH
++ {static} String ID
++ {static} String KATEGORI
+- KebutuhanViewModel kebutuhanViewModel
+- Integer jenis
+# void onCreate(Bundle)
+- void saveKebutuhan(String,Integer,String)
+- void editKebutuhan(Integer,String,Integer,String)
+}
+class HutangFragment {
+- HutangViewModel hutangViewModel
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
+}
+class PendapatanAdaptor {
+- List<Pendapatan> listPendapatan
+- NumberFormat numberFormat
++ PendapatanAdaptor.IncomeViewHolder onCreateViewHolder(ViewGroup,int)
++ void onBindViewHolder(PendapatanAdaptor.IncomeViewHolder,int)
++ int getItemCount()
++ Pendapatan getIncome(int)
++ void setListIncome(List<Pendapatan>)
+}
+class PendapatanAdaptor.IncomeViewHolder {
+- TextView tvDate
+}
+class Pengeluaran {
+- Long idPengeluaran
+- Long jumlah
+- String keterangan
+- Date waktu
+- Integer idKategoriPengeluaran
++ Long getIdPengeluaran()
++ void setIdPengeluaran(Long)
++ Long getJumlah()
++ void setJumlah(Long)
++ String getKeterangan()
++ void setKeterangan(String)
++ Date getWaktu()
++ void setWaktu(Date)
++ Integer getIdKategoriPengeluaran()
++ void setIdKategoriPengeluaran(Integer)
+}
+class PagerAdapter {
+~ int totalTab
+- ArrayList<Fragment> fragmentList
++ Fragment getItem(int)
++ void addFragment(Fragment)
++ int getCount()
+}
+class Month {
+- String month
+- String income
+- String outcome
++ String getMonth()
++ void setMonth(String)
++ String getIncome()
++ void setIncome(String)
++ String getOutcome()
++ void setOutcome(String)
+}
+class PemasukanViewModel {
+- PemasukanRepo pemasukanRepo
+- LiveData<List<Pendapatan>> allIncome
+- LiveData<List<Pendapatan>> incomeByMonthYear
+- LiveData<Long> sumofIncomeByMonth
++ void insert(Pendapatan)
++ void update(Pendapatan)
++ void delete(Pendapatan)
++ void deleteAll()
++ LiveData<List<Pendapatan>> getAllIncome()
++ LiveData<List<Pendapatan>> getIncomeByMonthYear(String)
++ LiveData<Long> getSumofIncomeByMonth(String)
+}
+class PendapatanPerbulanAdaptor {
+- List<MonthlyIncome> listMonthIncome
+- OnItemClickListener listener
+~ NumberFormat format
++ PendapatanPerbulanAdaptor.MonthViewHolder onCreateViewHolder(ViewGroup,int)
++ void onBindViewHolder(PendapatanPerbulanAdaptor.MonthViewHolder,int)
++ int getItemCount()
++ void setListMonthSpending(List<MonthlyIncome>)
++ void setOnItemClickListener(OnItemClickListener)
+}
+class PendapatanPerbulanAdaptor.MonthViewHolder {
+- TextView tvMonth
+}
+interface PendapatanPerbulanAdaptor.OnItemClickListener {
+~ void onItemClick(MonthlyIncome)
+}
+class MainActivity {
+- PemasukanViewModel pemasukanViewModel
+- HomeFragment homeFragment
+- TransaksiPerbulanFragment transaksiPerbulanFragment
+- KebutuhanFragment kebutuhanFragment
+- HutangFragment hutangFragment
+# void onCreate(Bundle)
++ boolean onNavigationItemSelected(MenuItem)
++ void onDestroy()
+}
+interface KategoriPengeluaranDao {
+~ void insert(KategoriPengeluaran)
+}
+
+
+Fragment <|-- PendapatanFragment
+Adapter <|-- KebutuhanAdaptor
+KebutuhanAdaptor +.. KebutuhanAdaptor.BudgetViewHolder
+ViewHolder <|-- KebutuhanAdaptor.BudgetViewHolder
+KebutuhanAdaptor +.. KebutuhanAdaptor.OnItemClickListener
+Fragment <|-- PendapatanPerbulanFragment
+AppCompatActivity <|-- TambahPengeluaranActivity
+Adapter <|-- PengeluaranPerbulanAdaptor
+PengeluaranPerbulanAdaptor +.. PengeluaranPerbulanAdaptor.MonthViewHolder
+ViewHolder <|-- PengeluaranPerbulanAdaptor.MonthViewHolder
+PengeluaranPerbulanAdaptor +.. PengeluaranPerbulanAdaptor.OnItemClickListener
+KebutuhanRepo +.. KebutuhanRepo.InsertBudgetAsyncTask
+AsyncTask <|-- KebutuhanRepo.InsertBudgetAsyncTask
+KebutuhanRepo +.. KebutuhanRepo.UpdateBudgetAsyncTask
+AsyncTask <|-- KebutuhanRepo.UpdateBudgetAsyncTask
+KebutuhanRepo +.. KebutuhanRepo.DeleteBudgetAsyncTask
+AsyncTask <|-- KebutuhanRepo.DeleteBudgetAsyncTask
+Fragment <|-- PengeluaranFragment
+AndroidViewModel <|-- KebutuhanViewModel
+PemasukanRepo +.. PemasukanRepo.InsertIncomeAsyncTask
+AsyncTask <|-- PemasukanRepo.InsertIncomeAsyncTask
+PemasukanRepo +.. PemasukanRepo.UpdateIncomeAsyncTask
+AsyncTask <|-- PemasukanRepo.UpdateIncomeAsyncTask
+PemasukanRepo +.. PemasukanRepo.DeleteIncomeAsyncTask
+AsyncTask <|-- PemasukanRepo.DeleteIncomeAsyncTask
+PemasukanRepo +.. PemasukanRepo.DeleteAllIncomeAsyncTask
+AsyncTask <|-- PemasukanRepo.DeleteAllIncomeAsyncTask
+Adapter <|-- PengeluaranKategoriAdaptor
+PengeluaranKategoriAdaptor +.. PengeluaranKategoriAdaptor.KatSpendingViewHolder
+ViewHolder <|-- PengeluaranKategoriAdaptor.KatSpendingViewHolder
+PengeluaranKategoriAdaptor +.. PengeluaranKategoriAdaptor.OnItemClickListener
+Fragment <|-- PengeluaranPerbulanFragment
+AndroidViewModel <|-- PengeluaranViewModel
+AppCompatActivity <|-- TambahPendapatanActivity
+AppCompatActivity <|-- LoginActivity
+AndroidViewModel <|-- MonthlyViewModel
+AppCompatActivity <|-- TambahHutangActivity
+RoomDatabase <|-- AppDatabase
+AppDatabase +.. AppDatabase.PopulateDbAsyncTask
+AsyncTask <|-- AppDatabase.PopulateDbAsyncTask
+PengeluaranRepo +.. PengeluaranRepo.InsertSpendingAsyncTask
+AsyncTask <|-- PengeluaranRepo.InsertSpendingAsyncTask
+PengeluaranRepo +.. PengeluaranRepo.UpdateSpendingAsyncTask
+AsyncTask <|-- PengeluaranRepo.UpdateSpendingAsyncTask
+PengeluaranRepo +.. PengeluaranRepo.DeleteSpendingAsyncTask
+AsyncTask <|-- PengeluaranRepo.DeleteSpendingAsyncTask
+PengeluaranRepo +.. PengeluaranRepo.DeleteAllSpendingAsyncTask
+AsyncTask <|-- PengeluaranRepo.DeleteAllSpendingAsyncTask
+AppCompatActivity <|-- SecondActivity
+AppCompatActivity <|-- RegisterActivity
+HutangRepo +.. HutangRepo.InsertHutangAsyncTask
+AsyncTask <|-- HutangRepo.InsertHutangAsyncTask
+HutangRepo +.. HutangRepo.UpdateHutangAsyncTask
+AsyncTask <|-- HutangRepo.UpdateHutangAsyncTask
+HutangRepo +.. HutangRepo.DeleteHutangAsyncTask
+AsyncTask <|-- HutangRepo.DeleteHutangAsyncTask
+Fragment <|-- TransaksiPerbulanFragment
+Adapter <|-- HutangAdaptor
+HutangAdaptor +.. HutangAdaptor.HutangViewHolder
+ViewHolder <|-- HutangAdaptor.HutangViewHolder
+HutangAdaptor +.. HutangAdaptor.OnItemClickListener
+Fragment <|-- HomeFragment
+AndroidViewModel <|-- HutangViewModel
+Adapter <|-- PengeluaranAdaptor
+PengeluaranAdaptor +.. PengeluaranAdaptor.SpendingViewHolder
+ViewHolder <|-- PengeluaranAdaptor.SpendingViewHolder
+Fragment <|-- KebutuhanFragment
+AppCompatActivity <|-- TambahKebutuhanActivity
+Fragment <|-- HutangFragment
+Adapter <|-- PendapatanAdaptor
+PendapatanAdaptor +.. PendapatanAdaptor.IncomeViewHolder
+ViewHolder <|-- PendapatanAdaptor.IncomeViewHolder
+FragmentPagerAdapter <|-- PagerAdapter
+AndroidViewModel <|-- PemasukanViewModel
+Adapter <|-- PendapatanPerbulanAdaptor
+PendapatanPerbulanAdaptor +.. PendapatanPerbulanAdaptor.MonthViewHolder
+ViewHolder <|-- PendapatanPerbulanAdaptor.MonthViewHolder
+PendapatanPerbulanAdaptor +.. PendapatanPerbulanAdaptor.OnItemClickListener
+OnNavigationItemSelectedListener <|.. MainActivity
+AppCompatActivity <|-- MainActivity
+@enduml

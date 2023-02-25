@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.example.aplikasita.R;
 import com.example.aplikasita.SecondActivity;
+import com.example.aplikasita.TambahPendapatanActivity;
 import com.example.aplikasita.TambahPengeluaranActivity;
 import com.example.aplikasita.controller.adaptor.RecycleViewAdapter.PendapatanPerbulanAdaptor;
 import com.example.aplikasita.data.viewmodel.MonthlyViewModel;
@@ -53,7 +54,7 @@ public class PendapatanPerbulanFragment extends Fragment {
         addItemButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), TambahPengeluaranActivity.class);
+                Intent intent = new Intent(view.getContext(), TambahPendapatanActivity.class);
                 startActivity(intent);
             }
         });

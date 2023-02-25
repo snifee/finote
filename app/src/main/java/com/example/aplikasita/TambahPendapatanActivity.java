@@ -45,7 +45,7 @@ public class TambahPendapatanActivity extends AppCompatActivity {
                 int day = c.get(Calendar.DAY_OF_MONTH);
 
                 DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        getBaseContext(),
+                        TambahPendapatanActivity.this,
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker view, int year,
@@ -74,7 +74,7 @@ public class TambahPendapatanActivity extends AppCompatActivity {
                     return;
                 }
 
-                saveData(rekening,jumlah,keterangan,date);
+                saveIncome(rekening,jumlah,keterangan,date);
 
                 finish();
 
@@ -84,7 +84,7 @@ public class TambahPendapatanActivity extends AppCompatActivity {
     }
 
 
-    private void saveData(String rekening,String jumlah,String keterangan,String date){
+    private void saveIncome(String rekening,String jumlah,String keterangan,String date){
 
         if(date.isEmpty()){
             LocalDate d = LocalDate.now();

@@ -52,7 +52,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                     try {
 
-                        registrasi(email,password);
+                        registration(email,password);
 
                         Intent intent = new Intent(RegisterActivity.this,MainActivity.class);
                         startActivity(intent);
@@ -68,7 +68,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
 
-    public void registrasi(String email,String password){
+    public void registration(String email, String password){
 
         String encodedPassword = HashingUtils.hashingSHA256(password);
 

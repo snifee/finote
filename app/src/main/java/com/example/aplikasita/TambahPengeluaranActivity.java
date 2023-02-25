@@ -60,7 +60,7 @@ public class TambahPengeluaranActivity extends AppCompatActivity {
                 int day = c.get(Calendar.DAY_OF_MONTH);
 
                 DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        getBaseContext(),
+                        TambahPengeluaranActivity.this,
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker view, int year,

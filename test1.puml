@@ -1,0 +1,720 @@
+@startuml
+class com.example.aplikasita.utils.MyEncoder {
++ {static} String encodeToString(byte[],int)
++ {static} byte[] decode(String,int)
+}
+class com.example.aplikasita.data.entity.Month {
+- Long id
+- String month
+- String year
+}
+class com.example.aplikasita.data.entity.Hutang {
+- Long id
+- Long jumlah
+- Date jatuhTempo
+- String keterangan
+- Boolean isLunas
++ Long getId()
++ void setId(Long)
++ Long getJumlah()
++ void setJumlah(Long)
++ Date getJatuhTempo()
++ void setJatuhTempo(Date)
++ String getKeterangan()
++ void setKeterangan(String)
++ Boolean getLunas()
++ void setLunas(Boolean)
+}
+class com.example.aplikasita.dto.MonthlySpending {
+- float spendingTotal
+- String monthYear
++ float getSpendingTotal()
++ void setSpendingTotal(float)
++ String getMonthYear()
++ void setMonthYear(String)
+}
+enum com.example.aplikasita.data.EnumKategori {
++  Sandang
++  Pangan
++  Pendidikan
++  Energi
++  Hiburan
+- int value
++ {static} Optional<EnumKategori> valueOf(int)
+}
+class com.example.aplikasita.controller.fragment.PendapatanFragment {
++ {static} int ADD_ITEM_RQ
+- String monthYear
+- PemasukanViewModel pemasukanViewModel
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
+}
+class com.example.aplikasita.controller.adaptor.RecycleViewAdapter.KebutuhanAdaptor {
+- List<Kebutuhan> listKebutuhan
+- NumberFormat numberFormat
+- OnItemClickListener listener
++ BudgetViewHolder onCreateViewHolder(ViewGroup,int)
++ void onBindViewHolder(BudgetViewHolder,int)
++ int getItemCount()
++ Kebutuhan getNeeds(int)
++ void setOnItemClickListener(OnItemClickListener)
++ void setListBudget(List<Kebutuhan>)
+}
+class com.example.aplikasita.controller.adaptor.RecycleViewAdapter.KebutuhanAdaptor.BudgetViewHolder {
+- TextView tvNeeds
+}
+interface com.example.aplikasita.controller.adaptor.RecycleViewAdapter.KebutuhanAdaptor.OnItemClickListener {
+~ void onItemClick(Kebutuhan)
+}
+class com.example.aplikasita.controller.fragment.PendapatanPerbulanFragment {
++ {static} int SECOND_ACT
++ {static} int PENDAPATAN
+- PemasukanViewModel pemasukanViewModel
+- MonthlyViewModel monthlyViewModel
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
+}
+class com.example.aplikasita.TambahPengeluaranActivity {
+- PengeluaranViewModel pengeluaranViewModel
+- Integer jenis
+# void onCreate(Bundle)
+- void saveSpending(String,String,String,Integer)
+}
+interface com.example.aplikasita.data.dao.PendapatanDao {
+~ void insert(Pendapatan)
+~ void update(Pendapatan)
+~ void delete(Pendapatan)
+~ void deleteAllIncome()
+~ LiveData<List<Pendapatan>> getAllIncome()
+~ LiveData<List<Pendapatan>> getIncomeByYearMonth(String)
+~ LiveData<Long> getSumIncomeByMonth(String)
+}
+class com.example.aplikasita.controller.adaptor.RecycleViewAdapter.PengeluaranPerbulanAdaptor {
+- List<MonthlySpending> listMonthSpending
+- OnItemClickListener listener
+~ NumberFormat format
++ PengeluaranPerbulanAdaptor.MonthViewHolder onCreateViewHolder(ViewGroup,int)
++ void onBindViewHolder(PengeluaranPerbulanAdaptor.MonthViewHolder,int)
++ int getItemCount()
++ void setListMonthSpending(List<MonthlySpending>)
++ void setOnItemClickListener(OnItemClickListener)
+}
+class com.example.aplikasita.controller.adaptor.RecycleViewAdapter.PengeluaranPerbulanAdaptor.MonthViewHolder {
+- TextView tvMonth
+}
+interface com.example.aplikasita.controller.adaptor.RecycleViewAdapter.PengeluaranPerbulanAdaptor.OnItemClickListener {
+~ void onItemClick(MonthlySpending)
+}
+class com.example.aplikasita.data.repo.KebutuhanRepo {
+- KebutuhanDao kebutuhanDao
+- LiveData<List<Kebutuhan>> allBudget
+- List<Integer> allIdKebutuhan
++ void insert(Kebutuhan)
++ void update(Kebutuhan)
++ void delete(Kebutuhan)
++ LiveData<List<Kebutuhan>> getAllBudget()
++ List<Integer> getAllIdKebutuhan()
+}
+class com.example.aplikasita.data.repo.KebutuhanRepo.InsertBudgetAsyncTask {
+- KebutuhanDao kebutuhanDao
+# Void doInBackground(Kebutuhan)
+}
+class com.example.aplikasita.data.repo.KebutuhanRepo.UpdateBudgetAsyncTask {
+- KebutuhanDao kebutuhanDao
+# Void doInBackground(Kebutuhan)
+}
+class com.example.aplikasita.data.repo.KebutuhanRepo.DeleteBudgetAsyncTask {
+- KebutuhanDao kebutuhanDao
+# Void doInBackground(Kebutuhan)
+}
+class com.example.aplikasita.controller.fragment.PengeluaranFragment {
++ {static} int ADD_ITEM_RQ
+- String monthYear
+- PengeluaranViewModel pengeluaranViewModel
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
+}
+interface com.example.aplikasita.data.dao.KebutuhanDao {
+~ void insert(Kebutuhan)
+~ void update(Kebutuhan)
+~ void delete(Kebutuhan)
+~ LiveData<List<Kebutuhan>> getAllBudget()
+~ LiveData<Long> getTotalBudget()
+}
+class com.example.aplikasita.data.viewmodel.KebutuhanViewModel {
+- KebutuhanRepo kebutuhanRepo
+- LiveData<List<Kebutuhan>> allBudget
+- AppDatabase database
++ void insert(Kebutuhan)
++ void update(Kebutuhan)
++ void delete(Kebutuhan)
++ LiveData<List<Kebutuhan>> getAllBudget()
+}
+class com.example.aplikasita.data.repo.PemasukanRepo {
+- PendapatanDao pendapatanDao
+- LiveData<List<Pendapatan>> allIncome
+- LiveData<List<Pendapatan>> incomeByMonthYear
+- LiveData<Long> sumOfIncomeByMonth
++ void insert(Pendapatan)
++ void update(Pendapatan)
++ void delete(Pendapatan)
++ void deleteAll()
++ LiveData<List<Pendapatan>> getAllIncome()
++ LiveData<List<Pendapatan>> getIncomeByMonthYear(String)
++ LiveData<Long> getSumOfIncomeByMonth(String)
+}
+class com.example.aplikasita.data.repo.PemasukanRepo.InsertIncomeAsyncTask {
+- PendapatanDao pendapatanDao
+# Void doInBackground(Pendapatan)
+}
+class com.example.aplikasita.data.repo.PemasukanRepo.UpdateIncomeAsyncTask {
+- PendapatanDao pendapatanDao
+# Void doInBackground(Pendapatan)
+}
+class com.example.aplikasita.data.repo.PemasukanRepo.DeleteIncomeAsyncTask {
+- PendapatanDao pendapatanDao
+# Void doInBackground(Pendapatan)
+}
+class com.example.aplikasita.data.repo.PemasukanRepo.DeleteAllIncomeAsyncTask {
+- PendapatanDao pendapatanDao
+# Void doInBackground(Void)
+}
+class com.example.aplikasita.controller.adaptor.RecycleViewAdapter.PengeluaranKategoriAdaptor {
+- List<TotalSpendingByKategori> listKebutuhan
+- NumberFormat numberFormat
+- OnItemClickListener listener
++ KatSpendingViewHolder onCreateViewHolder(ViewGroup,int)
++ void onBindViewHolder(KatSpendingViewHolder,int)
++ int getItemCount()
++ void setOnItemClickListener(OnItemClickListener)
++ void setList(List<TotalSpendingByKategori>)
+}
+class com.example.aplikasita.controller.adaptor.RecycleViewAdapter.PengeluaranKategoriAdaptor.KatSpendingViewHolder {
+- TextView tvAmount
+}
+interface com.example.aplikasita.controller.adaptor.RecycleViewAdapter.PengeluaranKategoriAdaptor.OnItemClickListener {
+~ void onItemClick(TotalSpendingByKategori)
+}
+class com.example.aplikasita.controller.fragment.PengeluaranPerbulanFragment {
++ {static} int SECOND_ACT
++ {static} int PENGELUARAN
+- MonthlyViewModel monthlyViewModel
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
+}
+class com.example.aplikasita.utils.KeyManager {
++ {static} String generateKey()
+}
+class com.example.aplikasita.utils.HashingUtils {
++ {static} String hashingSHA256(String)
++ {static} String myMd5Func(String)
+}
+class com.example.aplikasita.utils.MyAvalancheEffect {
++ {static} float calculateAE(String,String)
+}
+class com.example.aplikasita.utils.MyStringUtils {
++ {static} String stringToMonthYear(String)
++ {static} Date stringDateToDateTime(String)
++ {static} String getMonthYear(Date)
++ {static} String myCapitalizefunc(String)
++ {static} String convertStringToBinary(String)
++ {static} String prettyBinary(String,int,String)
++ {static} String convertStringToBinary2(String)
+}
+class com.example.aplikasita.dto.MonthlyCashFlow {
+- float spendingTotal
+- float incomeTotal
+- String dateYear
++ float getSpendingTotal()
++ void setSpendingTotal(float)
++ float getIncomeTotal()
++ void setIncomeTotal(float)
++ String getDateYear()
++ void setDateYear(String)
+}
+class com.example.aplikasita.data.viewmodel.PengeluaranViewModel {
+- PengeluaranRepo pengeluaranRepo
+- LiveData<List<Pengeluaran>> allSpending
+- LiveData<List<Pengeluaran>> allSpendingByMonth
+- LiveData<Long> sumofSpendingByMonth
+- LiveData<List<TotalSpendingByKategori>> totalSpendingGroupByKategori
++ void insert(Pengeluaran)
++ void update(Pengeluaran)
++ void delete(Pengeluaran)
++ void deleteAll()
++ LiveData<List<Pengeluaran>> getAllSpending()
++ LiveData<List<Pengeluaran>> getAllSpendingByMonth(String)
++ LiveData<Long> getSumofSpendingByMonth(String)
++ LiveData<List<TotalSpendingByKategori>> getTotalSpendingGroupByKategori(String)
+}
+class com.example.aplikasita.TambahPendapatanActivity {
+- PemasukanViewModel pemasukanViewModel
+# void onCreate(Bundle)
+- void saveData(String,String,String,String)
+}
+class com.example.aplikasita.LoginActivity {
+# void onCreate(Bundle)
+- boolean login(String)
+}
+interface com.example.aplikasita.data.dao.PengeluaranDao {
+~ void insert(Pengeluaran)
+~ void update(Pengeluaran)
+~ void delete(Pengeluaran)
+~ void deleteAllSpending()
+~ LiveData<List<Pengeluaran>> getAllSpending()
+~ LiveData<List<Pengeluaran>> getAllSpendingByMonth(String)
+~ LiveData<Long> getSumSpendingByMonth(String)
+~ LiveData<List<TotalSpendingByKategori>> totalSpendingByKategori(String)
+}
+class com.example.aplikasita.data.viewmodel.MonthlyViewModel {
+- MonthlyRepo monthlyRepo
+- LiveData<List<MonthlySpending>> allMonthlySpending
+- LiveData<List<MonthlyIncome>> allMonthlyIncome
++ LiveData<List<MonthlySpending>> getAllMonthlySpending()
++ LiveData<List<MonthlyIncome>> getAllMonthlyIncome()
+}
+interface com.example.aplikasita.data.dao.MonthlyDao {
+~ LiveData<List<MonthlySpending>> getMonthlySpending()
+~ LiveData<List<MonthlyIncome>> getMonthlyIncome()
+}
+class com.example.aplikasita.TambahHutangActivity {
++ {static} String JUMLAH
++ {static} String KETERANGAN
++ {static} String JATUH_TEMPO
++ {static} String IS_LUNAS
++ {static} String ID
+- HutangViewModel hutangViewModel
+# void onCreate(Bundle)
+- void saveHutang(String,Date,String,Boolean)
+- void editHutang(Long,String,Date,String,Boolean)
+}
+class com.example.aplikasita.data.entity.PengeluaranWithKategori {
++ KategoriPengeluaran kategoriPengeluaran
++ List<Pengeluaran> pengeluarans
+}
+class com.example.aplikasita.utils.CryptManager {
+- {static} String ENCRYPT_ALGO
+- {static} String BLOCK_MODE
+- {static} String PADDING
+- {static} String TRANSFORM
+- {static} IvParameterSpec IV
++ {static} SecretKeySpec getKey(String)
++ {static} String aesEncryption(String,String)
++ {static} String aesDecryption(String,String)
++ {static} IvParameterSpec generateIv()
+}
+class com.example.aplikasita.utils.MyPreferences {
++ {static} String KEY_DB_KEY
++ {static} String KEY_PASSWORD
++ {static} String KEY_EMAIL
++ {static} String TEMP_PASSWORD
+- {static} SharedPreferences getSharedPreferences(Context)
++ {static} void setSharedPreferenceDBKey(Context,String)
++ {static} void setSharedPreferenceEmail(Context,String)
++ {static} void setSharedPreferencePassword(Context,String)
++ {static} String getSharedPreferenceDBKey(Context)
++ {static} String getSharedPreferenceEmail(Context)
++ {static} String getSharedPreferencePassword(Context)
++ {static} void setSharedPreferenceTemporaryPassword(Context,String)
++ {static} void deleteSharedPreferenceTemporaryPassword(Context)
++ {static} String getSharedPreferenceTemporaryPassword(Context)
++ {static} boolean isPasswordCorrect(String,Context)
+}
+abstract class com.example.aplikasita.data.AppDatabase {
+- {static} String DB_NAME
+- {static} AppDatabase appDatabase
+- {static} RoomDatabase.Callback roomCallback
++ {abstract}PengeluaranDao pengeluaranDao()
++ {abstract}PendapatanDao pemasukanDao()
++ {abstract}KebutuhanDao keperluanDao()
++ {abstract}MonthlyDao monthlyDao()
++ {abstract}HutangDao hutangDao()
++ {abstract}KategoriPengeluaranDao kategoriPengeluaranDao()
++ {static} AppDatabase getDB(Context,String)
++ {static} AppDatabase getInstance()
+}
+class com.example.aplikasita.data.AppDatabase.PopulateDbAsyncTask {
+- PendapatanDao pendapatanDao
+- PengeluaranDao pengeluaranDao
+- KebutuhanDao kebutuhanDao
+- HutangDao hutangDao
+- KategoriPengeluaranDao kategoriPengeluaranDao
+# Void doInBackground(Void)
+}
+class com.example.aplikasita.data.repo.MonthlyRepo {
+- MonthlyDao monthlyDao
+- LiveData<List<MonthlySpending>> allMonthSpening
+- LiveData<List<MonthlyIncome>> allMonthIncome
++ LiveData<List<MonthlySpending>> getAllMonthSpening()
++ LiveData<List<MonthlyIncome>> getAllMonthIncome()
+}
+class com.example.aplikasita.data.repo.PengeluaranRepo {
+- PengeluaranDao pengeluaranDao
+- LiveData<List<Pengeluaran>> allSpending
+- LiveData<List<Pengeluaran>> allSpendingByMonth
+- LiveData<Long> sumofSpendingByMonth
+- LiveData<List<TotalSpendingByKategori>> totalSpendingGroupByKategori
++ void insert(Pengeluaran)
++ void update(Pengeluaran)
++ void delete(Pengeluaran)
++ void deleteAll()
++ LiveData<List<Pengeluaran>> getAllSpending()
++ LiveData<List<Pengeluaran>> getAllSpendingByMonth(String)
++ LiveData<List<TotalSpendingByKategori>> getTotalSpendingGroupByKategori(String)
++ LiveData<Long> getSumofSpendingByMonth(String)
+}
+class com.example.aplikasita.data.repo.PengeluaranRepo.InsertSpendingAsyncTask {
+- PengeluaranDao pengeluaranDao
+# Void doInBackground(Pengeluaran)
+}
+class com.example.aplikasita.data.repo.PengeluaranRepo.UpdateSpendingAsyncTask {
+- PengeluaranDao pengeluaranDao
+# Void doInBackground(Pengeluaran)
+}
+class com.example.aplikasita.data.repo.PengeluaranRepo.DeleteSpendingAsyncTask {
+- PengeluaranDao pengeluaranDao
+# Void doInBackground(Pengeluaran)
+}
+class com.example.aplikasita.data.repo.PengeluaranRepo.DeleteAllSpendingAsyncTask {
+- PengeluaranDao pengeluaranDao
+# Void doInBackground(Void)
+}
+interface com.example.aplikasita.data.dao.HutangDao {
+~ void insert(Hutang)
+~ void update(Hutang)
+~ void delete(Hutang)
+~ LiveData<List<Hutang>> getAllHutang()
+}
+class com.example.aplikasita.SecondActivity {
++ {static} String MONTH_YEAR
++ {static} int ADD_CF_RQ
++ {static} String FRAGMENTVIEW
+# void onCreate(Bundle)
+}
+class com.example.aplikasita.RegisterActivity {
+# void onCreate(Bundle)
++ void registration(String,String)
+}
+class com.example.aplikasita.data.repo.HutangRepo {
+- HutangDao hutangDao
+- LiveData<List<Hutang>> allHutang
++ void insert(Hutang)
++ void update(Hutang)
++ void delete(Hutang)
++ LiveData<List<Hutang>> getAllHutang()
+}
+class com.example.aplikasita.data.repo.HutangRepo.InsertHutangAsyncTask {
+- HutangDao hutangDao
+# Void doInBackground(Hutang)
+}
+class com.example.aplikasita.data.repo.HutangRepo.UpdateHutangAsyncTask {
+- HutangDao hutangDao
+# Void doInBackground(Hutang)
+}
+class com.example.aplikasita.data.repo.HutangRepo.DeleteHutangAsyncTask {
+- HutangDao hutangDao
+# Void doInBackground(Hutang)
+}
+class com.example.aplikasita.controller.fragment.TransaksiPerbulanFragment {
++ {static} int ADD_CF_RQ
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
+}
+class com.example.aplikasita.data.entity.Kebutuhan {
+- Integer idKebutuhan
+- String kebutuhan
+- Integer idKategoriPengeluaran
+- Long jumlah
++ Integer getIdKebutuhan()
++ void setIdKebutuhan(Integer)
++ String getKebutuhan()
++ void setKebutuhan(String)
++ Integer getIdKategoriPengeluaran()
++ void setIdKategoriPengeluaran(Integer)
++ Long getJumlah()
++ void setJumlah(Long)
+}
+class com.example.aplikasita.controller.adaptor.RecycleViewAdapter.HutangAdaptor {
+- List<Hutang> listHutang
+- NumberFormat numberFormat
+- OnItemClickListener listener
++ HutangAdaptor.HutangViewHolder onCreateViewHolder(ViewGroup,int)
++ void onBindViewHolder(HutangAdaptor.HutangViewHolder,int)
++ int getItemCount()
++ Hutang getHutang(int)
++ void setOnItemClickListener(HutangAdaptor.OnItemClickListener)
++ void setListHutang(List<Hutang>)
+}
+class com.example.aplikasita.controller.adaptor.RecycleViewAdapter.HutangAdaptor.HutangViewHolder {
+- TextView tvJatuhTempo
+}
+interface com.example.aplikasita.controller.adaptor.RecycleViewAdapter.HutangAdaptor.OnItemClickListener {
+~ void onItemClick(Hutang)
+}
+class com.example.aplikasita.data.entity.KategoriPengeluaran {
+- Integer id
+- String nama
++ Integer getId()
++ void setId(Integer)
++ String getNama()
++ void setNama(String)
+}
+class com.example.aplikasita.controller.fragment.HomeFragment {
+- PengeluaranViewModel pengeluaranViewModel
+- PemasukanViewModel pemasukanViewModel
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
+}
+class com.example.aplikasita.data.viewmodel.HutangViewModel {
+- HutangRepo hutangRepo
+- LiveData<List<Hutang>> allHutang
+- AppDatabase database
++ void insert(Hutang)
++ void update(Hutang)
++ void delete(Hutang)
++ LiveData<List<Hutang>> getAllBudget()
+}
+class com.example.aplikasita.data.DateConverter {
++ {static} Date fromTimestamp(Long)
++ {static} Long dateToTimestamp(Date)
+}
+class com.example.aplikasita.controller.adaptor.RecycleViewAdapter.PengeluaranAdaptor {
+- List<Pengeluaran> listPengeluaran
+- NumberFormat numberFormat
+- KebutuhanDao kebutuhanDao
++ PengeluaranAdaptor.SpendingViewHolder onCreateViewHolder(ViewGroup,int)
++ void onBindViewHolder(PengeluaranAdaptor.SpendingViewHolder,int)
++ int getItemCount()
++ Pengeluaran getSpending(int)
++ void setListSpending(List<Pengeluaran>)
+}
+class com.example.aplikasita.controller.adaptor.RecycleViewAdapter.PengeluaranAdaptor.SpendingViewHolder {
+- TextView tvDate
+}
+class com.example.aplikasita.controller.fragment.KebutuhanFragment {
+- KebutuhanViewModel kebutuhanViewModel
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
+}
+class com.example.aplikasita.dto.TotalSpendingByKategori {
+~ Integer kategori
+~ Long total
+~ String monthYear
++ Integer getKategori()
++ void setKategori(Integer)
++ Long getTotal()
++ void setTotal(Long)
++ String getMonthYear()
++ void setMonthYear(String)
+}
+class com.example.aplikasita.data.entity.Pendapatan {
+- Long id
+- String noRekening
+- Long jumlah
+- Date waktu
+- String keterangan
++ Long getId()
++ void setId(Long)
++ String getNoRekening()
++ void setNoRekening(String)
++ Long getJumlah()
++ void setJumlah(Long)
++ Date getWaktu()
++ void setWaktu(Date)
++ String getKeterangan()
++ void setKeterangan(String)
+}
+class com.example.aplikasita.dto.MonthlyIncome {
+- float incomeTotal
+- String monthYear
++ float getIncomeTotal()
++ void setIncomeTotal(float)
++ String getMonthYear()
++ void setMonthYear(String)
+}
+class com.example.aplikasita.data.entity.KebutuhanWithKategori {
++ KategoriPengeluaran kategoriPengeluaran
++ List<Kebutuhan> kebutuhans
+}
+class com.example.aplikasita.TambahKebutuhanActivity {
++ {static} int TAMBAH_KEBUTUHAN
++ {static} int EDIT_KEBUTUHAN
++ {static} String KEBUTUHAN
++ {static} String JUMLAH
++ {static} String ID
++ {static} String KATEGORI
+- KebutuhanViewModel kebutuhanViewModel
+- Integer jenis
+# void onCreate(Bundle)
+- void saveKebutuhan(String,Integer,String)
+- void editKebutuhan(Integer,String,Integer,String)
+}
+class com.example.aplikasita.controller.fragment.HutangFragment {
+- HutangViewModel hutangViewModel
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
+}
+class com.example.aplikasita.controller.adaptor.RecycleViewAdapter.PendapatanAdaptor {
+- List<Pendapatan> listPendapatan
+- NumberFormat numberFormat
++ PendapatanAdaptor.IncomeViewHolder onCreateViewHolder(ViewGroup,int)
++ void onBindViewHolder(PendapatanAdaptor.IncomeViewHolder,int)
++ int getItemCount()
++ Pendapatan getIncome(int)
++ void setListIncome(List<Pendapatan>)
+}
+class com.example.aplikasita.controller.adaptor.RecycleViewAdapter.PendapatanAdaptor.IncomeViewHolder {
+- TextView tvDate
+}
+class com.example.aplikasita.data.entity.Pengeluaran {
+- Long idPengeluaran
+- Long jumlah
+- String keterangan
+- Date waktu
+- Integer idKategoriPengeluaran
++ Long getIdPengeluaran()
++ void setIdPengeluaran(Long)
++ Long getJumlah()
++ void setJumlah(Long)
++ String getKeterangan()
++ void setKeterangan(String)
++ Date getWaktu()
++ void setWaktu(Date)
++ Integer getIdKategoriPengeluaran()
++ void setIdKategoriPengeluaran(Integer)
+}
+class com.example.aplikasita.controller.adaptor.PagerAdapter {
+~ int totalTab
+- ArrayList<Fragment> fragmentList
++ Fragment getItem(int)
++ void addFragment(Fragment)
++ int getCount()
+}
+class com.example.aplikasita.dto.Month {
+- String month
+- String income
+- String outcome
++ String getMonth()
++ void setMonth(String)
++ String getIncome()
++ void setIncome(String)
++ String getOutcome()
++ void setOutcome(String)
+}
+class com.example.aplikasita.data.viewmodel.PemasukanViewModel {
+- PemasukanRepo pemasukanRepo
+- LiveData<List<Pendapatan>> allIncome
+- LiveData<List<Pendapatan>> incomeByMonthYear
+- LiveData<Long> sumofIncomeByMonth
++ void insert(Pendapatan)
++ void update(Pendapatan)
++ void delete(Pendapatan)
++ void deleteAll()
++ LiveData<List<Pendapatan>> getAllIncome()
++ LiveData<List<Pendapatan>> getIncomeByMonthYear(String)
++ LiveData<Long> getSumofIncomeByMonth(String)
+}
+class com.example.aplikasita.controller.adaptor.RecycleViewAdapter.PendapatanPerbulanAdaptor {
+- List<MonthlyIncome> listMonthIncome
+- OnItemClickListener listener
+~ NumberFormat format
++ PendapatanPerbulanAdaptor.MonthViewHolder onCreateViewHolder(ViewGroup,int)
++ void onBindViewHolder(PendapatanPerbulanAdaptor.MonthViewHolder,int)
++ int getItemCount()
++ void setListMonthSpending(List<MonthlyIncome>)
++ void setOnItemClickListener(OnItemClickListener)
+}
+class com.example.aplikasita.controller.adaptor.RecycleViewAdapter.PendapatanPerbulanAdaptor.MonthViewHolder {
+- TextView tvMonth
+}
+interface com.example.aplikasita.controller.adaptor.RecycleViewAdapter.PendapatanPerbulanAdaptor.OnItemClickListener {
+~ void onItemClick(MonthlyIncome)
+}
+class com.example.aplikasita.MainActivity {
+- PemasukanViewModel pemasukanViewModel
+- HomeFragment homeFragment
+- TransaksiPerbulanFragment transaksiPerbulanFragment
+- KebutuhanFragment kebutuhanFragment
+- HutangFragment hutangFragment
+# void onCreate(Bundle)
++ boolean onNavigationItemSelected(MenuItem)
++ void onDestroy()
+}
+interface com.example.aplikasita.data.dao.KategoriPengeluaranDao {
+~ void insert(KategoriPengeluaran)
+}
+
+
+androidx.fragment.app.Fragment <|-- com.example.aplikasita.controller.fragment.PendapatanFragment
+com.example.aplikasita.controller.adaptor.RecycleViewAdapter.Adapter <|-- com.example.aplikasita.controller.adaptor.RecycleViewAdapter.KebutuhanAdaptor
+com.example.aplikasita.controller.adaptor.RecycleViewAdapter.KebutuhanAdaptor +.. com.example.aplikasita.controller.adaptor.RecycleViewAdapter.KebutuhanAdaptor.BudgetViewHolder
+com.example.aplikasita.controller.adaptor.RecycleViewAdapter.ViewHolder <|-- com.example.aplikasita.controller.adaptor.RecycleViewAdapter.KebutuhanAdaptor.BudgetViewHolder
+com.example.aplikasita.controller.adaptor.RecycleViewAdapter.KebutuhanAdaptor +.. com.example.aplikasita.controller.adaptor.RecycleViewAdapter.KebutuhanAdaptor.OnItemClickListener
+androidx.fragment.app.Fragment <|-- com.example.aplikasita.controller.fragment.PendapatanPerbulanFragment
+androidx.appcompat.app.AppCompatActivity <|-- com.example.aplikasita.TambahPengeluaranActivity
+com.example.aplikasita.controller.adaptor.RecycleViewAdapter.Adapter <|-- com.example.aplikasita.controller.adaptor.RecycleViewAdapter.PengeluaranPerbulanAdaptor
+com.example.aplikasita.controller.adaptor.RecycleViewAdapter.PengeluaranPerbulanAdaptor +.. com.example.aplikasita.controller.adaptor.RecycleViewAdapter.PengeluaranPerbulanAdaptor.MonthViewHolder
+com.example.aplikasita.controller.adaptor.RecycleViewAdapter.ViewHolder <|-- com.example.aplikasita.controller.adaptor.RecycleViewAdapter.PengeluaranPerbulanAdaptor.MonthViewHolder
+com.example.aplikasita.controller.adaptor.RecycleViewAdapter.PengeluaranPerbulanAdaptor +.. com.example.aplikasita.controller.adaptor.RecycleViewAdapter.PengeluaranPerbulanAdaptor.OnItemClickListener
+com.example.aplikasita.data.repo.KebutuhanRepo +.. com.example.aplikasita.data.repo.KebutuhanRepo.InsertBudgetAsyncTask
+com.example.aplikasita.data.repo.AsyncTask <|-- com.example.aplikasita.data.repo.KebutuhanRepo.InsertBudgetAsyncTask
+com.example.aplikasita.data.repo.KebutuhanRepo +.. com.example.aplikasita.data.repo.KebutuhanRepo.UpdateBudgetAsyncTask
+com.example.aplikasita.data.repo.AsyncTask <|-- com.example.aplikasita.data.repo.KebutuhanRepo.UpdateBudgetAsyncTask
+com.example.aplikasita.data.repo.KebutuhanRepo +.. com.example.aplikasita.data.repo.KebutuhanRepo.DeleteBudgetAsyncTask
+com.example.aplikasita.data.repo.AsyncTask <|-- com.example.aplikasita.data.repo.KebutuhanRepo.DeleteBudgetAsyncTask
+androidx.fragment.app.Fragment <|-- com.example.aplikasita.controller.fragment.PengeluaranFragment
+androidx.lifecycle.AndroidViewModel <|-- com.example.aplikasita.data.viewmodel.KebutuhanViewModel
+com.example.aplikasita.data.repo.PemasukanRepo +.. com.example.aplikasita.data.repo.PemasukanRepo.InsertIncomeAsyncTask
+com.example.aplikasita.data.repo.AsyncTask <|-- com.example.aplikasita.data.repo.PemasukanRepo.InsertIncomeAsyncTask
+com.example.aplikasita.data.repo.PemasukanRepo +.. com.example.aplikasita.data.repo.PemasukanRepo.UpdateIncomeAsyncTask
+com.example.aplikasita.data.repo.AsyncTask <|-- com.example.aplikasita.data.repo.PemasukanRepo.UpdateIncomeAsyncTask
+com.example.aplikasita.data.repo.PemasukanRepo +.. com.example.aplikasita.data.repo.PemasukanRepo.DeleteIncomeAsyncTask
+com.example.aplikasita.data.repo.AsyncTask <|-- com.example.aplikasita.data.repo.PemasukanRepo.DeleteIncomeAsyncTask
+com.example.aplikasita.data.repo.PemasukanRepo +.. com.example.aplikasita.data.repo.PemasukanRepo.DeleteAllIncomeAsyncTask
+com.example.aplikasita.data.repo.AsyncTask <|-- com.example.aplikasita.data.repo.PemasukanRepo.DeleteAllIncomeAsyncTask
+com.example.aplikasita.controller.adaptor.RecycleViewAdapter.Adapter <|-- com.example.aplikasita.controller.adaptor.RecycleViewAdapter.PengeluaranKategoriAdaptor
+com.example.aplikasita.controller.adaptor.RecycleViewAdapter.PengeluaranKategoriAdaptor +.. com.example.aplikasita.controller.adaptor.RecycleViewAdapter.PengeluaranKategoriAdaptor.KatSpendingViewHolder
+com.example.aplikasita.controller.adaptor.RecycleViewAdapter.ViewHolder <|-- com.example.aplikasita.controller.adaptor.RecycleViewAdapter.PengeluaranKategoriAdaptor.KatSpendingViewHolder
+com.example.aplikasita.controller.adaptor.RecycleViewAdapter.PengeluaranKategoriAdaptor +.. com.example.aplikasita.controller.adaptor.RecycleViewAdapter.PengeluaranKategoriAdaptor.OnItemClickListener
+androidx.fragment.app.Fragment <|-- com.example.aplikasita.controller.fragment.PengeluaranPerbulanFragment
+androidx.lifecycle.AndroidViewModel <|-- com.example.aplikasita.data.viewmodel.PengeluaranViewModel
+androidx.appcompat.app.AppCompatActivity <|-- com.example.aplikasita.TambahPendapatanActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.aplikasita.LoginActivity
+androidx.lifecycle.AndroidViewModel <|-- com.example.aplikasita.data.viewmodel.MonthlyViewModel
+androidx.appcompat.app.AppCompatActivity <|-- com.example.aplikasita.TambahHutangActivity
+androidx.room.RoomDatabase <|-- com.example.aplikasita.data.AppDatabase
+com.example.aplikasita.data.AppDatabase +.. com.example.aplikasita.data.AppDatabase.PopulateDbAsyncTask
+com.example.aplikasita.data.AsyncTask <|-- com.example.aplikasita.data.AppDatabase.PopulateDbAsyncTask
+com.example.aplikasita.data.repo.PengeluaranRepo +.. com.example.aplikasita.data.repo.PengeluaranRepo.InsertSpendingAsyncTask
+com.example.aplikasita.data.repo.AsyncTask <|-- com.example.aplikasita.data.repo.PengeluaranRepo.InsertSpendingAsyncTask
+com.example.aplikasita.data.repo.PengeluaranRepo +.. com.example.aplikasita.data.repo.PengeluaranRepo.UpdateSpendingAsyncTask
+com.example.aplikasita.data.repo.AsyncTask <|-- com.example.aplikasita.data.repo.PengeluaranRepo.UpdateSpendingAsyncTask
+com.example.aplikasita.data.repo.PengeluaranRepo +.. com.example.aplikasita.data.repo.PengeluaranRepo.DeleteSpendingAsyncTask
+com.example.aplikasita.data.repo.AsyncTask <|-- com.example.aplikasita.data.repo.PengeluaranRepo.DeleteSpendingAsyncTask
+com.example.aplikasita.data.repo.PengeluaranRepo +.. com.example.aplikasita.data.repo.PengeluaranRepo.DeleteAllSpendingAsyncTask
+com.example.aplikasita.data.repo.AsyncTask <|-- com.example.aplikasita.data.repo.PengeluaranRepo.DeleteAllSpendingAsyncTask
+androidx.appcompat.app.AppCompatActivity <|-- com.example.aplikasita.SecondActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.aplikasita.RegisterActivity
+com.example.aplikasita.data.repo.HutangRepo +.. com.example.aplikasita.data.repo.HutangRepo.InsertHutangAsyncTask
+com.example.aplikasita.data.repo.AsyncTask <|-- com.example.aplikasita.data.repo.HutangRepo.InsertHutangAsyncTask
+com.example.aplikasita.data.repo.HutangRepo +.. com.example.aplikasita.data.repo.HutangRepo.UpdateHutangAsyncTask
+com.example.aplikasita.data.repo.AsyncTask <|-- com.example.aplikasita.data.repo.HutangRepo.UpdateHutangAsyncTask
+com.example.aplikasita.data.repo.HutangRepo +.. com.example.aplikasita.data.repo.HutangRepo.DeleteHutangAsyncTask
+com.example.aplikasita.data.repo.AsyncTask <|-- com.example.aplikasita.data.repo.HutangRepo.DeleteHutangAsyncTask
+androidx.fragment.app.Fragment <|-- com.example.aplikasita.controller.fragment.TransaksiPerbulanFragment
+com.example.aplikasita.controller.adaptor.RecycleViewAdapter.Adapter <|-- com.example.aplikasita.controller.adaptor.RecycleViewAdapter.HutangAdaptor
+com.example.aplikasita.controller.adaptor.RecycleViewAdapter.HutangAdaptor +.. com.example.aplikasita.controller.adaptor.RecycleViewAdapter.HutangAdaptor.HutangViewHolder
+com.example.aplikasita.controller.adaptor.RecycleViewAdapter.ViewHolder <|-- com.example.aplikasita.controller.adaptor.RecycleViewAdapter.HutangAdaptor.HutangViewHolder
+com.example.aplikasita.controller.adaptor.RecycleViewAdapter.HutangAdaptor +.. com.example.aplikasita.controller.adaptor.RecycleViewAdapter.HutangAdaptor.OnItemClickListener
+androidx.fragment.app.Fragment <|-- com.example.aplikasita.controller.fragment.HomeFragment
+androidx.lifecycle.AndroidViewModel <|-- com.example.aplikasita.data.viewmodel.HutangViewModel
+com.example.aplikasita.controller.adaptor.RecycleViewAdapter.Adapter <|-- com.example.aplikasita.controller.adaptor.RecycleViewAdapter.PengeluaranAdaptor
+com.example.aplikasita.controller.adaptor.RecycleViewAdapter.PengeluaranAdaptor +.. com.example.aplikasita.controller.adaptor.RecycleViewAdapter.PengeluaranAdaptor.SpendingViewHolder
+com.example.aplikasita.controller.adaptor.RecycleViewAdapter.ViewHolder <|-- com.example.aplikasita.controller.adaptor.RecycleViewAdapter.PengeluaranAdaptor.SpendingViewHolder
+androidx.fragment.app.Fragment <|-- com.example.aplikasita.controller.fragment.KebutuhanFragment
+androidx.appcompat.app.AppCompatActivity <|-- com.example.aplikasita.TambahKebutuhanActivity
+androidx.fragment.app.Fragment <|-- com.example.aplikasita.controller.fragment.HutangFragment
+com.example.aplikasita.controller.adaptor.RecycleViewAdapter.Adapter <|-- com.example.aplikasita.controller.adaptor.RecycleViewAdapter.PendapatanAdaptor
+com.example.aplikasita.controller.adaptor.RecycleViewAdapter.PendapatanAdaptor +.. com.example.aplikasita.controller.adaptor.RecycleViewAdapter.PendapatanAdaptor.IncomeViewHolder
+com.example.aplikasita.controller.adaptor.RecycleViewAdapter.ViewHolder <|-- com.example.aplikasita.controller.adaptor.RecycleViewAdapter.PendapatanAdaptor.IncomeViewHolder
+androidx.fragment.app.FragmentPagerAdapter <|-- com.example.aplikasita.controller.adaptor.PagerAdapter
+androidx.lifecycle.AndroidViewModel <|-- com.example.aplikasita.data.viewmodel.PemasukanViewModel
+com.example.aplikasita.controller.adaptor.RecycleViewAdapter.Adapter <|-- com.example.aplikasita.controller.adaptor.RecycleViewAdapter.PendapatanPerbulanAdaptor
+com.example.aplikasita.controller.adaptor.RecycleViewAdapter.PendapatanPerbulanAdaptor +.. com.example.aplikasita.controller.adaptor.RecycleViewAdapter.PendapatanPerbulanAdaptor.MonthViewHolder
+com.example.aplikasita.controller.adaptor.RecycleViewAdapter.ViewHolder <|-- com.example.aplikasita.controller.adaptor.RecycleViewAdapter.PendapatanPerbulanAdaptor.MonthViewHolder
+com.example.aplikasita.controller.adaptor.RecycleViewAdapter.PendapatanPerbulanAdaptor +.. com.example.aplikasita.controller.adaptor.RecycleViewAdapter.PendapatanPerbulanAdaptor.OnItemClickListener
+com.example.aplikasita.OnNavigationItemSelectedListener <|.. com.example.aplikasita.MainActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.aplikasita.MainActivity
+@enduml

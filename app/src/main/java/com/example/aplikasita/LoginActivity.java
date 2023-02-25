@@ -70,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
             return true;
 
         }else {
-
+            Toast.makeText(getBaseContext(),"Passsowrd wrong",Toast.LENGTH_SHORT).show();
             return false;
         }
     }

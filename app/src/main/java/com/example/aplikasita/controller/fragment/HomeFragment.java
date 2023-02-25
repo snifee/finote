@@ -79,7 +79,6 @@ public class HomeFragment extends Fragment {
                 }else {
                     tvSpending.setText("No Spending This Month");
                 }
-
             }
         });
 
@@ -109,7 +108,6 @@ public class HomeFragment extends Fragment {
                 }else {
                     tvIncome.setText("No Income This Month");
                 }
-
             }
         });
 
