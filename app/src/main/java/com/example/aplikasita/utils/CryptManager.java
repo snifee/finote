@@ -15,7 +15,7 @@ import javax.crypto.spec.SecretKeySpec;
 public class CryptManager {
     private static final String ENCRYPT_ALGO = "AES";
     private static final String BLOCK_MODE = "CBC";
-    private static final String PADDING = "NoPadding";
+    private static final String PADDING = "PKCS5PADDING";
     private static final String TRANSFORM = ENCRYPT_ALGO+"/"+BLOCK_MODE+"/"+PADDING;
 
     private static final IvParameterSpec IV = new IvParameterSpec("axhvchybmsllnayb".getBytes());
